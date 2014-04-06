@@ -1,0 +1,14 @@
+{
+  "manifest_version": 2,
+  "name": "TrollFaces",
+  "version": "0.1.1",
+  "description": "Must turn Codegram team members pics into troll faces.",
+  "content_scripts": [
+    {
+      // Change 'matches' attribute to load content
+      // script only in pages you want to.
+      "matches": ["http://forums.somethingawful.com/*"],
+      "js": ["jquery.min.js", "contentscript.js"]
+    }
+  ]
+}
