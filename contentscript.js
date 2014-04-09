@@ -1,6 +1,18 @@
+
 $(document).ready(function() {
   // Trollface image must be at 'my_extension/images/trollface.jpg'.
+  // Content script: contentscript.js
+
+
+localStorage.tweet=false;
+
+if (localStorage.is_already_a_buzzkill == null) is_already_a_buzzkill = true;
+
+chrome.extension.sendMessage({type:'showPageAction'});
   console.log("ERASSEDASE")
+    //   chrome.storage.local.get(null,function (obj){
+    //     console.log(JSON.stringify(obj));
+    // });
   var filter177 = {"\\bdaniel bryan\\b":"vanilla midget"};
 !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
 var c = 0;
@@ -11,10 +23,11 @@ var c = 0;
   if (localStorage.clickcount)
     {
     	var y = new RegExp("Hello, ([A-Za-z0-9]+)!")
-	 	console.log(y.test("Hello, Valeyard! Make all your dreams come true"));
+	 	//console.log(y.test("Hello, Valeyard! Make all your dreams come true"));
 	 	var g = y.exec("Hello, Valeyard! Make all your dreams come true");
 	 	
     localStorage.user=g[1];
+    localStorage.tweet=false;
     }
   else
     {
@@ -91,8 +104,16 @@ function handleDrop(e) {
     dragSrcEl.setAttributeNode(att1);;
         $('.standard').find('.smilie_group').append(dragSrcEl);
    // var htmlFav =  $('.standard').find('.smilie_group').innerHTML;
-    console.log($('.standard').find('.smilie_group')[0].innerHTML);
-    localStorage.favourite = $('.standard').find('.smilie_group')[0].innerHTML;
+    console.log($('.standard').find('.smilie_group')[0]);
+     var h = $('.standard').find('.smilie_group')[0];
+     console.log(h);
+    chrome.storage.local.set({"favourite": h}, function (){
+        console.log("Storage Succesful SUCKKKAAAAA");
+    });
+
+        chrome.storage.local.get(null,function (obj){
+        console.log(JSON.stringify(obj));
+    });
   }
 
   else{
@@ -105,7 +126,9 @@ function handleDrop(e) {
     if (title == image.innerText && this.getAttribute("id")=="favourite"){
       console.log("this should print every time");
       this.remove();
-      localStorage.favourite = $('.standard').find('.smilie_group')[0].innerHTML;
+      chrome.storage.local.set({"favourite": $('.standard').find('.smilie_group')[0]}, function (){
+        console.log("Storage Succesful");
+        });
     }
   });
   }
@@ -140,9 +163,15 @@ $(".smilie_list").each(function(index, image) {
 
 	var group = '<br><br><h3>Favourite Smilies</h3> <ul class="smilie_group">';
 	
+var omg = chrome.storage.local.get("favourite", function (obj){
+        console.log(JSON.stringify(obj) + "LOL REALLY");})
+console.log(omg);
+
+if (omg == null) omg = "";
+console.log(omg);
 	var groupEnd = '</ul><br><br><br><br><br><br>'
   var ht = '<h3>Basic Smilies</h3> <ul class="smilie_group"> <li class="smilie"> <div class="text">:(</div> <img alt="" src="http://fi.somethingawful.com/images/smilies/frown.gif" title="frown"> <li class="smilie"> <div class="text">:)</div> <img alt="" src="http://fi.somethingawful.com/images/smilies/smile.gif" title="smile"> </ul>';
-	$(this).find(".inner").prepend(group + localStorage.favourite + groupEnd)
+	$(this).find(".inner").prepend(group + omg + groupEnd)
 		});
 
 $(".smilie").each(function(index, image) {
@@ -191,18 +220,18 @@ while (child) {
 var text = texts.join("");
 
 	//var text = $(this).find(" td.postbody")[0].innerText;
-console.log(text);
+//console.log(text);
 	var author = $(this).find(" dt.author")[0].innerText;
     var x = new RegExp("(http|https)://(vine)\.(co)/v/[A-Za-z0-9]+");
 
 for(var j in filter177){
 
   var h = new RegExp(j, 'gi');
-  console.log(j);
-  console.log(h);
+  //console.log(j);
+  //console.log(h);
   var t = h.exec(text);
-  console.log(h.test(text))
-  console.log(t);
+  //console.log(h.test(text))
+  //console.log(t);
   if (t != null){
   $(this).find(" td.postbody")[0].innerText=$(this).find(" td.postbody")[0].innerText.replace(t, filter177[j])
   //$(this).find(" td.postbody")[0].innerText = text;
@@ -236,8 +265,10 @@ for(var j in filter177){
 
 
     if (author == localStorage.user){
-    $(this).find(" ul.postbuttons").append('<li><a href="https://twitter.com/share" class="twitter-share-button" data-url="manas" data-text="'+text+'" data-count="none" data-dnt="true">Tweet</a></li>');
-
+      console.log(localStorage.user)
+    if (localStorage.tweet){
+      $(this).find(" ul.postbuttons").append('<li><a href="https://twitter.com/share" class="twitter-share-button" data-url="manas" data-text="'+text+'" data-count="none" data-dnt="true">Tweet</a></li>');
+      }
 
           if (x.test(text)){
         var url2 = x.exec(text);
