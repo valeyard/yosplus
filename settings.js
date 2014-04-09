@@ -1,29 +1,25 @@
 document.addEventListener('DOMContentLoaded', function(){
 
-    var input = document.getElementById('kill-buzz');
+  var storage = chrome.storage.sync;
 
-    // set the initial state of the checkbox
-    var is_already_a_buzzkill = localStorage["be_a_buzzkill"];
-    console.log(is_already_a_buzzkill);
-    console.log("is it printing this")
-    if(is_already_a_buzzkill == "true"){
-        input.checked = true;
-    } else {
-        input.checked = false;
-    }
+//Retrieve existing settings
+$(':checkbox').each(function(index, element) {
+    var name = this.name;
+    storage.get(name, function(items) {
+        element.checked = items[name]; // true  OR  false / undefined (=false)
+    });
+});
 
-    input.addEventListener("change", function(){
-        localStorage["be_a_buzzkill"] = input.checked;
-    });
+  $(".checkboxes").on("change", ":checkbox", saveSettings);
 
-        //Fetch all contents
-    chrome.storage.local.get(null,function (obj){
-        console.log(JSON.stringify(obj));
+function saveSettings() {
+    var name = this.name;
+    var items = {};
+    items[name] = this.checked;
+    storage.set(items, function() {
+        console.log("saved");
     });
-    //Set some content from browser action
-    chrome.storage.local.set({"xx":"Another awesome Content"},function (){
-        console.log("Storage Succesful");
-    });
+}
 
 
 });

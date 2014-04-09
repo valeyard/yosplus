@@ -5,14 +5,15 @@
     </head>
 
     <body>
-        <div style="width:160px; height:20px; font: normal 21px/23px 'ProximaNovaSemibold',Helvetica,Arial,sans-serif">
-            <form id="buzzkill" action="" method="">
-                <label>
-                    <input type="checkbox" id="kill-buzz" name="kill-buzz" /> <span style="position:relative; top:3px;">Be a BuzzKill?</span>
-                </label>
-            </form>
+        <div style="width:300px; height:200px; font: normal 21px/23px 'ProximaNovaSemibold',Helvetica,Arial,sans-serif">
+            <div class="checkboxes">
+                <input id="tweet" name="tweet" type="checkbox"><span style="position:relative; top:3px;">Tweet button?</span> <br>    
+                <input id="filters" name="filters" type="checkbox"><span style="position:relative; top:3px;">Filters?</span><br>  
+                <input id="vine" name="vine" type="checkbox"><span style="position:relative; top:3px;">Embed Vines?</span><br>  
+            </div>
         </div>
 
         <script src="settings.js"></script>
+        <script src="jquery.min.js"></script>
     </body>
 </html>
