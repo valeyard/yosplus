@@ -1,17 +1,15 @@
 {
   "manifest_version": 2,
   "name": "YosPlus",
-  "version": "0.1.1",
+  "version": "0.5.0",
   "description": "Extensions for the popculture forums at SomethingAwful",
 
   "icons": {
-    "128": "images/yosplus.png", "32": "images/yosplus32.jpg", "16": "images/yosplus16.jpg"
+    "128": "images/yosyosplus128.png", "16": "images/yosyosplus16.png", "48": "images/yosyosplus48.png"
   },
 
   "content_scripts": [
     {
-      // Change 'matches' attribute to load content
-      // script only in pages you want to.
       "matches": ["http://forums.somethingawful.com/*"],
       "js": ["jquery.min.js", "contentscript.js"],
       "run_at": "document_start"
@@ -19,13 +17,14 @@
   ],
 
   "background": {
+        "matches": ["http://forums.somethingawful.com/*"],
         "scripts": ["background.js"],
         "persistent": true
     },
 
   "page_action": {
     "default_title": "YosPlus",
-    "default_icon": "images/yosplus.png",
+    "default_icon": "images/yosyosplus16.png",
     "default_popup": "popup.html"
   },
 
