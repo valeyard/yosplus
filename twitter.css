@@ -1,0 +1,91 @@
+a.twitter-share-button,
+a.twitter-mention-button,
+a.twitter-hashtag-button {
+  display: inline-block;
+  padding: 1px 3px 0 19px;
+ 
+  border: #ccc solid 1px;
+  border-radius: 3px;
+  background: #f8f8f8 url(//platform.twitter.com/images/bird.png) 2px 3px no-repeat;
+  background: url(//platform.twitter.com/images/bird.png) 2px 3px no-repeat,
+              -webkit-linear-gradient(#fff, #dedede);
+  background: url(//platform.twitter.com/images/bird.png) 2px 3px no-repeat,
+              linear-gradient(#fff, #dedede);
+  background-size: 16px 13px, auto auto;
+ 
+  /* Text */
+  font: bold 11px/17px Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  color: #333;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+ 
+  white-space: nowrap;
+}
+ 
+/* Colour Highlight for keyboard navigation */
+a.twitter-share-button:focus,
+a.twitter-mention-button:focus,
+a.twitter-hashtag-button:focus {
+  outline: none;
+  border-color: #0089cb;
+}
+ 
+/** Embedded Tweets */
+ 
+blockquote.twitter-tweet {
+  display: inline-block;
+  padding: 16px;
+  margin: 10px 0;
+  max-width: 468px;
+ 
+  border: #ddd 1px solid;
+  border-top-color: #eee;
+  border-bottom-color: #bbb;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+ 
+  font: bold 14px/18px Helvetica, Arial, sans-serif;
+  color: #000;
+}
+ 
+blockquote.twitter-tweet p {
+  font: normal 18px/24px Georgia, "Times New Roman", Palatino, serif;
+  margin: 0 5px 10px 0;
+}
+ 
+blockquote.twitter-tweet a[href^="https://twitter.com"] {
+  font-weight: normal;
+  color: #666;
+  font-size: 12px;
+}
+ 
+/** Timeline */
+ 
+a.twitter-timeline {
+ 
+  /* Buttonish */
+  display: inline-block;
+  padding: 6px 12px 6px 30px;
+  margin: 10px 0;
+ 
+  border: #ccc solid 1px;
+  border-radius: 3px;
+  background: #f8f8f8 url(//platform.twitter.com/images/bird.png) 8px 8px no-repeat;
+ 
+  /* Text */
+  font: normal 12px/18px Helvetica, Arial, sans-serif;
+  color: #333;
+ 
+  white-space: nowrap;
+}
+ 
+a.twitter-timeline:hover,
+a.twitter-timeline:focus {
+  background-color: #dedede;
+}
+ 
+/* Colour Highlight for keyboard navigation */
+a.twitter-timeline:focus {
+  outline: none;
+  border-color: #0089cb;
+}
