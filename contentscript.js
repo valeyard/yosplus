@@ -2,10 +2,12 @@
 $(document).ready(function() {
   var storage = chrome.storage.sync;
   var g;
-  chrome.storage.sync.get(["tweet", "filters", "vine", "webm"],function (obj){
+
+  chrome.storage.sync.get(["tweet", "filters", "vine", "webm", "cats", "main"],function (obj){
     console.log(JSON.stringify(obj));
     console.log(obj);
     g = obj;
+    console.log(g.cats);
 
 $.extend({
     getManyCss: function(urls, callback, nocache){
@@ -115,13 +117,63 @@ var fyad = '<tr class="forum forum_26">  <td class="icon"><a href="forumdisplay.
 
 //console.log($.find("tr.forum.forum_26"));
 
+$(".category").each(function(index, image){
+  $this = $(image);
+  console.log(image.innerText)
+  //console.log($this[0].parent().nextUntil("tr.section"));
+  //image.show(main);
+  console.log(g.cats[image.innerText])
+  $this.parent().nextUntil("tr.section").toggle(g.cats[image.innerText]);
+
+});
+
+
 var fya = $.find("tr.forum.forum_26")[0];
 var $terry = $(fya);
 //var fyadd = $(fya);
 //console.log(fyadd[0].attr("title"));
 
+  $( "#forums" ).click(function(event) {
+    $this = $(event.target)
+    console.log($this)
+    if ($this.attr("class") == "category"){
+    //console.log($(event.target).attr("class"))
+  //alert( "Handler for .click() called." );
+  
+console.log(event)
+
+console.log($this.attr("class"))
+//$this = $(this).next();
+
+console.log(event.target.innerText)
+//var cat = {"Main": true, "Discussion": true, "The Finer Arts": true, "The Community": true, "Archives": true}
+var c = event.target.innerText;
+$this.parent().nextUntil("tr.section").toggle();
+var main;
+main = !g.cats[c]
+g.cats[c] = main;
+var h = g.cats;
+chrome.storage.sync.set({"cats": g.cats},function (){
+});
+console.log(main)
+}
+
+
+
+// while ($this.attr("class") != "section"){
+//   console.log("SEEE")
+//   this = $this.next();
+
+// } 
+
+  //console.log(event.target.parentNode.getAttribute("class") + this.nodeType + this.tagName + "INNER TE")
+ // event.target.parentNode.style.visibility="hidden";
+  // if (stuff.innerText == "Main") alert( "Handler for .click() called." );
+
+});
+
 console.log("ASDASDASD");
-$(".forum_26").each(function(index, image){
+$("tr.forum_26").each(function(index, image){
   $this = $(image);
   console.log(this)
   var tweetText = $(this).find(" a.forum")[0].setAttribute("title", "LMAO");
@@ -133,16 +185,16 @@ $(".forum_26").each(function(index, image){
   console.log(tweetText)
   console.log("ASDSD")
 });
-
+console.log("out of there?")
 //console.log($.find("tr.forum.forum_26")[0].attr("title"));//.attr("title", "fuck off");
 //$.find("tr.forum.forum_26")[0].innerText = "FYAD: No More"
 
 var fh = document.getElementsByTagName("body")[0].getAttribute("class");
 console.log(fh);
 var ge = new RegExp("(showthread|forumdisplay|newreply|forumhome)[ ]*([A-Za-z0-9_]*)")
-
+console.log("leave")
 var te = ge.exec(fh);
-console.log(te[1])
+//console.log(te[1] + "TESET") //DONT PUT THIS IN DANGER WARNING
 if (te ==null) var thisForum = "smilie";
 else{
     var pageType = te[1];
@@ -150,10 +202,10 @@ else{
 }
 
 console.log(pageType)
-
+console.log("here")
 $(".smilie_list").each(function(index, image) {
 	$this = $(image);
-
+  console.log("THIS FAR?")
 	var group = '<br><br><h3>Favourite Smilies</h3> <ul class="smilie_group">';
 	
 	var groupEnd = '</ul><br><br><br><br><br><br>'
@@ -170,6 +222,8 @@ $(".smilie_list").each(function(index, image) {
   col.addEventListener('dragend', handleDragEnd, false);
 });
 		});
+
+console.log("before smilie")
 
 $(".smilie").each(function(index, image) {
 	$this = $(image);
@@ -199,18 +253,22 @@ $(".mainbodytextsmall").each(function(index, image) {
 
 $(".post").each(function(index, image) {
 	$this = $(image);
-
+  console.log("THERE")
 	var text = $(this).find(" td.postbody")[0].innerHTML;
   var tweetText = $(this).find(" td.postbody")[0].innerText;
 	var author = $(this).find(" dt.author")[0].innerText;
 var x = new RegExp("(http|https)://vine\.co/v/[A-Za-z0-9]+");
+var pomf = new RegExp("[:A-Za-z0-9\.\/]+\.webm");
 var gif = new RegExp("(http|https)://[A-Za-z0-9]+\.gfycat\.com/[A-Za-z0-9]+[\.]*[A-Za-z0-9]+\.webm");
+console.log("FILTERS LOL")
 if (g.filters){
 for(var j in filters[thisForum]){
   console.log(filters[thisForum] + "THIS FORUM FILTER")
   var h = new RegExp(j, 'gi');
+  console.log(j)
   var t = h.exec(text);
-  console.log(t)
+  console.log(h)
+  console.log(text)
 
   if (t != null){
     console.log("Foundd") //had to change t[0] to t[1] to make it work, it worked previously the other way, watch out
@@ -219,13 +277,14 @@ for(var j in filters[thisForum]){
 
 var gah = new RegExp("\\b"+j+"\\b", 'gi')
 var tee = gah.exec(author)
-console.log(tee);
+//console.log(tee);
   if (tee != null){
     console.log(tee)
     console.log($(this).find(" dt.author")[0].innerText) //had to change tee[0] to tee[1] to make it work, it worked previously the other way, watch out
     $(this).find(" dt.author")[0].innerText=$(this).find(" dt.author")[0].innerText.replace(tee[0], filters[thisForum][j])
 }
 }
+
 }
     //var spac = new RegExp('\"', 'g');
       //$(this).find(" td.postbody")[0].innerText.replace(/\"/g,"&quot;");
@@ -233,9 +292,15 @@ console.log(tee);
 
     if (author == localStorage.user){
       console.log(localStorage.user)
+      var posStyle = "background-image: -webkit-linear-gradient(#000,#000000) !important; background-image: linear-gradient(#000,#000000) !important; border: #57FF57 solid 1px !important; border-radius: 3px !important; color: #57FF57 !important; text-shadow: 0 0px 0 rgba(255,255,255,.5) !important;"
+     if (g.tweet){
+        $(this).find(" ul.postbuttons").append('<li><a href="https://twitter.com/share" class="twitter-share-button" style="background-image: -webkit-linear-gradient(#000,#000000) !important; background-image: linear-gradient(#000,#000000) !important; border: #57FF57 solid 1px !important; border-radius: 3px !important; color: #57FF57 !important; text-shadow: 0 0px 0 rgba(255,255,255,.5) !important;" data-url="manas" data-text="'+tweetText+'" data-count="none" data-dnt="true">Tweet</a></li>');
+        var frm = frames['iframeId'].document;
+        var otherhead = frm.getElementsByTagName("head")[0];
+        console.log(otherhead)
+     } 
 
-     if (g.tweet) $(this).find(" ul.postbuttons").append('<li><a href="https://twitter.com/share" class="twitter-share-button" style="font: bold 40px/40px Helvetica, Arial, sans-serif;" data-url="manas" data-text="'+tweetText+'" data-count="none" data-dnt="true">Tweet</a></li>');
-
+     
 
  	}
 
@@ -284,24 +349,43 @@ console.log(tee);
       
 
     });
-    // $this.find('a').each(function(index, image) {
-
-    //   if ($(image).attr("href") == ur85[0]){ console.log($(this) + "LOL HERE IS THE NEW LOOP")
-    //     $(this).find(" td.postbody")[0].innerHTML = $(this).find(" td.postbody")[0].innerHTML.replace(ur85[0], "uhuihuihuih");
-    //   $(this).find(" td.postbody")[0].innerHTML = $(this).find(" td.postbody")[0].innerHTML.replace(gif, sth);
-    // }
-      //console.log($(this).attr("href"));
-    // });
-//    console.log(ur85[0])
-//      $(this).find(" td.postbody")[0].innerHTML = $(this).find(" td.postbody")[0].innerHTML.replace(ur85[0], "uhuihuihuih");
-//      $(this).find(" td.postbody")[0].innerHTML = $(this).find(" td.postbody")[0].innerHTML.replace(gif, sth);
-//       var testM = "http://zippy.gfycat.com/UnequaledPo...erorshrimp.webm";
-//       console.log(" OK HERE IS THE WEBM TEST " + gif.test(testM));
-
-     //console.log(text)
-    // $(this).find(" td.postbody")[0].innerHTML=text.replace(ur85[0], "yrdy")
-     //console.log(text)
   }
+  else if (pomf.test(text) && g.webm){
+    var postBody = $(this).find(" td.postbody")[0];
+    var ur85 = pomf.exec(text);
+    console.log(ur85[0])
+    console.log("MATCHER HERE")
+    //console.log(ur85);
+    //console.log($(this).find('a'))
+    var sth = '<video autoplay loop width="320" muted="true" controls> <source src="'+ur85[0]+'" type="video/webm"> </video>'
+    // for (var tempC in $(this).find('a').attr('href')){
+    //  // console.log(tempC.data);
+    // }
+
+    var testQ = ($this).find("a");
+    console.log(testQ);
+    $.each(testQ, function( index, value ) {
+      var jelm = $(value);
+      console.log(value.innerText);
+      console.log(value.href);
+      console.log(jelm)
+       if(value.href == ur85[0]){
+        //var htm = value.innerHTML;
+        //html.replace()
+       // value.innerHTML.replace(value, sth);
+       // value.append("hello")
+       // value.remove();
+       //value.append(sth)
+       console.log("GOT HERE YALL")
+       //jelm.empty();
+       jelm.replaceWith(sth)
+
+      }
+      
+
+    });
+  }
+
 
 
 
