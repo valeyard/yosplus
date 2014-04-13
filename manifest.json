@@ -1,11 +1,11 @@
 {
   "manifest_version": 2,
-  "name": "YosPlus",
-  "version": "0.7.0",
-  "description": "Extensions for the popculture forums at SomethingAwful",
+  "name": "SA Needful",
+  "version": "0.8.0",
+  "description": "Adding stuff that should already be there",
 
   "icons": {
-    "128": "images/yosyosplus128.png", "16": "images/yosyosplus16.png", "48": "images/yosyosplus48.png"
+    "128": "images/san128.png", "16": "images/san16.png", "48": "images/san48.png"
   },
 
   "content_scripts": [
@@ -23,8 +23,8 @@
     },
 
   "page_action": {
-    "default_title": "YosPlus",
-    "default_icon": "images/yosyosplus16.png",
+    "default_title": "SA Needful",
+    "default_icon": "images/san128.png",
     "default_popup": "popup.html"
   },
 

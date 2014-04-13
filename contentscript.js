@@ -3,7 +3,7 @@ $(document).ready(function() {
   var storage = chrome.storage.sync;
   var g;
 
-  chrome.storage.sync.get(["tweet", "filters", "vine", "webm", "cats", "main"],function (obj){
+  chrome.storage.sync.get(["tweet", "filters", "vine", "webm", "cats", "main", "tree"],function (obj){
     console.log(JSON.stringify(obj));
     console.log(obj);
     g = obj;
@@ -119,15 +119,52 @@ var fyad = '<tr class="forum forum_26">  <td class="icon"><a href="forumdisplay.
 
 $(".category").each(function(index, image){
   $this = $(image);
-  console.log(image.innerText)
+  console.log($this[0].innerText)
+  
   //console.log($this[0].parent().nextUntil("tr.section"));
   //image.show(main);
-  console.log(g.cats[image.innerText])
+  //console.log(g.cats[image.innerText])
+ // $this.innerText = image.innerText + "Click here to collapse forums";
   $this.parent().nextUntil("tr.section").toggle(g.cats[image.innerText]);
+  $this[0].innerText = $this[0].innerText + " - Click here to collapse category"
 
 });
 
+if (g.tree){
+$(".subforums").children().each(function(index, image){
+  $this = $(image);
+  //console.log($this[0])
+  //var hj = $this.find(".a")
+  //console.log($this)
+  if ($this[0].className != ''){
+    //console.log($this[0])
 
+  // // $this.parent().append("<td>")
+   //$this.before("<td>")
+
+      console.log($this.parent().parent().attr('style', 'padding-top:15px !important; padding-bottom:15px !important;') + " L")
+   $this.parent().parent().text().replace(/^[, ]/g, 'asdasdas');
+   console.log($this.parent().parent().text() + "LOOOOL")
+   
+   $this.wrap('<li style = "padding-left:50px !important">')
+
+    $this.attr("style", "font: 11px Verdana,Arial,sans-serif !important;" );;
+    //$this.append("</tr>")
+   // $this.prepend('<tr><td style = "text-indent:50px !important;">')
+    //$this.attr("class");
+   // console.log($this.parent().parent().parent());
+    
+  }
+ ///////////////// else $this.attr("style", "padding-left:50px !important; padding-bottom:20px !important" );;
+ else $this.parent().parent().attr('style', 'padding-top:10px !important; padding-bottom:10px !important;')
+  //console.log($this.attr("class"))
+  //console.log(hj)
+  //console.log($this.children())
+
+
+});
+
+}
 var fya = $.find("tr.forum.forum_26")[0];
 var $terry = $(fya);
 //var fyadd = $(fya);
@@ -140,12 +177,12 @@ var $terry = $(fya);
     //console.log($(event.target).attr("class"))
   //alert( "Handler for .click() called." );
   
-console.log(event)
+//console.log(event)
 
-console.log($this.attr("class"))
+//console.log($this.attr("class"))
 //$this = $(this).next();
 
-console.log(event.target.innerText)
+//console.log(event.target.innerText)
 //var cat = {"Main": true, "Discussion": true, "The Finer Arts": true, "The Community": true, "Archives": true}
 var c = event.target.innerText;
 $this.parent().nextUntil("tr.section").toggle();
@@ -155,7 +192,7 @@ g.cats[c] = main;
 var h = g.cats;
 chrome.storage.sync.set({"cats": g.cats},function (){
 });
-console.log(main)
+console.log(g.cats)
 }
 
 
@@ -292,101 +329,32 @@ var tee = gah.exec(author)
 
     if (author == localStorage.user){
       console.log(localStorage.user)
-      var posStyle = "background-image: -webkit-linear-gradient(#000,#000000) !important; background-image: linear-gradient(#000,#000000) !important; border: #57FF57 solid 1px !important; border-radius: 3px !important; color: #57FF57 !important; text-shadow: 0 0px 0 rgba(255,255,255,.5) !important;"
+      //var posStyle = "background-image: -webkit-linear-gradient(#000,#000000) !important; background-image: linear-gradient(#000,#000000) !important; border: #57FF57 solid 1px !important; border-radius: 3px !important; color: #57FF57 !important; text-shadow: 0 0px 0 rgba(255,255,255,.5) !important;"
      if (g.tweet){
-        $(this).find(" ul.postbuttons").append('<li><a href="https://twitter.com/share" class="twitter-share-button" style="background-image: -webkit-linear-gradient(#000,#000000) !important; background-image: linear-gradient(#000,#000000) !important; border: #57FF57 solid 1px !important; border-radius: 3px !important; color: #57FF57 !important; text-shadow: 0 0px 0 rgba(255,255,255,.5) !important;" data-url="manas" data-text="'+tweetText+'" data-count="none" data-dnt="true">Tweet</a></li>');
-        var frm = frames['iframeId'].document;
-        var otherhead = frm.getElementsByTagName("head")[0];
-        console.log(otherhead)
+        $(this).find(" ul.postbuttons").append('<li><a href="https://twitter.com/share" class="twitter-share-button" data-url="manas" data-text="'+tweetText+'" data-count="none" data-dnt="true">Tweet</a></li>');
      } 
 
      
 
  	}
-
-  //    if (g.vine && x.test(text)){
-  //      var url2 = x.exec(text);
-  //      console.log(url2[0] + " THIS IS THE URL2")
-  //      //console.log($(this).find('a').attr("href"))
-
-  //     //$(this).find(" td.postbody")[0].innerHTML =  $(this).find(" td.postbody")[0].innerHTML.replace(x, "dsdfsdfsdfsdfs");
-  //     //$(this).find(" td.postbody")[0].innerHTML =  $(this).find(" td.postbody")[0].innerHTML.replace(x, '<iframe class="vine-embed" src="'+url2[0]+'/embed/simple" width="600" height="600" frameborder="0"></iframe><script async src="//platform.vine.co/static/scripts/embed.js" charset="utf-8"></script>');
-
-  //            //console.log($(this).find(" td.postbody")[0].innerText);
-  //     //$(this).find(" td.postbody").append('<iframe class="vine-embed" src="'+url2[0]+'/embed/simple" width="600" height="600" frameborder="0"></iframe><script async src="//platform.vine.co/static/scripts/embed.js" charset="utf-8"></script>');
-
-  // }
-//console.log(this)
-  if (gif.test(text) && g.webm){
-    var postBody = $(this).find(" td.postbody")[0];
-    var ur85 = gif.exec(text);
-    //console.log(ur85);
-    //console.log($(this).find('a'))
-    var sth = '<video autoplay loop width="320" height="240" controls> <source src="'+ur85[0]+'" type="video/webm"> </video>'
-    // for (var tempC in $(this).find('a').attr('href')){
-    //  // console.log(tempC.data);
-    // }
-
-    var testQ = ($this).find("a");
-    console.log(testQ);
-    $.each(testQ, function( index, value ) {
-      var jelm = $(value);
-      console.log(value.innerText);
-      console.log(value.href);
-      console.log(jelm)
-       if(value.href == ur85[0]){
-        //var htm = value.innerHTML;
-        //html.replace()
-       // value.innerHTML.replace(value, sth);
-       // value.append("hello")
-       // value.remove();
-       //value.append(sth)
-       console.log("GOT HERE YALL")
-       //jelm.empty();
-       jelm.replaceWith(sth)
-
-      }
-      
-
-    });
-  }
-  else if (pomf.test(text) && g.webm){
+        var twit = new RegExp("https://twitter.com/[:A-Za-z0-9\.\/]+/status/[0-9]+");
+        var twitUrl = twit.exec(text);
+                       var counter = 0;
+      var otherCounter =0;
+  if (pomf.test(text) && g.webm){
     var postBody = $(this).find(" td.postbody")[0];
     var ur85 = pomf.exec(text);
-    console.log(ur85[0])
-    console.log("MATCHER HERE")
-    //console.log(ur85);
-    //console.log($(this).find('a'))
-    var sth = '<video autoplay loop width="320" muted="true" controls> <source src="'+ur85[0]+'" type="video/webm"> </video>'
-    // for (var tempC in $(this).find('a').attr('href')){
-    //  // console.log(tempC.data);
-    // }
-
+    var sth = '<video autoplay loop width="450" muted="true" controls> <source src="'+ur85[0]+'" type="video/webm"> </video>'
     var testQ = ($this).find("a");
-    console.log(testQ);
+
     $.each(testQ, function( index, value ) {
       var jelm = $(value);
-      console.log(value.innerText);
-      console.log(value.href);
-      console.log(jelm)
        if(value.href == ur85[0]){
-        //var htm = value.innerHTML;
-        //html.replace()
-       // value.innerHTML.replace(value, sth);
-       // value.append("hello")
-       // value.remove();
-       //value.append(sth)
-       console.log("GOT HERE YALL")
-       //jelm.empty();
        jelm.replaceWith(sth)
-
       }
-      
 
     });
   }
-
-
 
 
     if (x.test(text) && g.vine){
