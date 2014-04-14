@@ -10,14 +10,14 @@
 
   "content_scripts": [
     {
-      "matches": ["http://forums.somethingawful.com/*"],
+      "matches": ["http://forums.somethingawful.com/*", "https://api.twitter.com/*"],
       "js": ["jquery.min.js", "contentscript.js"],
       "run_at": "document_start"
     }
   ],
 
   "background": {
-        "matches": ["http://forums.somethingawful.com/*"],
+        "matches": ["http://forums.somethingawful.com/*", "https://api.twitter.com/*"],
         "scripts": ["background.js"],
         "persistent": true
     },

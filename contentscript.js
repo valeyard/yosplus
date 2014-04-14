@@ -3,7 +3,7 @@ $(document).ready(function() {
   var storage = chrome.storage.sync;
   var g;
 
-  chrome.storage.sync.get(["tweet", "filters", "vine", "webm", "cats", "main", "tree"],function (obj){
+  chrome.storage.sync.get(["tweet", "filters", "vine", "webm", "cats", "main", "tree", "embedTweet"],function (obj){
     console.log(JSON.stringify(obj));
     console.log(obj);
     g = obj;
@@ -291,6 +291,37 @@ $(".mainbodytextsmall").each(function(index, image) {
 $(".post").each(function(index, image) {
 	$this = $(image);
   console.log("THERE")
+                     var counter = 0;
+      var otherCounter =0;
+
+      if (g.embedTweet){
+  $this.find("a").each(function(index, text){
+    $this = $(text)
+    console.log(text + "    WHAHHHHATTTR")
+    var twit = new RegExp("https://twitter.com/[:A-Za-z0-9\.\/]+/status/[0-9]+");
+        var twitUrl = twit.exec(text);
+        if(twit.test(text)){
+          console.log("found docevilstweet")
+          $this.wrap('<div id="tweet' + otherCounter + '">')
+            console.log($this[0])
+          $.ajax({
+            url: "https://api.twitter.com/1/statuses/oembed.json?url="+twitUrl[0],
+
+            success: function(data){
+                console.log(data.html) 
+                $this.empty()
+                console.log($this)
+                console.log('#tweet' + counter)
+                $('#tweet' + counter).html(data.html);
+                counter++;
+            }
+        });
+          otherCounter++;
+        }
+  });
+}
+
+
 	var text = $(this).find(" td.postbody")[0].innerHTML;
   var tweetText = $(this).find(" td.postbody")[0].innerText;
 	var author = $(this).find(" dt.author")[0].innerText;
