@@ -43,7 +43,7 @@
 			"file": "manifest.json",
 			"settings":
 			{
-				"buffer_size": 734,
+				"buffer_size": 792,
 				"line_ending": "Unix"
 			}
 		},
@@ -51,7 +51,7 @@
 			"file": "background.js",
 			"settings":
 			{
-				"buffer_size": 1374,
+				"buffer_size": 1410,
 				"line_ending": "Unix",
 				"name": "chrome.tabs.onUpdated.addListener(function(tabId,"
 			}
@@ -60,7 +60,7 @@
 			"file": "contentscript.js",
 			"settings":
 			{
-				"buffer_size": 14807,
+				"buffer_size": 16185,
 				"line_ending": "Unix"
 			}
 		},
@@ -77,7 +77,7 @@
 			"file": "popup.html",
 			"settings":
 			{
-				"buffer_size": 1254,
+				"buffer_size": 1395,
 				"line_ending": "Unix"
 			}
 		},
@@ -93,7 +93,7 @@
 			"file": "/C/Users/Steven/Documents/GitHub/webmbed/contentscript.js",
 			"settings":
 			{
-				"buffer_size": 549,
+				"buffer_size": 1403,
 				"line_ending": "Unix"
 			}
 		},
@@ -178,6 +178,7 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Steven/Documents/GitHub/yosplus/contentscript.js",
 		"/C/Users/Steven/Documents/GitHub/yosplus/san.sublime-project",
 		"/C/Users/Steven/Documents/GitHub/buzzkill/bootstrap.js",
 		"/C/Users/Steven/Documents/GitHub/yosplus/popup1.html",
@@ -293,15 +294,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 734,
+						"buffer_size": 792,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								70,
-								70
+								552,
+								552
 							]
 						],
 						"settings":
@@ -323,15 +324,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1374,
+						"buffer_size": 1410,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								637,
-								639
+								1016,
+								1016
 							]
 						],
 						"settings":
@@ -352,15 +353,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 14807,
+						"buffer_size": 16185,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5571,
-								5571
+								177,
+								177
 							]
 						],
 						"settings":
@@ -370,7 +371,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2083.0,
+						"translation.y": 2190.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -413,15 +414,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1254,
+						"buffer_size": 1395,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1004,
-								1004
+								1147,
+								1147
 							]
 						],
 						"settings":
@@ -464,7 +465,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 5,
 					"type": "text"
 				}
 			]
@@ -479,15 +480,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 549,
+						"buffer_size": 1403,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								315,
-								315
+								994,
+								994
 							]
 						],
 						"settings":
@@ -500,7 +501,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -682,7 +683,7 @@
 		"cols":
 		[
 			0.0,
-			0.777140702159,
+			0.591829967696,
 			1.0
 		],
 		"rows":

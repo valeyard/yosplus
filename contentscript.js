@@ -3,7 +3,25 @@ $(document).ready(function() {
   var storage = chrome.storage.sync;
   var g;
 
-  chrome.storage.sync.get(["tweet", "filters", "vine", "webm", "cats", "main", "tree", "embedTweet"],function (obj){
+//   html2canvas(document.body, {
+//     onrendered: function(canvas) {
+
+//            //document.body.appendChild( canvas );
+
+//            //var img   = canvas.toDataURL("image/png");
+//           // document.body.appendChild(img);
+//          // window.open().location = document.getElementsByTagName("canvas")[0].toDataURL("image/png")
+//         //console.log(document.getElementsByTagName("canvas")[0].toDataURL("image/png"))
+//         console.log(canvas.toDataURL("image/png"))
+//         var g = canvas.toDataURL("image/png")
+//         var h = "test"
+//         console.log()
+//         $this.append('<img src="'+h+'"/>');
+//     }
+// });
+
+
+  chrome.storage.sync.get(["ads", "tweet", "filters", "vine", "webm", "cats", "main", "tree", "embedTweet"],function (obj){
     console.log(JSON.stringify(obj));
     console.log(obj);
     g = obj;
@@ -16,6 +34,7 @@ $.extend({
             $.each(urls, function(i, url){
                 if (nocache) url += '?_ts=' + new Date().getTime(); // refresh? 
                 $.get(url, function(){
+                  console.log(url + " LOL WTF URL")
                     $('<link>', {rel:'stylesheet', type:'text/css', 'href':url}).appendTo('head');
                 });
             })
@@ -116,22 +135,39 @@ function handleDragEnd(e) {
 var fyad = '<tr class="forum forum_26">  <td class="icon"><a href="forumdisplay.php?forumid=26"><img src="http://fi.somethingawful.com/forumicons/fyad.gif" title="323066 replies in 667 threads" alt=""></a></td><td class="title"><a class="forum" href="forumdisplay.php?forumid=26" title="">FYAD: No more</a><div class="subforums"><b>SUBFORUMS:</b> <a class="forum_154" href="forumdisplay.php?forumid=154">Templo Del Perro</a></div></td><td class="moderators"><a href="member.php?action=getinfo&amp;userid=16901">corsair</a>, <a href="member.php?action=getinfo&amp;userid=34787">paraone</a>, <a href="member.php?action=getinfo&amp;userid=54248">Sweet Blameless Child</a>, <a href="member.php?action=getinfo&amp;userid=133705">WEREWAIF</a></td></tr>'
 
 //console.log($.find("tr.forum.forum_26"));
-
+if (g.ads) $("#ad_banner_user").remove()
 $(".category").each(function(index, image){
   $this = $(image);
-  console.log($this[0].innerText)
+  //console.log($this[0].innerText)
   
   //console.log($this[0].parent().nextUntil("tr.section"));
   //image.show(main);
   //console.log(g.cats[image.innerText])
  // $this.innerText = image.innerText + "Click here to collapse forums";
-  $this.parent().nextUntil("tr.section").toggle(g.cats[image.innerText]);
-  $this[0].innerText = $this[0].innerText + " - Click here to collapse category"
+
+var geg = new RegExp("([A-Za-z0-9]+) -")
+console.log(image.innerText + " ROFL INNERTEXT")
+var fname = geg.exec(image.innerText)
+if (fname == null){ fname =  ["whatever", image.innerText]
+  console.log(fname);
+}
+console.log(geg.test(image.innerText))
+console.log(fname)
+var main;
+main = g.cats[fname[1]]
+//g.cats[fname[1]] = main;
+
+  $this.parent().nextUntil("tr.section").toggle(g.cats[fname[1]]);
+ // $this[0].innerText = $this[0].innerText + " - Click here to collapse category"
+ if (!main) $this[0].innerText = fname[1] + " - Click here to expand category"
+else $this[0].innerText = fname[1] + " - Click here to collapse category"
 
 });
 
 if (g.tree){
 $(".subforums").children().each(function(index, image){
+  // var h = "test"
+  //       $this.append('<img src="'+h+'"/>');
   $this = $(image);
   //console.log($this[0])
   //var hj = $this.find(".a")
@@ -185,10 +221,18 @@ var $terry = $(fya);
 //console.log(event.target.innerText)
 //var cat = {"Main": true, "Discussion": true, "The Finer Arts": true, "The Community": true, "Archives": true}
 var c = event.target.innerText;
-$this.parent().nextUntil("tr.section").toggle();
+var geg = new RegExp("([A-Za-z0-9]+) -")
+console.log()
+var fname = geg.exec(c)
 var main;
-main = !g.cats[c]
-g.cats[c] = main;
+main = !g.cats[fname[1]]
+g.cats[fname[1]] = main;
+console.log("here?")
+console.log(fname[1] + "OMG WINNININING")
+if (!main) event.target.innerText = fname[1] + " - Click here to expand category"
+else event.target.innerText = fname[1] + " - Click here to collapse category"
+$this.parent().nextUntil("tr.section").toggle();
+
 var h = g.cats;
 chrome.storage.sync.set({"cats": g.cats},function (){
 });
@@ -295,15 +339,23 @@ $(".post").each(function(index, image) {
       var otherCounter =0;
 
       if (g.embedTweet){
+        console.log(localStorage)
   $this.find("a").each(function(index, text){
     $this = $(text)
-    console.log(text + "    WHAHHHHATTTR")
+    //console.log(text + "    WHAHHHHATTTR")
     var twit = new RegExp("https://twitter.com/[:A-Za-z0-9\.\/]+/status/[0-9]+");
         var twitUrl = twit.exec(text);
         if(twit.test(text)){
           console.log("found docevilstweet")
           $this.wrap('<div id="tweet' + otherCounter + '">')
-            console.log($this[0])
+            console.log(localStorage.getItem(twitUrl[0]))
+            console.log(twitUrl[0])
+            if (localStorage.getItem(twitUrl[0]) !== null){
+              console.log("cached!!!!!")
+              $('#tweet' + counter).html(localStorage.getItem(twitUrl[0]));
+                counter++;
+            }
+            else{
           $.ajax({
             url: "https://api.twitter.com/1/statuses/oembed.json?url="+twitUrl[0],
 
@@ -312,12 +364,17 @@ $(".post").each(function(index, image) {
                 $this.empty()
                 console.log($this)
                 console.log('#tweet' + counter)
+                localStorage.setItem(twitUrl[0], data.html)
+                console.log(localStorage.getItem(twitUrl[0]))
                 $('#tweet' + counter).html(data.html);
                 counter++;
             }
+            
         });
-          otherCounter++;
         }
+          otherCounter++;
+        
+      }
   });
 }
 
