@@ -13,13 +13,13 @@ chrome.runtime.onInstalled.addListener(function(details){
 	console.log("ASASDASDASDASDASDA")
     if(details.reason == "install"){
         console.log("This is a first install!");
-        chrome.storage.sync.set({"avatarHide":false, "ads":true,"embedTweet":true,"tweet": true, "vine":true, "filter":true, "webm":true, "tree":false, "cats":{"Main": true, "Discussion": true, "The Finer Arts": true, "The Community": true, "Archives": true}},function (){
+        chrome.storage.sync.set({"avatarHide":true, "ads":true,"embedTweet":true,"tweet": true, "vine":true, "filter":true, "webm":true, "tree":false, "cats":{"Main": true, "Discussion": true, "The Finer Arts": true, "The Community": true, "Archives": true}},function (){
 });
     }else if(details.reason == "update"){
         var thisVersion = chrome.runtime.getManifest().version;
         localStorage.be_a_buzzkill = true;
         console.log(localStorage);
-        chrome.storage.sync.set({"avatarHide":false, "ads":true,"embedTweet":true,"tweet": true, "vine":true, "filter":true, "webm":true, "tree":false, "cats": {"Main": true, "Discussion": true, "The Finer Arts": true, "The Community": true, "Archives": true}},function (){
+        chrome.storage.sync.set({"avatarHide":true, "ads":true,"embedTweet":true,"tweet": true, "vine":true, "filter":true, "webm":true, "tree":false, "cats": {"Main": true, "Discussion": true, "The Finer Arts": true, "The Community": true, "Archives": true}},function (){
 });
         console.log("Updated from " + details.previousVersion + " to " + thisVersion + "!");
     }
