@@ -21,7 +21,7 @@ $(document).ready(function() {
 // });
 
 
-  chrome.storage.sync.get(["ads", "tweet", "filters", "vine", "webm", "cats", "main", "tree", "embedTweet"],function (obj){
+  chrome.storage.sync.get(["avatarHide", "ads", "tweet", "filters", "vine", "webm", "cats", "main", "tree", "embedTweet"],function (obj){
     console.log(JSON.stringify(obj));
     console.log(obj);
     g = obj;
@@ -133,6 +133,29 @@ function handleDragEnd(e) {
 
 
 var fyad = '<tr class="forum forum_26">  <td class="icon"><a href="forumdisplay.php?forumid=26"><img src="http://fi.somethingawful.com/forumicons/fyad.gif" title="323066 replies in 667 threads" alt=""></a></td><td class="title"><a class="forum" href="forumdisplay.php?forumid=26" title="">FYAD: No more</a><div class="subforums"><b>SUBFORUMS:</b> <a class="forum_154" href="forumdisplay.php?forumid=154">Templo Del Perro</a></div></td><td class="moderators"><a href="member.php?action=getinfo&amp;userid=16901">corsair</a>, <a href="member.php?action=getinfo&amp;userid=34787">paraone</a>, <a href="member.php?action=getinfo&amp;userid=54248">Sweet Blameless Child</a>, <a href="member.php?action=getinfo&amp;userid=133705">WEREWAIF</a></td></tr>'
+  
+    $( ".userinfo" ).each(function(index, image) {
+    $this = $(image)
+    console.log(g.avatarHide + "GOOD BOY")
+
+    $(".title").toggle(g.avatarHide)
+    //g.avatarHide = !g.avatarHide;
+
+  });
+
+
+  $( ".userinfo" ).click(function(event) {
+    $this = $(event.target)
+    console.log($this)
+    event.stopPropagation();  
+    $(".title").toggle()
+    var jet = !g.avatarHide;
+    chrome.storage.sync.set({"avatarHide": jet},function (){
+});
+
+    console.log(g.avatarHide + " POOR TIM")
+
+  });
 
 //console.log($.find("tr.forum.forum_26"));
 if (g.ads) $("#ad_banner_user").remove()
@@ -221,7 +244,7 @@ var $terry = $(fya);
 //console.log(event.target.innerText)
 //var cat = {"Main": true, "Discussion": true, "The Finer Arts": true, "The Community": true, "Archives": true}
 var c = event.target.innerText;
-var geg = new RegExp("([A-Za-z0-9]+) -")
+var geg = new RegExp("([A-Za-z0-9 ]+) -")
 console.log()
 var fname = geg.exec(c)
 var main;
@@ -343,33 +366,33 @@ $(".post").each(function(index, image) {
   $this.find("a").each(function(index, text){
     $this = $(text)
     //console.log(text + "    WHAHHHHATTTR")
-    var twit = new RegExp("https://twitter.com/[:A-Za-z0-9\.\/]+/status/[0-9]+");
+    var twit = new RegExp("https://twitter.com/[:A-Za-z0-9\.\/]+/status/([0-9]+)");
         var twitUrl = twit.exec(text);
         if(twit.test(text)){
           console.log("found docevilstweet")
-          $this.wrap('<div id="tweet' + otherCounter + '">')
+          $this.wrap('<div class="tweet' + twitUrl[1] + '">')
             console.log(localStorage.getItem(twitUrl[0]))
             console.log(twitUrl[0])
             if (localStorage.getItem(twitUrl[0]) !== null){
-              console.log("cached!!!!!")
-              $('#tweet' + counter).html(localStorage.getItem(twitUrl[0]));
+              console.log("cached!!!!! + " + twitUrl[1])
+              $('.tweet' + twitUrl[1]).html(localStorage.getItem(twitUrl[0]));
                 counter++;
             }
             else{
           $.ajax({
             url: "https://api.twitter.com/1/statuses/oembed.json?url="+twitUrl[0],
-
+            async:false,
             success: function(data){
                 console.log(data.html) 
                 $this.empty()
                 console.log($this)
-                console.log('#tweet' + counter)
+                console.log('#tweet' + twitUrl[1])
                 localStorage.setItem(twitUrl[0], data.html)
                 console.log(localStorage.getItem(twitUrl[0]))
-                $('#tweet' + counter).html(data.html);
+                $('.tweet' + twitUrl[1]).html(data.html);
                 counter++;
             }
-            
+
         });
         }
           otherCounter++;
@@ -402,7 +425,7 @@ for(var j in filters[thisForum]){
 
 var gah = new RegExp("\\b"+j+"\\b", 'gi')
 var tee = gah.exec(author)
-//console.log(tee);
+
   if (tee != null){
     console.log(tee)
     console.log($(this).find(" dt.author")[0].innerText) //had to change tee[0] to tee[1] to make it work, it worked previously the other way, watch out
@@ -411,13 +434,12 @@ var tee = gah.exec(author)
 }
 
 }
-    //var spac = new RegExp('\"', 'g');
-      //$(this).find(" td.postbody")[0].innerText.replace(/\"/g,"&quot;");
+
       tweetText = tweetText.replace(/\"/g,"&quot;");
 
     if (author == localStorage.user){
       console.log(localStorage.user)
-      //var posStyle = "background-image: -webkit-linear-gradient(#000,#000000) !important; background-image: linear-gradient(#000,#000000) !important; border: #57FF57 solid 1px !important; border-radius: 3px !important; color: #57FF57 !important; text-shadow: 0 0px 0 rgba(255,255,255,.5) !important;"
+      
      if (g.tweet){
         $(this).find(" ul.postbuttons").append('<li><a href="https://twitter.com/share" class="twitter-share-button" data-url="manas" data-text="'+tweetText+'" data-count="none" data-dnt="true">Tweet</a></li>');
      } 
@@ -448,12 +470,8 @@ var tee = gah.exec(author)
     if (x.test(text) && g.vine){
     var postBody = $(this).find(" td.postbody")[0];
     var url2 = x.exec(text);
-    //console.log(ur85);
-    //console.log($(this).find('a'))
+
     var sth = '<iframe class="vine-embed" src="'+url2[0]+'/embed/simple" width="600" height="600" frameborder="0"></iframe><script async src="//platform.vine.co/static/scripts/embed.js" charset="utf-8"></script>';
-    // for (var tempC in $(this).find('a').attr('href')){
-    //  // console.log(tempC.data);
-    // }
 
     var testQ = ($this).find("a");
     console.log(testQ);
@@ -463,42 +481,16 @@ var tee = gah.exec(author)
       console.log(value.href);
       console.log(jelm)
        if(value.href == url2[0]){
-        //var htm = value.innerHTML;
-        //html.replace()
-       // value.innerHTML.replace(value, sth);
-       // value.append("hello")
-       // value.remove();
-       //value.append(sth)
        console.log("GOT HERE YALL")
        jelm.empty();
        jelm.replaceWith(sth)
 
-      }
-
-      //http://forums.somethingawful.com/forumdisplay.php?forumid=26
-      
+      }     
 
     });
-    // $this.find('a').each(function(index, image) {
 
-    //   if ($(image).attr("href") == ur85[0]){ console.log($(this) + "LOL HERE IS THE NEW LOOP")
-    //     $(this).find(" td.postbody")[0].innerHTML = $(this).find(" td.postbody")[0].innerHTML.replace(ur85[0], "uhuihuihuih");
-    //   $(this).find(" td.postbody")[0].innerHTML = $(this).find(" td.postbody")[0].innerHTML.replace(gif, sth);
-    // }
-      //console.log($(this).attr("href"));
-    // });
-//    console.log(ur85[0])
-//      $(this).find(" td.postbody")[0].innerHTML = $(this).find(" td.postbody")[0].innerHTML.replace(ur85[0], "uhuihuihuih");
-//      $(this).find(" td.postbody")[0].innerHTML = $(this).find(" td.postbody")[0].innerHTML.replace(gif, sth);
-//       var testM = "http://zippy.gfycat.com/UnequaledPo...erorshrimp.webm";
-//       console.log(" OK HERE IS THE WEBM TEST " + gif.test(testM));
-
-     //console.log(text)
-    // $(this).find(" td.postbody")[0].innerHTML=text.replace(ur85[0], "yrdy")
-     //console.log(text)
   }
   
-
  });
 
  });
