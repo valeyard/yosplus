@@ -1,3 +1,5 @@
+/** Buttons */
+ 
 a.twitter-share-button,
 a.twitter-mention-button,
 a.twitter-hashtag-button {
@@ -20,14 +22,6 @@ a.twitter-hashtag-button {
   text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
  
   white-space: nowrap;
-
-  background-image: -webkit-linear-gradient(#000,#000000) !important;
-  background-image: linear-gradient(#000,#000000) !important;
-  border: #57FF57 solid 1px !important;
-  border-radius: 3px !important;
-  color: #57FF57 !important;
-  text-shadow: 0 0px 0 rgba(255,255,255,.5) !important;
-
 }
  
 /* Colour Highlight for keyboard navigation */

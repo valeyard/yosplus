@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
   "name": "SA Needful",
-  "version": "0.8.0",
-  "description": "Adding stuff that should already be there",
+  "version": "0.8.1",
+  "description": "Performing CPR on the Something Awful forums",
 
   "icons": {
     "128": "images/san128.png", "16": "images/san16.png", "48": "images/san48.png"
@@ -12,6 +12,7 @@
     {
       "matches": ["http://forums.somethingawful.com/*", "https://api.twitter.com/*"],
       "js": ["jquery.min.js", "contentscript.js", "html2canvas.js"],
+      "css": ["twitter.css"],
       "run_at": "document_start"
     }
   ],
