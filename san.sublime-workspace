@@ -43,7 +43,7 @@
 			"file": "manifest.json",
 			"settings":
 			{
-				"buffer_size": 792,
+				"buffer_size": 862,
 				"line_ending": "Unix"
 			}
 		},
@@ -51,7 +51,7 @@
 			"file": "background.js",
 			"settings":
 			{
-				"buffer_size": 1410,
+				"buffer_size": 1474,
 				"line_ending": "Unix",
 				"name": "chrome.tabs.onUpdated.addListener(function(tabId,"
 			}
@@ -60,15 +60,32 @@
 			"file": "contentscript.js",
 			"settings":
 			{
-				"buffer_size": 16185,
+				"buffer_size": 15396,
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "$(\".category\").each(function(index, image){\n  $this = $(image);\n  //console.log($this[0].innerText)\n  \n  //console.log($this[0].parent().nextUntil(\"tr.section\"));\n  //image.show(main);\n  //console.log(g.cats[image.innerText])\n // $this.innerText = image.innerText + \"Click here to collapse forums\";\n\nvar geg = new RegExp(\"([A-Za-z0-9]+) -\")\nconsole.log(image.innerText + \" ROFL INNERTEXT\")\nvar fname = geg.exec(image.innerText)\nconsole.log(geg.test(image.innerText))\nconsole.log(fname)\nvar main;\nmain = !g.cats[fname[1]]\n//g.cats[fname[1]] = main;\n\n  $this.parent().nextUntil(\"tr.section\").toggle(g.cats[fname]);\n // $this[0].innerText = $this[0].innerText + \" - Click here to collapse category\"\n if (!main) $this[0].innerTex = fname[1] + \" - Click here to expand category\"\nelse $this[0].innerTex = fname[1] + \" - Click here to collapse category\"\n\n});\n\n html2canvas(data, {\n    onrendered: function(canvas) {\n        var g = canvas.toDataURL(\"image/png\")\n        $('#tweet' + counter).html(data.html);\n    }\n});",
+			"settings":
+			{
+				"buffer_size": 1011,
+				"line_ending": "Windows"
 			}
 		},
 		{
 			"file": "twitter.css",
 			"settings":
 			{
-				"buffer_size": 2407,
+				"buffer_size": 2132,
+				"line_ending": "Windows",
+				"name": "/** Buttons */"
+			}
+		},
+		{
+			"file": "twitter.css",
+			"settings":
+			{
+				"buffer_size": 2132,
 				"line_ending": "Windows",
 				"name": "a.twitter-share-button,"
 			}
@@ -77,7 +94,7 @@
 			"file": "popup.html",
 			"settings":
 			{
-				"buffer_size": 1395,
+				"buffer_size": 1521,
 				"line_ending": "Unix"
 			}
 		},
@@ -93,7 +110,7 @@
 			"file": "/C/Users/Steven/Documents/GitHub/webmbed/contentscript.js",
 			"settings":
 			{
-				"buffer_size": 1403,
+				"buffer_size": 718,
 				"line_ending": "Unix"
 			}
 		},
@@ -218,6 +235,14 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"find",
+			"fyad",
+			"g",
+			"click",
+			"embedTw",
+			"rege",
+			"img",
+			"  html2canvas(document.body, {\n    onrendered: function(canvas) {\n\n           document.body.appendChild( canvas );\n        \n    }\n});",
 			"console",
 			" \"",
 			">\"],\n",
@@ -294,15 +319,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 792,
+						"buffer_size": 862,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								552,
-								552
+								826,
+								826
 							]
 						],
 						"settings":
@@ -315,7 +340,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -324,15 +349,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1410,
+						"buffer_size": 1474,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1016,
-								1016
+								1092,
+								1092
 							]
 						],
 						"settings":
@@ -353,15 +378,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 16185,
+						"buffer_size": 15396,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								177,
-								177
+								10570,
+								10570
 							]
 						],
 						"settings":
@@ -371,7 +396,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2190.0,
+						"translation.y": 4855.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -379,11 +404,69 @@
 				},
 				{
 					"buffer": 3,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1011,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1011,
+								853
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
 					"file": "twitter.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2407,
+						"buffer_size": 2132,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1547,
+								1547
+							]
+						],
+						"settings":
+						{
+							"auto_name": "/** Buttons */",
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "twitter.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2132,
 						"regions":
 						{
 						},
@@ -405,24 +488,24 @@
 						"translation.y": 855.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 6,
 					"file": "popup.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1395,
+						"buffer_size": 1521,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1147,
-								1147
+								1281,
+								1281
 							]
 						],
 						"settings":
@@ -435,11 +518,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 7,
 					"file": "settings.js",
 					"semi_transient": false,
 					"settings":
@@ -465,30 +548,30 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 11,
 					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 0,
+			"selected": 3,
 			"sheets":
 			[
 				{
-					"buffer": 6,
+					"buffer": 8,
 					"file": "/C/Users/Steven/Documents/GitHub/webmbed/contentscript.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1403,
+						"buffer_size": 718,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								994,
-								994
+								167,
+								167
 							]
 						],
 						"settings":
@@ -505,7 +588,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 9,
 					"file": "/C/Users/Steven/Documents/GitHub/webmbed/popup.html",
 					"semi_transient": false,
 					"settings":
@@ -531,11 +614,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 10,
 					"file": "/C/Users/Steven/Documents/GitHub/webmbed/settings.js",
 					"semi_transient": false,
 					"settings":
@@ -561,11 +644,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 11,
 					"file": "/C/Users/Steven/Documents/GitHub/webmbed/manifest.json",
 					"semi_transient": false,
 					"settings":
@@ -577,8 +660,8 @@
 						"selection":
 						[
 							[
-								503,
-								503
+								67,
+								67
 							]
 						],
 						"settings":
@@ -591,11 +674,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 12,
 					"file": "/C/Users/Steven/Documents/GitHub/webmbed/jquery.min.js",
 					"semi_transient": false,
 					"settings":
@@ -619,11 +702,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 13,
 					"file": "/C/Users/Steven/Documents/GitHub/webmbed/background.js",
 					"semi_transient": false,
 					"settings":
@@ -635,8 +718,8 @@
 						"selection":
 						[
 							[
-								203,
-								203
+								205,
+								205
 							]
 						],
 						"settings":
@@ -649,7 +732,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 9,
 					"type": "text"
 				}
 			]
@@ -683,7 +766,7 @@
 		"cols":
 		[
 			0.0,
-			0.591829967696,
+			0.688440137188,
 			1.0
 		],
 		"rows":

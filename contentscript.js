@@ -123,6 +123,18 @@ $(document).ready(function() {
 
     });
 
+    var amberPos = false;
+    $("#switchpos").click(function(event) {
+      console.log($("#blarf219").attr("href"))
+      if ($("#blarf219").attr("href") == "/css/219a.css"){
+        amberPos = true;
+      }
+      else{
+        amberPos = false;
+      }
+      
+      console.log(amberPos)
+    })
 
     $( ".userinfo" ).click(function(event) {
       $this = $(event.target)
@@ -201,7 +213,7 @@ $(document).ready(function() {
 
     });
 
-
+var thisForum;
     $("tr.forum_26").each(function(index, image){
       $this = $(image);
 
@@ -215,10 +227,10 @@ $(document).ready(function() {
     var ge = new RegExp("(showthread|forumdisplay|newreply|forumhome)[ ]*([A-Za-z0-9_]*)")
     var te = ge.exec(fh);
 
-    if (te ==null) var thisForum = "smilie";
+    if (te ==null) thisForum = "smilie";
     else{
       var pageType = te[1];
-      var thisForum = te[2];
+      thisForum = te[2];
     }
 
     $(".smilie_list").each(function(index, image) {
@@ -267,18 +279,76 @@ $(document).ready(function() {
 
     $(".post").each(function(index, image) {
     	$this = $(image);
-      var counter = 0;
-      var otherCounter =0;
+
+      $this.find(".bbc-block").each(function(index, quote){
+        $this = $(quote);
+       // console.log(index);
+        var posted = new RegExp("([A-Za-z0-9 -_]+) posted:")
+        //console.log($this)
+        //console.log($this[0].innerText)
+       // console.log($this.find("h4"))
+        //console.log($(quote).find(".h4").context)
+        //var name = $this.find(".quote_link")[0].innerText
+        if ($this.find("h4")[0] != null){
+          var k = posted.exec($this.find("h4")[0].innerText)
+          if (posted.test($this.find("h4")[0].innerText)){
+            //console.log($this.find("h4"))
+           // $h4 = $this.find("h4")
+            if (k[1] == localStorage.user){
+
+              console.log($this.find("blockquote"))
+              console.log($this)
+
+               $(quote).css( "background", "rgb(204, 139, 199)" );
+               $(quote).css( "background-color", "rgb(204, 139, 199)" );
+              // $(quote).css( "color", "rgb(204, 139, 199)" );
+               //$(quote).css( "color", "#EACF4C" );
+               //$(quote).attr('style', 'color:rgb(204, 139, 199) !important');
+
+               $this.find("blockquote").css( "color", "#000000" );
+
+              //$(this).find(" td.postbody").css( "color", "#000000" );
+              console.log(thisForum)
+              if (thisForum != "forum_219") $(quote).find(".quote_link").css("color", "rgb(0, 20, 255)")
+              else{
+                if (!amberPos){
+                  $(quote).find(".quote_link").css("color", "#EACF4C")
+                  $(quote).attr("style", $(quote).attr("style") + "border-bottom: 1px solid #EACF4C !important;" )
+                  $(quote).attr("style", $(quote).attr("style") + "border-top: 1px solid #EACF4C !important;" )
+                  $(quote).find("blockquote").attr("style", $(quote).find("blockquote").attr("style") + "color: #EACF4C !important;" )
+                  //$(quote).attr("style", $(quote).attr("style") + "color #EACF4C !important;" )
+                  console.log($(quote).css("tr"))
+                }
+                else{
+                  $(quote).find(".quote_link").css("color", "#57FF57")
+                  $(quote).attr("style", $(quote).attr("style") + "border-bottom: 1px solid #57FF57 !important;" )
+                  $(quote).attr("style", $(quote).attr("style") + "border-top: 1px solid #57FF57 !important;" )
+                  $(quote).find("blockquote").attr("style", $(quote).find("blockquote").attr("style") + "color: #57FF57 !important;" )
+                  //$(quote).attr("style", $(quote).attr("style") + "color #EACF4C !important;" )
+                }
+              } 
+              //$(quote).find(".quote_link").attr($(quote).find(".quote_link").attr() + , )
+              // $this.css( "color", "#2A22E2" );
+              // $(quote).css( "font-weight", "bold" );
+
+              //$this.find("h4").css( "color", "#2A22E2" );
+            }
+          }
+        } 
+        //console.log($this.find("h4")[0].innerText)
+        //console.log($this.find(".quote_link")[0].innerText)
+      });
+
 
       if (g.embedTweet){
-
         $this.find("a").each(function(index, text){
           $this = $(text)
-
-          var twit = new RegExp("https://twitter.com/[:A-Za-z0-9\.\/]+/status/([0-9]+)");
+          var twit = new RegExp("https://twitter.com/[:A-Za-z0-9\.\/]+/(status|statuses)/([0-9]+)");
+          //console.log(text)
           var twitUrl = twit.exec(text);
+         // console.log(twitUrl)
           if(twit.test(text)){
-
+            console.log("made it to cached")
             $this.wrap('<div class="tweet' + twitUrl[1] + '">')
             if (localStorage.getItem(twitUrl[0]) !== null){
               $('.tweet' + twitUrl[1]).html(localStorage.getItem(twitUrl[0]));
@@ -286,9 +356,11 @@ $(document).ready(function() {
             }
             else{
               $.ajax({
-                url: "https://api.twitter.com/1/statuses/oembed.json?url="+twitUrl[0],
+                
+                url: "https://api.twitter.com/1/statuses/oembed.json?url="+twitUrl[0]+"&omit_script=true",
                 async:false,
                 success: function(data){
+                  console.log("made it to ajaz")
                   console.log(data.html) 
                   $this.empty()
                   localStorage.setItem(twitUrl[0], data.html)
@@ -301,10 +373,10 @@ $(document).ready(function() {
         });
       }
 
-
     	var text = $(this).find(" td.postbody")[0].innerHTML;
       var tweetText = $(this).find(" td.postbody")[0].innerText;
     	var author = $(this).find(" dt.author")[0].innerText;
+
       var x = new RegExp("(http|https)://vine\.co/v/[A-Za-z0-9]+");
       var pomf = new RegExp("[:A-Za-z0-9\.\/]+\\.webm");
       var gif = new RegExp("(http|https)://[A-Za-z0-9]+\.gfycat\.com/[A-Za-z0-9]+[\.]*[A-Za-z0-9]+\.webm");
@@ -318,16 +390,16 @@ $(document).ready(function() {
 
 
           if (t != null){
-            console.log("Foundd") //had to change t[0] to t[1] to make it work, it worked previously the other way, watch out
+            console.log("Foundd"); //had to change t[0] to t[1] to make it work, it worked previously the other way, watch out
             $(this).find(" td.postbody")[0].innerHTML=$(this).find(" td.postbody")[0].innerHTML.replace(h, filters[thisForum][j])
-          }
+          };
 
-          var gah = new RegExp("\\b"+j+"\\b", 'gi')
-          var tee = gah.exec(author)
+          var gah = new RegExp("\\b"+j+"\\b", 'gi');
+          var tee = gah.exec(author);
 
           if (tee != null){
-            console.log(tee)
-            console.log($(this).find(" dt.author")[0].innerText) //had to change tee[0] to tee[1] to make it work, it worked previously the other way, watch out
+            console.log(tee);
+            console.log($(this).find(" dt.author")[0].innerText); //had to change tee[0] to tee[1] to make it work, it worked previously the other way, watch out
             $(this).find(" dt.author")[0].innerText=$(this).find(" dt.author")[0].innerText.replace(tee[0], filters[thisForum][j])
           }
         }
@@ -351,13 +423,13 @@ $(document).ready(function() {
         var postBody = $(this).find(" td.postbody")[0];
         var ur85 = pomf.exec(text);
         var sth = '<video autoplay loop width="450" muted="true" controls> <source src="'+ur85[0]+'" type="video/webm"> </video>'
-        //var testQ = ($this).find("a");
-        console.log($this)
+
+        console.log($this);
         $this.find("a").each(function( index, value ) {
           console.log("finding as here")
           var jelm = $(value);
            if(value.href == ur85[0]){
-           jelm.replaceWith(sth)
+           jelm.replaceWith(sth);
           }
         });
       }
@@ -366,23 +438,14 @@ $(document).ready(function() {
         $this = $(image);
         var postBody = $(this).find(" td.postbody")[0];
         var url2 = x.exec(text);
-         console.log("HELLOOOOOO")
-         console.log(url2[0])
         var sth = '<iframe class="vine-embed" src="'+url2[0]+'/embed/simple" width="600" height="600" frameborder="0"></iframe><script async src="//platform.vine.co/static/scripts/embed.js" charset="utf-8"></script>';
-        //var testQ = ($this).find("a");
-        //console.log(testQ);
-        console.log("HERE?")
+
         $this.find("a").each(function( index, value ) {
-          console.log("KELLY KELYL")
+
           var jelm = $(value);
           
-          console.log(value.innerText);
-          console.log(value.href);
-          console.log(jelm)
           if(value.href == url2[0]){
-            console.log("GOT HERE YALL")
-            jelm.empty();
-            jelm.replaceWith(sth)
+            jelm.replaceWith(sth);
           }     
         });
       }
