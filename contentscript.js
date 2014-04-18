@@ -16,11 +16,19 @@
 //     },
 // });
 
+
+
 $(document).ready(function() {
   var storage = chrome.storage.sync;
   var g;
 
-  chrome.storage.sync.get(["avatarHide", "ads", "tweet", "filters", "vine", "webm", "cats", "main", "tree", "embedTweet"],function (obj){
+
+
+
+//   $.getScript("https://dl.dropboxusercontent.com/u/17019326/salib.js", function(){
+//     alert("Running salib.js");
+// });
+  chrome.storage.sync.get(["signature", "quote", "avatarHide", "ads", "tweet", "filters", "vine", "webm", "cats", "main", "tree", "embedTweet"],function (obj){
     console.log(JSON.stringify(obj));
     console.log(obj);
     g = obj;
@@ -123,7 +131,22 @@ $(document).ready(function() {
 
     });
 
-    var amberPos = false;
+    var amberPos;
+    if ($("#blarf219").attr("href") == "/css/219a.css"){
+      amberPos = true;
+    }
+    else{
+      amberPos = false;
+    }
+    window.addEventListener("keyup", function(e){ if(e.keyCode == 27) history.back(); })
+    $(':checkbox').each(function(index, element) {
+        var name = this.name;
+        console.log(name)
+        console.log(g.signature)
+        if (name == "signature") element.checked = g.signature;
+    });
+
+    //if (amberPos == null) amberPos = false;
     $("#switchpos").click(function(event) {
       console.log($("#blarf219").attr("href"))
       if ($("#blarf219").attr("href") == "/css/219a.css"){
@@ -134,7 +157,84 @@ $(document).ready(function() {
       }
       
       console.log(amberPos)
+      $(".post").each(function(index, image) {
+        $this = $(image);
+        if (g.quote) $this.myfunction();
+      })
     })
+var back = "empty"
+var forward = "empty"
+var hgh = 50000
+
+    var top = $.find(".top")[0]
+    console.log(top)
+    $(top).find("a").each(function(index, thing){
+      var geg = new RegExp("(pagenumber=)([0-9]+)")
+
+      var g = geg.exec($(thing).attr("href"))
+      if (geg.test($(thing).attr("href"))){
+        console.log($(thing)[0].innerText)
+        if ($(thing)[0].innerText =="‹"){
+          back = $(thing).attr("href")
+        } 
+        if ($(thing)[0].innerText =="›"){
+          forward = $(thing).attr("href")
+        } 
+      }
+    })
+    window.addEventListener("keyup", function(e){ 
+      if(e.keyCode == 65){
+        if (back != "empty") window.location = back;
+      }
+    })
+    window.addEventListener("keyup", function(e){ 
+      if(e.keyCode == 68){
+          if (forward != "empty") window.location = forward;
+      }
+    })
+
+
+    // $(".top").each(function(index, image) {
+    //   $this = $(image)
+    //   var geg = new RegExp("(pagenumber=)([0-9]+)")
+
+    //   // console.log($(image).attr("a"))
+    //   console.log("s")
+    //   $this.find("a").each(function(index, deg) {
+    //     $this = $(deg)
+    //     console.log("s")
+    //     console.log($this.attr("href"))
+    //     var g = geg.exec($this.attr("href"))
+    //     if (geg.test($this.attr("href"))){
+    //       var pageNum = g[2];
+    //       var page = $this[0].innerText
+    //       console.log(page)
+    //       if (page =="‹"){
+    //         console.log("should be jere")
+    //         back = $this.attr("href")
+    //       } 
+    //       else back = null
+    //       if (page =="›"){
+    //         forward = $this.attr("href")
+    //       } 
+    //       else forward = null
+    //       // page.replace(geg, pageNum+1)
+    //        console.log(back)
+    //       window.addEventListener("keyup", function(e){ if(e.keyCode == 65){
+            
+    //         console.log(back + " BACK HERE");
+    //         console.log(hgh)
+    //         if (back != null) window.location = back;}  
+    //       })
+    //       window.addEventListener("keyup", function(e){ if(e.keyCode == 68){
+    //         console.log(back);
+    //         if (forward != null) window.location = forward;}  
+    //       })
+    //       // console.log(g[0])
+    //     } 
+    //   })
+
+    // })
 
     $( ".userinfo" ).click(function(event) {
       $this = $(event.target)
@@ -199,8 +299,8 @@ $(document).ready(function() {
         var main;
         main = !g.cats[fname[1]]
         g.cats[fname[1]] = main;
-        console.log("here?")
-        console.log(fname[1] + "OMG WINNININING")
+        //console.log("here?")
+        //console.log(fname[1] + "OMG WINNININING")
         if (!main) event.target.innerText = fname[1] + " - Click here to expand category"
         else event.target.innerText = fname[1] + " - Click here to collapse category"
         $this.parent().nextUntil("tr.section").toggle();
@@ -208,7 +308,7 @@ $(document).ready(function() {
         var h = g.cats;
         chrome.storage.sync.set({"cats": g.cats},function (){
         });
-        console.log(g.cats)
+        //console.log(g.cats)
       }
 
     });
@@ -277,12 +377,16 @@ var thisForum;
      	localStorage.user=g[1];
     });
 
-    $(".post").each(function(index, image) {
-    	$this = $(image);
-
+    $.fn.myfunction = function () {
+      //console.log("into function")
+     // console.log($this)
+     // console.log(g.quote + " G QUOTE")
+     // console.log(amberPos + " AMBERPOS")
       $this.find(".bbc-block").each(function(index, quote){
         $this = $(quote);
+
        // console.log(index);
+      // console.log("found bbc")
         var posted = new RegExp("([A-Za-z0-9 -_]+) posted:")
         //console.log($this)
         //console.log($this[0].innerText)
@@ -291,13 +395,15 @@ var thisForum;
         //var name = $this.find(".quote_link")[0].innerText
         if ($this.find("h4")[0] != null){
           var k = posted.exec($this.find("h4")[0].innerText)
+         // console.log("not here")
           if (posted.test($this.find("h4")[0].innerText)){
             //console.log($this.find("h4"))
            // $h4 = $this.find("h4")
+          // console.log(k[1])
             if (k[1] == localStorage.user){
 
-              console.log($this.find("blockquote"))
-              console.log($this)
+            //  console.log($this.find("blockquote"))
+            //  console.log($this)
 
                $(quote).css( "background", "rgb(204, 139, 199)" );
                $(quote).css( "background-color", "rgb(204, 139, 199)" );
@@ -308,16 +414,17 @@ var thisForum;
                $this.find("blockquote").css( "color", "#000000" );
 
               //$(this).find(" td.postbody").css( "color", "#000000" );
-              console.log(thisForum)
+            //  console.log(thisForum)
               if (thisForum != "forum_219") $(quote).find(".quote_link").css("color", "rgb(0, 20, 255)")
               else{
+              //  console.log(amberPos)
                 if (!amberPos){
                   $(quote).find(".quote_link").css("color", "#EACF4C")
                   $(quote).attr("style", $(quote).attr("style") + "border-bottom: 1px solid #EACF4C !important;" )
                   $(quote).attr("style", $(quote).attr("style") + "border-top: 1px solid #EACF4C !important;" )
                   $(quote).find("blockquote").attr("style", $(quote).find("blockquote").attr("style") + "color: #EACF4C !important;" )
                   //$(quote).attr("style", $(quote).attr("style") + "color #EACF4C !important;" )
-                  console.log($(quote).css("tr"))
+                //  console.log($(quote).css("tr"))
                 }
                 else{
                   $(quote).find(".quote_link").css("color", "#57FF57")
@@ -338,6 +445,13 @@ var thisForum;
         //console.log($this.find("h4")[0].innerText)
         //console.log($this.find(".quote_link")[0].innerText)
       });
+    };
+
+    $(".post").each(function(index, image) {
+    	$this = $(image);
+      //console.log($this)
+     // console.log(g.quote)
+      if (g.quote) $this.myfunction();
 
 
       if (g.embedTweet){

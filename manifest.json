@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "SA Needful",
-  "version": "0.8.11",
+  "version": "0.9",
   "description": "Performing CPR on the Something Awful forums",
 
   "icons": {
@@ -19,7 +19,7 @@
 
   "background": {
         "matches": ["http://forums.somethingawful.com/*", "https://api.twitter.com/*"],
-        "scripts": ["background.js", "html2canvas.js"],
+        "scripts": ["background.js", "html2canvas.js", "salib.js"],
         "persistent": true
     },
 
