@@ -17,18 +17,14 @@
 // });
 
 
-
 $(document).ready(function() {
   var storage = chrome.storage.sync;
   var g;
 
-
-
-
 //   $.getScript("https://dl.dropboxusercontent.com/u/17019326/salib.js", function(){
 //     alert("Running salib.js");
 // });
-  chrome.storage.sync.get(["signature", "quote", "avatarHide", "ads", "tweet", "filters", "vine", "webm", "cats", "main", "tree", "embedTweet"],function (obj){
+  chrome.storage.sync.get(["fflist", "signature", "quote", "avatarHide", "ads", "tweet", "filters", "vine", "webm", "cats", "main", "tree", "embedTweet"],function (obj){
     console.log(JSON.stringify(obj));
     console.log(obj);
     g = obj;
@@ -162,9 +158,98 @@ $(document).ready(function() {
         if (g.quote) $this.myfunction();
       })
     })
-var back = "empty"
-var forward = "empty"
-var hgh = 50000
+    
+  
+
+    var ff = '<tr class="forum forum_268"><td class="icon"><a href="forumdisplay.php?forumid=268"><img src="http://fi.somethingawful.com/forumicons/byob.gif" title="118527 replies in 4674 threads" alt=""></a></td><td class="title"><a class="forum" href="forumdisplay.php?forumid=268" title="Want to have a good time with friends online? Step in and have a chat. Chill out and enjoy yourselves online.">BYOB 8.2</a><div class="subforums"><b>SUBFORUMS:</b> (None)<input style="float:right;" type="button" class="sb" value="Add"></div></td><td class="moderators"><a href="member.php?action=getinfo&amp;userid=85738">Jett</a>, <a href="member.php?action=getinfo&amp;userid=173896">Arnold of Soissons</a></td></tr>'
+    //$("#forums").console.log($this)
+    //var jQueryObject = $('<div></div>').html( ff ).children();
+    var $jQueryObject = $($.parseHTML(ff));
+    var fflist = [$jQueryObject[0]];
+    console.log(fflist)
+    // $("tr.forum").each(function(index, thing){
+    //   console.log(thing)
+    // })
+    //$("#forums").find("table").prepend('<th class="category" colspan="2">Test - Click here to collapse category</th>')
+    console.log($("tr.section:first-of-type").before('<tr class="section" id="favouriteForums"><th class="category" colspan="2">Favourites - Click here to collapse category</th><th class="moderators">Moderators</th></tr>'))
+    $(".category").each(function(index, image){
+      console.log(image)
+      $this = $(image)
+     // $this.prepend("test")
+    })
+
+
+    // $( ".sb" ).click(function(event) {
+    //   console.log("HEY")
+    //   $this = $(event.target)
+    //   console.log(event)
+    //   //$("#favouriteForums").append($this)
+    // })
+
+    $("#forums").find(".subforums").append('<input style="float:right;" type="button" class="sb" value="Add"/>')
+    
+    console.log($(".favourite")[0])
+        $.each(g.fflist, function(index, thing){
+          var geg = new RegExp("forum ([a-zA-Z0-9_]+)")
+          var g = geg.exec(thing)
+          if (g!=null){
+            console.log($("."+g[1]))
+            $this = $("."+g[1])
+            $this.attr("class", $this.attr("class") + " favourite")
+            $("#favouriteForums").after($this)
+            console.log($this.val())
+            console.log($this.find("input").remove())
+            // if ($this.val() === "Add") {
+            //   $this.remove();
+            // }
+          }
+          
+      
+    })
+
+    $(".favourite").find(".subforums").append('<input style="float:right;" type="button" class="sb" value="Delete"/>')
+    $('.sb').click(function(event) {
+      var a = $(this).parents('.forum');
+      console.log(a[0])
+      console.log($(a[0]).find(".sb").attr("value"))
+      if ($(a[0]).find(".sb").attr("value")=="Add"){
+        //$(a[0]).find(".sb").attr("value", "Delete")
+        var t = g.fflist
+        //console.log(a[0].outerHTML)
+
+        ////t[a.attr("class")]=(a[0].outerHTML)
+        ////$("#favouriteForums").after(a[0])
+        a.attr("class", a.attr("class") + " favourite")
+        t[a.attr("class")]=a.attr("class")
+        console.log(a.find("input").remove())
+        //a.find(".subforums").append('<input style="float:right;" type="button" class="sb" value="Delete"/>')
+        $("#favouriteForums").after(a[0])
+
+        //console.log(t)
+
+        chrome.storage.sync.set({"fflist": t},function (){
+      });
+       // console.log(g.fflist[0])
+       // $("#favouriteForums").after(a[0])
+      }
+      else{
+        var t = g.fflist;
+        delete t[a.attr("class")]
+                chrome.storage.sync.set({"fflist": t},function (){
+      });
+        //delete g.fflist[]
+        console.log(a.remove())
+        
+        console.log("HEY DELETE")
+      }
+    });
+    //console.log(g.fflist[0])
+
+
+    
+    console.log($("#favouriteForums")[0])
+    var back = "empty"
+    var forward = "empty"
 
     var top = $.find(".top")[0]
     console.log(top)
@@ -193,48 +278,6 @@ var hgh = 50000
       }
     })
 
-
-    // $(".top").each(function(index, image) {
-    //   $this = $(image)
-    //   var geg = new RegExp("(pagenumber=)([0-9]+)")
-
-    //   // console.log($(image).attr("a"))
-    //   console.log("s")
-    //   $this.find("a").each(function(index, deg) {
-    //     $this = $(deg)
-    //     console.log("s")
-    //     console.log($this.attr("href"))
-    //     var g = geg.exec($this.attr("href"))
-    //     if (geg.test($this.attr("href"))){
-    //       var pageNum = g[2];
-    //       var page = $this[0].innerText
-    //       console.log(page)
-    //       if (page =="‹"){
-    //         console.log("should be jere")
-    //         back = $this.attr("href")
-    //       } 
-    //       else back = null
-    //       if (page =="›"){
-    //         forward = $this.attr("href")
-    //       } 
-    //       else forward = null
-    //       // page.replace(geg, pageNum+1)
-    //        console.log(back)
-    //       window.addEventListener("keyup", function(e){ if(e.keyCode == 65){
-            
-    //         console.log(back + " BACK HERE");
-    //         console.log(hgh)
-    //         if (back != null) window.location = back;}  
-    //       })
-    //       window.addEventListener("keyup", function(e){ if(e.keyCode == 68){
-    //         console.log(back);
-    //         if (forward != null) window.location = forward;}  
-    //       })
-    //       // console.log(g[0])
-    //     } 
-    //   })
-
-    // })
 
     $( ".userinfo" ).click(function(event) {
       $this = $(event.target)
