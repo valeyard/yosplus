@@ -24,11 +24,23 @@ $(document).ready(function() {
 //   $.getScript("https://dl.dropboxusercontent.com/u/17019326/salib.js", function(){
 //     alert("Running salib.js");
 // });
-  chrome.storage.sync.get(["fflist", "signature", "quote", "avatarHide", "ads", "tweet", "filters", "vine", "webm", "cats", "main", "tree", "embedTweet"],function (obj){
+  var settings = ["snype", "fflist", "signature", "quote", "avatarHide", "ads", "tweet", "filters", "vine", "webm", "cats", "main", "tree", "embedTweet"];
+  chrome.storage.sync.get(settings,function (obj){
     console.log(JSON.stringify(obj));
     console.log(obj);
     g = obj;
-    console.log(g.cats);
+    // console.log(g.cats);
+    // console.log(g.arse)
+    // g.arse = "asds"
+    // console.log(g.arse)
+    // //chrome.storage.sync.set(["arse": g.arse])
+    //         //chrome.storage.sync.set({"arse": g.arse},function (){});
+
+    // $.each(settings, function(index, value){
+    //   console.log(value)
+    //   console.log(g[value])
+    // })
+    //if (g.snype == "undefined") 
 
 
 
@@ -117,7 +129,7 @@ $(document).ready(function() {
         col.classList.remove('over');
       });
     }
-
+    if (g.avatarHide == "undefined") g.avatarHide = false;
     $( ".userinfo" ).each(function(index, image) {
       $this = $(image)
       console.log(g.avatarHide + "GOOD BOY")
@@ -134,6 +146,7 @@ $(document).ready(function() {
     else{
       amberPos = false;
     }
+    if (g.signature == "undefined") g.siganture = false;
     window.addEventListener("keyup", function(e){ if(e.keyCode == 27) history.back(); })
     $(':checkbox').each(function(index, element) {
         var name = this.name;
@@ -153,6 +166,7 @@ $(document).ready(function() {
       }
       
       console.log(amberPos)
+      if (g.quote == "undefined") g.quote = true;
       $(".post").each(function(index, image) {
         $this = $(image);
         if (g.quote) $this.myfunction();
@@ -186,9 +200,10 @@ $(document).ready(function() {
     //   //$("#favouriteForums").append($this)
     // })
 
-    $("#forums").find(".subforums").append('<input style="float:right;" type="button" class="sb" value="Add"/>')
+    $("tr.forum").find("td.title").prepend('<input style="float:right;" type="button" class="sb" value="Add"/>')
     
     console.log($(".favourite")[0])
+    //if (g.fflist == "undefined") g.fflist = {};
         $.each(g.fflist, function(index, thing){
           var geg = new RegExp("forum ([a-zA-Z0-9_]+)")
           var g = geg.exec(thing)
@@ -206,8 +221,8 @@ $(document).ready(function() {
           
       
     })
-
-    $(".favourite").find(".subforums").append('<input style="float:right;" type="button" class="sb" value="Delete"/>')
+        console.log("224")
+    $(".favourite").find("td.title").prepend('<input style="float:right;" type="button" class="sb" value="Delete"/>')
     $('.sb').click(function(event) {
       var a = $(this).parents('.forum');
       console.log(a[0])
@@ -244,9 +259,60 @@ $(document).ready(function() {
       }
     });
     //console.log(g.fflist[0])
+    if (g.snype == "undefined") g.snype = false;
+    if (g.snype){
+    $("tr.thread").each(function(index, value){
+      console.log(value)
+      $this = $(value)
+      var replies = $this.find("td.replies")[0].innerText
+      console.log(replies)
+      if (replies%39 == 0) $(value).find(".title").append('<input style="float:right;" type="button" class="snype" value="Snype"/>')
+     // $(value).find(".title").append('<input style="float:right;" type="button" class="snype" value="Snype"/>')
+    })
 
+     $('.snype').click(function(event) {
+      var a = $(this).parents('tr.thread');
+      console.log(a)
+      console.log(a.find("a")[3].href)
+      var geg = new RegExp("(threadid=)([0-9]+)")
+      var g = geg.exec(a.find("a")[3].href);
+      if (g!=null){
+        console.log(g[2])
+        // $.get( "http://forums.somethingawful.com/newreply.php?action=newreply&threadid="+g[2], function( data ) {
+        //   $( ".body" ).html( data );
+        // });
+       // window.location = "http://forums.somethingawful.com/newreply.php?action=newreply&threadid="+g[2]
+        $(window.location = "http://forums.somethingawful.com/newreply.php?action=newreply&threadid="+g[2]).ready(function() {
+          console.log($this)
+        })
+        
+        // $.get("http://forums.somethingawful.com/newreply.php?action=newreply&threadid="+g[2],function(data,status){
+        //   //alert("Data: " + data + "\nStatus: " + status);
+        //   //$page = $(data)
+        //   //console.log(data)
+        //   // data=data.replace(/(<body [^>]*>)/i, '$1<div>').replace(/(<\/body>)/i, '</div>$1');
+        //   // var $page = $(data);
+        //   //var $response=$(data);
+        //   //console.log($page.html())
+        //   //var $obj = $($.parseHTML(data));
+        //  // console.log($response.find("textarea"))
+        //   //$response.find("textarea")[0].innerText = "hey lol"
+        //  // $page.find("textarea").innerText = "LOL"
+        //   //          console.log($response.find("textarea")[0].innerText)
+        //   // console.log($response)
+        //   // var newDoc = document.open("text/html", "replace");
 
-    
+        //   // newDoc.write($response[0].outerHTML);
+        //   // newDoc.close();
+        //   // //$.html( data );
+        //   // //window.location = 
+        //   // console.log($this)
+        // });
+      }
+    });
+
+    }
+
     console.log($("#favouriteForums")[0])
     var back = "empty"
     var forward = "empty"
@@ -289,9 +355,9 @@ $(document).ready(function() {
       });
     });
 
-
+    if (g.ads == "undefined") g.ads = true;
     if (g.ads) $("#ad_banner_user").remove()
-
+      console.log("here?")
     $(".category").each(function(index, image){
       $this = $(image);
 
@@ -307,7 +373,7 @@ $(document).ready(function() {
       else $this[0].innerText = fname[1] + " - Click here to collapse category"
 
     });
-
+    if (g.tree == "undefined") g.tree = false;
     if (g.tree){
       $(".subforums").children().each(function(index, image){
 
@@ -330,6 +396,7 @@ $(document).ready(function() {
     var fya = $.find("tr.forum.forum_26")[0];
     var $terry = $(fya);
 
+    if (g.cats == "undefined") g.cats = {"Favourites":true, "Main": true, "Discussion": true, "The Finer Arts": true, "The Community": true, "Archives": true}
     $( "#forums" ).click(function(event) {
       $this = $(event.target)
 
@@ -496,7 +563,7 @@ var thisForum;
      // console.log(g.quote)
       if (g.quote) $this.myfunction();
 
-
+      if (g.embedTweet == "undefined") g.embedTweet = true;
       if (g.embedTweet){
         $this.find("a").each(function(index, text){
           $this = $(text)
@@ -538,6 +605,7 @@ var thisForum;
       var pomf = new RegExp("[:A-Za-z0-9\.\/]+\\.webm");
       var gif = new RegExp("(http|https)://[A-Za-z0-9]+\.gfycat\.com/[A-Za-z0-9]+[\.]*[A-Za-z0-9]+\.webm");
 
+      if (g.filters == "undefined") g.filters = false;
       if (g.filters){
         for(var j in filters[thisForum]){
 
@@ -566,6 +634,7 @@ var thisForum;
 
       if (author == localStorage.user){
         //console.log(localStorage.user)
+        if (g.tweet == "undefined") g.tweet = true;
         if (g.tweet){
           $(this).find(" ul.postbuttons").append('<li><a href="https://twitter.com/share" class="twitter-share-button" data-url="manas" data-text="'+tweetText+'" data-count="none" data-dnt="true">Tweet</a></li>');
         } 
