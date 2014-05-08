@@ -16,19 +16,154 @@
 //     },
 // });
 
+// $(window).keydown(function(e) {
+//     e.preventDefault(); //prevent default arrow key behavior
+    
+//     var targetElement;
+//     //down
+//     if (e.keyCode == 40) {
+//         $targetElement = $('.active').next('.post');
+//         console.log("down")
+//     }
+//     //up
+//     else if (e.keyCode == 38) {
+//         $targetElement = $('.active').prev('.post');
+//     }
+//     if (!$targetElement.length) {return;}
+//     $('.active').removeClass('active');
+//     $targetElement.addClass('active');
+    
+//     //scroll element into view    
+//     $('html, body').clearQueue().animate({scrollTop: $targetElement.offset().top }, 1000);
+// });
+
+// jQuery.fn.anchorAnimate = function(settings) {
+
+// settings = jQuery.extend({
+//         speed : 1100
+// }, settings);
+
+// return this.each(function(){
+//     var caller = this
+//     $(caller).click(function (event) {
+//         event.preventDefault()
+//         var locationHref = window.location.href
+//         var elementClick = $(caller).attr("href")
+
+//         var destination = $(elementClick).offset().top;
+//         $("html:not(:animated),body:not(:animated)").animate({
+//             scrollTop: destination
+//         }, settings.speed, function() {
+//                 window.location.hash = elementClick
+//         });
+//         return false;
+//     })
+// })
+// }
+
+  // function showData(formData, form, options) {
+  //   var formData = [ { name: 'username', value: 'jresig' }, { name: 'password', value: 'secret' } ];
+  //   $.each(formData, function(i, obj) { console.log(obj.name + " | " + obj.value); });
+  //   return true;
+  // }
 
 $(document).ready(function() {
   var storage = chrome.storage.sync;
   var g;
 
+  
+  // var options = {
+  //     beforeSubmit: showData
+  //   };
+  //   $('form').ajaxForm(options);
+
+  // $(".post").anchorAnimate({
+  //       speed: 600
+  //   });
+
+  var next;
+
+
+  // window.addEventListener("keyup", function(e){ 
+  //   if(e.keyCode == 69){
+  //     if ( next === undefined ) {
+  //       next = $('.post').next();
+  //       console.log(next)
+  //     } else {
+  //        next = next.next();   
+  //     }
+  //     console.log($("#thread"))
+  //     $("#thread").scrollTo(next , 800, {margin:true} );
+  //   }
+  // })
+
 //   $.getScript("https://dl.dropboxusercontent.com/u/17019326/salib.js", function(){
 //     alert("Running salib.js");
 // });
-  var settings = ["snype", "fflist", "signature", "quote", "avatarHide", "ads", "tweet", "filters", "vine", "webm", "cats", "main", "tree", "embedTweet"];
+  var settings = ["avatarHideOption", "snypeAudio", "snype", "fflist", "signature", "quote", "avatarHide", "ads", "tweet", "filter", "vine", "webm", "cats", "main", "tree", "embedTweet"];
   chrome.storage.sync.get(settings,function (obj){
     console.log(JSON.stringify(obj));
     console.log(obj);
     g = obj;
+
+    // $("textarea").bind('paste', function(e) {
+    //         var ctl = $(this);
+    //         setTimeout(function() {
+    //             //Do whatever you want to $(ctl) here....
+    //             var c = ctl;
+    //             c = c.val()
+    //             var orig = ctl.val()
+                
+    //             if (/^https?:\/\//.test(c) && -1 == c.indexOf("\n") && -1 == c.indexOf("\r")) {
+    //                 var e;
+    //                 var h = /([^:]+):\/\/([^\/]+)(\/.*)?/.exec(decodeURI(c));
+    //                 if (h) {
+    //                     var f = {
+    //                         scheme: h[1],
+    //                         domain: h[2],
+    //                         path: h[3] || "",
+    //                         filename: "",
+    //                         query: {},
+    //                         fragment: ""
+    //                     }, h = f.path.lastIndexOf("#"); - 1 != h && (f.fragment = f.path.substr(h + 1), f.path = f.path.substr(0,
+    //                         h));
+    //                     console.log(f)
+    //                     h = f.path.lastIndexOf("?"); - 1 != h && (f.query = M(f.path.substr(h + 1)), f.path = f.path.substr(0, h));
+    //                     h = f.path.lastIndexOf("/"); - 1 != h && (f.filename = f.path.substr(h + 1));
+    //                     e = f
+    //                 } else e = null;
+    //                 var f = h = "",
+    //                     g = !1,
+    //                     i = e.filename.lastIndexOf("."); - 1 != i && (h = e.filename.substr(i + 1), f = e.filename.substr(0, i));
+    //                 if ((i = /^([^\.]+\.)?youtu\.be$/.test(e.domain)) || /^([^\.]+\.)?youtube(-nocookie)?\.com$/.test(e.domain))
+    //                     if (e.query.v) c = '[video type="youtube"', e.query.hd && (c += ' res="hd"'), e.fragment && (g = M(e.fragment), g.t && (c += ' start="' +
+    //                         parseInt(g.t, 10) + '"')), c += "]" + e.query.v + "[/video]", g = !0;
+    //                     else if (i || /^\/embed/.test(e.path)) c = '[video type="youtube"', e.query.hd && (c += ' res="hd"'), e.query.start && (c += ' start="' + parseInt(e.query.start, 10) + '"'), c += "]" + e.path.substr(e.path.lastIndexOf("/") + 1) + "[/video]", g = !0;
+    //                     console.log(h)
+    //                 if (!g) switch (h) {
+    //                 case "jpg":
+    //                 case "gif":
+    //                 case "png":
+    //                     if (/(www\.|i\.)imgur.com/i.test(e.domain)) switch (e = "", 5 < f.length && (e = f.substr(f.length - 1)), e) {
+    //                     case "s":
+    //                     case "l":
+    //                     case "t":
+    //                         c = "[url=" + (c.substr(0, c.lastIndexOf("/") + 1) + f.substr(0, f.length -
+    //                             1) + "." + h) + "][img]" + c + "[/img][/url]";
+    //                         break;
+    //                     default:
+    //                         c = "[img]" + c + "[/img]"
+    //                     } else c = "[img]" + c + "[/img]"
+    //                 }
+    //             }
+    //             //$(ctl)[0].replace(orig, c)
+    //             ctl.val().replace("test", "asd")
+    //             //console.log(ctl[0].val())
+    //             console.log(ctl.val("ARSE"))
+    //             //ctl.innerText = ctl.val()
+    //         }, 100);
+    // });
+
     // console.log(g.cats);
     // console.log(g.arse)
     // g.arse = "asds"
@@ -53,6 +188,16 @@ $(document).ready(function() {
     
     var c = 0;
     
+    var thisForum;
+    var fh = document.getElementsByTagName("body")[0].getAttribute("class");
+    var ge = new RegExp("(showthread|forumdisplay|newreply|forumhome)[ ]*([A-Za-z0-9_]*)")
+    var te = ge.exec(fh);
+
+    if (te ==null) thisForum = "smilie";
+    else{
+      var pageType = te[1];
+      thisForum = te[2];
+    }
 
     function handleDragStart(e) {
      // this.style.opacity = '0.4';  // this / e.target is the source node.
@@ -130,6 +275,7 @@ $(document).ready(function() {
       });
     }
     if (g.avatarHide == "undefined") g.avatarHide = false;
+
     $( ".userinfo" ).each(function(index, image) {
       $this = $(image)
       console.log(g.avatarHide + "GOOD BOY")
@@ -138,6 +284,9 @@ $(document).ready(function() {
       //g.avatarHide = !g.avatarHide;
 
     });
+  
+
+    $("body").prepend('<audio id="audio" src="https://dl.dropboxusercontent.com/u/17019326/Headshot.wav" ></audio>')
 
     var amberPos;
     if ($("#blarf219").attr("href") == "/css/219a.css"){
@@ -147,7 +296,7 @@ $(document).ready(function() {
       amberPos = false;
     }
     if (g.signature == "undefined") g.siganture = false;
-    window.addEventListener("keyup", function(e){ if(e.keyCode == 27) history.back(); })
+    //window.addEventListener("keyup", function(e){ if(e.keyCode == 27) history.back(); })
     $(':checkbox').each(function(index, element) {
         var name = this.name;
         console.log(name)
@@ -156,6 +305,7 @@ $(document).ready(function() {
     });
 
     //if (amberPos == null) amberPos = false;
+    if (g.quote == "undefined") g.quote = true;
     $("#switchpos").click(function(event) {
       console.log($("#blarf219").attr("href"))
       if ($("#blarf219").attr("href") == "/css/219a.css"){
@@ -166,7 +316,7 @@ $(document).ready(function() {
       }
       
       console.log(amberPos)
-      if (g.quote == "undefined") g.quote = true;
+      
       $(".post").each(function(index, image) {
         $this = $(image);
         if (g.quote) $this.myfunction();
@@ -178,9 +328,9 @@ $(document).ready(function() {
     var ff = '<tr class="forum forum_268"><td class="icon"><a href="forumdisplay.php?forumid=268"><img src="http://fi.somethingawful.com/forumicons/byob.gif" title="118527 replies in 4674 threads" alt=""></a></td><td class="title"><a class="forum" href="forumdisplay.php?forumid=268" title="Want to have a good time with friends online? Step in and have a chat. Chill out and enjoy yourselves online.">BYOB 8.2</a><div class="subforums"><b>SUBFORUMS:</b> (None)<input style="float:right;" type="button" class="sb" value="Add"></div></td><td class="moderators"><a href="member.php?action=getinfo&amp;userid=85738">Jett</a>, <a href="member.php?action=getinfo&amp;userid=173896">Arnold of Soissons</a></td></tr>'
     //$("#forums").console.log($this)
     //var jQueryObject = $('<div></div>').html( ff ).children();
-    var $jQueryObject = $($.parseHTML(ff));
-    var fflist = [$jQueryObject[0]];
-    console.log(fflist)
+    //var $jQueryObject = $($.parseHTML(ff));
+    //var fflist = [$jQueryObject[0]];
+    //console.log(fflist)
     // $("tr.forum").each(function(index, thing){
     //   console.log(thing)
     // })
@@ -201,9 +351,9 @@ $(document).ready(function() {
     // })
 
     $("tr.forum").find("td.title").prepend('<input style="float:right;" type="button" class="sb" value="Add"/>')
-    
+    if (window.location == 'http://forums.somethingawful.com/' || window.location == 'http://forums.somethingawful.com/index.php'){
     console.log($(".favourite")[0])
-    //if (g.fflist == "undefined") g.fflist = {};
+    if (g.fflist == "undefined") g.fflist = {};
         $.each(g.fflist, function(index, thing){
           var geg = new RegExp("forum ([a-zA-Z0-9_]+)")
           var g = geg.exec(thing)
@@ -221,8 +371,10 @@ $(document).ready(function() {
           
       
     })
+      }
         console.log("224")
-    $(".favourite").find("td.title").prepend('<input style="float:right;" type="button" class="sb" value="Delete"/>')
+   $(".favourite").find("td.title").prepend('<input style="float:right;" type="button" class="sb" value="Delete"/>')
+   console.log( $(".favourite"))
     $('.sb').click(function(event) {
       var a = $(this).parents('.forum');
       console.log(a[0])
@@ -259,59 +411,81 @@ $(document).ready(function() {
       }
     });
     //console.log(g.fflist[0])
+    if (thisForum == "forum_219"){
     if (g.snype == "undefined") g.snype = false;
+    if (g.snypeAudio == "undefined") g.snypeAudio = true;
     if (g.snype){
     $("tr.thread").each(function(index, value){
       console.log(value)
       $this = $(value)
       var replies = $this.find("td.replies")[0].innerText
       console.log(replies)
-      if (replies%39 == 0) $(value).find(".title").append('<input style="float:right;" type="button" class="snype" value="Snype"/>')
+      if (replies < 40){
+        if (replies%40 == 39) $(value).find(".title_inner").prepend('<div style="padding-top:5px; padding-right:5px;"> <input style="float:right;" type="button" class="snype" value="Snype"/></div>')
+      }
+      else if (replies == 0){}
+      else{
+        if (replies%40 == 39) $(value).find(".title_inner").prepend('<div style="padding-top:5px; padding-right:5px;"> <input style="float:right;" type="button" class="snype" value="Snype"/></div>')
+      }
      // $(value).find(".title").append('<input style="float:right;" type="button" class="snype" value="Snype"/>')
     })
 
      $('.snype').click(function(event) {
+      var audio = document.getElementById("audio");
+          if (g.snypeAudio) audio.play();
       var a = $(this).parents('tr.thread');
       console.log(a)
       console.log(a.find("a")[3].href)
       var geg = new RegExp("(threadid=)([0-9]+)")
-      var g = geg.exec(a.find("a")[3].href);
+      console.log(a.find(".snype").remove())
+      $.each(a.find("a"), function(index, value){
+        console.log(value.href)
+              var g = geg.exec(value.href);
+      console.log()
       if (g!=null){
         console.log(g[2])
-        // $.get( "http://forums.somethingawful.com/newreply.php?action=newreply&threadid="+g[2], function( data ) {
-        //   $( ".body" ).html( data );
-        // });
-       // window.location = "http://forums.somethingawful.com/newreply.php?action=newreply&threadid="+g[2]
-        $(window.location = "http://forums.somethingawful.com/newreply.php?action=newreply&threadid="+g[2]).ready(function() {
-          console.log($this)
-        })
-        
-        // $.get("http://forums.somethingawful.com/newreply.php?action=newreply&threadid="+g[2],function(data,status){
-        //   //alert("Data: " + data + "\nStatus: " + status);
-        //   //$page = $(data)
-        //   //console.log(data)
-        //   // data=data.replace(/(<body [^>]*>)/i, '$1<div>').replace(/(<\/body>)/i, '</div>$1');
-        //   // var $page = $(data);
-        //   //var $response=$(data);
-        //   //console.log($page.html())
-        //   //var $obj = $($.parseHTML(data));
-        //  // console.log($response.find("textarea"))
-        //   //$response.find("textarea")[0].innerText = "hey lol"
-        //  // $page.find("textarea").innerText = "LOL"
-        //   //          console.log($response.find("textarea")[0].innerText)
-        //   // console.log($response)
-        //   // var newDoc = document.open("text/html", "replace");
+        $.get( "http://forums.somethingawful.com/newreply.php?action=newreply&threadid="+g[2],
+                function(data) {
+                  //console.log(data)
+                    formKey = jQuery('input[name="formkey"]', data).val();
+                    formCookie = jQuery('input[name="form_cookie"]', data).val();
+                    console.log(formKey);
+                    console.log(formCookie);
+                    var textArray = [
+                        'snype',
+                        'headshot',
+                        ':bsdsnype:'
+                    ];
+                    var randomNumber = Math.floor(Math.random()*textArray.length);
+                    e = {
+                        action: 'postreply',
+                        threadid: g[2],
+                        formkey: formKey,
+                        form_cookie: formCookie,
+                        message: textArray[randomNumber]
+                    };
+                    console.log(e)
 
-        //   // newDoc.write($response[0].outerHTML);
-        //   // newDoc.close();
-        //   // //$.html( data );
-        //   // //window.location = 
-        //   // console.log($this)
-        // });
+                    $.post('newreply.php?', e, 
+                        function(returnedData){
+                             console.log(returnedData);
+                    });
+
+                }
+            );
+        return false
       }
+      })
+
+      // if (g!=null){
+
+
+      // }
     });
 
     }
+
+  }
 
     console.log($("#favouriteForums")[0])
     var back = "empty"
@@ -344,16 +518,19 @@ $(document).ready(function() {
       }
     })
 
+    if (g.avatarHideOption == "undefined") g.avatarHideOption = true;
+    console.log(g.avatarHideOption)
+    if (g.avatarHideOption){
+      $( ".userinfo" ).click(function(event) {
+        $this = $(event.target)
 
-    $( ".userinfo" ).click(function(event) {
-      $this = $(event.target)
-
-      event.stopPropagation();  
-      $(".title").toggle()
-      var jet = !g.avatarHide;
-      chrome.storage.sync.set({"avatarHide": jet},function (){
+        event.stopPropagation();  
+        $(".title").toggle()
+        var jet = !g.avatarHide;
+        chrome.storage.sync.set({"avatarHide": jet},function (){
+        });
       });
-    });
+    }
 
     if (g.ads == "undefined") g.ads = true;
     if (g.ads) $("#ad_banner_user").remove()
@@ -423,25 +600,16 @@ $(document).ready(function() {
 
     });
 
-var thisForum;
-    $("tr.forum_26").each(function(index, image){
-      $this = $(image);
 
-      var tweetText = $(this).find(" a.forum")[0].setAttribute("title", "LMAO");
-      $(this).find(" a.forum")[0].innerText = "FYAD: cherry blossom petal landed in the lunch"
-      $(this).find(" a.forum_154")[0].setAttribute("title", "LMAO");
-      $(this).find(" a.forum_154")[0].innerText = "Synthy's overflowing stomach"
-    });
+    // $("tr.forum_26").each(function(index, image){
+    //   $this = $(image);
 
-    var fh = document.getElementsByTagName("body")[0].getAttribute("class");
-    var ge = new RegExp("(showthread|forumdisplay|newreply|forumhome)[ ]*([A-Za-z0-9_]*)")
-    var te = ge.exec(fh);
+    //   var tweetText = $(this).find(" a.forum")[0].setAttribute("title", "LMAO");
+    //   $(this).find(" a.forum")[0].innerText = "FYAD: cherry blossom petal landed in the lunch"
+    //   $(this).find(" a.forum_154")[0].setAttribute("title", "LMAO");
+    //   $(this).find(" a.forum_154")[0].innerText = "Synthy's overflowing stomach"
+    // });
 
-    if (te ==null) thisForum = "smilie";
-    else{
-      var pageType = te[1];
-      thisForum = te[2];
-    }
 
     $(".smilie_list").each(function(index, image) {
     	$this = $(image);
@@ -533,6 +701,11 @@ var thisForum;
                   $(quote).attr("style", $(quote).attr("style") + "border-bottom: 1px solid #EACF4C !important;" )
                   $(quote).attr("style", $(quote).attr("style") + "border-top: 1px solid #EACF4C !important;" )
                   $(quote).find("blockquote").attr("style", $(quote).find("blockquote").attr("style") + "color: #EACF4C !important;" )
+                  $(quote).find("a").attr("style", $(quote).find("blockquote").attr("style") + "color: #EACF4C !important;" )
+                  $(quote).find("a").attr("style", $(quote).find("blockquote").attr("style") + '@-webkit-keyframes animes{0%{background:#EACF4C;color:#000}50%{background:#000;color:#EACF4C}100%{background:#EACF4C;color:#000}}*' )
+                 // $("head").append('<style>@-webkit-keyframes animes{0%{background:#EACF4C;color:#000}50%{background:#000;color:#EACF4C}100%{background:#EACF4C;color:#000}}*')
+                  $(quote).find(".img").attr("style", $(quote).find(".img").attr("style") + 'border:1px solid #EACF4C !important')
+                  console.log($(quote).find("img"))
                   //$(quote).attr("style", $(quote).attr("style") + "color #EACF4C !important;" )
                 //  console.log($(quote).css("tr"))
                 }
@@ -557,13 +730,37 @@ var thisForum;
       });
     };
 
+
+    // $(".up").each(function(index, value){
+    //   $this = $(value).parent()[0]
+    //   console.log($this)
+
+    //   $(value).find("span").each(function(index, invalue){
+    //     $(invalue).find("a").after(" > ")
+    //     //console.log($(invalue)[0].innerHTML)
+    //   $(invalue).parent()[0].innerHTML = $(invalue)[0].innerHTML
+    //   })
+
+    //   //console.log($this.innerText)
+    //   //console.log($this.innerHTML = $this.innerHTML.replace(/ > /, "HJ"))
+    //  // console.log($(value))
+    //   $(value)[0].outerHTML = $(value)[0].innerHTML
+    //   //console.log($(value))
+    //  // console.log($(value)[0].replace(" › ", ""))
+
+
+      
+    // })
+
+    if (g.embedTweet == "undefined") g.embedTweet = true;
     $(".post").each(function(index, image) {
     	$this = $(image);
       //console.log($this)
      // console.log(g.quote)
       if (g.quote) $this.myfunction();
 
-      if (g.embedTweet == "undefined") g.embedTweet = true;
+      console.log($this.find("iframe").attr("allowFullscreen", "true"))
+      
       if (g.embedTweet){
         $this.find("a").each(function(index, text){
           $this = $(text)
@@ -597,6 +794,8 @@ var thisForum;
         });
       }
 
+
+
     	var text = $(this).find(" td.postbody")[0].innerHTML;
       var tweetText = $(this).find(" td.postbody")[0].innerText;
     	var author = $(this).find(" dt.author")[0].innerText;
@@ -605,8 +804,8 @@ var thisForum;
       var pomf = new RegExp("[:A-Za-z0-9\.\/]+\\.webm");
       var gif = new RegExp("(http|https)://[A-Za-z0-9]+\.gfycat\.com/[A-Za-z0-9]+[\.]*[A-Za-z0-9]+\.webm");
 
-      if (g.filters == "undefined") g.filters = false;
-      if (g.filters){
+      if (g.filter == "undefined") g.filter = false;
+      if (g.filter){
         for(var j in filters[thisForum]){
 
           var h = new RegExp(j, 'gi');
@@ -643,7 +842,7 @@ var thisForum;
       var twitUrl = twit.exec(text);
       var counter = 0;
       var otherCounter =0;
-
+      if (g.webm == "undefined") g.webm = true;
       if (pomf.test(text) && g.webm){
         $this = $(image);
         var postBody = $(this).find(" td.postbody")[0];
@@ -659,7 +858,7 @@ var thisForum;
           }
         });
       }
-
+      if (g.vine == "undefined") g.vine = true;
       if (x.test(text) && g.vine){
         $this = $(image);
         var postBody = $(this).find(" td.postbody")[0];

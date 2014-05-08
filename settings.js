@@ -11,7 +11,10 @@ $(':checkbox').each(function(index, element) {
 });
 
   $(".checkboxes").on("change", ":checkbox", saveSettings);
-
+  $('.set').click(function(event) {
+    chrome.storage.sync.set({"avatarHideOption":false, "snypeAudio":true, "snype":false, "fflist":{}, "signature":false, "quote":true, "avatarHide":false, "ads":true,"embedTweet":true,"tweet": false, "vine":true, "filter":true, "webm":true, "tree":false, "cats": {"Favourites":true, "Main": true, "Discussion": true, "The Finer Arts": true, "The Community": true, "Archives": true}},function (){
+});
+  })
 function saveSettings() {
     var name = this.name;
     var items = {};

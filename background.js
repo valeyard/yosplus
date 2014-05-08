@@ -25,7 +25,7 @@ chrome.runtime.onInstalled.addListener(function(details){
         localStorage.be_a_buzzkill = true;
         console.log(localStorage);
         //chrome.storage.sync.set({"snype":false, "fflist":{}, "signature":false, "quote":true, "avatarHide":true, "ads":true,"embedTweet":true,"tweet": false, "vine":true, "filter":true, "webm":true, "tree":false, "cats": {"Favourites":true, "Main": true, "Discussion": true, "The Finer Arts": true, "The Community": true, "Archives": true}},function (){
-});
+//});
         console.log("Updated from " + details.previousVersion + " to " + thisVersion + "!");
     }
 });
