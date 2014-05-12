@@ -647,7 +647,7 @@ $(document).ready(function() {
     $(".mainbodytextsmall").each(function(index, image) {
     	$this = $(image);
 
-     	var y = new RegExp("Hello, ([A-Za-z0-9]+)!")
+     	var y = new RegExp("Hello, (.+)!")
      	var g = y.exec(this.innerText);
      	
      	user = g[1];
@@ -665,7 +665,7 @@ $(document).ready(function() {
 
        // console.log(index);
       // console.log("found bbc")
-        var posted = new RegExp("([A-Za-z0-9 -_]+) posted:")
+        var posted = new RegExp("(.+) posted:")
         //console.log($this)
         //console.log($this[0].innerText)
        // console.log($this.find("h4"))
