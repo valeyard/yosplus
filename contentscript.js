@@ -67,11 +67,15 @@
   //   return true;
   // }
 
+
+
+
+
 $(document).ready(function() {
   var storage = chrome.storage.sync;
   var g;
 
-  
+
   // var options = {
   //     beforeSubmit: showData
   //   };
@@ -100,12 +104,29 @@ $(document).ready(function() {
 //   $.getScript("https://dl.dropboxusercontent.com/u/17019326/salib.js", function(){
 //     alert("Running salib.js");
 // });
-  var settings = ["avatarHideOption", "snypeAudio", "snype", "fflist", "signature", "quote", "avatarHide", "ads", "tweet", "filter", "vine", "webm", "cats", "main", "tree", "embedTweet"];
+  var settings = ["lazyload", "avatarHideOption", "snypeAudio", "snype", "fflist", "signature", "quote", "avatarHide", "ads", "tweet", "filter", "vine", "webm", "cats", "main", "tree", "embedTweet"];
   chrome.storage.sync.get(settings,function (obj){
     console.log(JSON.stringify(obj));
     console.log(obj);
     g = obj;
 
+    if (g.lazyload == "undefined") g.lazyload = false;
+    if (g.lazyload){
+    $("td.postbody").find("img").each(function(index, image){
+      $this = $(image)
+      var src = this.getAttribute("src")
+      
+      console.log(this.setAttribute("class", this.getAttribute("class") + " lazy"))
+      var class1 = this.getAttribute("class")
+      console.log(class1)
+      this.removeAttribute("src")
+      this.setAttribute("data-original", src)
+    });
+
+    $(function() {
+      $("img.lazy").lazyload();
+    });
+  }
     // $("textarea").bind('paste', function(e) {
     //         var ctl = $(this);
     //         setTimeout(function() {
@@ -178,13 +199,14 @@ $(document).ready(function() {
     //if (g.snype == "undefined") 
 
 
+    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 
     var forum_177 = {"\\b(daniel bryan|bryan|dbd|db)\\b":"vanilla midget", "\\bover/under\\b":"odds"};
-    var forum_219 = {"\\bspongeh\\b":"bread stymie", "\\bsteve jobs\\b":"stebe jobs", "\\bandroid\\b":"apple", "\\bprovide\\b":"bleeders", "\\bgodaddy\\b":"nodaddy", "\\bValeyard\\b":"asshole"};
+    var forum_219 = {"\\bspongeh\\b":"bread stymie", "\\bsteve jobs\\b":"stebe jobs", "\\bandroid\\b":"apple", "\\bprovide\\b":"bleeders", "\\bgodaddy\\b":"nodaddy", "\\bValeyard\\b":"asshole", "\\apt gangbang\\b":"<marquee>apt gangbang</marquee>"};
     var forum_26 = {"\\b ralp \\b":"the talking toilet", "\\bgirls\\b":"bleeders", "\\bgbs\\b":"the moon", "\\bguys\\b":"bleeders"};
     var filters = {"forum_177": forum_177, "forum_219": forum_219 ,"forum_26": forum_26}
 
-    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+    //!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
     
     var c = 0;
     
@@ -285,8 +307,9 @@ $(document).ready(function() {
 
     });
   
-
-    $("body").prepend('<audio id="audio" src="https://dl.dropboxusercontent.com/u/17019326/Headshot.wav" ></audio>')
+    var audioPath = chrome.extension.getURL("audio/Headshot.wav");
+    console.log(audioPath)
+    $("body").prepend('<audio id="audio" src=' + audioPath + ' ></audio>')
 
     var amberPos;
     if ($("#blarf219").attr("href") == "/css/219a.css"){
@@ -466,10 +489,10 @@ $(document).ready(function() {
                     };
                     console.log(e)
 
-                    $.post('newreply.php?', e, 
-                        function(returnedData){
-                             console.log(returnedData);
-                    });
+                    // $.post('newreply.php?', e, 
+                    //     function(returnedData){
+                    //          console.log(returnedData);
+                    // });
 
                 }
             );
@@ -644,6 +667,23 @@ $(document).ready(function() {
       }
     });
 
+    $(".breadcrumbs").each(function(index, image) {
+      $this = $(image);
+      console.log($this.find("a.up")[0].outerHTML = $this.find("a.up")[0].innerHTML)/// = $this.find("a.up")[0].innerHTML
+      //$this.find("a.up")[0].innerText = ""
+      //console.log($this.find("a.up")[0].innerHTML)
+      // var att=document.createAttribute("draggable");
+      // att.value="true";
+      // this.setAttributeNode(att);;
+
+      // var att1=document.createAttribute("id");
+
+      // if (this.getAttribute("id") != "favourite"){
+      //   att1.value="basic";
+      //   this.setAttributeNode(att1);;
+      // }
+    });
+
     $(".mainbodytextsmall").each(function(index, image) {
     	$this = $(image);
 
@@ -702,8 +742,8 @@ $(document).ready(function() {
                   $(quote).attr("style", $(quote).attr("style") + "border-top: 1px solid #EACF4C !important;" )
                   $(quote).find("blockquote").attr("style", $(quote).find("blockquote").attr("style") + "color: #EACF4C !important;" )
                   $(quote).find("a").attr("style", $(quote).find("blockquote").attr("style") + "color: #EACF4C !important;" )
-                  $(quote).find("a").attr("style", $(quote).find("blockquote").attr("style") + '@-webkit-keyframes animes{0%{background:#EACF4C;color:#000}50%{background:#000;color:#EACF4C}100%{background:#EACF4C;color:#000}}*' )
-                 // $("head").append('<style>@-webkit-keyframes animes{0%{background:#EACF4C;color:#000}50%{background:#000;color:#EACF4C}100%{background:#EACF4C;color:#000}}*')
+                  //$(quote).find("a").attr("style", $(quote).find("blockquote").attr("style") + '-webkit-keyframes animes{0%{background:#EACF4C;color:#000}50%{background:#000;color:#EACF4C}100%{background:#EACF4C;color:#000}}* !important' )
+                 // $("head").append('<style>@-webkit-keyframes animess{0%{background:#EACF4C;color:#000}50%{background:#000;color:#EACF4C}100%{background:#EACF4C;color:#000}}*')
                   $(quote).find(".img").attr("style", $(quote).find(".img").attr("style") + 'border:1px solid #EACF4C !important')
                   console.log($(quote).find("img"))
                   //$(quote).attr("style", $(quote).attr("style") + "color #EACF4C !important;" )
@@ -759,40 +799,75 @@ $(document).ready(function() {
      // console.log(g.quote)
       if (g.quote) $this.myfunction();
 
-      console.log($this.find("iframe").attr("allowFullscreen", "true"))
-      
-      if (g.embedTweet){
-        $this.find("a").each(function(index, text){
-          $this = $(text)
-          var twit = new RegExp("https://twitter.com/[:A-Za-z0-9\.\/]+/(status|statuses)/([0-9]+)");
-          //console.log(text)
-          var twitUrl = twit.exec(text);
-         // console.log(twitUrl)
-          if(twit.test(text)){
-            console.log("made it to cached")
-            $this.wrap('<div class="tweet' + twitUrl[1] + '">')
-            if (localStorage.getItem(twitUrl[0]) !== null){
-              $('.tweet' + twitUrl[1]).html(localStorage.getItem(twitUrl[0]));
-              counter++;
-            }
-            else{
-              $.ajax({
+      //console.log($this.find("iframe").attr("allowFullscreen", "true"))
+      // console.log(g.embedTweet)
+      // if (g.embedTweet){
+      //   $this.find("a").each(function(index, text){
+      //     $this = $(text)
+      //     var twit = new RegExp("https://twitter.com/[:A-Za-z0-9\.\/]+/(status|statuses)/([0-9]+)");
+      //     //console.log(text.href)
+      //     var twitUrl = twit.exec(text.href);
+      //     //console.log(twitUrl)
+      //     if(twit.test(text.href)){
+      //       console.log("made it to cached")
+      //       $this.wrap('<div class="tweet' + twitUrl[1] + '">')
+      //       if (localStorage.getItem(twitUrl[0]) !== null){
+      //         $('.tweet' + twitUrl[1]).html(localStorage.getItem(twitUrl[0]));
+      //         counter++;
+      //       }
+      //       else{
+      //         $.ajax({
                 
-                url: "https://api.twitter.com/1/statuses/oembed.json?url="+twitUrl[0]+"&omit_script=true",
-                async:false,
-                success: function(data){
-                  console.log("made it to ajaz")
-                  console.log(data.html) 
-                  $this.empty()
-                  localStorage.setItem(twitUrl[0], data.html)
-                  $('.tweet' + twitUrl[1]).html(data.html);
-                  counter++;
+      //           url: "https://api.twitter.com/1/statuses/oembed.json?url="+twitUrl[0]+"&omit_script=true",
+      //           async:false,
+      //           success: function(data){
+      //             console.log("made it to ajaz")
+      //             console.log(data.html) 
+      //             $this.empty()
+      //             localStorage.setItem(twitUrl[0], data.html)
+      //             $('.tweet' + twitUrl[1]).html(data.html);
+      //             counter++;
+      //           }
+      //         });
+      //       }
+      //     }
+      //   });
+      // }
+
+      if (g.embedTweet){
+              //$this.find("a").each(function(index, text){
+              $(".postbody a[href*='twitter']", this).each(function(index, text) {
+                $this = $(text)
+                var twit = new RegExp("https://twitter.com/[_:A-Za-z0-9\.\/]+/(status|statuses)/([0-9]+)");
+                //console.log(text)
+                var twitUrl = twit.exec(text);
+                //console.log(twitUrl)
+                if(twit.test(text)){
+                  console.log("made it to cached")
+                  //twitUrl[2] = twitUrl[2].trim();
+                  $this.wrap('<div class="tweetmyf' + twitUrl[1] + '" id="'+twitUrl[2]+'">')
+                   if (localStorage.getItem(twitUrl[0]) !== null){
+                    $('#'+twitUrl[2]).html(localStorage.getItem(twitUrl[0]));
+                    counter++;
+                  }
+                  else{
+                    $.ajax({
+                     
+                      url: "https://api.twitter.com/1/statuses/oembed.json?url="+twitUrl[0]+"&omit_script=false",
+                      async:true,
+                      success: function(data){
+                        //console.log("made it to ajaz")
+                        //console.log(data.html)
+                        $this.empty()
+                        localStorage.setItem(twitUrl[0], data.html)
+                        $("#"+twitUrl[2]).html(data.html);
+                        counter++;
+                      }
+                    });
+                  }
                 }
               });
             }
-          }
-        });
-      }
 
 
 
@@ -824,7 +899,7 @@ $(document).ready(function() {
           if (tee != null){
             console.log(tee);
             console.log($(this).find(" dt.author")[0].innerText); //had to change tee[0] to tee[1] to make it work, it worked previously the other way, watch out
-            $(this).find(" dt.author")[0].innerText=$(this).find(" dt.author")[0].innerText.replace(tee[0], filters[thisForum][j])
+            $(this).find(" dt.author")[0].innerHTML=$(this).find(" dt.author")[0].innerHTML.replace(tee[0], filters[thisForum][j])
           }
         }
       }

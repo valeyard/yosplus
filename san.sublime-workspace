@@ -64,7 +64,7 @@
 			"file": "contentscript.js",
 			"settings":
 			{
-				"buffer_size": 34266,
+				"buffer_size": 34391,
 				"line_ending": "Unix"
 			}
 		},
@@ -292,7 +292,7 @@
 	],
 	"find":
 	{
-		"height": 36.0
+		"height": 53.0
 	},
 	"find_in_files":
 	{
@@ -306,6 +306,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"twitter",
+			"snype",
+			"style",
+			"Click",
+			"hide",
 			"avatar",
 			"avatarHide",
 			"forumid=",
@@ -428,12 +433,7 @@
 			"favourite",
 			"basic",
 			"dragSr",
-			"localstorage",
-			"$(this)",
-			"(\"",
-			"();\n",
-			"mess_client",
-			"spawn"
+			"localstorage"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -451,7 +451,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -467,8 +467,8 @@
 						"selection":
 						[
 							[
-								67,
-								67
+								68,
+								68
 							]
 						],
 						"settings":
@@ -481,7 +481,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -519,15 +519,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 34266,
+						"buffer_size": 34391,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								8808,
-								8808
+								30084,
+								30091
 							]
 						],
 						"settings":
@@ -536,11 +536,11 @@
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
-						"translation.y": 3872.0,
+						"translation.x": 31.0,
+						"translation.y": 14885.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
