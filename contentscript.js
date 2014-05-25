@@ -1,33 +1,26 @@
 $(document).ready(function() {
   var storage = chrome.storage.sync;
   var g;
-
-
   var next;
-
   var settings = ["iglist", "oldbread", "lazyload", "avatarHideOption", "snypeAudio", "snype", "fflist", "signature", "quote", "avatarHide", "ads", "tweet", "filter", "vine", "webm", "cats", "main", "tree", "embedTweet"];
+  
   chrome.storage.sync.get(settings,function (obj){
-    console.log(JSON.stringify(obj));
-    console.log(obj);
     g = obj;
-
     if (g.lazyload == undefined) g.lazyload = false;
     if (g.lazyload){
-    $("td.postbody").find("img").each(function(index, image){
-      $this = $(image)
-      var src = this.getAttribute("src")
-      
-      console.log(this.setAttribute("class", this.getAttribute("class") + " lazy"))
-      var class1 = this.getAttribute("class")
-      console.log(class1)
-      this.removeAttribute("src")
-      this.setAttribute("data-original", src)
-    });
+      $("td.postbody").find("img").each(function(index, image){
+        $this = $(image)
+        var src = this.getAttribute("src")
+        this.setAttribute("class", this.getAttribute("class") + " lazy")
+        var class1 = this.getAttribute("class")
+        this.removeAttribute("src")
+        this.setAttribute("data-original", src)
+      });
 
-    $(function() {
-      $("img.lazy").lazyload();
-    });
-  }
+      $(function() {
+        $("img.lazy").lazyload();
+      });
+    }
 
     var forum_177 = {"\\b(daniel bryan|bryan|dbd|db)\\b":"vanilla midget", "\\bover/under\\b":"odds"};
     var forum_219 = {"\\bspongeh\\b":"bread stymie", "\\bsteve jobs\\b":"stebe jobs", "\\bandroid\\b":"anroid", "\\bgodaddy\\b":"nodaddy", "\\bValeyard\\b":"asshole", "\\apt gangbang\\b":"<marquee>apt gangbang</marquee>"};
@@ -37,7 +30,6 @@ $(document).ready(function() {
     !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
     
     var c = 0;
-    
     var thisForum;
     var fh = document.getElementsByTagName("body")[0].getAttribute("class");
     var ge = new RegExp("(showthread|forumdisplay|newreply|forumhome)[ ]*([A-Za-z0-9_]*)")
@@ -71,9 +63,7 @@ $(document).ready(function() {
       if (e.preventDefault) {
         e.preventDefault(); // Necessary. Allows us to drop.
       }
-
       e.dataTransfer.dropEffect = 'move';  // See the section on the DataTransfer object.
-
       return false;
     }
 
@@ -82,12 +72,10 @@ $(document).ready(function() {
 
     function handleDragLeave(e) {
       this.classList.remove('over');  // this / e.target is previous target element.
-
     }
 
     function handleDrop(e) {
       // this/e.target is current target element.
-
       if (e.stopPropagation) {
         e.stopPropagation(); // Stops some browsers from redirecting.
       }
@@ -95,7 +83,6 @@ $(document).ready(function() {
       if (dragSrcEl != this) {
 
         var att1=document.createAttribute("id");
-
         if (dragSrcEl.getAttribute("id") == "basic"){
           att1.value="favourite";
           dragSrcEl.setAttributeNode(att1);;
@@ -124,33 +111,26 @@ $(document).ready(function() {
         col.classList.remove('over');
       });
     }
+
     if (g.avatarHide == undefined) g.avatarHide = false;
 
     $( ".userinfo" ).each(function(index, image) {
       $this = $(image)
-      console.log(g.avatarHide + "GOOD BOY")
-
       $(".title").toggle(g.avatarHide)
-      //g.avatarHide = !g.avatarHide;
-
     });
+
     var igName = g.iglist
     $( "input.bginput" ).each(function(index, image) {
       $this = $(image)
       if ($this.attr("type") == "text") var name = $this.attr("value")
       if (name != undefined) igName.push(name)
-      console.log(igName)
-
-      //g.avatarHide = !g.avatarHide;
-
     });
-    console.log(g.iglist)
-    chrome.storage.sync.set({"iglist": igName})
-    console.log(g.iglist)
 
-    var audioPath = chrome.extension.getURL("audio/Headshot.wav");
-    console.log(audioPath)
-    $("body").prepend('<audio id="audio" src=' + audioPath + ' ></audio>')
+    chrome.storage.sync.set({"iglist": igName})
+    if (g.snypeAudio){
+      var audioPath = chrome.extension.getURL("audio/Headshot.wav");
+      $("body").prepend('<audio id="audio" src=' + audioPath + ' ></audio>')
+    }
 
     var amberPos;
     if ($("#blarf219").attr("href") == "/css/219a.css"){
@@ -160,7 +140,6 @@ $(document).ready(function() {
       amberPos = false;
     }
     if (g.signature == undefined) g.siganture = false;
-    //window.addEventListener("keyup", function(e){ if(e.keyCode == 27) history.back(); })
     $(':checkbox').each(function(index, element) {
         var name = this.name;
         console.log(name)
@@ -168,7 +147,6 @@ $(document).ready(function() {
         if (name == "signature") element.checked = g.signature;
     });
 
-    //if (amberPos == null) amberPos = false;
     if (g.quote == undefined) g.quote = true;
     $("#switchpos").click(function(event) {
       console.log($("#blarf219").attr("href"))
@@ -178,60 +156,33 @@ $(document).ready(function() {
       else{
         amberPos = false;
       }
-      
-      console.log(amberPos)
-      
+           
       $(".post").each(function(index, image) {
         $this = $(image);
-        console.log($this.wrap("<div>"))
-        console.log("LOl")
         if (g.quote) $this.myfunction();
       })
     })
     
   
-
     var ff = '<tr class="forum forum_268"><td class="icon"><a href="forumdisplay.php?forumid=268"><img src="http://fi.somethingawful.com/forumicons/byob.gif" title="118527 replies in 4674 threads" alt=""></a></td><td class="title"><a class="forum" href="forumdisplay.php?forumid=268" title="Want to have a good time with friends online? Step in and have a chat. Chill out and enjoy yourselves online.">BYOB 8.2</a><div class="subforums"><b>SUBFORUMS:</b> (None)<input style="float:right;" type="button" class="sb" value="Add"></div></td><td class="moderators"><a href="member.php?action=getinfo&amp;userid=85738">Jett</a>, <a href="member.php?action=getinfo&amp;userid=173896">Arnold of Soissons</a></td></tr>'
    
     console.log($("tr.section:first-of-type").before('<tr class="section" id="favouriteForums"><th class="category" colspan="2">Favourites - Click here to collapse category</th><th class="moderators">Moderators</th></tr>'))
     $(".category").each(function(index, image){
       console.log(image)
       $this = $(image)
-     // $this.prepend("test")
     })
     var postCounter = 0
     $(".post").each(function(index, image){
       postCounter++;
       $this = $(image)
-     // $this.prepend("test")
-     // $.get( "http://forums.somethingawful.com/newreply.php?action=newreply&threadid="+g[2],
-     //         function(data) {
-     //           //console.log(data)
-     //            
-
-     //         }
-     //     );
     })
 
-    console.log(postCounter)
-    console.log(window.location.href)
-    // Serializing a params string using the built-in jQuery.param method.
-    // myStr is set to "a=1&b=2&c=true&d=hello+world"
-    
-
-    // Deserialize the params string into an object.
-    // myObj is set to { a:"1", b:"2", c:"true", d:"hello world" }
-    //var myObj = $.deparam( window.location.href );
-    //var myStr = myObj.param({ pagenumber:5444 });
     var qs = $.param.querystring();
     var myObj = $.deparam( qs )
     console.log(myObj)
-    //var myStr = $.param({ myObj.threadid, myObj.pagenumber + 1 });
-    //var myStr = $.param({ threadid:myObj.threadid, pagenumber:parseInt(myObj.pagenumber) +1 });
-    //console.log(myStr)
+
     var inc = false;
-    //'<div style="padding-top:5px; padding-right:5px;"> <input style="float:right;" type="button" class="turbo" value="TURBO!"/></div>'
-    //<li><img src="http://fi.somethingawful.com/images/buttons/button-bookmark.png" alt="Bookmark" class="thread_bookmark bookmark" title="Bookmark thread"></li>
+   
     function countPost(){
       postCounter=0;
       $(".post").each(function(index, image){
@@ -244,19 +195,15 @@ $(document).ready(function() {
       inc = true;
       myObj.pagenumber = parseInt(myObj.pagenumber)+1
     }
+
     var turbo = false;
     $(".threadbar").find("ul.postbuttons").prepend('<div style="padding-top:5px; padding-right:5px;"> <input style="float:right;" type="button" class="turbo" value="TURBO!"/></div>')
     $('.turbo').click(function(event) {
       turbo = !turbo
-      //$(".turbo").css("color","#EACF4C!important;")
-      //$(".turbo").attr("style", $(".turbo").attr("style") + "color:#EACF4C!important;border: 1px solid #EACF4C!important;" )
       if (turbo){
         $(".turbo").attr("style", $(".turbo").attr("style") + "color:#EACF4C!important;border: 1px solid #EACF4C!important;" )
         setInterval(function() {
           countPost();
-          console.log("POST COUNT " + postCounter)
-          console.log((postCounter%40)==0)
-         // if ((postCounter%40)==0) myObj.pagenumber = parseInt(myObj.pagenumber)+1
          if ((postCounter%40)==0 && inc==false){
            inc = true;
            myObj.pagenumber = parseInt(myObj.pagenumber)+1
@@ -272,16 +219,10 @@ $(document).ready(function() {
       else $(".turbo").attr("style", $(".turbo").attr("style") + "color:#57FF57!important;border: 1px solid #57FF57!important;" )
     })
     var newUrl = $.param.querystring( window.location.href, { threadid:myObj.threadid, pagenumber:myObj.pagenumber } );
-    console.log(newUrl)
-
-
 
     function multiply(y) {
       $this = $(y)
-      //console.log(y)
-      //console.log([0])
       $this.find(".post").each(function(index, image){
-        //console.log(image)
         if ($(image).attr("id") > $(".post").last().attr("id") ) $(".post").last().after(image)
       })
 
@@ -289,101 +230,70 @@ $(document).ready(function() {
 
     $("tr.forum").find("td.title").prepend('<input style="float:right;" type="button" class="sb" value="Add"/>')
     if (window.location == 'http://forums.somethingawful.com/' || window.location == 'http://forums.somethingawful.com/index.php'){
-    console.log($(".favourite")[0])
+
     if (g.fflist == undefined) g.fflist = {};
         $.each(g.fflist, function(index, thing){
           var geg = new RegExp("forum ([a-zA-Z0-9_]+)")
           var g = geg.exec(thing)
           if (g!=null){
-            console.log($("."+g[1]))
             $this = $("."+g[1])
             $this.attr("class", $this.attr("class") + " favourite")
             $("#favouriteForums").after($this)
-            console.log($this.val())
-            console.log($this.find("input").remove())
-            // if ($this.val() === "Add") {
-            //   $this.remove();
-            // }
+            $this.find("input").remove()
           }
-          
-      
     })
       }
-        console.log("224")
+
    $(".favourite").find("td.title").prepend('<input style="float:right;" type="button" class="sb" value="Delete"/>')
-   console.log( $(".favourite"))
+
     $('.sb').click(function(event) {
       var a = $(this).parents('.forum');
-      console.log(a[0])
-      console.log($(a[0]).find(".sb").attr("value"))
-      if ($(a[0]).find(".sb").attr("value")=="Add"){
-        //$(a[0]).find(".sb").attr("value", "Delete")
-        var t = g.fflist
-        //console.log(a[0].outerHTML)
 
-        ////t[a.attr("class")]=(a[0].outerHTML)
-        ////$("#favouriteForums").after(a[0])
+      if ($(a[0]).find(".sb").attr("value")=="Add"){
+        var t = g.fflist
         a.attr("class", a.attr("class") + " favourite")
         t[a.attr("class")]=a.attr("class")
-        console.log(a.find("input").remove())
-        //a.find(".subforums").append('<input style="float:right;" type="button" class="sb" value="Delete"/>')
+        a.find("input").remove()
         $("#favouriteForums").after(a[0])
-
-        //console.log(t)
-
         chrome.storage.sync.set({"fflist": t},function (){
       });
-       // console.log(g.fflist[0])
-       // $("#favouriteForums").after(a[0])
       }
       else{
         var t = g.fflist;
         delete t[a.attr("class")]
                 chrome.storage.sync.set({"fflist": t},function (){
       });
-        //delete g.fflist[]
-        console.log(a.remove())
-        
-        console.log("HEY DELETE")
+        a.remove()
       }
     });
-    //console.log(g.fflist[0])
+
     if (thisForum == "forum_219"){
     if (g.snype == undefined) g.snype = false;
     if (g.snypeAudio == undefined) g.snypeAudio = true;
     if (g.snype){
-    $("tr.thread").each(function(index, value){
-      console.log(value)
-      $this = $(value)
-      var replies = $this.find("td.replies")[0].innerText
-      console.log(replies)
-      if (replies < 40){
-        if (replies%40 == 39) $(value).find(".title_inner").prepend('<div style="padding-top:5px; padding-right:5px;"> <input style="float:right;" type="button" class="snype" value="Snype"/></div>')
-      }
-      else if (replies == 0){}
-      else{
-        if (replies%40 == 39) $(value).find(".title_inner").prepend('<div style="padding-top:5px; padding-right:5px;"> <input style="float:right;" type="button" class="snype" value="Snype"/></div>')
-      }
-     // $(value).find(".title").append('<input style="float:right;" type="button" class="snype" value="Snype"/>')
-    })
+      $("tr.thread").each(function(index, value){
+        $this = $(value)
+        var replies = $this.find("td.replies")[0].innerText
+        if (replies < 40){
+          if (replies%40 == 39) $(value).find(".title_inner").prepend('<div style="padding-top:5px; padding-right:5px;"> <input style="float:right;" type="button" class="snype" value="Snype"/></div>')
+        }
+        else if (replies == 0){}
+        else{
+          if (replies%40 == 39) $(value).find(".title_inner").prepend('<div style="padding-top:5px; padding-right:5px;"> <input style="float:right;" type="button" class="snype" value="Snype"/></div>')
+        }
+      })
 
      $('.snype').click(function(event) {
       var audio = document.getElementById("audio");
-          if (g.snypeAudio) audio.play();
+      if (g.snypeAudio) audio.play();
       var a = $(this).parents('tr.thread');
-      console.log(a)
-      console.log(a.find("a")[3].href)
       var geg = new RegExp("(threadid=)([0-9]+)")
-      console.log(a.find(".snype").remove())
+      a.find(".snype").remove()
       $.each(a.find("a"), function(index, value){
-        console.log(value.href)
-              var g = geg.exec(value.href);
-      console.log()
+      var g = geg.exec(value.href);
       if (g!=null){
-        console.log(g[2])
         $.get( "http://forums.somethingawful.com/newreply.php?action=newreply&threadid="+g[2],
                 function(data) {
-                  //console.log(data)
                     formKey = jQuery('input[name="formkey"]', data).val();
                     formCookie = jQuery('input[name="form_cookie"]', data).val();
                     console.log(formKey);
@@ -401,35 +311,20 @@ $(document).ready(function() {
                         form_cookie: formCookie,
                         message: textArray[randomNumber]
                     };
-                    console.log(e)
-
-                    // $.post('newreply.php?', e, 
-                    //     function(returnedData){
-                    //          console.log(returnedData);
-                    // });
-
                 }
             );
         return false
       }
       })
-
-      // if (g!=null){
-
-
-      // }
     });
-
     }
-
   }
 
-    console.log($("#favouriteForums")[0])
     var back = "empty"
     var forward = "empty"
 
     var top = $.find(".top")[0]
-    console.log(top)
+
     $(top).find("a").each(function(index, thing){
       var geg = new RegExp("(pagenumber=)([0-9]+)")
 
@@ -456,11 +351,9 @@ $(document).ready(function() {
     })
 
     if (g.avatarHideOption == undefined) g.avatarHideOption = true;
-    console.log(g.avatarHideOption)
     if (g.avatarHideOption){
       $( ".userinfo" ).click(function(event) {
         $this = $(event.target)
-
         event.stopPropagation();  
         $(".title").toggle()
         var jet = !g.avatarHide;
@@ -471,7 +364,6 @@ $(document).ready(function() {
 
     if (g.ads == undefined) g.ads = true;
     if (g.ads) $("#ad_banner_user").remove()
-      console.log("here?")
     $(".category").each(function(index, image){
       $this = $(image);
 
@@ -518,21 +410,16 @@ $(document).ready(function() {
 
         var c = event.target.innerText;
         var geg = new RegExp("([A-Za-z0-9 ]+) -")
-        console.log()
         var fname = geg.exec(c)
         var main;
         main = !g.cats[fname[1]]
         g.cats[fname[1]] = main;
-        //console.log("here?")
-        //console.log(fname[1] + "OMG WINNININING")
         if (!main) event.target.innerText = fname[1] + " - Click here to expand category"
         else event.target.innerText = fname[1] + " - Click here to collapse category"
         $this.parent().nextUntil("tr.section").toggle();
-
         var h = g.cats;
         chrome.storage.sync.set({"cats": g.cats},function (){
         });
-        //console.log(g.cats)
       }
 
     });
@@ -570,8 +457,6 @@ $(document).ready(function() {
       }
     });
 
-
-
     if (g.oldbread == undefined) g.oldbread = false;
     if (g.oldbread){
     var bc = document.querySelectorAll(".breadcrumbs > span.mainbodytextlarge");
@@ -589,7 +474,6 @@ $(document).ready(function() {
             if (bcup.childNodes.length > 1)
             {
                 b = document.createElement("b");
-                //b.appendChild('<a class="index" href="/" title="Forums index">«</a>')
                 var c = bc[i].querySelectorAll(".up span a");
                 for (j = 0; j < c.length; j++)
                 {
@@ -604,7 +488,6 @@ $(document).ready(function() {
                 {
                     bc[i].removeChild(bc[i].childNodes[0]);
                 }
-                //console.log(b.append('<a class="index" href="/" title="Forums index">«</a>'));
                 bc[i].appendChild(b);
             }
         }
@@ -628,30 +511,22 @@ $(document).ready(function() {
       $this.find(".bbc-block").each(function(index, quote){
         $this = $(quote);
 
-       // console.log(index);
-      // console.log("found bbc")
         var posted = new RegExp("([A-Za-z0-9 -_]+) posted:")
 
         if ($this.find("h4")[0] != null){
           var k = posted.exec($this.find("h4")[0].innerText)
-         // console.log("not here")
+
           if (posted.test($this.find("h4")[0].innerText)){
   
             if (k[1] == localStorage.user){
 
                $(quote).css( "background", "rgb(204, 139, 199)" );
                $(quote).css( "background-color", "rgb(204, 139, 199)" );
-              // $(quote).css( "color", "rgb(204, 139, 199)" );
-               //$(quote).css( "color", "#EACF4C" );
-               //$(quote).attr('style', 'color:rgb(204, 139, 199) !important');
 
                $this.find("blockquote").css( "color", "#000000" );
 
-              //$(this).find(" td.postbody").css( "color", "#000000" );
-            //  console.log(thisForum)
               if (thisForum != "forum_219") $(quote).find(".quote_link").css("color", "rgb(0, 20, 255)")
               else{
-              //  console.log(amberPos)
                 if (!amberPos){
                   $(quote).find(".quote_link").css("color", "#EACF4C")
                   $(quote).attr("style", $(quote).attr("style") + "border-bottom: 1px solid #EACF4C !important;" )
@@ -681,11 +556,6 @@ $(document).ready(function() {
       });
     };
 
-
-
-
-      
-    // })
     $(".post").each(function(index, image) {
       $this = $(image);
 
@@ -695,18 +565,14 @@ $(document).ready(function() {
     $(".post").each(function(index, image) {
     	$this = $(image);
 
-      //if (g.quote) $this.myfunction();
       $this.find("iframe").attr("allowFullscreen", "true")
-
-      //console.log(g.embedTweet)
       if (g.embedTweet){
         $this.find("a").each(function(index, text){
           $this = $(text)
-          //console.log(text)
+
           var twit = new RegExp("https://twitter.com/[:A-Za-z0-9\.\/]+/(status|statuses)/([0-9]+)");
-          //console.log(text.href)
           var twitUrl = twit.exec(text.href);
-          //console.log(twitUrl)
+
           if(twit.test(text.href)){
             console.log("made it to cached")
             console.log($this[0].outerHTML)
@@ -749,11 +615,8 @@ $(document).ready(function() {
       if (g.filter == undefined) g.filter = false;
       if (g.filter){
         for(var j in filters[thisForum]){
-
           var h = new RegExp(j, 'gi');
-
           var t = h.exec(text);
-
 
           if (t != null){
             console.log("Foundd"); //had to change t[0] to t[1] to make it work, it worked previously the other way, watch out
@@ -774,7 +637,6 @@ $(document).ready(function() {
       tweetText = tweetText.replace(/\"/g,"&quot;");
 
       if (author == localStorage.user){
-        //console.log(localStorage.user)
         if (g.tweet == undefined) g.tweet = true;
         if (g.tweet){
           $(this).find(" ul.postbuttons").append('<li><a href="https://twitter.com/share" class="twitter-share-button" data-url="manas" data-text="'+tweetText+'" data-count="none" data-dnt="true">Tweet</a></li>');
@@ -791,7 +653,6 @@ $(document).ready(function() {
         var ur85 = pomf.exec(text);
         var sth = '<video autoplay loop width="450" muted="true" controls> <source src="'+ur85[0]+'" type="video/webm"> </video>'
 
-        console.log($this);
         $this.find("a").each(function( index, value ) {
           console.log("finding as here")
           var jelm = $(value);
@@ -816,10 +677,6 @@ $(document).ready(function() {
           }     
         });
       }
-
-      // WHY DOES THIS NEXT LINE WORK?
-      //if (g.quote) $(image).myfunction();
-
     });
   });
 });
