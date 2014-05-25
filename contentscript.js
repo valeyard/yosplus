@@ -28,86 +28,13 @@ $(document).ready(function() {
       $("img.lazy").lazyload();
     });
   }
-    // $("textarea").bind('paste', function(e) {
-    //         var ctl = $(this);
-    //         setTimeout(function() {
-    //             //Do whatever you want to $(ctl) here....
-    //             var c = ctl;
-    //             c = c.val()
-    //             var orig = ctl.val()
-                
-    //             if (/^https?:\/\//.test(c) && -1 == c.indexOf("\n") && -1 == c.indexOf("\r")) {
-    //                 var e;
-    //                 var h = /([^:]+):\/\/([^\/]+)(\/.*)?/.exec(decodeURI(c));
-    //                 if (h) {
-    //                     var f = {
-    //                         scheme: h[1],
-    //                         domain: h[2],
-    //                         path: h[3] || "",
-    //                         filename: "",
-    //                         query: {},
-    //                         fragment: ""
-    //                     }, h = f.path.lastIndexOf("#"); - 1 != h && (f.fragment = f.path.substr(h + 1), f.path = f.path.substr(0,
-    //                         h));
-    //                     console.log(f)
-    //                     h = f.path.lastIndexOf("?"); - 1 != h && (f.query = M(f.path.substr(h + 1)), f.path = f.path.substr(0, h));
-    //                     h = f.path.lastIndexOf("/"); - 1 != h && (f.filename = f.path.substr(h + 1));
-    //                     e = f
-    //                 } else e = null;
-    //                 var f = h = "",
-    //                     g = !1,
-    //                     i = e.filename.lastIndexOf("."); - 1 != i && (h = e.filename.substr(i + 1), f = e.filename.substr(0, i));
-    //                 if ((i = /^([^\.]+\.)?youtu\.be$/.test(e.domain)) || /^([^\.]+\.)?youtube(-nocookie)?\.com$/.test(e.domain))
-    //                     if (e.query.v) c = '[video type="youtube"', e.query.hd && (c += ' res="hd"'), e.fragment && (g = M(e.fragment), g.t && (c += ' start="' +
-    //                         parseInt(g.t, 10) + '"')), c += "]" + e.query.v + "[/video]", g = !0;
-    //                     else if (i || /^\/embed/.test(e.path)) c = '[video type="youtube"', e.query.hd && (c += ' res="hd"'), e.query.start && (c += ' start="' + parseInt(e.query.start, 10) + '"'), c += "]" + e.path.substr(e.path.lastIndexOf("/") + 1) + "[/video]", g = !0;
-    //                     console.log(h)
-    //                 if (!g) switch (h) {
-    //                 case "jpg":
-    //                 case "gif":
-    //                 case "png":
-    //                     if (/(www\.|i\.)imgur.com/i.test(e.domain)) switch (e = "", 5 < f.length && (e = f.substr(f.length - 1)), e) {
-    //                     case "s":
-    //                     case "l":
-    //                     case "t":
-    //                         c = "[url=" + (c.substr(0, c.lastIndexOf("/") + 1) + f.substr(0, f.length -
-    //                             1) + "." + h) + "][img]" + c + "[/img][/url]";
-    //                         break;
-    //                     default:
-    //                         c = "[img]" + c + "[/img]"
-    //                     } else c = "[img]" + c + "[/img]"
-    //                 }
-    //             }
-    //             //$(ctl)[0].replace(orig, c)
-    //             ctl.val().replace("test", "asd")
-    //             //console.log(ctl[0].val())
-    //             console.log(ctl.val("ARSE"))
-    //             //ctl.innerText = ctl.val()
-    //         }, 100);
-    // });
-
-    // console.log(g.cats);
-    // console.log(g.arse)
-    // g.arse = "asds"
-    // console.log(g.arse)
-    // //chrome.storage.sync.set(["arse": g.arse])
-    //         //chrome.storage.sync.set({"arse": g.arse},function (){});
-
-    // $.each(settings, function(index, value){
-    //   console.log(value)
-    //   console.log(g[value])
-    // })
-    //if (g.snype == undefined) 
-
-
-    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 
     var forum_177 = {"\\b(daniel bryan|bryan|dbd|db)\\b":"vanilla midget", "\\bover/under\\b":"odds"};
     var forum_219 = {"\\bspongeh\\b":"bread stymie", "\\bsteve jobs\\b":"stebe jobs", "\\bandroid\\b":"anroid", "\\bgodaddy\\b":"nodaddy", "\\bValeyard\\b":"asshole", "\\apt gangbang\\b":"<marquee>apt gangbang</marquee>"};
     var forum_26 = {"\\b ralp \\b":"the talking toilet", "\\bgirls\\b":"bleeders", "\\bgbs\\b":"the moon", "\\bguys\\b":"bleeders"};
     var filters = {"forum_177": forum_177, "forum_219": forum_219 ,"forum_26": forum_26}
 
-    //!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
     
     var c = 0;
     
@@ -265,15 +192,7 @@ $(document).ready(function() {
   
 
     var ff = '<tr class="forum forum_268"><td class="icon"><a href="forumdisplay.php?forumid=268"><img src="http://fi.somethingawful.com/forumicons/byob.gif" title="118527 replies in 4674 threads" alt=""></a></td><td class="title"><a class="forum" href="forumdisplay.php?forumid=268" title="Want to have a good time with friends online? Step in and have a chat. Chill out and enjoy yourselves online.">BYOB 8.2</a><div class="subforums"><b>SUBFORUMS:</b> (None)<input style="float:right;" type="button" class="sb" value="Add"></div></td><td class="moderators"><a href="member.php?action=getinfo&amp;userid=85738">Jett</a>, <a href="member.php?action=getinfo&amp;userid=173896">Arnold of Soissons</a></td></tr>'
-    //$("#forums").console.log($this)
-    //var jQueryObject = $('<div></div>').html( ff ).children();
-    //var $jQueryObject = $($.parseHTML(ff));
-    //var fflist = [$jQueryObject[0]];
-    //console.log(fflist)
-    // $("tr.forum").each(function(index, thing){
-    //   console.log(thing)
-    // })
-    //$("#forums").find("table").prepend('<th class="category" colspan="2">Test - Click here to collapse category</th>')
+   
     console.log($("tr.section:first-of-type").before('<tr class="section" id="favouriteForums"><th class="category" colspan="2">Favourites - Click here to collapse category</th><th class="moderators">Moderators</th></tr>'))
     $(".category").each(function(index, image){
       console.log(image)
@@ -618,17 +537,6 @@ $(document).ready(function() {
 
     });
 
-
-    // $("tr.forum_26").each(function(index, image){
-    //   $this = $(image);
-
-    //   var tweetText = $(this).find(" a.forum")[0].setAttribute("title", "LMAO");
-    //   $(this).find(" a.forum")[0].innerText = "FYAD: cherry blossom petal landed in the lunch"
-    //   $(this).find(" a.forum_154")[0].setAttribute("title", "LMAO");
-    //   $(this).find(" a.forum_154")[0].innerText = "Synthy's overflowing stomach"
-    // });
-
-
     $(".smilie_list").each(function(index, image) {
     	$this = $(image);
 
@@ -703,19 +611,6 @@ $(document).ready(function() {
     }
     $("span.mainbodytextlarge").prepend('<a class="index" href="/" title="Forums index">«</a>');
   }
-   //$(".breadcrumbs").each(function(index, image) {
-     //$this = $(image);
-     //console.log($this.find("mainbodytextlarge")[0])
-     //console.log($("span.mainbodytextlarge").contents().get(0).nodeValue)
-     //console.log($("span.mainbodytextlarge").clone().children().remove().end().text() = "asds")
-     //$("span.mainbodytextlarge").prepend('<a class="index" href="/" title="Forums index">«</a>');
-     // console.log($this.find("a.up")[0].outerHTML = $this.find("a.up")[0].innerHTML)/// = $this.find("a.up")[0].innerHTML
-     // $this.find("span a").each(function(index, te) {
-     //   $this = $(te);
-     //   $this.after(" › ")
-     //   console.log(this)
-     // });
-   //});
 
     $(".mainbodytextsmall").each(function(index, image) {
     	$this = $(image);
@@ -729,32 +624,20 @@ $(document).ready(function() {
     });
 
     $.fn.myfunction = function () {
-      //console.log("into function")
-     // console.log($this)
-     // console.log(g.quote + " G QUOTE")
-     // console.log(amberPos + " AMBERPOS")
+
       $this.find(".bbc-block").each(function(index, quote){
         $this = $(quote);
 
        // console.log(index);
       // console.log("found bbc")
         var posted = new RegExp("([A-Za-z0-9 -_]+) posted:")
-        //console.log($this)
-        //console.log($this[0].innerText)
-       // console.log($this.find("h4"))
-        //console.log($(quote).find(".h4").context)
-        //var name = $this.find(".quote_link")[0].innerText
+
         if ($this.find("h4")[0] != null){
           var k = posted.exec($this.find("h4")[0].innerText)
          // console.log("not here")
           if (posted.test($this.find("h4")[0].innerText)){
-            //console.log($this.find("h4"))
-           // $h4 = $this.find("h4")
-          // console.log(k[1])
+  
             if (k[1] == localStorage.user){
-
-            //  console.log($this.find("blockquote"))
-            //  console.log($this)
 
                $(quote).css( "background", "rgb(204, 139, 199)" );
                $(quote).css( "background-color", "rgb(204, 139, 199)" );
@@ -790,47 +673,29 @@ $(document).ready(function() {
                   //$(quote).attr("style", $(quote).attr("style") + "color #EACF4C !important;" )
                 }
               } 
-              //$(quote).find(".quote_link").attr($(quote).find(".quote_link").attr() + , )
-              // $this.css( "color", "#2A22E2" );
-              // $(quote).css( "font-weight", "bold" );
 
-              //$this.find("h4").css( "color", "#2A22E2" );
             }
           }
         } 
-        //console.log($this.find("h4")[0].innerText)
-        //console.log($this.find(".quote_link")[0].innerText)
+
       });
     };
 
 
-    // $(".up").each(function(index, value){
-    //   $this = $(value).parent()[0]
-    //   console.log($this)
-
-    //   $(value).find("span").each(function(index, invalue){
-    //     $(invalue).find("a").after(" > ")
-    //     //console.log($(invalue)[0].innerHTML)
-    //   $(invalue).parent()[0].innerHTML = $(invalue)[0].innerHTML
-    //   })
-
-    //   //console.log($this.innerText)
-    //   //console.log($this.innerHTML = $this.innerHTML.replace(/ > /, "HJ"))
-    //  // console.log($(value))
-    //   $(value)[0].outerHTML = $(value)[0].innerHTML
-    //   //console.log($(value))
-    //  // console.log($(value)[0].replace(" › ", ""))
 
 
       
     // })
+    $(".post").each(function(index, image) {
+      $this = $(image);
 
+      if (g.quote) $this.myfunction();
+      });
     if (g.embedTweet == undefined) g.embedTweet = true;
     $(".post").each(function(index, image) {
     	$this = $(image);
-      //console.log($this)
-     // console.log(g.quote)
-      if (g.quote) $this.myfunction();
+
+      //if (g.quote) $this.myfunction();
       $this.find("iframe").attr("allowFullscreen", "true")
 
       //console.log(g.embedTweet)
@@ -845,7 +710,7 @@ $(document).ready(function() {
           if(twit.test(text.href)){
             console.log("made it to cached")
             console.log($this[0].outerHTML)
-            $this.wrap('<div class="tweet' + twitUrl[1] + '">')
+            $this.wrap('<div class="tweet' + twitUrl[2] + '">')
             console.log($this.parent)
             console.log($this[0].outerHTML)
             // if (localStorage.getItem(twitUrl[0]) !== null){
@@ -864,7 +729,7 @@ $(document).ready(function() {
                   $this.empty()
                   console.log($this[0].outerHTML)
                   localStorage.setItem(twitUrl[0], data.html)
-                  $('.tweet' + twitUrl[1]).html(data.html);
+                  $('.tweet' + twitUrl[2]).html(data.html);
                   counter++;
                 }
               });
@@ -872,43 +737,6 @@ $(document).ready(function() {
           }
         });
       }
-
-      // if (g.embedTweet){
-      //         $this.find("a").each(function(index, text){
-      //         //$(".postbody", this).each(function(index, text) {
-      //           $this = $(text)
-      //           var twit = new RegExp("https://twitter.com/[_:A-Za-z0-9\.\/]+/(status|statuses)/([0-9]+)");
-      //           //console.log(text)
-      //           var twitUrl = twit.exec(text);
-      //           //console.log(twitUrl)
-      //           if(twit.test(text)){
-      //             console.log("made it to cached")
-      //             //twitUrl[2] = twitUrl[2].trim();
-      //             $this.wrap('<div class="tweetmyf' + twitUrl[1] + '" id="'+twitUrl[2]+'">')
-      //              if (localStorage.getItem(twitUrl[0]) !== null){
-      //               $('#'+twitUrl[2]).html(localStorage.getItem(twitUrl[0]));
-      //               counter++;
-      //             }
-      //             else{
-      //               $.ajax({
-                     
-      //                 url: "https://api.twitter.com/1/statuses/oembed.json?url="+twitUrl[0]+"&omit_script=false",
-      //                 async:true,
-      //                 success: function(data){
-      //                   //console.log("made it to ajaz")
-      //                   //console.log(data.html)
-      //                   $this.empty()
-      //                   localStorage.setItem(twitUrl[0], data.html)
-      //                   $("#"+twitUrl[2]).html(data.html);
-      //                   counter++;
-      //                 }
-      //               });
-      //             }
-      //           }
-      //         });
-      //       }
-
-
 
     	var text = $(this).find(" td.postbody")[0].innerHTML;
       var tweetText = $(this).find(" td.postbody")[0].innerText;
@@ -989,13 +817,9 @@ $(document).ready(function() {
         });
       }
 
-      //console.log($(".post").attr("class"))
-      // $(".post").each(function(index, image) {
-      //   $this = $(image);
-      //   console.log($(image).wrap("<div>"))
-      //   console.log("LOl")
-      //   //if (g.quote) $this.myfunction();
-      // })
+      // WHY DOES THIS NEXT LINE WORK?
+      //if (g.quote) $(image).myfunction();
+
     });
   });
 });
