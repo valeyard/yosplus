@@ -18,7 +18,7 @@ chrome.runtime.onInstalled.addListener(function(details){
 	console.log("ASASDASDASDASDASDA")
     if(details.reason == "install"){
         console.log("This is a first install!");
-        chrome.storage.sync.set({"snype":false, "fflist":{}, "signature":false, "quote":true, "avatarHide":true, "ads":true,"embedTweet":true,"tweet": false, "vine":true, "filter":true, "webm":true, "tree":false, "cats":{"Favourites":true, "Main": true, "Discussion": true, "The Finer Arts": true, "The Community": true, "Archives": true}},function (){
+        chrome.storage.sync.set({"oldbread":false, "lazyload":false, "avatarHideOption":false, "snypeAudio":true, "snype":false, "fflist":{}, "signature":false, "quote":true, "avatarHide":false, "ads":true,"embedTweet":true,"tweet": false, "vine":true, "filter":true, "webm":true, "tree":false, "cats": {"Favourites":true, "Main": true, "Discussion": true, "The Finer Arts": true, "The Community": true, "Archives": true}},function (){
 });
     }else if(details.reason == "update"){
         var thisVersion = chrome.runtime.getManifest().version;

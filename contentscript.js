@@ -1,116 +1,17 @@
-
-// $.extend({
-//     getManyCss: function(urls, callback, nocache){
-//         if (typeof nocache=='undefined') nocache=false; // default don't refresh
-//         $.when(
-//             $.each(urls, function(i, url){
-//                 if (nocache) url += '?_ts=' + new Date().getTime(); // refresh? 
-//                 $.get(url, function(){
-//                   console.log(url + " LOL WTF URL")
-//                     $('<link>', {rel:'stylesheet', type:'text/css', 'href':url}).appendTo('head');
-//                 });
-//             })
-//         ).then(function(){
-//             if (typeof callback=='function') callback();
-//         });
-//     },
-// });
-
-// $(window).keydown(function(e) {
-//     e.preventDefault(); //prevent default arrow key behavior
-    
-//     var targetElement;
-//     //down
-//     if (e.keyCode == 40) {
-//         $targetElement = $('.active').next('.post');
-//         console.log("down")
-//     }
-//     //up
-//     else if (e.keyCode == 38) {
-//         $targetElement = $('.active').prev('.post');
-//     }
-//     if (!$targetElement.length) {return;}
-//     $('.active').removeClass('active');
-//     $targetElement.addClass('active');
-    
-//     //scroll element into view    
-//     $('html, body').clearQueue().animate({scrollTop: $targetElement.offset().top }, 1000);
-// });
-
-// jQuery.fn.anchorAnimate = function(settings) {
-
-// settings = jQuery.extend({
-//         speed : 1100
-// }, settings);
-
-// return this.each(function(){
-//     var caller = this
-//     $(caller).click(function (event) {
-//         event.preventDefault()
-//         var locationHref = window.location.href
-//         var elementClick = $(caller).attr("href")
-
-//         var destination = $(elementClick).offset().top;
-//         $("html:not(:animated),body:not(:animated)").animate({
-//             scrollTop: destination
-//         }, settings.speed, function() {
-//                 window.location.hash = elementClick
-//         });
-//         return false;
-//     })
-// })
-// }
-
-  // function showData(formData, form, options) {
-  //   var formData = [ { name: 'username', value: 'jresig' }, { name: 'password', value: 'secret' } ];
-  //   $.each(formData, function(i, obj) { console.log(obj.name + " | " + obj.value); });
-  //   return true;
-  // }
-
-
-
-
-
 $(document).ready(function() {
   var storage = chrome.storage.sync;
   var g;
 
 
-  // var options = {
-  //     beforeSubmit: showData
-  //   };
-  //   $('form').ajaxForm(options);
-
-  // $(".post").anchorAnimate({
-  //       speed: 600
-  //   });
-
   var next;
 
-
-  // window.addEventListener("keyup", function(e){ 
-  //   if(e.keyCode == 69){
-  //     if ( next === undefined ) {
-  //       next = $('.post').next();
-  //       console.log(next)
-  //     } else {
-  //        next = next.next();   
-  //     }
-  //     console.log($("#thread"))
-  //     $("#thread").scrollTo(next , 800, {margin:true} );
-  //   }
-  // })
-
-//   $.getScript("https://dl.dropboxusercontent.com/u/17019326/salib.js", function(){
-//     alert("Running salib.js");
-// });
-  var settings = ["lazyload", "avatarHideOption", "snypeAudio", "snype", "fflist", "signature", "quote", "avatarHide", "ads", "tweet", "filter", "vine", "webm", "cats", "main", "tree", "embedTweet"];
+  var settings = ["iglist", "oldbread", "lazyload", "avatarHideOption", "snypeAudio", "snype", "fflist", "signature", "quote", "avatarHide", "ads", "tweet", "filter", "vine", "webm", "cats", "main", "tree", "embedTweet"];
   chrome.storage.sync.get(settings,function (obj){
     console.log(JSON.stringify(obj));
     console.log(obj);
     g = obj;
 
-    if (g.lazyload == "undefined") g.lazyload = false;
+    if (g.lazyload == undefined) g.lazyload = false;
     if (g.lazyload){
     $("td.postbody").find("img").each(function(index, image){
       $this = $(image)
@@ -196,13 +97,13 @@ $(document).ready(function() {
     //   console.log(value)
     //   console.log(g[value])
     // })
-    //if (g.snype == "undefined") 
+    //if (g.snype == undefined) 
 
 
     !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 
     var forum_177 = {"\\b(daniel bryan|bryan|dbd|db)\\b":"vanilla midget", "\\bover/under\\b":"odds"};
-    var forum_219 = {"\\bspongeh\\b":"bread stymie", "\\bsteve jobs\\b":"stebe jobs", "\\bandroid\\b":"apple", "\\bprovide\\b":"bleeders", "\\bgodaddy\\b":"nodaddy", "\\bValeyard\\b":"asshole", "\\apt gangbang\\b":"<marquee>apt gangbang</marquee>"};
+    var forum_219 = {"\\bspongeh\\b":"bread stymie", "\\bsteve jobs\\b":"stebe jobs", "\\bandroid\\b":"anroid", "\\bgodaddy\\b":"nodaddy", "\\bValeyard\\b":"asshole", "\\apt gangbang\\b":"<marquee>apt gangbang</marquee>"};
     var forum_26 = {"\\b ralp \\b":"the talking toilet", "\\bgirls\\b":"bleeders", "\\bgbs\\b":"the moon", "\\bguys\\b":"bleeders"};
     var filters = {"forum_177": forum_177, "forum_219": forum_219 ,"forum_26": forum_26}
 
@@ -296,7 +197,7 @@ $(document).ready(function() {
         col.classList.remove('over');
       });
     }
-    if (g.avatarHide == "undefined") g.avatarHide = false;
+    if (g.avatarHide == undefined) g.avatarHide = false;
 
     $( ".userinfo" ).each(function(index, image) {
       $this = $(image)
@@ -306,7 +207,20 @@ $(document).ready(function() {
       //g.avatarHide = !g.avatarHide;
 
     });
-  
+    var igName = g.iglist
+    $( "input.bginput" ).each(function(index, image) {
+      $this = $(image)
+      if ($this.attr("type") == "text") var name = $this.attr("value")
+      if (name != undefined) igName.push(name)
+      console.log(igName)
+
+      //g.avatarHide = !g.avatarHide;
+
+    });
+    console.log(g.iglist)
+    chrome.storage.sync.set({"iglist": igName})
+    console.log(g.iglist)
+
     var audioPath = chrome.extension.getURL("audio/Headshot.wav");
     console.log(audioPath)
     $("body").prepend('<audio id="audio" src=' + audioPath + ' ></audio>')
@@ -318,7 +232,7 @@ $(document).ready(function() {
     else{
       amberPos = false;
     }
-    if (g.signature == "undefined") g.siganture = false;
+    if (g.signature == undefined) g.siganture = false;
     //window.addEventListener("keyup", function(e){ if(e.keyCode == 27) history.back(); })
     $(':checkbox').each(function(index, element) {
         var name = this.name;
@@ -328,7 +242,7 @@ $(document).ready(function() {
     });
 
     //if (amberPos == null) amberPos = false;
-    if (g.quote == "undefined") g.quote = true;
+    if (g.quote == undefined) g.quote = true;
     $("#switchpos").click(function(event) {
       console.log($("#blarf219").attr("href"))
       if ($("#blarf219").attr("href") == "/css/219a.css"){
@@ -342,6 +256,8 @@ $(document).ready(function() {
       
       $(".post").each(function(index, image) {
         $this = $(image);
+        console.log($this.wrap("<div>"))
+        console.log("LOl")
         if (g.quote) $this.myfunction();
       })
     })
@@ -364,19 +280,98 @@ $(document).ready(function() {
       $this = $(image)
      // $this.prepend("test")
     })
+    var postCounter = 0
+    $(".post").each(function(index, image){
+      postCounter++;
+      $this = $(image)
+     // $this.prepend("test")
+     // $.get( "http://forums.somethingawful.com/newreply.php?action=newreply&threadid="+g[2],
+     //         function(data) {
+     //           //console.log(data)
+     //            
+
+     //         }
+     //     );
+    })
+
+    console.log(postCounter)
+    console.log(window.location.href)
+    // Serializing a params string using the built-in jQuery.param method.
+    // myStr is set to "a=1&b=2&c=true&d=hello+world"
+    
+
+    // Deserialize the params string into an object.
+    // myObj is set to { a:"1", b:"2", c:"true", d:"hello world" }
+    //var myObj = $.deparam( window.location.href );
+    //var myStr = myObj.param({ pagenumber:5444 });
+    var qs = $.param.querystring();
+    var myObj = $.deparam( qs )
+    console.log(myObj)
+    //var myStr = $.param({ myObj.threadid, myObj.pagenumber + 1 });
+    //var myStr = $.param({ threadid:myObj.threadid, pagenumber:parseInt(myObj.pagenumber) +1 });
+    //console.log(myStr)
+    var inc = false;
+    //'<div style="padding-top:5px; padding-right:5px;"> <input style="float:right;" type="button" class="turbo" value="TURBO!"/></div>'
+    //<li><img src="http://fi.somethingawful.com/images/buttons/button-bookmark.png" alt="Bookmark" class="thread_bookmark bookmark" title="Bookmark thread"></li>
+    function countPost(){
+      postCounter=0;
+      $(".post").each(function(index, image){
+      postCounter++;
+      })
+      if ((postCounter%40)!=0) inc = false;
+    }
+
+    if ((postCounter%40)==0 && inc==false){
+      inc = true;
+      myObj.pagenumber = parseInt(myObj.pagenumber)+1
+    }
+    var turbo = false;
+    $(".threadbar").find("ul.postbuttons").prepend('<div style="padding-top:5px; padding-right:5px;"> <input style="float:right;" type="button" class="turbo" value="TURBO!"/></div>')
+    $('.turbo').click(function(event) {
+      turbo = !turbo
+      //$(".turbo").css("color","#EACF4C!important;")
+      //$(".turbo").attr("style", $(".turbo").attr("style") + "color:#EACF4C!important;border: 1px solid #EACF4C!important;" )
+      if (turbo){
+        $(".turbo").attr("style", $(".turbo").attr("style") + "color:#EACF4C!important;border: 1px solid #EACF4C!important;" )
+        setInterval(function() {
+          countPost();
+          console.log("POST COUNT " + postCounter)
+          console.log((postCounter%40)==0)
+         // if ((postCounter%40)==0) myObj.pagenumber = parseInt(myObj.pagenumber)+1
+         if ((postCounter%40)==0 && inc==false){
+           inc = true;
+           myObj.pagenumber = parseInt(myObj.pagenumber)+1
+         }
+          newUrl = $.param.querystring( window.location.href, { threadid:myObj.threadid, pagenumber:myObj.pagenumber } );
+          $.get( newUrl,
+                  function(data) {
+                    multiply(data)              
+                  }
+              );
+        }, 10000);
+      }
+      else $(".turbo").attr("style", $(".turbo").attr("style") + "color:#57FF57!important;border: 1px solid #57FF57!important;" )
+    })
+    var newUrl = $.param.querystring( window.location.href, { threadid:myObj.threadid, pagenumber:myObj.pagenumber } );
+    console.log(newUrl)
 
 
-    // $( ".sb" ).click(function(event) {
-    //   console.log("HEY")
-    //   $this = $(event.target)
-    //   console.log(event)
-    //   //$("#favouriteForums").append($this)
-    // })
+
+    function multiply(y) {
+      $this = $(y)
+      //console.log(y)
+      //console.log([0])
+      $this.find(".post").each(function(index, image){
+        //console.log(image)
+        if ($(image).attr("id") > $(".post").last().attr("id") ) $(".post").last().after(image)
+      })
+
+    }
 
     $("tr.forum").find("td.title").prepend('<input style="float:right;" type="button" class="sb" value="Add"/>')
     if (window.location == 'http://forums.somethingawful.com/' || window.location == 'http://forums.somethingawful.com/index.php'){
     console.log($(".favourite")[0])
-    if (g.fflist == "undefined") g.fflist = {};
+    if (g.fflist == undefined) g.fflist = {};
         $.each(g.fflist, function(index, thing){
           var geg = new RegExp("forum ([a-zA-Z0-9_]+)")
           var g = geg.exec(thing)
@@ -435,8 +430,8 @@ $(document).ready(function() {
     });
     //console.log(g.fflist[0])
     if (thisForum == "forum_219"){
-    if (g.snype == "undefined") g.snype = false;
-    if (g.snypeAudio == "undefined") g.snypeAudio = true;
+    if (g.snype == undefined) g.snype = false;
+    if (g.snypeAudio == undefined) g.snypeAudio = true;
     if (g.snype){
     $("tr.thread").each(function(index, value){
       console.log(value)
@@ -541,7 +536,7 @@ $(document).ready(function() {
       }
     })
 
-    if (g.avatarHideOption == "undefined") g.avatarHideOption = true;
+    if (g.avatarHideOption == undefined) g.avatarHideOption = true;
     console.log(g.avatarHideOption)
     if (g.avatarHideOption){
       $( ".userinfo" ).click(function(event) {
@@ -555,7 +550,7 @@ $(document).ready(function() {
       });
     }
 
-    if (g.ads == "undefined") g.ads = true;
+    if (g.ads == undefined) g.ads = true;
     if (g.ads) $("#ad_banner_user").remove()
       console.log("here?")
     $(".category").each(function(index, image){
@@ -573,7 +568,7 @@ $(document).ready(function() {
       else $this[0].innerText = fname[1] + " - Click here to collapse category"
 
     });
-    if (g.tree == "undefined") g.tree = false;
+    if (g.tree == undefined) g.tree = false;
     if (g.tree){
       $(".subforums").children().each(function(index, image){
 
@@ -596,7 +591,7 @@ $(document).ready(function() {
     var fya = $.find("tr.forum.forum_26")[0];
     var $terry = $(fya);
 
-    if (g.cats == "undefined") g.cats = {"Favourites":true, "Main": true, "Discussion": true, "The Finer Arts": true, "The Community": true, "Archives": true}
+    if (g.cats == undefined) g.cats = {"Favourites":true, "Main": true, "Discussion": true, "The Finer Arts": true, "The Community": true, "Archives": true}
     $( "#forums" ).click(function(event) {
       $this = $(event.target)
 
@@ -667,22 +662,60 @@ $(document).ready(function() {
       }
     });
 
-    $(".breadcrumbs").each(function(index, image) {
-      $this = $(image);
-      console.log($this.find("a.up")[0].outerHTML = $this.find("a.up")[0].innerHTML)/// = $this.find("a.up")[0].innerHTML
-      //$this.find("a.up")[0].innerText = ""
-      //console.log($this.find("a.up")[0].innerHTML)
-      // var att=document.createAttribute("draggable");
-      // att.value="true";
-      // this.setAttributeNode(att);;
 
-      // var att1=document.createAttribute("id");
 
-      // if (this.getAttribute("id") != "favourite"){
-      //   att1.value="basic";
-      //   this.setAttributeNode(att1);;
-      // }
-    });
+    if (g.oldbread == undefined) g.oldbread = false;
+    if (g.oldbread){
+    var bc = document.querySelectorAll(".breadcrumbs > span.mainbodytextlarge");
+    for (i = 0; i < bc.length; i++)
+    {
+        if (bc[i].childNodes[0].tagName.toLowerCase() == "b")
+        {
+            bc[i].parentNode.insertBefore(bc[i].childNodes[0], bc[i]);
+            bc[i].parentNode.removeChild(bc[i]);
+            continue;
+        }
+        else
+        {
+            var bcup = bc[i].querySelector("a.up");
+            if (bcup.childNodes.length > 1)
+            {
+                b = document.createElement("b");
+                //b.appendChild('<a class="index" href="/" title="Forums index">«</a>')
+                var c = bc[i].querySelectorAll(".up span a");
+                for (j = 0; j < c.length; j++)
+                {
+                    b.appendChild(c[j]);
+                    b.appendChild(document.createTextNode(" › "));
+                }
+
+                var bclast = bc[i].querySelector(".bclast");
+                if (bclast) b.appendChild(bclast.cloneNode(true));
+
+                while (bc[i].childNodes.length > 0)
+                {
+                    bc[i].removeChild(bc[i].childNodes[0]);
+                }
+                //console.log(b.append('<a class="index" href="/" title="Forums index">«</a>'));
+                bc[i].appendChild(b);
+            }
+        }
+    }
+    $("span.mainbodytextlarge").prepend('<a class="index" href="/" title="Forums index">«</a>');
+  }
+   //$(".breadcrumbs").each(function(index, image) {
+     //$this = $(image);
+     //console.log($this.find("mainbodytextlarge")[0])
+     //console.log($("span.mainbodytextlarge").contents().get(0).nodeValue)
+     //console.log($("span.mainbodytextlarge").clone().children().remove().end().text() = "asds")
+     //$("span.mainbodytextlarge").prepend('<a class="index" href="/" title="Forums index">«</a>');
+     // console.log($this.find("a.up")[0].outerHTML = $this.find("a.up")[0].innerHTML)/// = $this.find("a.up")[0].innerHTML
+     // $this.find("span a").each(function(index, te) {
+     //   $this = $(te);
+     //   $this.after(" › ")
+     //   console.log(this)
+     // });
+   //});
 
     $(".mainbodytextsmall").each(function(index, image) {
     	$this = $(image);
@@ -792,82 +825,88 @@ $(document).ready(function() {
       
     // })
 
-    if (g.embedTweet == "undefined") g.embedTweet = true;
+    if (g.embedTweet == undefined) g.embedTweet = true;
     $(".post").each(function(index, image) {
     	$this = $(image);
       //console.log($this)
      // console.log(g.quote)
       if (g.quote) $this.myfunction();
+      $this.find("iframe").attr("allowFullscreen", "true")
 
-      //console.log($this.find("iframe").attr("allowFullscreen", "true"))
-      // console.log(g.embedTweet)
-      // if (g.embedTweet){
-      //   $this.find("a").each(function(index, text){
-      //     $this = $(text)
-      //     var twit = new RegExp("https://twitter.com/[:A-Za-z0-9\.\/]+/(status|statuses)/([0-9]+)");
-      //     //console.log(text.href)
-      //     var twitUrl = twit.exec(text.href);
-      //     //console.log(twitUrl)
-      //     if(twit.test(text.href)){
-      //       console.log("made it to cached")
-      //       $this.wrap('<div class="tweet' + twitUrl[1] + '">')
-      //       if (localStorage.getItem(twitUrl[0]) !== null){
-      //         $('.tweet' + twitUrl[1]).html(localStorage.getItem(twitUrl[0]));
-      //         counter++;
-      //       }
-      //       else{
-      //         $.ajax({
+      //console.log(g.embedTweet)
+      if (g.embedTweet){
+        $this.find("a").each(function(index, text){
+          $this = $(text)
+          //console.log(text)
+          var twit = new RegExp("https://twitter.com/[:A-Za-z0-9\.\/]+/(status|statuses)/([0-9]+)");
+          //console.log(text.href)
+          var twitUrl = twit.exec(text.href);
+          //console.log(twitUrl)
+          if(twit.test(text.href)){
+            console.log("made it to cached")
+            console.log($this[0].outerHTML)
+            $this.wrap('<div class="tweet' + twitUrl[1] + '">')
+            console.log($this.parent)
+            console.log($this[0].outerHTML)
+            // if (localStorage.getItem(twitUrl[0]) !== null){
+            //   $('.tweet' + twitUrl[1]).html(localStorage.getItem(twitUrl[0]));
+            //   counter++;
+            // }
+           // else{
+              $.ajax({
                 
-      //           url: "https://api.twitter.com/1/statuses/oembed.json?url="+twitUrl[0]+"&omit_script=true",
-      //           async:false,
-      //           success: function(data){
-      //             console.log("made it to ajaz")
-      //             console.log(data.html) 
-      //             $this.empty()
-      //             localStorage.setItem(twitUrl[0], data.html)
-      //             $('.tweet' + twitUrl[1]).html(data.html);
-      //             counter++;
+                url: "https://api.twitter.com/1/statuses/oembed.json?url="+twitUrl[0]+"&omit_script=true",
+                async:false,
+                success: function(data){
+                  console.log("made it to ajaz")
+                  console.log(data.html) 
+                  console.log($this[0].outerHTML)
+                  $this.empty()
+                  console.log($this[0].outerHTML)
+                  localStorage.setItem(twitUrl[0], data.html)
+                  $('.tweet' + twitUrl[1]).html(data.html);
+                  counter++;
+                }
+              });
+            //}
+          }
+        });
+      }
+
+      // if (g.embedTweet){
+      //         $this.find("a").each(function(index, text){
+      //         //$(".postbody", this).each(function(index, text) {
+      //           $this = $(text)
+      //           var twit = new RegExp("https://twitter.com/[_:A-Za-z0-9\.\/]+/(status|statuses)/([0-9]+)");
+      //           //console.log(text)
+      //           var twitUrl = twit.exec(text);
+      //           //console.log(twitUrl)
+      //           if(twit.test(text)){
+      //             console.log("made it to cached")
+      //             //twitUrl[2] = twitUrl[2].trim();
+      //             $this.wrap('<div class="tweetmyf' + twitUrl[1] + '" id="'+twitUrl[2]+'">')
+      //              if (localStorage.getItem(twitUrl[0]) !== null){
+      //               $('#'+twitUrl[2]).html(localStorage.getItem(twitUrl[0]));
+      //               counter++;
+      //             }
+      //             else{
+      //               $.ajax({
+                     
+      //                 url: "https://api.twitter.com/1/statuses/oembed.json?url="+twitUrl[0]+"&omit_script=false",
+      //                 async:true,
+      //                 success: function(data){
+      //                   //console.log("made it to ajaz")
+      //                   //console.log(data.html)
+      //                   $this.empty()
+      //                   localStorage.setItem(twitUrl[0], data.html)
+      //                   $("#"+twitUrl[2]).html(data.html);
+      //                   counter++;
+      //                 }
+      //               });
+      //             }
       //           }
       //         });
       //       }
-      //     }
-      //   });
-      // }
-
-      if (g.embedTweet){
-              //$this.find("a").each(function(index, text){
-              $(".postbody a[href*='twitter']", this).each(function(index, text) {
-                $this = $(text)
-                var twit = new RegExp("https://twitter.com/[_:A-Za-z0-9\.\/]+/(status|statuses)/([0-9]+)");
-                //console.log(text)
-                var twitUrl = twit.exec(text);
-                //console.log(twitUrl)
-                if(twit.test(text)){
-                  console.log("made it to cached")
-                  //twitUrl[2] = twitUrl[2].trim();
-                  $this.wrap('<div class="tweetmyf' + twitUrl[1] + '" id="'+twitUrl[2]+'">')
-                   if (localStorage.getItem(twitUrl[0]) !== null){
-                    $('#'+twitUrl[2]).html(localStorage.getItem(twitUrl[0]));
-                    counter++;
-                  }
-                  else{
-                    $.ajax({
-                     
-                      url: "https://api.twitter.com/1/statuses/oembed.json?url="+twitUrl[0]+"&omit_script=false",
-                      async:true,
-                      success: function(data){
-                        //console.log("made it to ajaz")
-                        //console.log(data.html)
-                        $this.empty()
-                        localStorage.setItem(twitUrl[0], data.html)
-                        $("#"+twitUrl[2]).html(data.html);
-                        counter++;
-                      }
-                    });
-                  }
-                }
-              });
-            }
 
 
 
@@ -879,7 +918,7 @@ $(document).ready(function() {
       var pomf = new RegExp("[:A-Za-z0-9\.\/]+\\.webm");
       var gif = new RegExp("(http|https)://[A-Za-z0-9]+\.gfycat\.com/[A-Za-z0-9]+[\.]*[A-Za-z0-9]+\.webm");
 
-      if (g.filter == "undefined") g.filter = false;
+      if (g.filter == undefined) g.filter = false;
       if (g.filter){
         for(var j in filters[thisForum]){
 
@@ -908,7 +947,7 @@ $(document).ready(function() {
 
       if (author == localStorage.user){
         //console.log(localStorage.user)
-        if (g.tweet == "undefined") g.tweet = true;
+        if (g.tweet == undefined) g.tweet = true;
         if (g.tweet){
           $(this).find(" ul.postbuttons").append('<li><a href="https://twitter.com/share" class="twitter-share-button" data-url="manas" data-text="'+tweetText+'" data-count="none" data-dnt="true">Tweet</a></li>');
         } 
@@ -917,7 +956,7 @@ $(document).ready(function() {
       var twitUrl = twit.exec(text);
       var counter = 0;
       var otherCounter =0;
-      if (g.webm == "undefined") g.webm = true;
+      if (g.webm == undefined) g.webm = true;
       if (pomf.test(text) && g.webm){
         $this = $(image);
         var postBody = $(this).find(" td.postbody")[0];
@@ -933,7 +972,7 @@ $(document).ready(function() {
           }
         });
       }
-      if (g.vine == "undefined") g.vine = true;
+      if (g.vine == undefined) g.vine = true;
       if (x.test(text) && g.vine){
         $this = $(image);
         var postBody = $(this).find(" td.postbody")[0];
@@ -949,6 +988,14 @@ $(document).ready(function() {
           }     
         });
       }
+
+      //console.log($(".post").attr("class"))
+      // $(".post").each(function(index, image) {
+      //   $this = $(image);
+      //   console.log($(image).wrap("<div>"))
+      //   console.log("LOl")
+      //   //if (g.quote) $this.myfunction();
+      // })
     });
   });
 });

@@ -47,7 +47,15 @@
 			"file": "manifest.json",
 			"settings":
 			{
-				"buffer_size": 823,
+				"buffer_size": 941,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "jquery.ba-bbq.js",
+			"settings":
+			{
+				"buffer_size": 43248,
 				"line_ending": "Unix"
 			}
 		},
@@ -55,7 +63,7 @@
 			"file": "background.js",
 			"settings":
 			{
-				"buffer_size": 1805,
+				"buffer_size": 1888,
 				"line_ending": "Unix",
 				"name": "chrome.tabs.onUpdated.addListener(function(tabId,"
 			}
@@ -64,64 +72,24 @@
 			"file": "contentscript.js",
 			"settings":
 			{
-				"buffer_size": 34391,
+				"buffer_size": 40438,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/C/Users/Steven/Documents/pagancowlol",
+			"contents": "<div class=\"breadcrumbs\">\n<span class=\"mainbodytextlarge\">\n<a class=\"index\" href=\"/\" title=\"Forums index\">«</a>\n&nbsp;\n<a href=\"/\">The Something Awful Forums</a>\n ›  \n <a href=\"forumdisplay.php?forumid=51\">Discussion</a> \n › \n <a href=\"forumdisplay.php?forumid=22\">Serious Hardware / Software Crap</a> \n › \n <a href=\"showthread.php?threadid=3208437\" class=\"bclast\">SALR Chrome Extension - New browser, same great taste!</a>\n </span>\n </div>\n\n <div class=\"breadcrumbs\">\n <span class=\"mainbodytextlarge\">\n <a class=\"index\" href=\"/\" title=\"Forums index\">«</a>\n &nbsp;\n <a href=\"forumdisplay.php?forumid=22\" class=\"up\">\n <span>\n <a href=\"/\">The Something Awful Forums</a>\n <a href=\"forumdisplay.php?forumid=51\">Discussion</a>\n <a href=\"forumdisplay.php?forumid=22\">Serious Hardware / Software Crap</a></span>Serious Hardware / Software Crap</a>\n › \n <a href=\"showthread.php?threadid=3566701\" class=\"bclast\">Working in IT 2.0: Fixes include more constructive criticism</a>\n </span>\n </div>",
 			"settings":
 			{
-				"buffer_size": 17443,
+				"buffer_size": 984,
 				"line_ending": "Windows",
-				"name": "* you joined &pagancow"
-			}
-		},
-		{
-			"contents": "<form enctype=\"multipart/form-data\" action=\"newreply.php\" name=\"vbform\" method=\"POST\" onsubmit=\"return validate(this)\">\n<input type=\"hidden\" name=\"action\" value=\"postreply\">\n<input type=\"hidden\" name=\"threadid\" value=\"3627565\">\n<input type=\"hidden\" name=\"formkey\" value=\"ada77ecf44942661dff68f4d585f6fbe\">\n<input type=\"hidden\" name=\"form_cookie\" value=\"302317811198\">\n\n<table class=\"standard\" id=\"main_full\">\n\n<thead><tr><th colspan=\"2\">Post Reply</th></tr></thead>\n\n\n\n<tbody><tr>\n	<td><b>Logged in user:</b></td>\n	<td class=\"user_loggedin\">Valeyard <a href=\"account.php?action=logout&amp;ma=3deb5758\">logout</a></td>\n</tr>\n\n<tr class=\"altcolor2\">\n	<td>\n		<b>Message:</b><br>\n		<br>\n		<span class=\"smalltext\">\n\n		<img src=\"http://forumimages.somethingawful.com/forums/posticons/icon-30-attnmod.gif\" alt=\"\"><br>\n		<img src=\"http://forumimages.somethingawful.com/forums/posticons/icon-31-hotthread.gif\" alt=\"\"><br>\n		<img src=\"http://forumimages.somethingawful.com/forums/posticons/icon23-banme.gif\" alt=\"\"><br>\n		<a href=\"http://www.somethingawful.com/d/forum-rules/forum-rules.php\" target=\"_blank\">Read the goddamn forum rules before posting!!!</a>  If you break a forum rule, you WILL be banned.  Ignorance is NO excuse.\n		<br>\n		<br>\n		\n		You <b>may </b> post new threads<br>\n		You <b>may </b> post replies<br>\n		You <b>may </b> post attachments<br>\n		You <b>may </b> edit your posts<br>\n		HTML code is <b>off</b><br>\n		<a href=\"misc.php?action=bbcode\" target=\"_blank\">BBcode</a> is <b>on</b><br>\n		<a href=\"misc.php?action=showsmilies\" target=\"_blank\">Smilies</a> are <b>on</b><br>\n		<a href=\"misc.php?action=bbcode#imgcode\" target=\"_blank\">[IMG]</a> code is <b>on</b>\n		</span>\n	</td>\n	<td>\n		<div class=\"post-wrapper\"><textarea name=\"message\" rows=\"20\" cols=\"83\" tabindex=\"2\"></textarea><div class=\"postinfo\"><div class=\"save-state\"><strong>Draft from: 21/4/2014 19:44:03</strong><a href=\"#\">Append</a><a href=\"#\">Replace</a><a href=\"#\">Preview</a></div><div class=\"character-count over\">0 / 50000</div></div></div><br>\n		<a class=\"check_msg_length\" href=\"javascript:checklength(document.vbform, 50000);\">check message length</a>\n		<a class=\"show_smilies\" href=\"/misc.php?action=showsmilies\" target=\"_blank\">Smilies</a>\n		<a class=\"show_bbcode\" href=\"/misc.php?action=bbcode\" target=\"_blank\">BBcode</a>\n	</td>\n</tr>\n\n<tr>\n	<td><b>Options:</b></td>\n	<td class=\"smalltext\">\n		<input type=\"checkbox\" name=\"parseurl\" value=\"yes\" checked=\"\"> <b>Automatically parse URLs:</b> automatically adds [url] and [/url] around internet addresses.<br>\n		<input type=\"checkbox\" name=\"bookmark\" value=\"yes\" checked=\"\"> <b>Bookmark thread:</b> adds thread to your <a href=\"/bookmarkthreads.php?action=view\">thread bookmarks</a>.<br>\n		<input type=\"checkbox\" name=\"disablesmilies\" value=\"yes\"> <b>Disable Smilies in This Post</b><br>\n		<input type=\"checkbox\" name=\"signature\" value=\"yes\"> <b>Show Signature:</b> include your profile signature.\n</td>\n</tr>\n\n<tr class=\"altcolor2\">\n	<td valign=\"top\">\n		<b>Attach file:</b><br>\n		<span class=\"smalltext\">Maximum size: 1048576 bytes</span>\n	</td>\n	<td valign=\"top\" class=\"smalltext\">\n		<input type=\"hidden\" name=\"MAX_FILE_SIZE\" value=\"2097152\">\n		<input type=\"file\" class=\"bginput\" name=\"attachment\"><br>\n		Valid file extensions: gif jpg jpeg png\n	</td>\n</tr>\n\n</tbody></table>\n\n<br>\n\n<div class=\"postbuttons\">\n	<input type=\"submit\" class=\"bginput\" name=\"submit\" value=\"Submit Reply\" tabindex=\"3\" accesskey=\"s\" disabled=\"disabled\">\n	<input type=\"submit\" class=\"bginput\" name=\"preview\" value=\"Preview Reply\" tabindex=\"4\" accesskey=\"p\" disabled=\"disabled\">\n</div>",
-			"file": "postreply.js",
-			"file_size": -1,
-			"file_write_time": -1,
-			"settings":
-			{
-				"buffer_size": 3593,
-				"line_ending": "Windows",
-				"name": "<form enctype=\"multipart/form-data\" action=\"newrep"
-			}
-		},
-		{
-			"contents": "/*!\n * jQuery Form Plugin\n * version: 3.50.0-2014.02.05\n * Requires jQuery v1.5 or later\n * Copyright (c) 2013 M. Alsup\n * Examples and documentation at: http://malsup.com/jquery/form/\n * Project repository: https://github.com/malsup/form\n * Dual licensed under the MIT and GPL licenses.\n * https://github.com/malsup/form#copyright-and-license\n */\n/*global ActiveXObject */\n\n// AMD support\n(function (factory) {\n    \"use strict\";\n    if (typeof define === 'function' && define.amd) {\n        // using AMD; register as anon module\n        define(['jquery'], factory);\n    } else {\n        // no AMD; invoke directly\n        factory( (typeof(jQuery) != 'undefined') ? jQuery : window.Zepto );\n    }\n}\n\n(function($) {\n\"use strict\";\n\n/*\n    Usage Note:\n    -----------\n    Do not use both ajaxSubmit and ajaxForm on the same form.  These\n    functions are mutually exclusive.  Use ajaxSubmit if you want\n    to bind your own submit handler to the form.  For example,\n\n    $(document).ready(function() {\n        $('#myForm').on('submit', function(e) {\n            e.preventDefault(); // <-- important\n            $(this).ajaxSubmit({\n                target: '#output'\n            });\n        });\n    });\n\n    Use ajaxForm when you want the plugin to manage all the event binding\n    for you.  For example,\n\n    $(document).ready(function() {\n        $('#myForm').ajaxForm({\n            target: '#output'\n        });\n    });\n\n    You can also use ajaxForm with delegation (requires jQuery v1.7+), so the\n    form does not have to exist when you invoke ajaxForm:\n\n    $('#myForm').ajaxForm({\n        delegation: true,\n        target: '#output'\n    });\n\n    When using ajaxForm, the ajaxSubmit function will be invoked for you\n    at the appropriate time.\n*/\n\n/**\n * Feature detection\n */\nvar feature = {};\nfeature.fileapi = $(\"<input type='file'/>\").get(0).files !== undefined;\nfeature.formdata = window.FormData !== undefined;\n\nvar hasProp = !!$.fn.prop;\n\n// attr2 uses prop when it can but checks the return type for\n// an expected string.  this accounts for the case where a form \n// contains inputs with names like \"action\" or \"method\"; in those\n// cases \"prop\" returns the element\n$.fn.attr2 = function() {\n    if ( ! hasProp ) {\n        return this.attr.apply(this, arguments);\n    }\n    var val = this.prop.apply(this, arguments);\n    if ( ( val && val.jquery ) || typeof val === 'string' ) {\n        return val;\n    }\n    return this.attr.apply(this, arguments);\n};\n\n/**\n * ajaxSubmit() provides a mechanism for immediately submitting\n * an HTML form using AJAX.\n */\n$.fn.ajaxSubmit = function(options) {\n    /*jshint scripturl:true */\n\n    // fast fail if nothing selected (http://dev.jquery.com/ticket/2752)\n    if (!this.length) {\n        log('ajaxSubmit: skipping submit process - no element selected');\n        return this;\n    }\n\n    var method, action, url, $form = this;\n\n    if (typeof options == 'function') {\n        options = { success: options };\n    }\n    else if ( options === undefined ) {\n        options = {};\n    }\n\n    method = options.type || this.attr2('method');\n    action = options.url  || this.attr2('action');\n\n    url = (typeof action === 'string') ? $.trim(action) : '';\n    url = url || window.location.href || '';\n    if (url) {\n        // clean url (don't include hash vaue)\n        url = (url.match(/^([^#]+)/)||[])[1];\n    }\n\n    options = $.extend(true, {\n        url:  url,\n        success: $.ajaxSettings.success,\n        type: method || $.ajaxSettings.type,\n        iframeSrc: /^https/i.test(window.location.href || '') ? 'javascript:false' : 'about:blank'\n    }, options);\n\n    // hook for manipulating the form data before it is extracted;\n    // convenient for use with rich editors like tinyMCE or FCKEditor\n    var veto = {};\n    this.trigger('form-pre-serialize', [this, options, veto]);\n    if (veto.veto) {\n        log('ajaxSubmit: submit vetoed via form-pre-serialize trigger');\n        return this;\n    }\n\n    // provide opportunity to alter form data before it is serialized\n    if (options.beforeSerialize && options.beforeSerialize(this, options) === false) {\n        log('ajaxSubmit: submit aborted via beforeSerialize callback');\n        return this;\n    }\n\n    var traditional = options.traditional;\n    if ( traditional === undefined ) {\n        traditional = $.ajaxSettings.traditional;\n    }\n\n    var elements = [];\n    var qx, a = this.formToArray(options.semantic, elements);\n    if (options.data) {\n        options.extraData = options.data;\n        qx = $.param(options.data, traditional);\n    }\n\n    // give pre-submit callback an opportunity to abort the submit\n    if (options.beforeSubmit && options.beforeSubmit(a, this, options) === false) {\n        log('ajaxSubmit: submit aborted via beforeSubmit callback');\n        return this;\n    }\n\n    // fire vetoable 'validate' event\n    this.trigger('form-submit-validate', [a, this, options, veto]);\n    if (veto.veto) {\n        log('ajaxSubmit: submit vetoed via form-submit-validate trigger');\n        return this;\n    }\n\n    var q = $.param(a, traditional);\n    if (qx) {\n        q = ( q ? (q + '&' + qx) : qx );\n    }\n    if (options.type.toUpperCase() == 'GET') {\n        options.url += (options.url.indexOf('?') >= 0 ? '&' : '?') + q;\n        options.data = null;  // data is null for 'get'\n    }\n    else {\n        options.data = q; // data is the query string for 'post'\n    }\n\n    var callbacks = [];\n    if (options.resetForm) {\n        callbacks.push(function() { $form.resetForm(); });\n    }\n    if (options.clearForm) {\n        callbacks.push(function() { $form.clearForm(options.includeHidden); });\n    }\n\n    // perform a load on the target only if dataType is not provided\n    if (!options.dataType && options.target) {\n        var oldSuccess = options.success || function(){};\n        callbacks.push(function(data) {\n            var fn = options.replaceTarget ? 'replaceWith' : 'html';\n            $(options.target)[fn](data).each(oldSuccess, arguments);\n        });\n    }\n    else if (options.success) {\n        callbacks.push(options.success);\n    }\n\n    options.success = function(data, status, xhr) { // jQuery 1.4+ passes xhr as 3rd arg\n        var context = options.context || this ;    // jQuery 1.4+ supports scope context\n        for (var i=0, max=callbacks.length; i < max; i++) {\n            callbacks[i].apply(context, [data, status, xhr || $form, $form]);\n        }\n    };\n\n    if (options.error) {\n        var oldError = options.error;\n        options.error = function(xhr, status, error) {\n            var context = options.context || this;\n            oldError.apply(context, [xhr, status, error, $form]);\n        };\n    }\n\n     if (options.complete) {\n        var oldComplete = options.complete;\n        options.complete = function(xhr, status) {\n            var context = options.context || this;\n            oldComplete.apply(context, [xhr, status, $form]);\n        };\n    }\n\n    // are there files to upload?\n\n    // [value] (issue #113), also see comment:\n    // https://github.com/malsup/form/commit/588306aedba1de01388032d5f42a60159eea9228#commitcomment-2180219\n    var fileInputs = $('input[type=file]:enabled', this).filter(function() { return $(this).val() !== ''; });\n\n    var hasFileInputs = fileInputs.length > 0;\n    var mp = 'multipart/form-data';\n    var multipart = ($form.attr('enctype') == mp || $form.attr('encoding') == mp);\n\n    var fileAPI = feature.fileapi && feature.formdata;\n    log(\"fileAPI :\" + fileAPI);\n    var shouldUseFrame = (hasFileInputs || multipart) && !fileAPI;\n\n    var jqxhr;\n\n    // options.iframe allows user to force iframe mode\n    // 06-NOV-09: now defaulting to iframe mode if file input is detected\n    if (options.iframe !== false && (options.iframe || shouldUseFrame)) {\n        // hack to fix Safari hang (thanks to Tim Molendijk for this)\n        // see:  http://groups.google.com/group/jquery-dev/browse_thread/thread/36395b7ab510dd5d\n        if (options.closeKeepAlive) {\n            $.get(options.closeKeepAlive, function() {\n                jqxhr = fileUploadIframe(a);\n            });\n        }\n        else {\n            jqxhr = fileUploadIframe(a);\n        }\n    }\n    else if ((hasFileInputs || multipart) && fileAPI) {\n        jqxhr = fileUploadXhr(a);\n    }\n    else {\n        jqxhr = $.ajax(options);\n    }\n\n    $form.removeData('jqxhr').data('jqxhr', jqxhr);\n\n    // clear element array\n    for (var k=0; k < elements.length; k++) {\n        elements[k] = null;\n    }\n\n    // fire 'notify' event\n    this.trigger('form-submit-notify', [this, options]);\n    return this;\n\n    // utility fn for deep serialization\n    function deepSerialize(extraData){\n        var serialized = $.param(extraData, options.traditional).split('&');\n        var len = serialized.length;\n        var result = [];\n        var i, part;\n        for (i=0; i < len; i++) {\n            // #252; undo param space replacement\n            serialized[i] = serialized[i].replace(/\\+/g,' ');\n            part = serialized[i].split('=');\n            // #278; use array instead of object storage, favoring array serializations\n            result.push([decodeURIComponent(part[0]), decodeURIComponent(part[1])]);\n        }\n        return result;\n    }\n\n     // XMLHttpRequest Level 2 file uploads (big hat tip to francois2metz)\n    function fileUploadXhr(a) {\n        var formdata = new FormData();\n\n        for (var i=0; i < a.length; i++) {\n            formdata.append(a[i].name, a[i].value);\n        }\n\n        if (options.extraData) {\n            var serializedData = deepSerialize(options.extraData);\n            for (i=0; i < serializedData.length; i++) {\n                if (serializedData[i]) {\n                    formdata.append(serializedData[i][0], serializedData[i][1]);\n                }\n            }\n        }\n\n        options.data = null;\n\n        var s = $.extend(true, {}, $.ajaxSettings, options, {\n            contentType: false,\n            processData: false,\n            cache: false,\n            type: method || 'POST'\n        });\n\n        if (options.uploadProgress) {\n            // workaround because jqXHR does not expose upload property\n            s.xhr = function() {\n                var xhr = $.ajaxSettings.xhr();\n                if (xhr.upload) {\n                    xhr.upload.addEventListener('progress', function(event) {\n                        var percent = 0;\n                        var position = event.loaded || event.position; /*event.position is deprecated*/\n                        var total = event.total;\n                        if (event.lengthComputable) {\n                            percent = Math.ceil(position / total * 100);\n                        }\n                        options.uploadProgress(event, position, total, percent);\n                    }, false);\n                }\n                return xhr;\n            };\n        }\n\n        s.data = null;\n        var beforeSend = s.beforeSend;\n        s.beforeSend = function(xhr, o) {\n            //Send FormData() provided by user\n            if (options.formData) {\n                o.data = options.formData;\n            }\n            else {\n                o.data = formdata;\n            }\n            if(beforeSend) {\n                beforeSend.call(this, xhr, o);\n            }\n        };\n        return $.ajax(s);\n    }\n\n    // private function for handling file uploads (hat tip to YAHOO!)\n    function fileUploadIframe(a) {\n        var form = $form[0], el, i, s, g, id, $io, io, xhr, sub, n, timedOut, timeoutHandle;\n        var deferred = $.Deferred();\n\n        // #341\n        deferred.abort = function(status) {\n            xhr.abort(status);\n        };\n\n        if (a) {\n            // ensure that every serialized input is still enabled\n            for (i=0; i < elements.length; i++) {\n                el = $(elements[i]);\n                if ( hasProp ) {\n                    el.prop('disabled', false);\n                }\n                else {\n                    el.removeAttr('disabled');\n                }\n            }\n        }\n\n        s = $.extend(true, {}, $.ajaxSettings, options);\n        s.context = s.context || s;\n        id = 'jqFormIO' + (new Date().getTime());\n        if (s.iframeTarget) {\n            $io = $(s.iframeTarget);\n            n = $io.attr2('name');\n            if (!n) {\n                $io.attr2('name', id);\n            }\n            else {\n                id = n;\n            }\n        }\n        else {\n            $io = $('<iframe name=\"' + id + '\" src=\"'+ s.iframeSrc +'\" />');\n            $io.css({ position: 'absolute', top: '-1000px', left: '-1000px' });\n        }\n        io = $io[0];\n\n\n        xhr = { // mock object\n            aborted: 0,\n            responseText: null,\n            responseXML: null,\n            status: 0,\n            statusText: 'n/a',\n            getAllResponseHeaders: function() {},\n            getResponseHeader: function() {},\n            setRequestHeader: function() {},\n            abort: function(status) {\n                var e = (status === 'timeout' ? 'timeout' : 'aborted');\n                log('aborting upload... ' + e);\n                this.aborted = 1;\n\n                try { // #214, #257\n                    if (io.contentWindow.document.execCommand) {\n                        io.contentWindow.document.execCommand('Stop');\n                    }\n                }\n                catch(ignore) {}\n\n                $io.attr('src', s.iframeSrc); // abort op in progress\n                xhr.error = e;\n                if (s.error) {\n                    s.error.call(s.context, xhr, e, status);\n                }\n                if (g) {\n                    $.event.trigger(\"ajaxError\", [xhr, s, e]);\n                }\n                if (s.complete) {\n                    s.complete.call(s.context, xhr, e);\n                }\n            }\n        };\n\n        g = s.global;\n        // trigger ajax global events so that activity/block indicators work like normal\n        if (g && 0 === $.active++) {\n            $.event.trigger(\"ajaxStart\");\n        }\n        if (g) {\n            $.event.trigger(\"ajaxSend\", [xhr, s]);\n        }\n\n        if (s.beforeSend && s.beforeSend.call(s.context, xhr, s) === false) {\n            if (s.global) {\n                $.active--;\n            }\n            deferred.reject();\n            return deferred;\n        }\n        if (xhr.aborted) {\n            deferred.reject();\n            return deferred;\n        }\n\n        // add submitting element to data if we know it\n        sub = form.clk;\n        if (sub) {\n            n = sub.name;\n            if (n && !sub.disabled) {\n                s.extraData = s.extraData || {};\n                s.extraData[n] = sub.value;\n                if (sub.type == \"image\") {\n                    s.extraData[n+'.x'] = form.clk_x;\n                    s.extraData[n+'.y'] = form.clk_y;\n                }\n            }\n        }\n\n        var CLIENT_TIMEOUT_ABORT = 1;\n        var SERVER_ABORT = 2;\n                \n        function getDoc(frame) {\n            /* it looks like contentWindow or contentDocument do not\n             * carry the protocol property in ie8, when running under ssl\n             * frame.document is the only valid response document, since\n             * the protocol is know but not on the other two objects. strange?\n             * \"Same origin policy\" http://en.wikipedia.org/wiki/Same_origin_policy\n             */\n            \n            var doc = null;\n            \n            // IE8 cascading access check\n            try {\n                if (frame.contentWindow) {\n                    doc = frame.contentWindow.document;\n                }\n            } catch(err) {\n                // IE8 access denied under ssl & missing protocol\n                log('cannot get iframe.contentWindow document: ' + err);\n            }\n\n            if (doc) { // successful getting content\n                return doc;\n            }\n\n            try { // simply checking may throw in ie8 under ssl or mismatched protocol\n                doc = frame.contentDocument ? frame.contentDocument : frame.document;\n            } catch(err) {\n                // last attempt\n                log('cannot get iframe.contentDocument: ' + err);\n                doc = frame.document;\n            }\n            return doc;\n        }\n\n        // Rails CSRF hack (thanks to Yvan Barthelemy)\n        var csrf_token = $('meta[name=csrf-token]').attr('content');\n        var csrf_param = $('meta[name=csrf-param]').attr('content');\n        if (csrf_param && csrf_token) {\n            s.extraData = s.extraData || {};\n            s.extraData[csrf_param] = csrf_token;\n        }\n\n        // take a breath so that pending repaints get some cpu time before the upload starts\n        function doSubmit() {\n            // make sure form attrs are set\n            var t = $form.attr2('target'), \n                a = $form.attr2('action'), \n                mp = 'multipart/form-data',\n                et = $form.attr('enctype') || $form.attr('encoding') || mp;\n\n            // update form attrs in IE friendly way\n            form.setAttribute('target',id);\n            if (!method || /post/i.test(method) ) {\n                form.setAttribute('method', 'POST');\n            }\n            if (a != s.url) {\n                form.setAttribute('action', s.url);\n            }\n\n            // ie borks in some cases when setting encoding\n            if (! s.skipEncodingOverride && (!method || /post/i.test(method))) {\n                $form.attr({\n                    encoding: 'multipart/form-data',\n                    enctype:  'multipart/form-data'\n                });\n            }\n\n            // support timout\n            if (s.timeout) {\n                timeoutHandle = setTimeout(function() { timedOut = true; cb(CLIENT_TIMEOUT_ABORT); }, s.timeout);\n            }\n\n            // look for server aborts\n            function checkState() {\n                try {\n                    var state = getDoc(io).readyState;\n                    log('state = ' + state);\n                    if (state && state.toLowerCase() == 'uninitialized') {\n                        setTimeout(checkState,50);\n                    }\n                }\n                catch(e) {\n                    log('Server abort: ' , e, ' (', e.name, ')');\n                    cb(SERVER_ABORT);\n                    if (timeoutHandle) {\n                        clearTimeout(timeoutHandle);\n                    }\n                    timeoutHandle = undefined;\n                }\n            }\n\n            // add \"extra\" data to form if provided in options\n            var extraInputs = [];\n            try {\n                if (s.extraData) {\n                    for (var n in s.extraData) {\n                        if (s.extraData.hasOwnProperty(n)) {\n                           // if using the $.param format that allows for multiple values with the same name\n                           if($.isPlainObject(s.extraData[n]) && s.extraData[n].hasOwnProperty('name') && s.extraData[n].hasOwnProperty('value')) {\n                               extraInputs.push(\n                               $('<input type=\"hidden\" name=\"'+s.extraData[n].name+'\">').val(s.extraData[n].value)\n                                   .appendTo(form)[0]);\n                           } else {\n                               extraInputs.push(\n                               $('<input type=\"hidden\" name=\"'+n+'\">').val(s.extraData[n])\n                                   .appendTo(form)[0]);\n                           }\n                        }\n                    }\n                }\n\n                if (!s.iframeTarget) {\n                    // add iframe to doc and submit the form\n                    $io.appendTo('body');\n                }\n                if (io.attachEvent) {\n                    io.attachEvent('onload', cb);\n                }\n                else {\n                    io.addEventListener('load', cb, false);\n                }\n                setTimeout(checkState,15);\n\n                try {\n                    form.submit();\n                } catch(err) {\n                    // just in case form has element with name/id of 'submit'\n                    var submitFn = document.createElement('form').submit;\n                    submitFn.apply(form);\n                }\n            }\n            finally {\n                // reset attrs and remove \"extra\" input elements\n                form.setAttribute('action',a);\n                form.setAttribute('enctype', et); // #380\n                if(t) {\n                    form.setAttribute('target', t);\n                } else {\n                    $form.removeAttr('target');\n                }\n                $(extraInputs).remove();\n            }\n        }\n\n        if (s.forceSync) {\n            doSubmit();\n        }\n        else {\n            setTimeout(doSubmit, 10); // this lets dom updates render\n        }\n\n        var data, doc, domCheckCount = 50, callbackProcessed;\n\n        function cb(e) {\n            if (xhr.aborted || callbackProcessed) {\n                return;\n            }\n            \n            doc = getDoc(io);\n            if(!doc) {\n                log('cannot access response document');\n                e = SERVER_ABORT;\n            }\n            if (e === CLIENT_TIMEOUT_ABORT && xhr) {\n                xhr.abort('timeout');\n                deferred.reject(xhr, 'timeout');\n                return;\n            }\n            else if (e == SERVER_ABORT && xhr) {\n                xhr.abort('server abort');\n                deferred.reject(xhr, 'error', 'server abort');\n                return;\n            }\n\n            if (!doc || doc.location.href == s.iframeSrc) {\n                // response not received yet\n                if (!timedOut) {\n                    return;\n                }\n            }\n            if (io.detachEvent) {\n                io.detachEvent('onload', cb);\n            }\n            else {\n                io.removeEventListener('load', cb, false);\n            }\n\n            var status = 'success', errMsg;\n            try {\n                if (timedOut) {\n                    throw 'timeout';\n                }\n\n                var isXml = s.dataType == 'xml' || doc.XMLDocument || $.isXMLDoc(doc);\n                log('isXml='+isXml);\n                if (!isXml && window.opera && (doc.body === null || !doc.body.innerHTML)) {\n                    if (--domCheckCount) {\n                        // in some browsers (Opera) the iframe DOM is not always traversable when\n                        // the onload callback fires, so we loop a bit to accommodate\n                        log('requeing onLoad callback, DOM not available');\n                        setTimeout(cb, 250);\n                        return;\n                    }\n                    // let this fall through because server response could be an empty document\n                    //log('Could not access iframe DOM after mutiple tries.');\n                    //throw 'DOMException: not available';\n                }\n\n                //log('response detected');\n                var docRoot = doc.body ? doc.body : doc.documentElement;\n                xhr.responseText = docRoot ? docRoot.innerHTML : null;\n                xhr.responseXML = doc.XMLDocument ? doc.XMLDocument : doc;\n                if (isXml) {\n                    s.dataType = 'xml';\n                }\n                xhr.getResponseHeader = function(header){\n                    var headers = {'content-type': s.dataType};\n                    return headers[header.toLowerCase()];\n                };\n                // support for XHR 'status' & 'statusText' emulation :\n                if (docRoot) {\n                    xhr.status = Number( docRoot.getAttribute('status') ) || xhr.status;\n                    xhr.statusText = docRoot.getAttribute('statusText') || xhr.statusText;\n                }\n\n                var dt = (s.dataType || '').toLowerCase();\n                var scr = /(json|script|text)/.test(dt);\n                if (scr || s.textarea) {\n                    // see if user embedded response in textarea\n                    var ta = doc.getElementsByTagName('textarea')[0];\n                    if (ta) {\n                        xhr.responseText = ta.value;\n                        // support for XHR 'status' & 'statusText' emulation :\n                        xhr.status = Number( ta.getAttribute('status') ) || xhr.status;\n                        xhr.statusText = ta.getAttribute('statusText') || xhr.statusText;\n                    }\n                    else if (scr) {\n                        // account for browsers injecting pre around json response\n                        var pre = doc.getElementsByTagName('pre')[0];\n                        var b = doc.getElementsByTagName('body')[0];\n                        if (pre) {\n                            xhr.responseText = pre.textContent ? pre.textContent : pre.innerText;\n                        }\n                        else if (b) {\n                            xhr.responseText = b.textContent ? b.textContent : b.innerText;\n                        }\n                    }\n                }\n                else if (dt == 'xml' && !xhr.responseXML && xhr.responseText) {\n                    xhr.responseXML = toXml(xhr.responseText);\n                }\n\n                try {\n                    data = httpData(xhr, dt, s);\n                }\n                catch (err) {\n                    status = 'parsererror';\n                    xhr.error = errMsg = (err || status);\n                }\n            }\n            catch (err) {\n                log('error caught: ',err);\n                status = 'error';\n                xhr.error = errMsg = (err || status);\n            }\n\n            if (xhr.aborted) {\n                log('upload aborted');\n                status = null;\n            }\n\n            if (xhr.status) { // we've set xhr.status\n                status = (xhr.status >= 200 && xhr.status < 300 || xhr.status === 304) ? 'success' : 'error';\n            }\n\n            // ordering of these callbacks/triggers is odd, but that's how $.ajax does it\n            if (status === 'success') {\n                if (s.success) {\n                    s.success.call(s.context, data, 'success', xhr);\n                }\n                deferred.resolve(xhr.responseText, 'success', xhr);\n                if (g) {\n                    $.event.trigger(\"ajaxSuccess\", [xhr, s]);\n                }\n            }\n            else if (status) {\n                if (errMsg === undefined) {\n                    errMsg = xhr.statusText;\n                }\n                if (s.error) {\n                    s.error.call(s.context, xhr, status, errMsg);\n                }\n                deferred.reject(xhr, 'error', errMsg);\n                if (g) {\n                    $.event.trigger(\"ajaxError\", [xhr, s, errMsg]);\n                }\n            }\n\n            if (g) {\n                $.event.trigger(\"ajaxComplete\", [xhr, s]);\n            }\n\n            if (g && ! --$.active) {\n                $.event.trigger(\"ajaxStop\");\n            }\n\n            if (s.complete) {\n                s.complete.call(s.context, xhr, status);\n            }\n\n            callbackProcessed = true;\n            if (s.timeout) {\n                clearTimeout(timeoutHandle);\n            }\n\n            // clean up\n            setTimeout(function() {\n                if (!s.iframeTarget) {\n                    $io.remove();\n                }\n                else { //adding else to clean up existing iframe response.\n                    $io.attr('src', s.iframeSrc);\n                }\n                xhr.responseXML = null;\n            }, 100);\n        }\n\n        var toXml = $.parseXML || function(s, doc) { // use parseXML if available (jQuery 1.5+)\n            if (window.ActiveXObject) {\n                doc = new ActiveXObject('Microsoft.XMLDOM');\n                doc.async = 'false';\n                doc.loadXML(s);\n            }\n            else {\n                doc = (new DOMParser()).parseFromString(s, 'text/xml');\n            }\n            return (doc && doc.documentElement && doc.documentElement.nodeName != 'parsererror') ? doc : null;\n        };\n        var parseJSON = $.parseJSON || function(s) {\n            /*jslint evil:true */\n            return window['eval']('(' + s + ')');\n        };\n\n        var httpData = function( xhr, type, s ) { // mostly lifted from jq1.4.4\n\n            var ct = xhr.getResponseHeader('content-type') || '',\n                xml = type === 'xml' || !type && ct.indexOf('xml') >= 0,\n                data = xml ? xhr.responseXML : xhr.responseText;\n\n            if (xml && data.documentElement.nodeName === 'parsererror') {\n                if ($.error) {\n                    $.error('parsererror');\n                }\n            }\n            if (s && s.dataFilter) {\n                data = s.dataFilter(data, type);\n            }\n            if (typeof data === 'string') {\n                if (type === 'json' || !type && ct.indexOf('json') >= 0) {\n                    data = parseJSON(data);\n                } else if (type === \"script\" || !type && ct.indexOf(\"javascript\") >= 0) {\n                    $.globalEval(data);\n                }\n            }\n            return data;\n        };\n\n        return deferred;\n    }\n};\n\n/**\n * ajaxForm() provides a mechanism for fully automating form submission.\n *\n * The advantages of using this method instead of ajaxSubmit() are:\n *\n * 1: This method will include coordinates for <input type=\"image\" /> elements (if the element\n *    is used to submit the form).\n * 2. This method will include the submit element's name/value data (for the element that was\n *    used to submit the form).\n * 3. This method binds the submit() method to the form for you.\n *\n * The options argument for ajaxForm works exactly as it does for ajaxSubmit.  ajaxForm merely\n * passes the options argument along after properly binding events for submit elements and\n * the form itself.\n */\n$.fn.ajaxForm = function(options) {\n    options = options || {};\n    options.delegation = options.delegation && $.isFunction($.fn.on);\n\n    // in jQuery 1.3+ we can fix mistakes with the ready state\n    if (!options.delegation && this.length === 0) {\n        var o = { s: this.selector, c: this.context };\n        if (!$.isReady && o.s) {\n            log('DOM not ready, queuing ajaxForm');\n            $(function() {\n                $(o.s,o.c).ajaxForm(options);\n            });\n            return this;\n        }\n        // is your DOM ready?  http://docs.jquery.com/Tutorials:Introducing_$(document).ready()\n        log('terminating; zero elements found by selector' + ($.isReady ? '' : ' (DOM not ready)'));\n        return this;\n    }\n\n    if ( options.delegation ) {\n        $(document)\n            .off('submit.form-plugin', this.selector, doAjaxSubmit)\n            .off('click.form-plugin', this.selector, captureSubmittingElement)\n            .on('submit.form-plugin', this.selector, options, doAjaxSubmit)\n            .on('click.form-plugin', this.selector, options, captureSubmittingElement);\n        return this;\n    }\n\n    return this.ajaxFormUnbind()\n        .bind('submit.form-plugin', options, doAjaxSubmit)\n        .bind('click.form-plugin', options, captureSubmittingElement);\n};\n\n// private event handlers\nfunction doAjaxSubmit(e) {\n    /*jshint validthis:true */\n    var options = e.data;\n    if (!e.isDefaultPrevented()) { // if event has been canceled, don't proceed\n        e.preventDefault();\n        $(e.target).ajaxSubmit(options); // #365\n    }\n}\n\nfunction captureSubmittingElement(e) {\n    /*jshint validthis:true */\n    var target = e.target;\n    var $el = $(target);\n    if (!($el.is(\"[type=submit],[type=image]\"))) {\n        // is this a child element of the submit el?  (ex: a span within a button)\n        var t = $el.closest('[type=submit]');\n        if (t.length === 0) {\n            return;\n        }\n        target = t[0];\n    }\n    var form = this;\n    form.clk = target;\n    if (target.type == 'image') {\n        if (e.offsetX !== undefined) {\n            form.clk_x = e.offsetX;\n            form.clk_y = e.offsetY;\n        } else if (typeof $.fn.offset == 'function') {\n            var offset = $el.offset();\n            form.clk_x = e.pageX - offset.left;\n            form.clk_y = e.pageY - offset.top;\n        } else {\n            form.clk_x = e.pageX - target.offsetLeft;\n            form.clk_y = e.pageY - target.offsetTop;\n        }\n    }\n    // clear form vars\n    setTimeout(function() { form.clk = form.clk_x = form.clk_y = null; }, 100);\n}\n\n\n// ajaxFormUnbind unbinds the event handlers that were bound by ajaxForm\n$.fn.ajaxFormUnbind = function() {\n    return this.unbind('submit.form-plugin click.form-plugin');\n};\n\n/**\n * formToArray() gathers form element data into an array of objects that can\n * be passed to any of the following ajax functions: $.get, $.post, or load.\n * Each object in the array has both a 'name' and 'value' property.  An example of\n * an array for a simple login form might be:\n *\n * [ { name: 'username', value: 'jresig' }, { name: 'password', value: 'secret' } ]\n *\n * It is this array that is passed to pre-submit callback functions provided to the\n * ajaxSubmit() and ajaxForm() methods.\n */\n$.fn.formToArray = function(semantic, elements) {\n    var a = [];\n    if (this.length === 0) {\n        return a;\n    }\n\n    var form = this[0];\n    var formId = this.attr('id');\n    var els = semantic ? form.getElementsByTagName('*') : form.elements;\n    var els2;\n\n    if (els && !/MSIE [678]/.test(navigator.userAgent)) { // #390\n        els = $(els).get();  // convert to standard array\n    }\n\n    // #386; account for inputs outside the form which use the 'form' attribute\n    if ( formId ) {\n        els2 = $(':input[form=' + formId + ']').get();\n        if ( els2.length ) {\n            els = (els || []).concat(els2);\n        }\n    }\n\n    if (!els || !els.length) {\n        return a;\n    }\n\n    var i,j,n,v,el,max,jmax;\n    for(i=0, max=els.length; i < max; i++) {\n        el = els[i];\n        n = el.name;\n        if (!n || el.disabled) {\n            continue;\n        }\n\n        if (semantic && form.clk && el.type == \"image\") {\n            // handle image inputs on the fly when semantic == true\n            if(form.clk == el) {\n                a.push({name: n, value: $(el).val(), type: el.type });\n                a.push({name: n+'.x', value: form.clk_x}, {name: n+'.y', value: form.clk_y});\n            }\n            continue;\n        }\n\n        v = $.fieldValue(el, true);\n        if (v && v.constructor == Array) {\n            if (elements) {\n                elements.push(el);\n            }\n            for(j=0, jmax=v.length; j < jmax; j++) {\n                a.push({name: n, value: v[j]});\n            }\n        }\n        else if (feature.fileapi && el.type == 'file') {\n            if (elements) {\n                elements.push(el);\n            }\n            var files = el.files;\n            if (files.length) {\n                for (j=0; j < files.length; j++) {\n                    a.push({name: n, value: files[j], type: el.type});\n                }\n            }\n            else {\n                // #180\n                a.push({ name: n, value: '', type: el.type });\n            }\n        }\n        else if (v !== null && typeof v != 'undefined') {\n            if (elements) {\n                elements.push(el);\n            }\n            a.push({name: n, value: v, type: el.type, required: el.required});\n        }\n    }\n\n    if (!semantic && form.clk) {\n        // input type=='image' are not found in elements array! handle it here\n        var $input = $(form.clk), input = $input[0];\n        n = input.name;\n        if (n && !input.disabled && input.type == 'image') {\n            a.push({name: n, value: $input.val()});\n            a.push({name: n+'.x', value: form.clk_x}, {name: n+'.y', value: form.clk_y});\n        }\n    }\n    return a;\n};\n\n/**\n * Serializes form data into a 'submittable' string. This method will return a string\n * in the format: name1=value1&amp;name2=value2\n */\n$.fn.formSerialize = function(semantic) {\n    //hand off to jQuery.param for proper encoding\n    return $.param(this.formToArray(semantic));\n};\n\n/**\n * Serializes all field elements in the jQuery object into a query string.\n * This method will return a string in the format: name1=value1&amp;name2=value2\n */\n$.fn.fieldSerialize = function(successful) {\n    var a = [];\n    this.each(function() {\n        var n = this.name;\n        if (!n) {\n            return;\n        }\n        var v = $.fieldValue(this, successful);\n        if (v && v.constructor == Array) {\n            for (var i=0,max=v.length; i < max; i++) {\n                a.push({name: n, value: v[i]});\n            }\n        }\n        else if (v !== null && typeof v != 'undefined') {\n            a.push({name: this.name, value: v});\n        }\n    });\n    //hand off to jQuery.param for proper encoding\n    return $.param(a);\n};\n\n/**\n * Returns the value(s) of the element in the matched set.  For example, consider the following form:\n *\n *  <form><fieldset>\n *      <input name=\"A\" type=\"text\" />\n *      <input name=\"A\" type=\"text\" />\n *      <input name=\"B\" type=\"checkbox\" value=\"B1\" />\n *      <input name=\"B\" type=\"checkbox\" value=\"B2\"/>\n *      <input name=\"C\" type=\"radio\" value=\"C1\" />\n *      <input name=\"C\" type=\"radio\" value=\"C2\" />\n *  </fieldset></form>\n *\n *  var v = $('input[type=text]').fieldValue();\n *  // if no values are entered into the text inputs\n *  v == ['','']\n *  // if values entered into the text inputs are 'foo' and 'bar'\n *  v == ['foo','bar']\n *\n *  var v = $('input[type=checkbox]').fieldValue();\n *  // if neither checkbox is checked\n *  v === undefined\n *  // if both checkboxes are checked\n *  v == ['B1', 'B2']\n *\n *  var v = $('input[type=radio]').fieldValue();\n *  // if neither radio is checked\n *  v === undefined\n *  // if first radio is checked\n *  v == ['C1']\n *\n * The successful argument controls whether or not the field element must be 'successful'\n * (per http://www.w3.org/TR/html4/interact/forms.html#successful-controls).\n * The default value of the successful argument is true.  If this value is false the value(s)\n * for each element is returned.\n *\n * Note: This method *always* returns an array.  If no valid value can be determined the\n *    array will be empty, otherwise it will contain one or more values.\n */\n$.fn.fieldValue = function(successful) {\n    for (var val=[], i=0, max=this.length; i < max; i++) {\n        var el = this[i];\n        var v = $.fieldValue(el, successful);\n        if (v === null || typeof v == 'undefined' || (v.constructor == Array && !v.length)) {\n            continue;\n        }\n        if (v.constructor == Array) {\n            $.merge(val, v);\n        }\n        else {\n            val.push(v);\n        }\n    }\n    return val;\n};\n\n/**\n * Returns the value of the field element.\n */\n$.fieldValue = function(el, successful) {\n    var n = el.name, t = el.type, tag = el.tagName.toLowerCase();\n    if (successful === undefined) {\n        successful = true;\n    }\n\n    if (successful && (!n || el.disabled || t == 'reset' || t == 'button' ||\n        (t == 'checkbox' || t == 'radio') && !el.checked ||\n        (t == 'submit' || t == 'image') && el.form && el.form.clk != el ||\n        tag == 'select' && el.selectedIndex == -1)) {\n            return null;\n    }\n\n    if (tag == 'select') {\n        var index = el.selectedIndex;\n        if (index < 0) {\n            return null;\n        }\n        var a = [], ops = el.options;\n        var one = (t == 'select-one');\n        var max = (one ? index+1 : ops.length);\n        for(var i=(one ? index : 0); i < max; i++) {\n            var op = ops[i];\n            if (op.selected) {\n                var v = op.value;\n                if (!v) { // extra pain for IE...\n                    v = (op.attributes && op.attributes.value && !(op.attributes.value.specified)) ? op.text : op.value;\n                }\n                if (one) {\n                    return v;\n                }\n                a.push(v);\n            }\n        }\n        return a;\n    }\n    return $(el).val();\n};\n\n/**\n * Clears the form data.  Takes the following actions on the form's input fields:\n *  - input text fields will have their 'value' property set to the empty string\n *  - select elements will have their 'selectedIndex' property set to -1\n *  - checkbox and radio inputs will have their 'checked' property set to false\n *  - inputs of type submit, button, reset, and hidden will *not* be effected\n *  - button elements will *not* be effected\n */\n$.fn.clearForm = function(includeHidden) {\n    return this.each(function() {\n        $('input,select,textarea', this).clearFields(includeHidden);\n    });\n};\n\n/**\n * Clears the selected form elements.\n */\n$.fn.clearFields = $.fn.clearInputs = function(includeHidden) {\n    var re = /^(?:color|date|datetime|email|month|number|password|range|search|tel|text|time|url|week)$/i; // 'hidden' is not in this list\n    return this.each(function() {\n        var t = this.type, tag = this.tagName.toLowerCase();\n        if (re.test(t) || tag == 'textarea') {\n            this.value = '';\n        }\n        else if (t == 'checkbox' || t == 'radio') {\n            this.checked = false;\n        }\n        else if (tag == 'select') {\n            this.selectedIndex = -1;\n        }\n		else if (t == \"file\") {\n			if (/MSIE/.test(navigator.userAgent)) {\n				$(this).replaceWith($(this).clone(true));\n			} else {\n				$(this).val('');\n			}\n		}\n        else if (includeHidden) {\n            // includeHidden can be the value true, or it can be a selector string\n            // indicating a special test; for example:\n            //  $('#myForm').clearForm('.special:hidden')\n            // the above would clean hidden inputs that have the class of 'special'\n            if ( (includeHidden === true && /hidden/.test(t)) ||\n                 (typeof includeHidden == 'string' && $(this).is(includeHidden)) ) {\n                this.value = '';\n            }\n        }\n    });\n};\n\n/**\n * Resets the form data.  Causes all form elements to be reset to their original value.\n */\n$.fn.resetForm = function() {\n    return this.each(function() {\n        // guard against an input with the name of 'reset'\n        // note that IE reports the reset function as an 'object'\n        if (typeof this.reset == 'function' || (typeof this.reset == 'object' && !this.reset.nodeType)) {\n            this.reset();\n        }\n    });\n};\n\n/**\n * Enables or disables any matching elements.\n */\n$.fn.enable = function(b) {\n    if (b === undefined) {\n        b = true;\n    }\n    return this.each(function() {\n        this.disabled = !b;\n    });\n};\n\n/**\n * Checks/unchecks any matching checkboxes or radio buttons and\n * selects/deselects and matching option elements.\n */\n$.fn.selected = function(select) {\n    if (select === undefined) {\n        select = true;\n    }\n    return this.each(function() {\n        var t = this.type;\n        if (t == 'checkbox' || t == 'radio') {\n            this.checked = select;\n        }\n        else if (this.tagName.toLowerCase() == 'option') {\n            var $sel = $(this).parent('select');\n            if (select && $sel[0] && $sel[0].type == 'select-one') {\n                // deselect all other options\n                $sel.find('option').selected(false);\n            }\n            this.selected = select;\n        }\n    });\n};\n\n// expose debug var\n$.fn.ajaxSubmit.debug = false;\n\n// helper fn for console logging\nfunction log() {\n    if (!$.fn.ajaxSubmit.debug) {\n        return;\n    }\n    var msg = '[jquery.form] ' + Array.prototype.join.call(arguments,'');\n    if (window.console && window.console.log) {\n        window.console.log(msg);\n    }\n    else if (window.opera && window.opera.postError) {\n        window.opera.postError(msg);\n    }\n}\n\n}));\n\n",
-			"file": "jquery.form.js",
-			"file_size": -1,
-			"file_write_time": -1,
-			"settings":
-			{
-				"buffer_size": 43811,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "$(\".category\").each(function(index, image){\n  $this = $(image);\n  //console.log($this[0].innerText)\n  \n  //console.log($this[0].parent().nextUntil(\"tr.section\"));\n  //image.show(main);\n  //console.log(g.cats[image.innerText])\n // $this.innerText = image.innerText + \"Click here to collapse forums\";\n\nvar geg = new RegExp(\"([A-Za-z0-9]+) -\")\nconsole.log(image.innerText + \" ROFL INNERTEXT\")\nvar fname = geg.exec(image.innerText)\nconsole.log(geg.test(image.innerText))\nconsole.log(fname)\nvar main;\nmain = !g.cats[fname[1]]\n//g.cats[fname[1]] = main;\n\n  $this.parent().nextUntil(\"tr.section\").toggle(g.cats[fname]);\n // $this[0].innerText = $this[0].innerText + \" - Click here to collapse category\"\n if (!main) $this[0].innerTex = fname[1] + \" - Click here to expand category\"\nelse $this[0].innerTex = fname[1] + \" - Click here to collapse category\"\n\n});\n\n html2canvas(data, {\n    onrendered: function(canvas) {\n        var g = canvas.toDataURL(\"image/png\")\n        $('#tweet' + counter).html(data.html);\n    }\n});",
-			"settings":
-			{
-				"buffer_size": 1011,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "twitter.css",
-			"settings":
-			{
-				"buffer_size": 2132,
-				"line_ending": "Windows",
-				"name": "a.twitter-share-button,"
+				"name": "<div class=\"breadcrumbs\">"
 			}
 		},
 		{
 			"file": "popup.html",
 			"settings":
 			{
-				"buffer_size": 2458,
+				"buffer_size": 2779,
 				"line_ending": "Unix"
 			}
 		},
@@ -129,92 +97,34 @@
 			"file": "settings.js",
 			"settings":
 			{
-				"buffer_size": 1017,
+				"buffer_size": 1066,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/C/Users/Steven/Documents/GitHub/webmbed/contentscript.js",
+			"file": "/C/Users/Steven/Documents/GitHub/valeyard.github.io/index.html",
 			"settings":
 			{
-				"buffer_size": 718,
-				"line_ending": "Unix"
+				"buffer_size": 4355,
+				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/C/Users/Steven/Documents/GitHub/webmbed/popup.html",
+			"contents": "All I ever did was worry that we werent as close as we used to be. And you kept telling me that things change. I used to be one of your two best friends, and then it slowly changed into good friend. All the time I would get upset at this. I worried all the time about us getting less close, and told you about it",
 			"settings":
 			{
-				"buffer_size": 595,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/C/Users/Steven/Documents/GitHub/webmbed/settings.js",
-			"settings":
-			{
-				"buffer_size": 577,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/C/Users/Steven/Documents/GitHub/webmbed/manifest.json",
-			"settings":
-			{
-				"buffer_size": 704,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "Never tell your password to anyone.\n29 April 2014\n01:08 - Busta Brum: muh pc being very loud\n01:11 - TacoNessa: death imminent\n01:15 - Busta Brum: unfortunately, i would not be surprised if it just collapsed right now\n01:16 - Busta Brum: i had chicken earlier\n01:16 - Busta Brum: it was good\n01:16 - Busta Brum: gonna restart computer :(\n01:16 - TacoNessa: ye\n01:31 - Busta Brum: its been soothed a little bit\n01:31 - TacoNessa: coolio\n01:36 - Busta Brum: yesss i need cool\n01:37 - Busta Brum: i need to cool me down\n01:37 - Busta Brum: cool the comp down\n01:41 - TacoNessa: you dont want to play anything?\n01:42 - Busta Brum: sorry, not just now\n01:42 - TacoNessa: figures\n01:42 - TacoNessa: i thought you would have asked earlier too\n01:45 - Busta Brum: if we dont play something tomorrow, then definetely on wednesday\n01:46 - TacoNessa: yeah, sure thing\n01:50 - Busta Brum: you sound positively thrilled\n01:50 - TacoNessa: totally\n01:52 - Busta Brum: sorry, negatively thrilled :p\n02:14 - Busta Brum: i need a haircut, still\n02:19 - TacoNessa: what are you waiting for?\n02:19 - Busta Brum: ive been waking up late\n02:19 - Busta Brum: too late for haircuts\n02:24 - Busta Brum: the next month is going to be really shitty\n02:25 - TacoNessa: ?\n02:25 - Busta Brum: exams all month\n02:25 - TacoNessa: youll probably leave again too!\n02:26 - Busta Brum: i doubt it, but if i do, ill let you know beforehand\n02:26 - TacoNessa: yea\n02:29 - Busta Brum: why dont you just send me a photo every week of you making a funny face each time\n02:31 - TacoNessa: uh why?\n02:32 - Busta Brum: you are clearly worried i will leave again!!!\n02:34 - TacoNessa: I am not going to send you anything\n02:34 - TacoNessa: I also don't expect you to come back everyday\n02:35 - TacoNessa: You can just easily leave again\n02:35 - TacoNessa: I never had to think about you coming back or not\n02:35 - TacoNessa: now im not even sure anymore\n02:36 - Busta Brum: did you delete a comment i posted on your profile\n02:36 - TacoNessa: ?\n02:37 - Busta Brum: i swear i remember putting a comment on your profile yesterday\n02:37 - Busta Brum: but now its not there\n02:37 - Busta Brum: and not in my history\n02:38 - TacoNessa: I commented you.\n02:38 - TacoNessa: The other day.\n02:38 - Busta Brum: i know that\n02:38 - Busta Brum: the soulbound comment\n02:38 - TacoNessa: whatever\n02:38 - TacoNessa: you didnt comment me at all\n02:38 - TacoNessa: going crazy\n02:38 - Busta Brum: thats twice ive done that now\n02:38 - Busta Brum: and both times ive been sure\n02:38 - Busta Brum: that i left one\n02:39 - TacoNessa: idc right now okay\n02:39 - TacoNessa: about a stupid comment\n02:39 - TacoNessa: that was never there\n02:40 - Busta Brum: what DO you care about just now\n02:42 - TacoNessa: nothing\n02:42 - TacoNessa: you are just going to ignore what i say\n02:42 - Busta Brum: i dont think i ever ignore stuff you say\n02:43 - Busta Brum: but you DO ignore stuff i say, and refuse to read things when i type too much. so where has this come from that i will ignore you\n02:44 - TacoNessa: you ignore a lot more than you think or notice\n02:44 - TacoNessa: whatever\n02:44 - TacoNessa: that just you\n02:44 - Busta Brum: ignore implies im intentionally avoiding stuff\n02:44 - Busta Brum: so if i dont realise it, then im not ignoring it\n02:45 - Busta Brum: i do sometimes miss stuff and then have to scroll up and say \"oops i missed that somehow\"\n02:45 - TacoNessa: obviously you must have seen what i typed before you started talking about a stupid comment\n02:46 - Busta Brum: ive told you numerous times already that its unlikely i will leave again\n02:47 - Busta Brum: unless i legit die or something happens to me\n02:47 - TacoNessa: You should have never done it\n02:47 - Busta Brum: maybe you should have treated me better so that i wasnt afraid to come back online after a day\n02:49 - TacoNessa: 5 fucking days\n02:49 - TacoNessa: asshole\n02:50 - Busta Brum: yeah, every day after that first day i thought you were going to be angry and i just kept delaying it\n02:55 - TacoNessa: I don't think you truly understand, in order for you to I would have to do exactly what you did.  Not mention a word and be dead to you.\n03:00 - Busta Brum: maybe, if you hadnt said anything to me when i ame back online and then just done it now we might have seen how it would have turned out\n03:00 - TacoNessa: but i wouldnt do that to you I wouldnt do what you did\n03:01 - TacoNessa: I know that for a god damn fact\n03:01 - Busta Brum: you said you have had it happen to you before. i dont have anyone else that i talk to everyday so it hasnt happened before and i havent done it before\n03:01 - Busta Brum: all i was thinking when i was offline was \"nessa is going to be angry\"\n03:03 - TacoNessa: the damge has been done\n03:05 - Busta Brum: which only confirms the stuff i worry about all the time, that nothing will ever get better between us\n03:05 - TacoNessa: eh i dont know who you are anymore\n03:06 - Busta Brum: and again you just keep slating me, i cant say anything that will..help\n03:06 - Busta Brum: nothing ever helps\n03:07 - TacoNessa: I guess\n03:08 - TacoNessa: what i say a lot of the time makes you think the complete opposite/different of what i mean, you always think everything is negative and the cycle begins where i get annoyed because you do it almost everyday\n03:08 - Busta Brum: stuff is always my fault. i cant say anything that is negative towards you or you get angry at me. point proven i guess\n03:09 - TacoNessa: you just think that\n03:09 - TacoNessa: if you cant handle being my friend then just leave for good\n03:09 - Busta Brum: like when we are playing borderlands 2, and i said \"you stealing all the loot!!\" you took it way too seriously\n03:09 - Busta Brum: or it seemed like it\n03:09 - Busta Brum: and when i asked you for a shotgun\n03:10 - Busta Brum: you got really defensive\n03:10 - TacoNessa: Stop complaining or leave for good.  I am done.\n03:11 - Busta Brum: see!!\n03:11 - Busta Brum: thats why i dont complain\n03:11 - Busta Brum: because i worry that you will leave me\n03:11 - Busta Brum: and now you just literally said it\n03:11 - Busta Brum: what the heck\n03:11 - Busta Brum: i dont complain when you say stuff about me\n03:11 - TacoNessa: I am done, this has been going on for too long.  I am done. Done done done\n03:12 - TacoNessa: I blame you for a lot of things for a reason, you are very clueless, and ive told you before everything is not your fault\n03:12 - TacoNessa: but I am done\n03:12 - TacoNessa: you brought me to this point\n03:12 - Busta Brum: theres no need to always blame each other for stuff\n03:12 - TacoNessa: done\n03:12 - TacoNessa: done\n03:12 - TacoNessa: done\n03:12 - Busta Brum: please dont be done\n03:13 - Busta Brum: unless you are just talking about tonight\n03:13 - Busta Brum: which i would understand\n03:13 - TacoNessa: Done with everything.  Done with it all\n03:13 - TacoNessa: Tired of you always complaing about me\n03:13 - TacoNessa: everything is my fault\n03:13 - TacoNessa: i get it\n03:13 - Busta Brum: !!\n03:13 - TacoNessa: I am done\n03:14 - TacoNessa: my fault you happy\n03:14 - TacoNessa: done\n03:14 - Busta Brum: no\n03:14 - Busta Brum: of course im not happy\n03:14 - TacoNessa: I am done\n03:14 - Busta Brum: ive never said everything is your fault, you are putting words in my mouth\n03:15 - TacoNessa: The reason you are so fucked up is because of me, so I am done and you need to get help for yourself\n03:15 - Busta Brum: no, come on, please dont\n03:16 - Busta Brum: you shouldnt give up on our friendship like this\n03:17 - TacoNessa: It is no good anymore, you are always so shitty because of me, so get help.  You don't need me in your life right now\n03:18 - Busta Brum: i appreciate you thinking of me here, but dropping out of my life isnt going to help anything\n03:18 - TacoNessa: It wouldn't be for good, I just can't do this anymore, always the same shit almost day after day\n03:19 - TacoNessa: I am done with it like i have said\n03:19 - Busta Brum: this will hurt more than if you dissapeared for a few days\n03:20 - Busta Brum: i will know you are still there, still doing your thing but just choosing to keep me out\n03:22 - TacoNessa: I think it is for the best, this friendship is no good for either one of us\n03:22 - Busta Brum: this certainly sounds like its for good\n03:23 - TacoNessa: It would benefit you to get better influences in your life, instead of have me in it\n03:24 - Busta Brum: if you are saying you are a bad influence then i cant imagine finding any good influences\n03:25 - TacoNessa: My friendship, this friendship, is doing you no good\n03:25 - TacoNessa: and I am tired of it\n03:26 - Busta Brum: i dont want it to end\n03:28 - TacoNessa: I am just done\n03:29 - TacoNessa: I can't be your friend anymore\n03:29 - Busta Brum: you are breaking my heart here\n03:30 - TacoNessa: We just need to not talk for a while, I know I will be okay, but you need to get help from someone else and better yourself\n03:31 - Busta Brum: are you going to delete me?\n03:32 - TacoNessa: Get some help busta, we will talk soon enough\n03:33 - Busta Brum: im getting help. so thats it, i cant convince you otherwise?\n03:58 - TacoNessa: Nah I couldnt do that to you , no matter what.  Idk how you did it to me.\n04:00 - Busta Brum: so you arent going anywhere?\n04:00 - TacoNessa: Nope, I told you I would never do what you did to me.\n04:01 - TacoNessa: NEVER\n04:01 - Busta Brum: I get your point, but the difference is this time you TOLD me about it which (as you have said) is different\n04:02 - TacoNessa: I dont understand, just get better\n04:03 - Busta Brum: theres nowhere to go but up really\n04:20 - Busta Brum: 420\n04:21 - TacoNessa: where is my 420game\n04:22 - Busta Brum: it arrived 420 minutes early\n04:22 - Busta Brum: *rapidly checks email praying that might actually be true*\n04:22 - TacoNessa: 153\n04:23 - TacoNessa: 953\n04:23 - TacoNessa: your time\n04:23 - Busta Brum: fuck 390 minutes ago is when i got the email reciept from them\n04:23 - Busta Brum: that is frigging close\n04:24 - TacoNessa: cough it up\n04:25 - Busta Brum: its too late\n04:25 - Busta Brum: 5 minutes too late\n04:25 - Busta Brum: sorry\n04:25 - Busta Brum: cant do it\n04:25 - Busta Brum: if it doesnt count when its early, it doesnt count when its late :p\n04:27 - TacoNessa: ye\n04:31 - Busta Brum: have you ever got high?\n04:31 - TacoNessa: yup\n04:32 - Busta Brum: cool. whats it like?\n04:33 - TacoNessa: fine\n04:33 - TacoNessa: no biggie\n04:35 - Busta Brum: :p\n04:36 - Busta Brum: doesnt sound very fun\n04:40 - Busta Brum: ill head to bed..sooon\n04:46 - TacoNessa: fa sho\n04:52 - Busta Brum: ill go now\n",
-			"file": "/C/Users/Steven/Desktop/almostlostnesssa",
-			"file_size": -1,
-			"file_write_time": -1,
-			"settings":
-			{
-				"buffer_size": 10600,
+				"buffer_size": 312,
 				"line_ending": "Windows",
-				"name": "Never tell your password to anyone."
+				"name": "All I ever did was worry that we werent as close a"
 			}
 		},
 		{
-			"contents": "// ==UserScript==\n\n	// @name POST Interceptor\n\n	// @description Intercept POST requests and let user modify before submit\n\n	// @namespace http://kailasa.net/prakash/greasemonkey/\n\n	// @include http*://example.com/*\n\n	// ==/UserScript==\n\n	\n\n	// based on code by Prakash Kailasa\n\n	// and included here with his gracious permission\n\n\n\n	//\n\n	// IMPORTANT: Be sure to change/add @include lines for the sites you\n\n	//			  want the script to work on\n\n\n\n	const POST_INTERCEPT = 'PostIntercept';\n\n	var intercept_on;\n\n	var is_modified = false;\n\n\n\n	function toggle_intercept(flag)\n\n	{\n\n		intercept_on = flag;\n\n		GM_setValue(POST_INTERCEPT, intercept_on);\n\n		setup_pi_button();\n\n	}\n\n\n\n	function setup_pi_button()\n\n	{\n\n		var pi = document.getElementById('__pi_toggle');\n\n		if (!pi) {\n\n				pi = new_node('span', '__pi_toggle');	\n\n				pi.textContent = '[PI]';\n\n				document.getElementsByTagName('body')[0].appendChild(pi);\n\n				pi.addEventListener('click',\n\n						 function() {toggle_intercept(!intercept_\n\n	on)},\n\n						 false);\n\n				\n\n			var pi_toggle_style = ' \\\n\n		#__pi_toggle { \\ \n\n		  position: fixed; \\\n\n		  bottom: 0; right: 0; \\\n\n		  display: inline; \\\n\n\n\n		 padding: 2px; \\\n\n		 font: caption; \\\n\n		 font-weight: bold; \\\n\n		 cursor: crosshair; \\\n\n	   } \\\n\n	   #__pi_toggle:hover { \\ \n\n	     border-width: 2px 0 0 2px; \\\n\n		 border-style: solid none none solid; \\\n\n		 border-color: black; \\\n\n	   } \\\n\n	   ';\n\n				add_style(\"__pi_toggle_style\", pi_toggle_style);\n\n			}\n\n\n\n			if (intercept_on) {\n\n				pi.textContent = '[PI] is On';\n\n				pi.setAttribute('title', 'Click to turn POST Interceptor Off');\n\n				pi.style.backgroundColor = '#0c2369';\n\n				pi.style.color = '#ddff00';\n\n			} else {\n\n				pi.textContent = '[PI] is Off';\n\n				pi.setAttribute('title', 'Click to turn POST Interceptor On');\n\n				pi.style.backgroundColor = '#ccc';\n\n				pi.style.color = '#888';\n\n		    }\n\n		}\n\n\n\n		function interceptor_setup( )\n\n		{\n\n			if (typeof GM_getValue != 'undefined') {\n\n				intercept_on = GM_getValue(POST_INTERCEPT, false);\n\n				setup_pi_button( );\n\n			} else {\n\n				intercept_on = true;\n\n			}\n\n\n\n			// override submit handling\n\n			HTMLFormElement.prototype.real_submit = HTMLFormElement.prototype.\n\n		submit;\n\n			HTMLFormElement.prototype.submit = interceptor;\n\n			\n\n			// define our 'submit' handler on window, to avoid defining\n\n			// on individual forms\n\n			window.addEventListener('submit', function(e) {\n\n				// stop the event before it gets to the element and causes\n\n		onsubmit to\n\n				// get called.\n\n				e.stopPropagation( );\n\n\n\n				// stop the form from submitting\n\n				e.preventDefault( );\n\n\n\n				interceptor(e);\n\n		}, true);\n\n	}\n\n	\n\n	// interceptor: called in place of form.submit( )\n\n	// or as a result of submit handler on window (arg: event)\n\n	function interceptor(e) {\n\n		var frm = e ? e.target : this;\n\n		if (!interceptor_onsubmit(frm)) { return false; }\n\n		if (intercept_on) {\n\n			show(frm);\n\n			return false;\n\n		} else {\n\n			HTMLFormElement.prototype.real_submit.apply(frm);\n\n		}\n\n	}\n\n	\n\n	// if any form defined an onsubmit handler, it was saved earlier.\n\n	// call it now\n\n	function interceptor_onsubmit(f) {\n\n		return !f.onsubmit || f.onsubmit( );\n\n	}\n\n	\n\n	function show(frm) {\n\n		var content = build(frm);\n\n		content.open( );\n\n	}\n\n	\n\n	function build(frm) {\n\n		add_window_style( );\n\n\n\n		var container = new_node('div', 'post_interceptor');\n\n		container.className = '_ _pi_window';\n\n		var title = new_node('h1');\n\n		title.className = '_ _pi_title';\n\n		title.appendChild(new_text_node('Intercepting POST ' + post_url(frm)));\n\n		container.appendChild(title);\n\n\n\n		var note = new_node('div', '_ _pi_note');\n\n		note.appendChild(new_text_node('Click on any value to modify it'));\n\n		container.appendChild(note);\n\n\n\n		var data = build_post_data(frm);\n\n		container.appendChild(data);\n\n\n\n		var buttons = new_node('div', '_ _pi_buttons');\n\n		var btn_send_mod = new_node('button', '_ _pi_btn_send_mod');\n\n		btn_send_mod.className = '_ _pi_button';\n\n		btn_send_mod.appendChild(new_text_node('Send Modified'));\n\n		buttons.appendChild(btn_send_mod);\n\n		btn_send_mod.addEventListener('click', function(e) {\n\n			submit_modified(win);\n\n		}, false);\n\n\n\n		var btn_send_orig = new_node('button', '_ _pi_btn_send_orig');\n\n		btn_send_orig.className = '_ _pi_button';\n\n		btn_send_orig.appendChild(new_text_node('Send Original'));\n\n		buttons.appendChild(btn_send_orig);\n\n		btn_send_orig.addEventListener('click', function(e) {\n\n			submit_original(win);\n\n		}, false);\n\n\n\n		var btn_cancel = new_node('button', '_ _pi_btn_cancel');\n\n		btn_cancel.className = '_ _pi_button';\n\n		btn_cancel.appendChild(new_text_node('Cancel'));\n\n		buttons.appendChild(btn_cancel);\n\n		container.appendChild(buttons);\n\n		btn_cancel.addEventListener('click', function(e) {\n\n			cancel_submit(win);\n\n		}, false);\n\n\n\n		var win = Window(container, frm);\n\n\n\n		return win;\n\n	}\n\n\n\n	// POST content\n\n	function build_post_data(f)\n\n	{\n\n		var table = new_node('table');\n\n\n\n		// heading\n\n		var thead = new_node('thead');\n\n		var th_row = new_node('tr');\n\n		var attrs = new Array('name', 'type', 'value');\n\n		for (var a = 0; a < attrs.length; a++) {\n\n			var th = new_node('th');\n\n			th.appendChild(new_text_node(attrs[a].ucFirst( )));\n\n			th_row.appendChild(th);\n\n		}\n\n		thead.appendChild(th_row);\n\n		table.appendChild(thead);\n\n\n\n		// data\n\n		var tbody = new_node('tbody');\n\n		for (var i = 0; i < f.elements.length; i++) {\n\n			var row = new_node('tr');\n\n			row.className = i % 2 == 0 ? '_ _pi_row_even' : '_ _pi_row_odd';\n\n			//for (var a in attrs) {\n\n			for (var a = 0; a < attrs.length; a++) {\n\n				var cell = new_node('td', '_ _pi_cell_' + attrs[a] + '_' + i);\n\n				cell.className = '_ _pi_cell_' + attrs[a];\n\n				var data;\n\n				if (attrs[a] == 'value') {\n\n				data = new_node('input', '_ _pi_cell_value_text_' + i);\n\n				data.value = f.elements[i][attrs[a]];\n\n				data.readOnly = true;\n\n\n\n				data.className = '_ _pi_view_field';\n\n				data.maxLength = 1000;\n\n				cell.addEventListener(\"click\", show_edit, false);\n\n				} else {\n\n				data = new_text_node(f.elements[i][attrs[a]]);\n\n				}\n\n				cell.appendChild(data);\n\n				row.appendChild(cell);\n\n			}\n\n			tbody.appendChild(row);\n\n		}\n\n		table.appendChild(tbody);\n\n		var data = new_node('div', '_ _pi_post_info');\n\n		data.className = '_ _pi_post_info';\n\n		data.appendChild(table);\n\n\n\n		return data;\n\n	}\n\n\n\n	// hide value and show edit field\n\n\n\n	function show_edit(e)\n\n	{\n\n	\n\n		var view, cell;\n\n			if (e.target.nodeName == 'INPUT') {	\n\n				view = e.target;\n\n				cell = view.parentNode;\n\n			} else {\n\n				cell = e.target;\n\n				view = cell.firstChild;\n\n			}\n\n			view._ _origValue = view.value;\n\n			view.className = '_ _pi_edit_field';\n\n			view.readOnly = false;\n\n			view.addEventListener(\"blur\", show_view, false);\n\n		}\n\n		\n\n		// hide edit field and show modified value\n\n		function show_view(e)\n\n			{\n\n				var view = e.target;\n\n				view.className = '_ _pi_view_field';\n\n				view.addEventListener(\"click\", show_edit, false);\n\n				if (view.value != view._ _origValue) {\n\n				is_modified = true;\n\n				view.parentNode.parentNode.className += ' _ _pi_modified';\n\n				}\n\n			}\n\n\n\n			// build POST url\n\n		function post_url(f)\n\n		{\n\n			// absolute URL?\n\n\n\n		if (f.action.match(/^https?:/))\n\n			return f.action;\n\n	\n\n		// relative URL; build complete URL\n\n		var url = document.location.protocol + '//' + document.location.\n\n	hostname;\n\n		if (f.action.match(/^\\//)) {\n\n			url += f.action;\n\n		} else {\n\n				url += document.location.pathname + '/' + f.action;\n\n		}\n\n		return url;\n\n	}\n\n\n\n	// cancel submit; just close the Interceptor window\n\n	function cancel_submit(win) {\n\n		win.close( );\n\n	}\n\n\n\n	// ignore form modifications and submit original form\n\n	function submit_original(win) {\n\n		win.close( );\n\n		HTMLFormElement.prototype.real_submit.apply(win.form);\n\n	}\n\n\n\n	// submit form with modified parameters\n\n	function submit_modified(win) {\n\n		if (is_modified) {\n\n			update_form(win);\n\n		}\n\n		submit_original(win);\n\n	}\n\n\n\n	// update the form being submitted with user modifications\n\n	function update_form(win) {\n\n		var f = win.form;\n\n		var diff = 'submitting ' + f.name + ':\\n';\n\n		for (var i = 0; i > f.elements.length; i++) {\n\n			var edit = document.getElementById('_ _pi_cell_value_text_' + i);\n\n			if (edit && edit.value != f.elements[i].value) {\n\n				diff += f.elements[i].name + ': |' +\n\n				f.elements[i].value + '| -> |' + edit.value + '|\\n';\n\n				// update the original form param\n\n				f.elements[i].value = edit.value;\n\n			}\n\n		}\n\n	}\n\n\n\n	// helper functions\n\n	function new_node(type, id) {\n\n		var node = document.createElement(type);\n\n		if (id && id.length > 0) {\n\n			node.id = id;\n\n\n\n		}\n\n		return node;\n\n	}\n\n	\n\n	function new_text_node(txt) {\n\n		return document.createTextNode(txt);\n\n	}\n\n\n\n	function add_style(style_id, style_rules) {\n\n		if (document.getElementById(style_id)) {\n\n			return;\n\n		}\n\n		var style = new_node(\"style\", style_id);\n\n		style.type = \"text/css\";\n\n		style.innerHTML = style_rules;\n\n		document.getElementsByTagName('head')[0].appendChild(style);\n\n	}\n\n\n\n	// style for the interceptor window\n\n	function add_window_style( ) {\n\n		var pi_style_rules = ' \\\n\n	.post_interceptor { \\\n\n	margin: 0; padding: 0; \\\n\n	} \\\n\n	 \\\n\n	._ _pi_window { \\\n\n	  background-color: #bfbfff; \\\n\n	  border-color: #000040; \\\n\n	  border-style: solid; \\\n\n	  border-width: 2px; \\\n\n	  /* opacity: .90; */ \\\n\n	  margin: 0px; \\\n\n	  padding: 1px 2px; \\\n\n	  position: absolute; \\\n\n	  text-align: center; \\\n\n	  visibility: hidden; \\\n\n	  \\\n\n	  -moz-border-radius: 15px; \\\n\n	 } \\\n\n	  \\\n\n	 ._ _pi_title { \\\n\n	  background-color: #4040ff; \\\n\n	  color: #ffffff; \\\n\n	  margin: 1px; padding: 1px; \\\n\n	  font: caption; \\\n\n	  font-weight: bold; \\\n\n	  text-align: center; \\\n\n	  white-space: nowrap; \\\n\n	  overflow: hidden; \\\n\n	 \\\n\n	  -moz-border-radius: 20px; \\\n\n	 } \\\n\n	  \\\n\n\n\n	#_ _pi_note { \\\n\n	  border: solid 0px black; \\\n\n	  color: #800000; \\\n\n	  margin: 0; \\\n\n	  font: caption; \\\n\n	  font-weight: bold; \\\n\n	  text-align: center; \\\n\n	} \\\n\n	 \\\n\n	#_ _pi_buttons { \\\n\n	  width: 99%; \\\n\n	  text-align: center; \\\n\n	  position: absolute; \\\n\n	  bottom: 5px; \\\n\n	} \\\n\n	 \\\n\n	._ _pi_button { \\\n\n      background-color: #4040ff; \\\n\n	  color: #fff; \\\n\n	  margin: 0 5px; padding: 2px; \\\n\n	  font: icon; \\\n\n	  font-weight: bold; \\\n\n	} \\\n\n	 \\\n\n	._ _pi_button:hover { \\\n\n	  background-color: #ff4040; \\\n\n	  cursor: pointer; \\\n\n	} \\\n\n	 \\\n\n	._ _pi_post_info { \\\n\n	  max-height: 335px; \\\n\n	  overflow: auto; \\\n\n	  margin: 3px 2px; padding: 0; \\\n\n	  border: 1px solid #008080; \\\n\n	} \\\n\n	 \\\n\n	._ _pi_post_info table { \\\n\n      width: 100%; \\\n\n	 font: bold .7em \"sans serif\"; \\\n\n	} \\\n\n     \\\n\n	._ _pi_post_info table thead tr { \\\n\n      background-color: black; \\\n\n	  color: white; \\\n\n	} \\\n\n	 \\\n\n	._ _pi_row_odd { \\\n\n      background-color: #eee; \\\n\n	} \\\n\n	 \\\n\n	._ _pi_row_even { \\\n\n      background-color: #ccc; \\  \n\n	} \\\n\n\n\n	 \\\n\n	._ _pi_view_field { \\\n\n	  background-color: inherit; \\\n\n	  border: 0px solid black; \\\n\n	  width: 20em; \\\n\n	  font: bold 1em \"sans serif\"; \\\n\n	} \\\n\n	 \\\n\n	._ _pi_edit_field { \\\n\n	  background-color: #ffc; \\\n\n	  color: blue; \\\n\n	  border: 1px solid black; \\\n\n	  padding: -1px; \\\n\n	  width: 20em; \\\n\n	  font: bold 1em \"sans serif\"; \\\n\n	} \\\n\n	 \\\n\n	tr._ _pi_modified td, tr._ _pi_modified input { \\\n\n	  color: red; \\\n\n	} \\\n\n	 \\\n\n	';\n\n		add_style(\"_ _pi_style\", pi_style_rules);\n\n	}\n\n\n\n	//===============================================================\n\n	// Popup Window\n\n\n\n	function Window(el, frm) {\n\n		document.getElementsByTagName('body')[0].appendChild(el);\n\n\n\n		var win = {\n\n			frame: el,\n\n			form: frm,\n\n			open: function( ) {\n\n				var width = 550;\n\n				var height = 400;\n\n				this.frame.style.width = width + 'px';\n\n				this.frame.style.height = height + 'px';\n\n				this.frame.style.left = parseInt(window.scrollX +\n\n				(window.innerWidth - width)/2) + 'px';\n\n				this.frame.style.top = parseInt(window.scrollY +\n\n				(window.innerHeight - height)/2) + 'px';\n\n				this.frame.style.visibility = \"visible\";\n\n			},\n\n			\n\n			close: function( ) {\n\n				this.frame.style.visibility = \"hidden\";\n\n			},\n\n		};\n\n		\n\n		return win;\n\n	}\n\n\n\n	String.prototype.ucFirst = function ( ) {\n\n		var firstLetter = this.substr(0,1).toUpperCase( )\n\n		return this.substr(0,1).toUpperCase( ) + this.substr(1,this.length);\n\n	}\n\n	\n\n	interceptor_setup( );",
-			"file": "/C/Users/Steven/Desktop/postinter.js",
-			"file_size": -1,
-			"file_write_time": -1,
+			"file": "/C/Users/Steven/Desktop/agent.html",
 			"settings":
 			{
-				"buffer_size": 12204,
+				"buffer_size": 4198,
 				"line_ending": "Windows",
-				"name": "// ==UserScript=="
-			}
-		},
-		{
-			"contents": "1. First game must be sent on May 1st (less than 20 usd/pounds)\n\n2. Max of 3 games to be bought that are not on sale for May Day No sale Month!\n3. Game must be sent every other week\n4. First game must be picked by individual\n",
-			"file": "/C/Users/Steven/Desktop/MAYDAYNOSALEMONTHRULES",
-			"file_size": 147,
-			"file_write_time": 130434774611153492,
-			"settings":
-			{
-				"buffer_size": 225,
-				"line_ending": "Windows",
-				"name": "1. First game must be sent on May 1st (less than 2"
-			}
-		},
-		{
-			"file": "/C/Users/Steven/Documents/GitHub/webmbed/jquery.min.js",
-			"settings":
-			{
-				"buffer_size": 96381,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/C/Users/Steven/Documents/GitHub/webmbed/background.js",
-			"settings":
-			{
-				"buffer_size": 903,
-				"line_ending": "Unix"
+				"name": "<div id=\"contactPopup\" class=\"modal box boxBasic b"
 			}
 		}
 	],
@@ -258,11 +168,25 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Steven/Documents/GitHub/webmbed/background.js",
+		"/C/Users/Steven/Documents/GitHub/webmbed/jquery.min.js",
+		"/C/Users/Steven/Documents/GitHub/valeyard.github.io/index.html",
+		"/C/Users/Steven/Desktop/almostlostnesssa",
+		"/C/Users/Steven/Desktop/MAYDAYNOSALEMONTHRULES",
+		"/C/Users/Steven/Desktop/postinter.js",
+		"/C/Users/Steven/Documents/GitHub/webmbed/manifest.json",
+		"/C/Users/Steven/Documents/GitHub/webmbed/settings.js",
+		"/C/Users/Steven/Documents/GitHub/webmbed/popup.html",
+		"/C/Users/Steven/Documents/GitHub/webmbed/contentscript.js",
+		"/C/Users/Steven/Documents/GitHub/yosplus/twitter.css",
+		"/C/Users/Steven/Documents/GitHub/yosplus/0temp/canvasTweet.js",
+		"/C/Users/Steven/Documents/GitHub/yosplus/jquery.form.js",
+		"/C/Users/Steven/Documents/pagancowlol",
+		"/C/Users/Steven/Documents/GitHub/yosplus/postreply.js",
 		"/C/Users/Steven/Documents/GitHub/yosplus/0temp/salib.js",
 		"/C/Users/Steven/Desktop/salastread/salastreadOverlay.js",
 		"/C/Users/Steven/Documents/GitHub/yosplus/forums.js",
 		"/C/Users/Steven/Documents/GitHub/yosplus/search.js",
-		"/C/Users/Steven/Documents/GitHub/yosplus/twitter.css",
 		"/C/Users/Steven/Dropbox/Public/myjson",
 		"/C/Users/Steven/Documents/GitHub/yosplus/contentscript.js",
 		"/C/Users/Steven/Dropbox/Public/salib.js",
@@ -292,7 +216,7 @@
 	],
 	"find":
 	{
-		"height": 53.0
+		"height": 45.0
 	},
 	"find_in_files":
 	{
@@ -306,6 +230,40 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"email",
+			"Poncie",
+			"wrap",
+			"style",
+			"color",
+			"snype",
+			"click",
+			".each",
+			".get",
+			"get",
+			"img",
+			"bootstrap",
+			"[\"",
+			"\"undefined\"",
+			"test1",
+			"\"undefined\"",
+			"if",
+			"bread",
+			"myfunc",
+			"embed",
+			"twttr",
+			"script",
+			"myfun",
+			"embed",
+			"form",
+			"if",
+			"find",
+			"for",
+			"type",
+			"head",
+			"script",
+			"audio",
+			"src",
+			"dropbox",
 			"twitter",
 			"snype",
 			"style",
@@ -399,41 +357,7 @@
 			"  html2canvas(document.body, {\n    onrendered: function(canvas) {\n\n           document.body.appendChild( canvas );\n        \n    }\n});",
 			"console",
 			" \"",
-			">\"],\n",
-			">\"],",
-			"attr",
-			"console",
-			"replaceWi",
-			"filter",
-			"main",
-			"set",
-			"\"))\n",
-			"TE",
-			");\n",
-			"muted",
-			"])",
-			"attr",
-			"aatr",
-			"attr",
-			"FILTER",
-			"hello",
-			"});\n",
-			"gif",
-			"sth",
-			"this",
-			"bryan",
-			"user",
-			"favourite",
-			"}, ",
-			"\");});",
-			"});\n",
-			"local",
-			"console",
-			"console.log",
-			"favourite",
-			"basic",
-			"dragSr",
-			"localstorage"
+			">\"],\n"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -441,6 +365,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"undefined"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -451,7 +376,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -460,15 +385,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 823,
+						"buffer_size": 941,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								68,
-								68
+								406,
+								406
 							]
 						],
 						"settings":
@@ -486,19 +411,49 @@
 				},
 				{
 					"buffer": 1,
-					"file": "background.js",
+					"file": "jquery.ba-bbq.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1805,
+						"buffer_size": 43248,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								736,
-								736
+								33314,
+								33314
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 27435.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "background.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1888,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1124,
+								1124
 							]
 						],
 						"settings":
@@ -514,20 +469,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 3,
 					"file": "contentscript.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 34391,
+						"buffer_size": 40438,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								30084,
-								30091
+								34374,
+								34374
 							]
 						],
 						"settings":
@@ -536,64 +491,93 @@
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 31.0,
-						"translation.y": 14885.0,
+						"translation.x": 0.0,
+						"translation.y": 8110.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "/C/Users/Steven/Documents/pagancowlol",
+					"buffer": 4,
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 17443,
+						"buffer_size": 984,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								17014,
-								17014
+								978,
+								978
 							]
 						],
 						"settings":
 						{
-							"auto_name": "* you joined &pagancow",
+							"auto_name": "<div class=\"breadcrumbs\">",
 							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 688.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "popup.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2779,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								621,
+								621
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "postreply.js",
+					"buffer": 6,
+					"file": "settings.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3593,
+						"buffer_size": 1066,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								682,
-								682
+								468,
+								468
 							]
 						],
 						"settings":
 						{
-							"auto_name": "<form enctype=\"multipart/form-data\" action=\"newrep",
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -601,425 +585,98 @@
 					},
 					"stack_index": 6,
 					"type": "text"
-				},
+				}
+			]
+		},
+		{
+			"selected": 2,
+			"sheets":
+			[
 				{
-					"buffer": 5,
-					"file": "jquery.form.js",
+					"buffer": 7,
+					"file": "/C/Users/Steven/Documents/GitHub/valeyard.github.io/index.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 43811,
+						"buffer_size": 4355,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								743,
-								743
+								3180,
+								3180
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/HTML/HTML.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1769.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1011,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1011,
-								853
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 12,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "twitter.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2132,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								743,
-								743
-							]
-						],
-						"settings":
-						{
-							"auto_name": "a.twitter-share-button,",
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 949.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 18,
-					"type": "text"
-				},
-				{
 					"buffer": 8,
-					"file": "popup.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2458,
+						"buffer_size": 312,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								732,
-								732
+								312,
+								312
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"auto_name": "All I ever did was worry that we werent as close a",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "settings.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1017,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								481,
-								481
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 157.0,
-						"translation.y": -0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 4,
 					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 6,
-			"sheets":
-			[
-				{
-					"buffer": 10,
-					"file": "/C/Users/Steven/Documents/GitHub/webmbed/contentscript.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 718,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								167,
-								167
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 13,
-					"type": "text"
 				},
 				{
-					"buffer": 11,
-					"file": "/C/Users/Steven/Documents/GitHub/webmbed/popup.html",
+					"buffer": 9,
+					"file": "/C/Users/Steven/Desktop/agent.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 595,
+						"buffer_size": 4198,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								202,
-								202
+								2693,
+								2698
 							]
 						],
 						"settings":
 						{
+							"auto_name": "<div id=\"contactPopup\" class=\"modal box boxBasic b",
 							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 14,
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "/C/Users/Steven/Documents/GitHub/webmbed/settings.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 577,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 15,
-					"type": "text"
-				},
-				{
-					"buffer": 13,
-					"file": "/C/Users/Steven/Documents/GitHub/webmbed/manifest.json",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 704,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								704,
-								704
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1509.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
-					"type": "text"
-				},
-				{
-					"buffer": 14,
-					"file": "/C/Users/Steven/Desktop/almostlostnesssa",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 10600,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								10600,
-								10600
-							]
-						],
-						"settings":
-						{
-							"auto_name": "Never tell your password to anyone.",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 5638.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
-					"type": "text"
-				},
-				{
-					"buffer": 15,
-					"file": "/C/Users/Steven/Desktop/postinter.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 12204,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								12204,
-								12204
-							]
-						],
-						"settings":
-						{
-							"auto_name": "// ==UserScript==",
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 18418.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 16,
-					"file": "/C/Users/Steven/Desktop/MAYDAYNOSALEMONTHRULES",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 225,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								225,
-								225
-							]
-						],
-						"settings":
-						{
-							"auto_name": "1. First game must be sent on May 1st (less than 2",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 17,
-					"file": "/C/Users/Steven/Documents/GitHub/webmbed/jquery.min.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 96381,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 17,
-					"type": "text"
-				},
-				{
-					"buffer": 18,
-					"file": "/C/Users/Steven/Documents/GitHub/webmbed/background.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 903,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								205,
-								205
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 16,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -1027,7 +684,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 28.0
+		"height": 37.0
 	},
 	"input":
 	{
@@ -1053,7 +710,7 @@
 		"cols":
 		[
 			0.0,
-			0.715254237288,
+			0.0542372881356,
 			1.0
 		],
 		"rows":
@@ -1070,7 +727,7 @@
 	"project": "san.sublime-project",
 	"replace":
 	{
-		"height": 52.0
+		"height": 70.0
 	},
 	"save_all_on_build": true,
 	"select_file":
