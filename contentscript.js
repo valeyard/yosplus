@@ -197,7 +197,7 @@ $(document).ready(function() {
     }
 
     var turbo = false;
-    $(".threadbar").find("ul.postbuttons").prepend('<div style="padding-top:5px; padding-right:5px;"> <input style="float:right;" type="button" class="turbo" value="TURBO!"/></div>')
+    $(".threadbar").find("ul.postbuttons").prepend('<input style="float:right;" type="button" class="turbo" value="TURBO!"/>')
     $('.turbo').click(function(event) {
       turbo = !turbo
       if (turbo){
@@ -275,11 +275,11 @@ $(document).ready(function() {
         $this = $(value)
         var replies = $this.find("td.replies")[0].innerText
         if (replies < 40){
-          if (replies%40 == 39) $(value).find(".title_inner").prepend('<div style="padding-top:5px; padding-right:5px;"> <input style="float:right;" type="button" class="snype" value="Snype"/></div>')
+          if (replies%40 == 39) $(value).find(".title_inner").prepend('<input style="float:right;" type="button" class="snype" value="Snype"/>')
         }
         else if (replies == 0){}
         else{
-          if (replies%40 == 39) $(value).find(".title_inner").prepend('<div style="padding-top:5px; padding-right:5px;"> <input style="float:right;" type="button" class="snype" value="Snype"/></div>')
+          if (replies%40 == 39) $(value).find(".title_inner").prepend('<input style="float:right;" type="button" class="snype" value="Snype"/>')
         }
       })
 
@@ -349,8 +349,8 @@ $(document).ready(function() {
           if (forward != "empty") window.location = forward;
       }
     })
-
-    if (g.avatarHideOption == undefined) g.avatarHideOption = true;
+    if (g.avatarHideOption == false) $(".title").show()
+    if (g.avatarHideOption == undefined) g.avatarHideOption = false;
     if (g.avatarHideOption){
       $( ".userinfo" ).click(function(event) {
         $this = $(event.target)
