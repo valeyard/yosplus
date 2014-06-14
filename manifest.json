@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "SA Needful",
-  "version": "1.39",
+  "version": "1.46",
   "description": "Performing CPR on the Something Awful forums",
 
   "icons": {
@@ -25,7 +25,8 @@
 
   "web_accessible_resources": [
     "images/*.png",
-    "audio/*.wav"
+    "audio/*.wav",
+    "css/*.css"
   ],
 
   "page_action": {

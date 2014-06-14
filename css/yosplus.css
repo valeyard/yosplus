@@ -1,0 +1,132 @@
+input.turbo[type="button"], input.empty[type="button"]{
+	background-color: transparent;
+	border: 1px solid;
+	cursor: pointer;
+	height: 20px;
+	line-height: 13px;
+	font: 15px Courier New,monospace!important;
+	font-weight: bold!important;
+	vertical-align: top;
+	margin-top: 2px;
+}
+
+input.turbo.meGreen[type="button"] {
+	color: #57FF57!important;
+}
+
+input.turbo.meAmber[type="button"] {
+	color: #EACF4C!important;
+}
+
+input.empty.meGreen[type="button"] {
+	color: #57FF57!important;
+	margin-top: 0px !important;
+}
+
+input.empty.meAmber[type="button"] {
+	color: #EACF4C!important;
+	margin-top: 0px !important;
+}
+
+input.turbo.meMain[type="button"] {
+	color: #AAA!important;
+}
+
+input.empty.meMain[type="button"] {
+	color: #111!important;
+	margin-top: 0px !important;
+}
+
+hy{
+  color:red;
+  font-size:32px;
+  text-align:center!important;
+}
+
+.bbc-spoiler video {
+visibility: hidden;
+}
+
+.bbc-spoiler.reveal video {
+visibility: visible;
+}
+
+.meMain blockquote {
+color: #AAA !important;
+font-weight: bold;
+}
+
+.meMain a {
+color: #AAA !important;
+font-weight: bold;
+}
+
+.meMain.bbc-block{
+	background: #000 !important;
+}
+
+.meGreen.bbc-block {
+border-bottom: 1px solid #57FF57 !important;
+border-top: 1px solid #57FF57 !important;
+color: #57FF57 !important;
+}
+
+.meGreen img.timg {
+border: 1px solid #57FF57 !important;
+}
+.meGreen.bbc-block iframe{
+	border: 1px solid #57FF57 !important;
+}
+
+.meGreen span.bbc-spoiler{
+
+border: 1px solid #57FF57 !important;
+box-shadow: 0 0 9px #57FF57!important;
+}
+
+.meGreen blockquote{
+	color: #57FF57 !important;
+}
+
+.meGreen a:hover {
+	-webkit-animation-name:animesGreen;-webkit-animation-duration:1s;-webkit-animation-iteration-count:infinite;-webkit-animation-direction:alternate;-webkit-animation-timing-function:ease-in-out !important;
+}
+
+.meGreen a{
+	color: #57FF57 !important;
+}
+
+.meAmber.bbc-block {
+border-bottom: 1px solid #EACF4C !important;
+border-top: 1px solid #EACF4C !important;
+color: #EACF4C !important;
+}
+
+.meAmber img.timg {
+border: 1px solid #EACF4C !important;
+}
+.meAmber.bbc-block iframe{
+	border: 1px solid #EACF4C !important;
+}
+
+.meAmber span.bbc-spoiler{
+
+border: 1px solid #EACF4C !important;
+box-shadow: 0 0 9px #EACF4C!important;
+}
+
+.meAmber blockquote{
+	color: #EACF4C !important;
+}
+.meAmber a:hover {
+	-webkit-animation-name:animesAmber;-webkit-animation-duration:1s;-webkit-animation-iteration-count:infinite;-webkit-animation-direction:alternate;-webkit-animation-timing-function:ease-in-out !important;
+}
+
+.meAmber a{
+	color: #EACF4C !important;
+}
+
+
+@-webkit-keyframes animesAmber{0%{background:#EACF4C;color:#000}50%{background:#000;color:#EACF4C}100%{background:#EACF4C;color:#000}}
+
+@-webkit-keyframes animesGreen{0%{background:#57FF57;color:#000}50%{background:#000;color:#57FF57}100%{background:#57FF57;color:#000}}

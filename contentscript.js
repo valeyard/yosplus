@@ -1,3 +1,113 @@
+// a = {}
+// timg = new function (e, f, a) {
+//     var g = this,
+//         i = function (d, f) {
+//             var b = a(this).siblings("img"),
+//                 c, h;
+//             if (b.attr("t_width")) a(this).removeClass("expanded"), b.attr({
+//                 width: b.attr("t_width"),
+//                 height: b.attr("t_height")
+//             }), b.removeAttr("t_width"), b.removeAttr("t_height");
+//             else {
+//                 a(this).addClass("expanded");
+//                 b.attr({
+//                     t_width: b.attr("width"),
+//                     t_height: b.attr("height")
+//                 });
+//                 var g = b.parents("blockquote");
+//                 g.length || (g = b.parents(".postbody"));
+//                 c = parseInt(b.attr("o_width"), 10);
+//                 h = parseInt(b.attr("o_height"), 10);
+//                 g = Math.min(900, g.width());
+//                 if (f && c > g) {
+//                     var i = b.position(),
+//                         g = (g - 3 * i.left) / c;
+//                     b.attr("width", c * g);
+//                     b.attr("height", h * g)
+//                 } else b.removeAttr("width"), b.removeAttr("height");
+//                 g = a.browser.webkit || a.browser.safari ? "body" : "html";
+//                 h = a(g).scrollTop();
+//                 c = b.offset().top;
+//                 b = c + b.height();
+//                 b - h > a(e).height() && (h = b - a(e).height());
+//                 c < h && (h = c);
+//                 h != a(g).scrollTop() && (a.browser.msie && 7 > parseInt(a.browser.version, 10) ? a(g).scrollTop(h) : a(g).animate({
+//                     scrollTop: h
+//                 }, 150))
+//             }
+//             return !1
+//         },
+//         k = function () {
+//             var d = a(this);
+//             if (d.hasClass("loading")) {
+//                 d.removeClass("loading");
+//                 var e =
+//                     d[0].naturalWidth || d.width(),
+//                     b = d[0].naturalHeight || d.height();
+//                 if (200 > b && 500 >= e || 170 > e) d.removeClass("timg");
+//                 else {
+//                     d.addClass("complete");
+//                     d.attr({
+//                         o_width: e,
+//                         o_height: b
+//                     });
+//                     var e = e + "x" + b,
+//                         b = 1,
+//                         c = d[0].naturalWidth || d.width(),
+//                         h = d[0].naturalHeight || d.height();
+//                     170 < c && (b = 170 / c);
+//                     200 < h * b && (b = 200 / h);
+//                     d.attr({
+//                         width: c * b,
+//                         height: h * b
+//                     });
+//                     var b = a('<span class="timg_container"></span>'),
+//                         f = a('<div class="note"></div>');
+//                     f.text(e);
+//                     f.attr("title", "Click to toggle");
+//                     b.append(f);
+//                     d.before(b);
+//                     b.prepend(d);
+//                     f.click(i);
+//                     b.click(function (b) {
+//                         if (1 ===
+//                             b.which || a.browser.msie && 9 > parseInt(a.browser.version, 10) && 0 === b.which) return i.call(f, b, !0), !1
+//                     })
+//                 }
+//                 d.trigger("timg.loaded")
+//             }
+//         };
+//     g.scan = function (d) {
+//         a(d).find("img.timg").each(function (d, b) {
+//             b = a(b);
+//             b.hasClass("complete") || (b.addClass("loading"), b[0].complete || null !== b[0].naturalWidth && 0 < b[0].naturalWidth ? k.call(b) : b.load(k))
+//         })
+//     };
+//     // a(f).ready(function () {
+//     //     g.scan("body")
+//     // });
+//     // a(e).load(function () {
+//     //     var d = a("img.timg.loading");
+//     //     d.length && d.each(function (a, b) {
+//     //         k.call(b)
+//     //     })
+//     // })
+// }
+
+  function buttonClass(thisForum, amberPos){
+    if (thisForum == 219){
+      console.log("FUNCTION WORK")
+      if (amberPos) return "meAmber"
+      else return "meGreen"
+    }
+    else return "meMain"
+  }
+
+    var pp = '<td class="postbody"><div class="bbc-block"><h4><a class="quote_link" href="/showthread.php?goto=post&postid=431010047#post431010047" rel="nofollow">Valeyard posted:</a></h4><blockquote><img src="http://i.imgur.com/hlx0isT.jpg" alt="" class="timg" border="0"><br /></blockquote></div><p class="editedby"></td>'
+    
+    $pp1 = $(pp)
+    console.log($pp1[0])
+
 $(document).ready(function() {
   var storage = chrome.storage.sync;
   var g;
@@ -5,6 +115,10 @@ $(document).ready(function() {
   var settings = ["iglist", "oldbread", "lazyload", "avatarHideOption", "snypeAudio", "snype", "fflist", "signature", "quote", "avatarHide", "ads", "tweet", "filter", "vine", "webm", "cats", "main", "tree", "embedTweet"];
   
   chrome.storage.sync.get(settings,function (obj){
+
+
+    //console.log(timg.scan)
+
     g = obj;
     if (g.lazyload == undefined) g.lazyload = false;
     if (g.lazyload){
@@ -22,24 +136,35 @@ $(document).ready(function() {
       });
     }
 
+
+
+    //timg.scan($pp1[0])
+
+
+    //console.log(hg)
+    var s = chrome.extension.getURL("css/yosplus.css")
+    console.log(s)
+    $('head').append('<link rel="stylesheet" href="'+s+'" type="text/css" />');
+
     var forum_177 = {"\\b(daniel bryan|bryan|dbd|db)\\b":"vanilla midget", "\\bover/under\\b":"odds"};
     var forum_219 = {"\\bspongeh\\b":"bread stymie", "\\bsteve jobs\\b":"stebe jobs", "\\bandroid\\b":"anroid", "\\bgodaddy\\b":"nodaddy", "\\bValeyard\\b":"asshole", "\\apt gangbang\\b":"<marquee>apt gangbang</marquee>"};
     var forum_26 = {"\\b ralp \\b":"the talking toilet", "\\bgirls\\b":"bleeders", "\\bgbs\\b":"the moon", "\\bguys\\b":"bleeders"};
-    var filters = {"forum_177": forum_177, "forum_219": forum_219 ,"forum_26": forum_26}
+    var filters = {177: forum_177, 219: forum_219 ,26: forum_26}
 
     !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
     
     var c = 0;
     var thisForum;
-    var fh = document.getElementsByTagName("body")[0].getAttribute("class");
-    var ge = new RegExp("(showthread|forumdisplay|newreply|forumhome)[ ]*([A-Za-z0-9_]*)")
-    var te = ge.exec(fh);
+    // var fh = document.getElementsByTagName("body")[0].getAttribute("class");
+    // var ge = new RegExp("(showthread|forumdisplay|newreply|forumhome)[ ]*([A-Za-z0-9_]*)")
+    // var te = ge.exec(fh);
 
-    if (te ==null) thisForum = "smilie";
-    else{
-      var pageType = te[1];
-      thisForum = te[2];
-    }
+    // if (te ==null) thisForum = "smilie";
+    // else{
+    //   var pageType = te[1];
+    //   thisForum = te[2];
+    // }
+    thisForum = $("body").attr("data-forum")
 
     function handleDragStart(e) {
      // this.style.opacity = '0.4';  // this / e.target is the source node.
@@ -132,6 +257,8 @@ $(document).ready(function() {
       $("body").prepend('<audio id="audio" src=' + audioPath + ' ></audio>')
     }
 
+    
+
     var amberPos;
     if ($("#blarf219").attr("href") == "/css/219a.css"){
       amberPos = true;
@@ -196,12 +323,14 @@ $(document).ready(function() {
       myObj.pagenumber = parseInt(myObj.pagenumber)+1
     }
 
+    var c = buttonClass(thisForum, amberPos)
+    $(".threadbar").find("ul.postbuttons").prepend('<li><input type="button" class="turbo '+c+'" value="TURBO!"/></li>')
+
     var turbo = false;
-    $(".threadbar").find("ul.postbuttons").prepend('<input style="float:right;" type="button" class="turbo" value="TURBO!"/>')
     $('.turbo').click(function(event) {
       turbo = !turbo
       if (turbo){
-        $(".turbo").attr("style", $(".turbo").attr("style") + "color:#EACF4C!important;border: 1px solid #EACF4C!important;" )
+        $(".turbo").attr("style", "color:#EACF4C!important;border: 1px solid #EACF4C!important;" )
         setInterval(function() {
           countPost();
          if ((postCounter%40)==0 && inc==false){
@@ -211,19 +340,25 @@ $(document).ready(function() {
           newUrl = $.param.querystring( window.location.href, { threadid:myObj.threadid, pagenumber:myObj.pagenumber } );
           $.get( newUrl,
                   function(data) {
+                    console.log(data)
                     multiply(data)              
                   }
               );
         }, 10000);
       }
-      else $(".turbo").attr("style", $(".turbo").attr("style") + "color:#57FF57!important;border: 1px solid #57FF57!important;" )
+      else $(".turbo").attr("style", "color:#57FF57!important;border: 1px solid #57FF57!important;" )
     })
     var newUrl = $.param.querystring( window.location.href, { threadid:myObj.threadid, pagenumber:myObj.pagenumber } );
 
     function multiply(y) {
       $this = $(y)
       $this.find(".post").each(function(index, image){
-        if ($(image).attr("id") > $(".post").last().attr("id") ) $(".post").last().after(image)
+        if ($(image).attr("id") > $(".post").last().attr("id") ){
+          console.log(image)
+
+          $(".post").last().after(image)
+          //$(image).myfunction()
+        } 
       })
 
     }
@@ -267,7 +402,7 @@ $(document).ready(function() {
       }
     });
 
-    if (thisForum == "forum_219"){
+    if (thisForum == 219){
     if (g.snype == undefined) g.snype = false;
     if (g.snypeAudio == undefined) g.snypeAudio = true;
     if (g.snype){
@@ -275,11 +410,11 @@ $(document).ready(function() {
         $this = $(value)
         var replies = $this.find("td.replies")[0].innerText
         if (replies < 40){
-          if (replies%40 == 39) $(value).find(".title_inner").prepend('<input style="float:right;" type="button" class="snype" value="Snype"/>')
+          if (replies%40 == 39) $(value).find(".title_inner").prepend('<input style="float:right;margin-top:7px;margin-right:7px;" type="button" class="snype" value="Snype"/>')
         }
         else if (replies == 0){}
         else{
-          if (replies%40 == 39) $(value).find(".title_inner").prepend('<input style="float:right;" type="button" class="snype" value="Snype"/>')
+          if (replies%40 == 39) $(value).find(".title_inner").prepend('<input style="float:right;margin-top:7px;margin-right:7px;" type="button" class="snype" value="Snype"/>')
         }
       })
 
@@ -311,6 +446,10 @@ $(document).ready(function() {
                         form_cookie: formCookie,
                         message: textArray[randomNumber]
                     };
+                    $.post('newreply.php?', e, 
+                        function(returnedData){
+                             console.log(returnedData);
+                    });
                 }
             );
         return false
@@ -318,6 +457,61 @@ $(document).ready(function() {
       })
     });
     }
+  }
+
+  $("form.searchquery").submit(function (e) {
+      e.preventDefault();
+      console.log("HEY")
+    })
+
+  // $( ".searchButton" ).click(function(event) {
+
+  //   console.log(event)
+  //   console.log($(this).parents("form"))
+  //   event.preventDefault()
+  // });
+
+  var modnames = {};
+  var htr = 'http://forums.somethingawful.com/banlist.php?&sort=&asc=0&adminid=&ban_month=0&ban_year=0&actfilt=-1&pagenumber='
+  var i = 1;
+
+  var probReg = new RegExp("(.*)\. \s*User loses posting privileges for ([0-9]+|100,000) (hours|day|days|week|month).")
+
+  //var str = "Low content. User loses posting privileges for 1 day."
+  var dateReg = new RegExp("([0-9]+\/[0-9]+\/[0-9]+)");
+  var timeReg = new RegExp("(([0-9]+:[0-9]+)(am|pm))");
+  //console.log(rg.test(str))
+  console.log("ASDS")
+ 
+
+
+  if (true){
+    $("td.postlinks").each(function(index, value){
+      $this = $(value)
+      var c = buttonClass(thisForum, amberPos)
+      $(value).find("ul.postbuttons").prepend('<input type="button" class="empty '+c+'" value="Emptyquote!"/>')
+    })
+
+   $('.empty').click(function(event) {
+    var a = $(this).parents('.post');
+    var geg = new RegExp("(threadid=)([0-9]+)")
+    console.log($(a).find("img[alt='Quote']")[0].parentNode.href)
+    var rep = $(a).find("img[alt='Quote']")[0].parentNode.href
+    //a.find(".snype").remove()
+    // $.each(a.find("a"), function(index, value){
+    // var g = geg.exec(value.href);
+     // if (g!=null){
+      $.get( rep,
+              function(data) {
+                console.log(data)
+                $this = $(data)
+                console.log($this.find("input[name='submit']").trigger('click'))
+              }
+          );
+      return false
+    // }
+    //  })
+  });
   }
 
     var back = "empty"
@@ -520,32 +714,19 @@ $(document).ready(function() {
   
             if (k[1] == localStorage.user){
 
-               $(quote).css( "background", "rgb(204, 139, 199)" );
-               $(quote).css( "background-color", "rgb(204, 139, 199)" );
+               // $(quote).css( "background", "rgb(204, 139, 199)" );
+               // $(quote).css( "background-color", "rgb(204, 139, 199)" );
 
-               $this.find("blockquote").css( "color", "#000000" );
-
-              if (thisForum != "forum_219") $(quote).find(".quote_link").css("color", "rgb(0, 20, 255)")
-              else{
+               // $this.find("blockquote").css( "color", "#000000" );
+                console.log(thisForum)
+              if (thisForum != 219) $(quote).attr("class", $(quote).attr("class") + " meMain")
+              else if (thisForum==219){
+                console.log("MADE IT")
                 if (!amberPos){
-                  $(quote).find(".quote_link").css("color", "#EACF4C")
-                  $(quote).attr("style", $(quote).attr("style") + "border-bottom: 1px solid #EACF4C !important;" )
-                  $(quote).attr("style", $(quote).attr("style") + "border-top: 1px solid #EACF4C !important;" )
-                  $(quote).find("blockquote").attr("style", $(quote).find("blockquote").attr("style") + "color: #EACF4C !important;" )
-                  $(quote).find("a").attr("style", $(quote).find("blockquote").attr("style") + "color: #EACF4C !important;" )
-                  //$(quote).find("a").attr("style", $(quote).find("blockquote").attr("style") + '-webkit-keyframes animes{0%{background:#EACF4C;color:#000}50%{background:#000;color:#EACF4C}100%{background:#EACF4C;color:#000}}* !important' )
-                 // $("head").append('<style>@-webkit-keyframes animess{0%{background:#EACF4C;color:#000}50%{background:#000;color:#EACF4C}100%{background:#EACF4C;color:#000}}*')
-                  $(quote).find(".img").attr("style", $(quote).find(".img").attr("style") + 'border:1px solid #EACF4C !important')
-                  console.log($(quote).find("img"))
-                  //$(quote).attr("style", $(quote).attr("style") + "color #EACF4C !important;" )
-                //  console.log($(quote).css("tr"))
+                  $(quote).attr("class", $(quote).attr("class") + " meAmber")
                 }
                 else{
-                  $(quote).find(".quote_link").css("color", "#57FF57")
-                  $(quote).attr("style", $(quote).attr("style") + "border-bottom: 1px solid #57FF57 !important;" )
-                  $(quote).attr("style", $(quote).attr("style") + "border-top: 1px solid #57FF57 !important;" )
-                  $(quote).find("blockquote").attr("style", $(quote).find("blockquote").attr("style") + "color: #57FF57 !important;" )
-                  //$(quote).attr("style", $(quote).attr("style") + "color #EACF4C !important;" )
+                  $(quote).attr("class", $(quote).attr("class") + " meGreen")
                 }
               } 
 
@@ -603,17 +784,28 @@ $(document).ready(function() {
           }
         });
       }
-
+      var yostop = "obstipator";
     	var text = $(this).find(" td.postbody")[0].innerHTML;
       var tweetText = $(this).find(" td.postbody")[0].innerText;
     	var author = $(this).find(" dt.author")[0].innerText;
+      var author1 = $(this).find(" dt.author")[0].innerHTML;
+      var gah = new RegExp("\\b"+yostop+"\\b", 'gi');
+      var tee = gah.exec(author1);
 
+      if (tee != null){
+        console.log(tee);
+        console.log("HEYYYYYY")
+        console.log($(this).find("dd.title").append("<hy><img src='http://fi.somethingawful.com/images/smilies/emot-siren.gif'>YOSTOP<img src='http://fi.somethingawful.com/images/smilies/emot-siren.gif'></hy>"))
+        }
+
+      //if (author == yostop) $(this).find(".bbc-center")[0].innerText = $(this).find(".bbc-center")[0].innerText + "LOOOOOOOL"
       var x = new RegExp("(http|https)://vine\.co/v/[A-Za-z0-9]+");
       var pomf = new RegExp("[:A-Za-z0-9\.\/]+\\.webm");
       var gif = new RegExp("(http|https)://[A-Za-z0-9]+\.gfycat\.com/[A-Za-z0-9]+[\.]*[A-Za-z0-9]+\.webm");
 
       if (g.filter == undefined) g.filter = false;
       if (g.filter){
+        //console.log(text)
         for(var j in filters[thisForum]){
           var h = new RegExp(j, 'gi');
           var t = h.exec(text);
@@ -649,6 +841,7 @@ $(document).ready(function() {
       if (g.webm == undefined) g.webm = true;
       if (pomf.test(text) && g.webm){
         $this = $(image);
+        console.log(text)
         var postBody = $(this).find(" td.postbody")[0];
         var ur85 = pomf.exec(text);
         var sth = '<video autoplay loop width="450" muted="true" controls> <source src="'+ur85[0]+'" type="video/webm"> </video>'
@@ -659,6 +852,19 @@ $(document).ready(function() {
            if(value.href == ur85[0]){
            jelm.replaceWith(sth);
           }
+        });
+
+        $this.find(".bbc-spoiler").each(function( index, value ) {
+          console.log("finding as here")
+          var jelm = $(value);
+          console.log(value.innerText)
+           if(value.innerText == ur85[0]){
+           value.innerHTML = sth;
+          }
+        });
+
+        $this.find("span.bbc-spoiler").each(function( index, value ) {
+          // $(value).find(".reveal").show(false)
         });
       }
       if (g.vine == undefined) g.vine = true;
