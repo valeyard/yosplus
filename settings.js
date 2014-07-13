@@ -10,11 +10,18 @@ $(':checkbox').each(function(index, element) {
     });
 });
 
+// $('input').qtip({ // Grab some elements to apply the tooltip to
+//     content: {
+//         text: 'My common piece of text here'
+//     }
+// })
+
   $(".checkboxes").on("change", ":checkbox", saveSettings);
   $('.set').click(function(event) {
     chrome.storage.sync.set({"iglist":[], "oldbread":false, "lazyload":false, "avatarHideOption":false, "snypeAudio":true, "snype":false, "fflist":{}, "signature":false, "quote":true, "avatarHide":false, "ads":true,"embedTweet":true,"tweet": false, "vine":true, "filter":true, "webm":true, "tree":false, "cats": {"Favourites":true, "Main": true, "Discussion": true, "The Finer Arts": true, "The Community": true, "Archives": true}},function (){
 });
   })
+
 function saveSettings() {
     var name = this.name;
     var items = {};
@@ -23,6 +30,7 @@ function saveSettings() {
         console.log("saved");
     });
 }
+
 
 
 });

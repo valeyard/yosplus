@@ -61,35 +61,44 @@
 			}
 		},
 		{
-			"file": "contentscript.js",
+			"file": "settings.js",
 			"settings":
 			{
-				"buffer_size": 32988,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "css/yosplus.css",
-			"settings":
-			{
-				"buffer_size": 2766,
-				"line_ending": "Windows"
+				"buffer_size": 1217,
+				"line_ending": "Unix"
 			}
 		},
 		{
 			"file": "popup.html",
 			"settings":
 			{
-				"buffer_size": 2779,
+				"buffer_size": 3021,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "settings.js",
+			"file": "contentscript.js",
 			"settings":
 			{
-				"buffer_size": 1066,
-				"line_ending": "Unix"
+				"buffer_size": 28933,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "INFORMATION	9616	9608	[0-9]+:[0-9]+:[0-9]+-[0-9]+	CONSOLE	415	\"'(PROBATION|BAN|AUTOBAN|PERMABAN)', '[0-9]+/[0-9]+/[0-9]+', '[0-9]+:[0-9]+'. '[A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+]+', '\n\n', (''|[0-9\\.]+). 'Lincoln`s Wax', '[A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+\\[\\]\\^\\(\\)\\$\\#\\~]+'\", source: chrome-extension://jpjhlebbpjionjcoajnknpalmkogihjn/contentscript.js \\(415\\)\n\n'[A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+\\[\\]\\^\\(\\)\\$\\#\\~]+'\n\nCOPY lepercolony (type, date, time, jerk, length, requested, approved) FROM 'C:\\Users\\Steven\\Desktop\\leperColonyNoReasonsFormattedDatabase.csv' DELIMITER ',' CSV HEADER \n\n'([A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+\\[\\]\\^\\(\\)\\$\\#\\~\\/\\`\\<\\>]+)'\n\n(PROBATION|BAN|AUTOBAN|PERMABAN),[0-9]+/[0-9]+/[0-9]+,[0-9]+:[0-9]+,'[A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+]+',\n\nPROBATION,[0-9]+-[0-9]+-[0-9]+,[0-9]+:[0-9]+,'[A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+]+',\n\n\nPROBATION,[0-9]+-[0-9]+-[0-9]+,[0-9]+:[0-9]+,\"[A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+\\[\\]\\^\\(\\)\\$\\#\\~\\/\\`\\<\\>]+\",[a-zA-Z]+,\n\n\nPROBATION,[0-9]+-[0-9]+-[0-9]+,[0-9]+:[0-9]+,\"[A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+\\[\\]\\^\\(\\)\\$\\#\\~\\/\\`\\<\\>]+\", (NaN),\n\n\n\"[A-Za-z]+[ ]+[0-9]+, [0-9]+ [0-9]+:[0-9]+\"\n\n\n\n\n",
+			"settings":
+			{
+				"buffer_size": 1097,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "creepy selnder dream blowing down windows in doroway like marble hornets",
+			"settings":
+			{
+				"buffer_size": 72,
+				"line_ending": "Windows",
+				"name": "creepy selnder dream blowing down windows in dorow"
 			}
 		}
 	],
@@ -133,6 +142,22 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Steven/Desktop/postt.csv",
+		"/C/Users/Steven/Documents/GitHub/yosplus/posttimes.csv",
+		"/C/Users/Steven/Desktop/valeyardposthistory.csv",
+		"/C/Users/Steven/Documents/GitHub/yosplus/posthistorystats.js",
+		"/C/Users/Steven/Documents/GitHub/yosplus/posthistroydate.js",
+		"/C/Users/Steven/Documents/GitHub/yosplus/forums.combined.js",
+		"/C/Users/Steven/Documents/GitHub/yosplus/0temp/forums.js",
+		"/C/Users/Steven/Documents/GitHub/yosplus/0temp/salib.js",
+		"/C/Users/Steven/Desktop/leperColonyNoReasonsFormattedDatabaseDate.csv",
+		"/C/Users/Steven/Desktop/LPCQuoteTime.csv",
+		"/C/Users/Steven/Desktop/evenmoretrimmedreasons",
+		"/C/Users/Steven/Desktop/lepercolonycomplete.txt",
+		"/C/Users/Steven/Documents/GitHub/yosplus/settings.js",
+		"/C/Users/Steven/Documents/GitHub/yosplus/popup.html",
+		"/C/Users/Steven/Documents/GitHub/yosplus/css/yosplus.css",
+		"/C/Users/Steven/Documents/GitHub/yosplus/0temp/search.js",
 		"/C/Users/Steven/Documents/GitHub/yosplus/yosplus.css",
 		"/C/Users/Steven/Documents/GitHub/yosplus/jquery.ba-bbq.js",
 		"/C/Users/Steven/Desktop/leperColonyNoReasonsRAW.txt",
@@ -160,7 +185,6 @@
 		"/C/Users/Steven/Documents/GitHub/yosplus/jquery.form.js",
 		"/C/Users/Steven/Documents/pagancowlol",
 		"/C/Users/Steven/Documents/GitHub/yosplus/postreply.js",
-		"/C/Users/Steven/Documents/GitHub/yosplus/0temp/salib.js",
 		"/C/Users/Steven/Desktop/salastread/salastreadOverlay.js",
 		"/C/Users/Steven/Documents/GitHub/yosplus/forums.js",
 		"/C/Users/Steven/Documents/GitHub/yosplus/search.js",
@@ -207,6 +231,94 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"ur85",
+			"snype",
+			"true",
+			"vine",
+			"([0-9]+:[0-9]+)",
+			"\"([A-Za-z]+[ ]+[0-9]+), ([0-9]+) ([0-9]+:[0-9]+)\"",
+			"\"[A-Za-z]+[ ]+[0-9]+, [0-9]+ [0-9]+:[0-9]+\"",
+			"i",
+			"console",
+			"htr",
+			"([0-9]+-[0-9]+-[0-9]+),([0-9]+:[0-9]+)",
+			"([0-9]+:[0-9]+)",
+			"4167",
+			"(,4167)",
+			"4167",
+			"get",
+			"json",
+			"Unrecoverable Error",
+			"The site is not able to fulfill your request at this time.",
+			"(PROBATION,[0-9]+-[0-9]+-[0-9]+,[0-9]+:[0-9]+,\"[A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+\\[\\]\\^\\(\\)\\$\\#\\~\\/\\`\\<\\>\\@]+\"), (NaN),",
+			"Tortoise",
+			"PROBATION,[0-9]+-[0-9]+-[0-9]+,[0-9]+:[0-9]+,\"[A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+\\[\\]\\^\\(\\)\\$\\#\\~\\/\\`\\<\\>]+\",[a-zA-Z+PROBATION,[0-9]+-[0-9]+-[0-9]+,[0-9]+:[0-9]+,\"[A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+\\[\\]\\^\\(\\)\\$\\#\\~\\/\\`\\<\\>]+\",[a-zA-Z]+, NaN,",
+			"Tortoise",
+			"PROBATION,[0-9]+/[0-9]+/[0-9]+,[0-9]+:[0-9]+,'[A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+]+',",
+			"$.get",
+			"ban",
+			"Megaman\"s Jockstrap",
+			"NULL",
+			"You're an asshole, Coleco",
+			"You\"re an asshole, Coleco",
+			"\"\"",
+			",\"(.*)\",",
+			",\"(.*)\"",
+			",,",
+			"'(.*)'",
+			"''",
+			",,",
+			",,NULL",
+			",,",
+			"'([A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+\\[\\]\\^\\(\\)\\$\\#\\~\\/\\`\\<\\>]+)'",
+			",,",
+			"'([a-zA-Z0-9_| ]+)'",
+			"|",
+			"'[a-zA-Z_| ]+'",
+			"'[a-zA-Z_|]+'",
+			"|",
+			"'deglaze|2'",
+			",'',,\"",
+			"\",,\"",
+			" '(Lincoln`s Wax)'",
+			"'Lincoln`s Wax'",
+			"\",,\"",
+			",'([A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+\\[\\]\\^\\(\\)\\$\\#\\~\\{\\}\\,]+)',",
+			",'[A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+\\[\\]\\^\\(\\)\\$\\#\\~\\{\\}\\,]+',",
+			",'([A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+\\[\\]\\^\\(\\)\\$\\#\\~\\{\\}\\,]+)',",
+			",'[A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+\\[\\]\\^\\(\\)\\$\\#\\~\\{\\}\\,]+',",
+			"'[A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+\\[\\]\\^\\(\\)\\$\\#\\~\\{\\}\\,]+'",
+			"'([A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+\\[\\]\\^\\(\\)\\$\\#\\~\\{\\}]+)'",
+			"'[A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+\\[\\]\\^\\(\\)\\$\\#\\~\\{\\}]+'",
+			" 'Invicta{HOG}, M.D.'",
+			"'Invicta{HOG}, M.D.'",
+			"True Love",
+			"DrSanchez",
+			"([0-9]+)/([0-9]+)/([0-9]+)",
+			",NULL,",
+			", (1|0.25|0.5|30|3|7)",
+			" '([A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+\\[\\]\\^\\(\\)\\$\\#\\~]+)'",
+			"'(PROBATION|AUTOBAN|BAN|PERMABAN)'",
+			" ''",
+			"'([0-9]+:[0-9]+)', ",
+			"'[0-9]+:[0-9]+', ",
+			" '([0-9]+/[0-9]+/[0-9]+)', ",
+			" '",
+			"RegExp",
+			"name",
+			"forum_26",
+			"INFORMATION	9616	9608	[0-9]+:[0-9]+:[0-9]+-[0-9]+	CONSOLE	415	\"'(PROBATION|BAN|AUTOBAN|PERMABAN)', '[0-9]+/[0-9]+/[0-9]+', '[0-9]+:[0-9]+'. '[A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+]+', '",
+			"INFORMATION	9616	9608	15:37:09-736	CONSOLE	415	\"'PROBATION', '06/12/14', '03:20', 'Bruciwayna', '",
+			"INFORMATION	9616	9608	[0-9]+:[0-9]+:[0-9]+-[0-9]+	CONSOLE	415	\"'(PROBATION|BAN|AUTOBAN|PERMABAN)', '[0-9]+/[0-9]+/[0-9]+', '[0-9]+:[0-9]+'. '[A-Za-z0-9\\-\\:\\\"\\'\\=\\.\\,]+",
+			"INFORMATION	9616	9608	[0-9]+:[0-9]+:[0-9]+-[0-9]+	CONSOLE	415	\"'(PROBATION|BAN|AUTOBAN|PERMABAN)', '[0-9]+/[0-9]+/[0-9]+', '[0-9]+:[0-9]+'. '[A-Za-z0-9\\-\\:\\\"\\'\\=\\.\\,]+', '",
+			"INFORMATION	9616	9608	[0-9]+:[0-9]+:[0-9]+-[0-9]+	CONSOLE	415	\"'(PROBATION|BAN|AUTOBAN|PERMABAN)', '[0-9]+/[0-9]+/[0-9]+', '[0-9]+:[0-9]+'. '[A-Za-z0-9\\-\\:\\\"\\']+",
+			"INFORMATION	9616	9608	[0-9]+:[0-9]+:[0-9]+-[0-9]+	CONSOLE	415	\"'(PROBATION|BAN|AUTOBAN|PERMABAN)', '[0-9]+/[0-9]+/[0-9]+', '[0-9]+:[0-9]+'. '[A-Za-z0-9\\-\\:\\\"\\']+'",
+			"INFORMATION	9616	9608	[0-9]+:[0-9]+:[0-9]+-[0-9]+	CONSOLE	415	\"'(PROBATION|BAN|AUTOBAN|PERMABAN)', '[0-9]+/[0-9]+/[0-9]+', '[0-9]+:[0-9]+'. 'Widestancer'",
+			"innerHT",
+			"input",
+			"searchButton",
+			".post",
+			"post",
 			"snype",
 			"buttonClass",
 			"empty",
@@ -246,95 +358,7 @@
 			"\")\n",
 			"\"body\"",
 			"$.get",
-			"get",
-			"turbo",
-			"snype",
-			";\n",
-			"turbo",
-			"archive",
-			"image",
-			"/image",
-			"/audio",
-			"innerText",
-			"archive",
-			"arch",
-			"archive",
-			"ign",
-			"button",
-			"{\n",
-			"snype",
-			"myfunc",
-			"thisFor",
-			"m",
-			"block",
-			"tweet",
-			"email",
-			"Poncie",
-			"wrap",
-			"style",
-			"color",
-			"snype",
-			"click",
-			".each",
-			".get",
-			"get",
-			"img",
-			"bootstrap",
-			"[\"",
-			"\"undefined\"",
-			"test1",
-			"\"undefined\"",
-			"if",
-			"bread",
-			"myfunc",
-			"embed",
-			"twttr",
-			"script",
-			"myfun",
-			"embed",
-			"form",
-			"if",
-			"find",
-			"for",
-			"type",
-			"head",
-			"script",
-			"audio",
-			"src",
-			"dropbox",
-			"twitter",
-			"snype",
-			"style",
-			"Click",
-			"hide",
-			"avatar",
-			"avatarHide",
-			"forumid=",
-			"forumid=2",
-			"forumid",
-			"/f/",
-			"json",
-			"post",
-			"location",
-			"d",
-			"ctl",
-			"replace",
-			"s",
-			"img",
-			"68",
-			"key",
-			"location",
-			"post",
-			".post",
-			"replace",
-			"up",
-			"top",
-			"snype",
-			"head",
-			"snype",
-			"thisForum",
-			"forum",
-			"snype"
+			"get"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -342,6 +366,36 @@
 		"regex": false,
 		"replace_history":
 		[
+			"$1:00",
+			"\"$2 $1 $3\"",
+			"\"$1 $2\"",
+			"$1 $2",
+			"\"$1\"",
+			"$1,",
+			"$1,4167",
+			"$1,100000,",
+			"Megaman's Jockstrap",
+			",NaN,",
+			"\"$1\"",
+			",NULL,NULL",
+			"\"$1\"",
+			"\",NaN,\"",
+			"\"$1\"",
+			"\",NaN,\"",
+			"NaN",
+			",\"$1\",",
+			"\"$1\"",
+			"\"[A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+\\[\\]\\^\\(\\)\\$\\#\\~\\{\\}]+\"",
+			"'Invicta{HOG}, M.D.'",
+			"20$3-$1-$2",
+			",,",
+			",$1",
+			"'$1'",
+			"$1",
+			"NULL",
+			"$1,",
+			"$1",
+			"",
 			"meGreen",
 			"57FF57",
 			".meAmber",
@@ -361,7 +415,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -377,8 +431,8 @@
 						"selection":
 						[
 							[
-								384,
-								384
+								69,
+								69
 							]
 						],
 						"settings":
@@ -391,7 +445,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
@@ -422,24 +476,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "contentscript.js",
+					"file": "settings.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 32988,
+						"buffer_size": 1217,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4086,
-								0
+								1200,
+								1200
 							]
 						],
 						"settings":
@@ -449,7 +503,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 90.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -457,48 +511,19 @@
 				},
 				{
 					"buffer": 3,
-					"file": "css/yosplus.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2766,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1086,
-								1086
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 546.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
 					"file": "popup.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2779,
+						"buffer_size": 3021,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								621,
-								621
+								288,
+								288
 							]
 						],
 						"settings":
@@ -515,20 +540,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "settings.js",
+					"buffer": 4,
+					"file": "contentscript.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1066,
+						"buffer_size": 28933,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								468,
-								468
+								27923,
+								27923
 							]
 						],
 						"settings":
@@ -536,6 +561,61 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 10954.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1097,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1037,
+								982
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Regular Expressions/RegExp.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 72,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								72,
+								72
+							]
+						],
+						"settings":
+						{
+							"auto_name": "creepy selnder dream blowing down windows in dorow",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -549,7 +629,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 21.0
+		"height": 23.0
 	},
 	"input":
 	{

@@ -1,112 +1,11 @@
-// a = {}
-// timg = new function (e, f, a) {
-//     var g = this,
-//         i = function (d, f) {
-//             var b = a(this).siblings("img"),
-//                 c, h;
-//             if (b.attr("t_width")) a(this).removeClass("expanded"), b.attr({
-//                 width: b.attr("t_width"),
-//                 height: b.attr("t_height")
-//             }), b.removeAttr("t_width"), b.removeAttr("t_height");
-//             else {
-//                 a(this).addClass("expanded");
-//                 b.attr({
-//                     t_width: b.attr("width"),
-//                     t_height: b.attr("height")
-//                 });
-//                 var g = b.parents("blockquote");
-//                 g.length || (g = b.parents(".postbody"));
-//                 c = parseInt(b.attr("o_width"), 10);
-//                 h = parseInt(b.attr("o_height"), 10);
-//                 g = Math.min(900, g.width());
-//                 if (f && c > g) {
-//                     var i = b.position(),
-//                         g = (g - 3 * i.left) / c;
-//                     b.attr("width", c * g);
-//                     b.attr("height", h * g)
-//                 } else b.removeAttr("width"), b.removeAttr("height");
-//                 g = a.browser.webkit || a.browser.safari ? "body" : "html";
-//                 h = a(g).scrollTop();
-//                 c = b.offset().top;
-//                 b = c + b.height();
-//                 b - h > a(e).height() && (h = b - a(e).height());
-//                 c < h && (h = c);
-//                 h != a(g).scrollTop() && (a.browser.msie && 7 > parseInt(a.browser.version, 10) ? a(g).scrollTop(h) : a(g).animate({
-//                     scrollTop: h
-//                 }, 150))
-//             }
-//             return !1
-//         },
-//         k = function () {
-//             var d = a(this);
-//             if (d.hasClass("loading")) {
-//                 d.removeClass("loading");
-//                 var e =
-//                     d[0].naturalWidth || d.width(),
-//                     b = d[0].naturalHeight || d.height();
-//                 if (200 > b && 500 >= e || 170 > e) d.removeClass("timg");
-//                 else {
-//                     d.addClass("complete");
-//                     d.attr({
-//                         o_width: e,
-//                         o_height: b
-//                     });
-//                     var e = e + "x" + b,
-//                         b = 1,
-//                         c = d[0].naturalWidth || d.width(),
-//                         h = d[0].naturalHeight || d.height();
-//                     170 < c && (b = 170 / c);
-//                     200 < h * b && (b = 200 / h);
-//                     d.attr({
-//                         width: c * b,
-//                         height: h * b
-//                     });
-//                     var b = a('<span class="timg_container"></span>'),
-//                         f = a('<div class="note"></div>');
-//                     f.text(e);
-//                     f.attr("title", "Click to toggle");
-//                     b.append(f);
-//                     d.before(b);
-//                     b.prepend(d);
-//                     f.click(i);
-//                     b.click(function (b) {
-//                         if (1 ===
-//                             b.which || a.browser.msie && 9 > parseInt(a.browser.version, 10) && 0 === b.which) return i.call(f, b, !0), !1
-//                     })
-//                 }
-//                 d.trigger("timg.loaded")
-//             }
-//         };
-//     g.scan = function (d) {
-//         a(d).find("img.timg").each(function (d, b) {
-//             b = a(b);
-//             b.hasClass("complete") || (b.addClass("loading"), b[0].complete || null !== b[0].naturalWidth && 0 < b[0].naturalWidth ? k.call(b) : b.load(k))
-//         })
-//     };
-//     // a(f).ready(function () {
-//     //     g.scan("body")
-//     // });
-//     // a(e).load(function () {
-//     //     var d = a("img.timg.loading");
-//     //     d.length && d.each(function (a, b) {
-//     //         k.call(b)
-//     //     })
-//     // })
-// }
-
-  function buttonClass(thisForum, amberPos){
-    if (thisForum == 219){
-      console.log("FUNCTION WORK")
-      if (amberPos) return "meAmber"
-      else return "meGreen"
-    }
-    else return "meMain"
+function buttonClass(thisForum, amberPos){
+  if (thisForum == 219){
+    console.log("FUNCTION WORK")
+    if (amberPos) return "meAmber"
+    else return "meGreen"
   }
-
-    var pp = '<td class="postbody"><div class="bbc-block"><h4><a class="quote_link" href="/showthread.php?goto=post&postid=431010047#post431010047" rel="nofollow">Valeyard posted:</a></h4><blockquote><img src="http://i.imgur.com/hlx0isT.jpg" alt="" class="timg" border="0"><br /></blockquote></div><p class="editedby"></td>'
-    
-    $pp1 = $(pp)
-    console.log($pp1[0])
+  else return "meMain"
+}
 
 $(document).ready(function() {
   var storage = chrome.storage.sync;
@@ -115,11 +14,9 @@ $(document).ready(function() {
   var settings = ["iglist", "oldbread", "lazyload", "avatarHideOption", "snypeAudio", "snype", "fflist", "signature", "quote", "avatarHide", "ads", "tweet", "filter", "vine", "webm", "cats", "main", "tree", "embedTweet"];
   
   chrome.storage.sync.get(settings,function (obj){
-
-
-    //console.log(timg.scan)
-
     g = obj;
+
+    //lazyload
     if (g.lazyload == undefined) g.lazyload = false;
     if (g.lazyload){
       $("td.postbody").find("img").each(function(index, image){
@@ -136,19 +33,16 @@ $(document).ready(function() {
       });
     }
 
-
-
-    //timg.scan($pp1[0])
-
-
-    //console.log(hg)
+    //adding stylesheets
     var s = chrome.extension.getURL("css/yosplus.css")
-    console.log(s)
+
     $('head').append('<link rel="stylesheet" href="'+s+'" type="text/css" />');
+    $('head').append('<link rel="stylesheet" href="http://cdn.jsdelivr.net/qtip2/2.2.0/jquery.qtip.min.css" type="text/css" />');
+    $('head').append('<script type="text/javascript" src="http://cdn.jsdelivr.net/qtip2/2.2.0/jquery.qtip.min.js"></script>');
 
     var forum_177 = {"\\b(daniel bryan|bryan|dbd|db)\\b":"vanilla midget", "\\bover/under\\b":"odds"};
-    var forum_219 = {"\\bspongeh\\b":"bread stymie", "\\bsteve jobs\\b":"stebe jobs", "\\bandroid\\b":"anroid", "\\bgodaddy\\b":"nodaddy", "\\bValeyard\\b":"asshole", "\\apt gangbang\\b":"<marquee>apt gangbang</marquee>"};
-    var forum_26 = {"\\b ralp \\b":"the talking toilet", "\\bgirls\\b":"bleeders", "\\bgbs\\b":"the moon", "\\bguys\\b":"bleeders"};
+    var forum_219 = {"\\bsteve jobs\\b":"stebe jobs", "\\bandroid\\b":"anroid", "\\bgodaddy\\b":"nodaddy", "\\bValeyard\\b":"asshole", "\\apt gangbang\\b":"<marquee>apt gangbang</marquee>", "\\b(Mcdonald's|mcdonalds|McDonald's)\\b":"Mecca"};
+    var forum_26 = {"\\b ralp \\b":" the talking toilet ", "\\bgirls\\b":"bleeders", "\\bgbs\\b":"the moon", "\\bguys\\b":"bleeders"};
     var filters = {177: forum_177, 219: forum_219 ,26: forum_26}
 
     !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
@@ -167,7 +61,6 @@ $(document).ready(function() {
     thisForum = $("body").attr("data-forum")
 
     function handleDragStart(e) {
-     // this.style.opacity = '0.4';  // this / e.target is the source node.
      var cols = document.querySelectorAll('.smilie');
       [].forEach.call(cols, function(col) {
         col.addEventListener('dragstart', handleDragStart, false);
@@ -237,28 +130,29 @@ $(document).ready(function() {
       });
     }
 
+    //show/hide avatar
     if (g.avatarHide == undefined) g.avatarHide = false;
-
     $( ".userinfo" ).each(function(index, image) {
       $this = $(image)
       $(".title").toggle(g.avatarHide)
     });
 
+    //scrape ignore list
     var igName = g.iglist
     $( "input.bginput" ).each(function(index, image) {
       $this = $(image)
       if ($this.attr("type") == "text") var name = $this.attr("value")
       if (name != undefined) igName.push(name)
     });
-
     chrome.storage.sync.set({"iglist": igName})
+
+    //snype/snipe audio
     if (g.snypeAudio){
       var audioPath = chrome.extension.getURL("audio/Headshot.wav");
       $("body").prepend('<audio id="audio" src=' + audioPath + ' ></audio>')
     }
 
-    
-
+    //amberpos/greenpos check
     var amberPos;
     if ($("#blarf219").attr("href") == "/css/219a.css"){
       amberPos = true;
@@ -266,6 +160,8 @@ $(document).ready(function() {
     else{
       amberPos = false;
     }
+
+    //signature check option
     if (g.signature == undefined) g.siganture = false;
     $(':checkbox').each(function(index, element) {
         var name = this.name;
@@ -274,6 +170,7 @@ $(document).ready(function() {
         if (name == "signature") element.checked = g.signature;
     });
 
+    //highlight quotes
     if (g.quote == undefined) g.quote = true;
     $("#switchpos").click(function(event) {
       console.log($("#blarf219").attr("href"))
@@ -283,33 +180,37 @@ $(document).ready(function() {
       else{
         amberPos = false;
       }
-           
+
       $(".post").each(function(index, image) {
         $this = $(image);
         if (g.quote) $this.myfunction();
       })
     })
     
-  
-    var ff = '<tr class="forum forum_268"><td class="icon"><a href="forumdisplay.php?forumid=268"><img src="http://fi.somethingawful.com/forumicons/byob.gif" title="118527 replies in 4674 threads" alt=""></a></td><td class="title"><a class="forum" href="forumdisplay.php?forumid=268" title="Want to have a good time with friends online? Step in and have a chat. Chill out and enjoy yourselves online.">BYOB 8.2</a><div class="subforums"><b>SUBFORUMS:</b> (None)<input style="float:right;" type="button" class="sb" value="Add"></div></td><td class="moderators"><a href="member.php?action=getinfo&amp;userid=85738">Jett</a>, <a href="member.php?action=getinfo&amp;userid=173896">Arnold of Soissons</a></td></tr>'
-   
-    console.log($("tr.section:first-of-type").before('<tr class="section" id="favouriteForums"><th class="category" colspan="2">Favourites - Click here to collapse category</th><th class="moderators">Moderators</th></tr>'))
+    //adding the favourites
+    $("tr.section:first-of-type").before('<tr class="section" id="favouriteForums"><th class="category" colspan="2">Favourites - Click here to collapse category</th><th class="moderators">Moderators</th></tr>')
+    
+    //maybe useless
     $(".category").each(function(index, image){
       console.log(image)
       $this = $(image)
     })
+    
+    //get postcount for the page
     var postCounter = 0
     $(".post").each(function(index, image){
       postCounter++;
       $this = $(image)
     })
 
+
     var qs = $.param.querystring();
     var myObj = $.deparam( qs )
-    console.log(myObj)
+    //console.log(myObj)
 
     var inc = false;
    
+    //another post counter
     function countPost(){
       postCounter=0;
       $(".post").each(function(index, image){
@@ -436,7 +337,12 @@ $(document).ready(function() {
                     var textArray = [
                         'snype',
                         'headshot',
-                        ':bsdsnype:'
+                        ':bsdsnype:',
+                        ':zaeed:',
+                        ':sicknasty:',
+                        'snipeeeddd',
+                        '[img]http://i.imgur.com/t0l7mQL.gif[/img]',
+                        '[img]http://i.imgur.com/19ZCuzP.gif[/img]'
                     ];
                     var randomNumber = Math.floor(Math.random()*textArray.length);
                     e = {
@@ -472,7 +378,7 @@ $(document).ready(function() {
   // });
 
   var modnames = {};
-  var htr = 'http://forums.somethingawful.com/banlist.php?&sort=&asc=0&adminid=&ban_month=0&ban_year=0&actfilt=-1&pagenumber='
+  //var htr = 'http://forums.somethingawful.com/banlist.php?&sort=&asc=0&adminid=&ban_month=0&ban_year=0&actfilt=-1&pagenumber='
   var i = 1;
 
   var probReg = new RegExp("(.*)\. \s*User loses posting privileges for ([0-9]+|100,000) (hours|day|days|week|month).")
@@ -691,8 +597,8 @@ $(document).ready(function() {
 
     $(".mainbodytextsmall").each(function(index, image) {
     	$this = $(image);
-
-     	var y = new RegExp("Hello, ([A-Za-z0-9]+)!")
+      //get forum username
+     	var y = new RegExp("Hello, ([A-Za-z0-9\-\:\"\'\=\. \_\!\+\[\]\^\(\)\$\#\~\/\`\<\>]+)!")
      	var g = y.exec(this.innerText);
      	
      	user = g[1];
@@ -745,6 +651,12 @@ $(document).ready(function() {
     if (g.embedTweet == undefined) g.embedTweet = true;
     $(".post").each(function(index, image) {
     	$this = $(image);
+      // vimeo larger size
+      $(".bbcode_video").each(function(index, image){
+        $this = $(image)
+        $("object").attr("width", 640)
+        $("object").attr("height", 360)
+      })
 
       $this.find("iframe").attr("allowFullscreen", "true")
       if (g.embedTweet){
@@ -800,7 +712,7 @@ $(document).ready(function() {
 
       //if (author == yostop) $(this).find(".bbc-center")[0].innerText = $(this).find(".bbc-center")[0].innerText + "LOOOOOOOL"
       var x = new RegExp("(http|https)://vine\.co/v/[A-Za-z0-9]+");
-      var pomf = new RegExp("[:A-Za-z0-9\.\/]+\\.webm");
+      var pomf = new RegExp("[:A-Za-z0-9\.\/\-\_]+\\.webm");
       var gif = new RegExp("(http|https)://[A-Za-z0-9]+\.gfycat\.com/[A-Za-z0-9]+[\.]*[A-Za-z0-9]+\.webm");
 
       if (g.filter == undefined) g.filter = false;
@@ -841,26 +753,35 @@ $(document).ready(function() {
       if (g.webm == undefined) g.webm = true;
       if (pomf.test(text) && g.webm){
         $this = $(image);
-        console.log(text)
-        var postBody = $(this).find(" td.postbody")[0];
-        var ur85 = pomf.exec(text);
-        var sth = '<video autoplay loop width="450" muted="true" controls> <source src="'+ur85[0]+'" type="video/webm"> </video>'
 
         $this.find("a").each(function( index, value ) {
           console.log("finding as here")
           var jelm = $(value);
-           if(value.href == ur85[0]){
-           jelm.replaceWith(sth);
+          var ur85 = pomf.exec(jelm[0].href);
+          console.log(jelm[0].href)
+          console.log(pomf.test(jelm[0].href))
+          if (pomf.test(jelm[0].href) == true){
+            var sth = '<video autoplay loop width="450" muted="true" controls> <source src="'+jelm[0].href+'" type="video/webm"> </video>'
+            jelm.replaceWith(sth);
           }
         });
 
         $this.find(".bbc-spoiler").each(function( index, value ) {
+
           console.log("finding as here")
           var jelm = $(value);
-          console.log(value.innerText)
-           if(value.innerText == ur85[0]){
-           value.innerHTML = sth;
+          var ur85 = pomf.exec(jelm[0].innerText);
+          console.log(jelm[0].innerText)
+          console.log(pomf.test(jelm[0].innerText))
+          if (pomf.test(jelm[0].innerText) == true){
+            var sth = '<video autoplay loop width="450" muted="true" controls> <source src="'+jelm[0].innerText+'" type="video/webm"> </video>'
+            jelm[0].innerHTML = sth;
           }
+          // console.log("finding as here")
+          // console.log(value.innerText)
+          //  if(value.innerText == jelm[0].href){
+          //  value.innerHTML = sth = '<video autoplay loop width="450" muted="true" controls> <source src="'+jelm[0].href+'" type="video/webm"> </video>';
+          // }
         });
 
         $this.find("span.bbc-spoiler").each(function( index, value ) {
@@ -870,17 +791,17 @@ $(document).ready(function() {
       if (g.vine == undefined) g.vine = true;
       if (x.test(text) && g.vine){
         $this = $(image);
-        var postBody = $(this).find(" td.postbody")[0];
-        var url2 = x.exec(text);
-        var sth = '<iframe class="vine-embed" src="'+url2[0]+'/embed/simple" width="600" height="600" frameborder="0"></iframe><script async src="//platform.vine.co/static/scripts/embed.js" charset="utf-8"></script>';
 
         $this.find("a").each(function( index, value ) {
-
+          console.log("finding as here")
           var jelm = $(value);
-          
-          if(value.href == url2[0]){
+          var ur12 = x.exec(jelm[0].href);
+          console.log(jelm[0].href)
+          console.log(x.test(jelm[0].href))
+          if (x.test(jelm[0].href) == true){
+             var sth = '<iframe class="vine-embed" src="'+jelm[0].href+'/embed/simple" width="600" height="600" frameborder="0"></iframe><script async src="//platform.vine.co/static/scripts/embed.js" charset="utf-8"></script>';
             jelm.replaceWith(sth);
-          }     
+          }   
         });
       }
     });
