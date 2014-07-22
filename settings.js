@@ -16,6 +16,10 @@ $(':checkbox').each(function(index, element) {
 //     }
 // })
 
+   var s = chrome.extension.getURL("css/popup.css")
+
+  // $('head').append('<link rel="stylesheet" href="'+s+'" type="text/css" />');
+
   $(".checkboxes").on("change", ":checkbox", saveSettings);
   $('.set').click(function(event) {
     chrome.storage.sync.set({"iglist":[], "oldbread":false, "lazyload":false, "avatarHideOption":false, "snypeAudio":true, "snype":false, "fflist":{}, "signature":false, "quote":true, "avatarHide":false, "ads":true,"embedTweet":true,"tweet": false, "vine":true, "filter":true, "webm":true, "tree":false, "cats": {"Favourites":true, "Main": true, "Discussion": true, "The Finer Arts": true, "The Community": true, "Archives": true}},function (){

@@ -1,15 +1,16 @@
-    var i = 1;
+var i = 1;
+       var datec;
     var totarr = [];
-    var htr = 'http://forums.somethingawful.com/search.php?action=results&requestid=8104380&pagenumber='
+    var htr = 'http://forums.somethingawful.com/search.php?action=results&requestid=8135878&pagenumber='
     var ip=0;
       
-      function process() {
+      function process(user) {
         //console.log("£sdasda")
-          if (i <= 2479) {
+          if (i <= 205) {
               //ip = 0 + i;
               //console.log("asdasdaw")
-              url = htr + i
-              //console.log(url)
+              url = user + '&pagenumber=' + i
+              console.log(url)
               var xhr = new XMLHttpRequest();
               xhr.open("GET", url, true);
               xhr.onreadystatechange = function () {
@@ -19,10 +20,11 @@
                       $this.find("tr").each(function(index, image){
                         $this = $(image)
 
-                        var date = "\""+$($this.find("td")[6]).text() + "\""
+                        var date = "\""+$($this.find("td")[6]).text() + "\"\n"
+                        date = date.replace(/([A-Za-z]+[ ]+[0-9]+), ([0-9]+) ([0-9]+:[0-9]+)/, "$2 $1 $3:00")
 
-                        
-                        console.log(date)
+                        if (date!="\""+"\"\n") datec+= date;
+                        //console.log(date)
                         //console.log(rg.exec(len))
                         // if (rg.exec(len) == null){
                         //   if (modnames.hasOwnProperty(n)) modnames[n] = modnames[n] + 1
@@ -32,11 +34,12 @@
                       });
                       i++
                       //console.log(ip)
-                      process()
+                      process(user)
                   }
               }
               xhr.send();
           } else {
+            console.log(datec)
               //alert("done")
               // var data = totarr;
               // var csvContent = "data:text/csv;charset=utf-8,";
@@ -59,4 +62,8 @@
               // //console.log(modnames)
           }
       }
-      process()
+      $("th.title").prepend('<input type="button" class="lol" value="history"/> <input type="text" id="user" value="user"/>')
+      $(".lol").click(function(event) {
+        console.log($("#user").val())
+        process($("#user").val())
+      })

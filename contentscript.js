@@ -33,20 +33,76 @@ $(document).ready(function() {
       });
     }
 
-    //adding stylesheets
-    var s = chrome.extension.getURL("css/yosplus.css")
+       var i = 1;
+       var datec;
+    var totarr = [];
+    var htr = 'http://forums.somethingawful.com/search.php?action=results&requestid=8135878&pagenumber='
+    var ip=0;
+      
+      function process(user) {
+        //console.log("£sdasda")
+          if (i <= 205) {
+              //ip = 0 + i;
+              //console.log("asdasdaw")
+              url = user + '&pagenumber=' + i
+              console.log(url)
+              var xhr = new XMLHttpRequest();
+              xhr.open("GET", url, true);
+              xhr.onreadystatechange = function () {
+                  if (xhr.readyState == 4) {
+                      //alert(xhr.responseText)
+                      $this = $(xhr.responseText)
+                      $this.find("tr").each(function(index, image){
+                        $this = $(image)
 
-    $('head').append('<link rel="stylesheet" href="'+s+'" type="text/css" />');
-    $('head').append('<link rel="stylesheet" href="http://cdn.jsdelivr.net/qtip2/2.2.0/jquery.qtip.min.css" type="text/css" />');
-    $('head').append('<script type="text/javascript" src="http://cdn.jsdelivr.net/qtip2/2.2.0/jquery.qtip.min.js"></script>');
+                        var date = "\""+$($this.find("td")[6]).text() + "\"\n"
+                        date = date.replace(/([A-Za-z]+[ ]+[0-9]+), ([0-9]+) ([0-9]+:[0-9]+)/, "$2 $1 $3:00")
 
-    var forum_177 = {"\\b(daniel bryan|bryan|dbd|db)\\b":"vanilla midget", "\\bover/under\\b":"odds"};
-    var forum_219 = {"\\bsteve jobs\\b":"stebe jobs", "\\bandroid\\b":"anroid", "\\bgodaddy\\b":"nodaddy", "\\bValeyard\\b":"asshole", "\\apt gangbang\\b":"<marquee>apt gangbang</marquee>", "\\b(Mcdonald's|mcdonalds|McDonald's)\\b":"Mecca"};
-    var forum_26 = {"\\b ralp \\b":" the talking toilet ", "\\bgirls\\b":"bleeders", "\\bgbs\\b":"the moon", "\\bguys\\b":"bleeders"};
-    var filters = {177: forum_177, 219: forum_219 ,26: forum_26}
+                        if (date!="\""+"\"\n") datec+= date;
+                        //console.log(date)
+                        //console.log(rg.exec(len))
+                        // if (rg.exec(len) == null){
+                        //   if (modnames.hasOwnProperty(n)) modnames[n] = modnames[n] + 1
+                        //   else modnames[n] = 1
+                        // }
+                        //console.log(modnames)
+                      });
+                      i++
+                      //console.log(ip)
+                      process(user)
+                  }
+              }
+              xhr.send();
+          } else {
+            console.log(datec)
+              //alert("done")
+              // var data = totarr;
+              // var csvContent = "data:text/csv;charset=utf-8,";
+              // data.forEach(function(infoArray, index){
+              //     console.log(infoArray)
+              //    dataString = infoArray.join(",");
+              //    console.log(csvContent)
+              //    console.log(index < infoArray.length)
+              //    console.log(index)
+              //    console.log(infoArray.length)
+              //    csvContent += index < infoArray.length ? dataString+ "\n" : dataString;
 
-    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
-    
+              // }); 
+              // var encodedUri = encodeURI(csvContent);
+              // var link = document.createElement("a");
+              // link.setAttribute("href", encodedUri);
+              // link.setAttribute("download", "my_data.csv");
+
+              // link.click(); // This will download the data file named "my_data.csv".
+              // //console.log(modnames)
+          }
+      }
+      $("th.title").prepend('<input type="button" class="lol" value="history"/> <input type="text" id="user" value="user"/>')
+      $(".lol").click(function(event) {
+        console.log($("#user").val())
+        process($("#user").val())
+      })
+
     var c = 0;
     var thisForum;
     // var fh = document.getElementsByTagName("body")[0].getAttribute("class");
@@ -59,6 +115,27 @@ $(document).ready(function() {
     //   thisForum = te[2];
     // }
     thisForum = $("body").attr("data-forum")
+
+    //adding stylesheets
+    
+    var s = chrome.extension.getURL("css/yosplus.css")
+    var gh = chrome.extension.getURL("css/twittertimeline.css")
+
+
+     $('head').append('<link rel="stylesheet" href="'+s+'" type="text/css" />');
+    // if (thisForum == 26) $('head').append('<link rel="stylesheet" href="'+gh+'" type="text/css" />');
+    
+    $('head').append('<link rel="stylesheet" href="http://cdn.jsdelivr.net/qtip2/2.2.0/jquery.qtip.min.css" type="text/css" />');
+    $('head').append('<script type="text/javascript" src="http://cdn.jsdelivr.net/qtip2/2.2.0/jquery.qtip.min.js"></script>');
+
+    var forum_177 = {"\\b(daniel bryan|bryan|dbd|db)\\b":"vanilla midget", "\\bover/under\\b":"odds"};
+    var forum_219 = {"\\bsteve jobs\\b":"stebe jobs", "\\bandroid\\b":"anroid", "\\bgodaddy\\b":"nodaddy", "\\bValeyard\\b":"asshole", "\\apt gangbang\\b":"<marquee>apt gangbang</marquee>", "\\b(Mcdonald's|mcdonalds|McDonald's)\\b":"Mecca"};
+    var forum_26 = {"\\b ralp \\b":" the talking toilet ", "\\bgirls\\b":"bleeders", "\\bgbs\\b":"the moon", "\\bguys\\b":"bleeders"};
+    var filters = {177: forum_177, 219: forum_219 ,26: forum_26}
+
+    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+    
+    
 
     function handleDragStart(e) {
      var cols = document.querySelectorAll('.smilie');
@@ -160,6 +237,8 @@ $(document).ready(function() {
     else{
       amberPos = false;
     }
+
+
 
     //signature check option
     if (g.signature == undefined) g.siganture = false;
@@ -642,6 +721,82 @@ $(document).ready(function() {
 
       });
     };
+    if (thisForum == 261){
+      $(".post").each(function(index, image) {
+        $this = $(image);
+
+      var collec = {}
+
+      //stealing postlink from post
+      var one = $this.find("ul.profilelinks").find("li").find("a")[0]
+      if (one != undefined){
+        one = one.innerText;
+        collec[one] = $this.find("ul.profilelinks").find("li").find("a")[0].href;
+      } 
+      else{
+        one = "Profile"
+        collec[one] = undefined;
+      } 
+      
+
+      one = $this.find("ul.profilelinks").find("li").find("a")[1];
+      if (one != undefined){
+        one = one.innerText;
+        collec[one] = $this.find("ul.profilelinks").find("li").find("a")[1].href
+      } 
+      else {
+        one = "Message"
+        collec[one] = undefined;
+      }
+      
+
+      one = $this.find("ul.profilelinks").find("li").find("a")[2]
+      if (one != undefined){
+        one = one.innerText;
+        collec[one] = $this.find("ul.profilelinks").find("li").find("a")[2].href
+      } 
+      else{
+         one = "Post History";
+         collec[one] = undefined;
+      }
+      
+
+      one = $this.find("ul.postbuttons").find("li").find('img[alt="Quote"]').parent()[0].href
+      //if (one != undefined) one = one.innerText;
+      //console.log(one)
+      collec["quote"] = one;
+
+      // one = $this.find("ul.postbuttons").find("li").find("a")[1]
+      // if (one != undefined) one = one.innerText;
+      // collec[one] = $this.find("ul.postbuttons").find("li").find("a")[1]
+
+
+      one = $this.find("dd.title").find("img")[0]
+      if (one != undefined) one = one.src
+      else one = "";
+      collec["av"] = one
+
+
+      var avtext = $this.find("dd.title")[0].innerText
+      collec["title"] = avtext
+
+      var postdate = $(image).find("td.postdate")[0].innerText.substring(4);
+      collec["Date"] = postdate;
+
+      // console.log(profile.href)
+      // console.log(message)
+      // console.log(posthistory)
+      // console.log(report)
+      // console.log(quote.href)
+      // console.log(av.href)
+      // console.log(avtext)
+      message = "test"
+      var posthtml = '<div class="jumbotron"><div class="root standalone-tweet ltr twitter-tweet not-touch" dir="ltr" data-dt-months="Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec" data-dt-full="%{hours12}:%{minutes}%{amPm}- %{day}%{month}%{year}" data-dt-am="AM" data-dt-pm="PM" data-iframe-title="Embedded Tweet" data-scribe="page:tweet" id="twitter-widget-0" lang="en" data-twitter-event-id="0"><blockquote class="tweet subject expanded h-entry" data-tweet-id="275673554408837120" cite="https://twitter.com/gabromanato/status/275673554408837120" data-scribe="section:subject"><div class="header"><div class="h-card p-author" data-scribe="component:author"><a class="u-url profile" href="'+collec["Profile"]+'" data-scribe="element:user_link"><img class="u-photo avatar" alt="" src="'+collec["av"]+'" data-src-2x="https://pbs.twimg.com/profile_images/2640251839/828ff5f972f2b5da73d98a1653727b78_bigger.png" data-scribe="element:avatar"><span class="full-name"><span class="p-name customisable-highlight" data-scribe="">USERNAME</span></span><span class="p-nickname" dir="ltr" data-scribe="element:screen_name"><b>'+collec["title"]+'</b></span></a></div><a class="follow-button profile" href="'+collec["Post History"]+'" role="button" title="Follow Gabriele Romanato on Twitter"><i class="ic-button-bird"></i>Follow</a></div><div class="content e-entry-content" data-scribe="component:tweet"><p class="e-entry-title">POST</p><div class="dateline collapsible-container"><a class="u-url customisable-highlight long-permalink" href="#post432136516" data-datetime="2012-12-03T18:51:11+0000" data-scribe="element:full_timestamp"><time pubdate="" class="dt-updated" datetime="2012-12-03T18:51:11+0000" title="Time posted: 03 Dec 2012, 18:51:11 (UTC)">'+collec["Date"]+'</time></a></div></div><div class="footer customisable-border" data-scribe="component:footer"><span class="stats-narrow customisable-border"><span class="stats" data-scribe="component:stats"><a href="https://twitter.com/gabromanato/statuses/275673554408837120" title="View Tweet on Twitter" data-scribe="element:retweet_count"><span class="stats-retweets"><strong>1</strong>'+collec["quote"]+'</span></a><a href="https://twitter.com/gabromanato/statuses/275673554408837120" title="View Tweet on Twitter" data-scribe="element:favorite_count"><span class="stats-favorites"><strong>1</strong> '+message+' </span></a></span></span><ul class="profilelinks"><li><a href="member.php?action=getinfo&amp;userid=94730">Profile</a></li><li><a href="private.php?action=newmessage&amp;userid=94730">Message</a></li><li><a href="search.php?action=do_search_posthistory&amp;userid=94730">Post History</a></li></ul><ul class="postbuttons"><input type="button" class="empty meMain" value="Emptyquote!"><li class="alertbutton"><a href="modalert.php?postid=432136516&amp;username=Swimp"><img src="http://forumimages.somethingawful.com/images/button-report.gif" border="0" alt="Alert Moderators"></a>&nbsp;&nbsp;</li><li><a href="newreply.php?action=newreply&amp;postid=432136516"><img src="http://fi.somethingawful.com/images/sa-quote.gif" alt="Quote" title=""></a></li></ul></div></blockquote></div></div>';
+
+
+      $this.html(posthtml);
+      });
+    }
 
     $(".post").each(function(index, image) {
       $this = $(image);
@@ -650,7 +805,11 @@ $(document).ready(function() {
       });
     if (g.embedTweet == undefined) g.embedTweet = true;
     $(".post").each(function(index, image) {
-    	$this = $(image);
+    	
+
+
+      
+
       // vimeo larger size
       $(".bbcode_video").each(function(index, image){
         $this = $(image)

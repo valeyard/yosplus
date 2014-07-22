@@ -31,6 +31,10 @@ a.twitter-hashtag-button:focus {
   outline: none;
   border-color: #0089cb;
 }
+
+body {
+  color: #eee;
+  }
  
 /** Embedded Tweets */
  
