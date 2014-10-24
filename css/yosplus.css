@@ -426,3 +426,7 @@ img[title=":cumpolice:"] {
     padding-bottom: 25px;
     background: url("http://i.imgur.com/JJQ0qNk.gif")
 }
+
+span.highlight{
+font-weight: 900;
+}

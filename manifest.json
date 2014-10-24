@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "SA Needful",
-  "version": "1.59",
+  "version": "1.69",
   "description": "Performing CPR on the Something Awful forums",
 
   "icons": {
@@ -11,7 +11,7 @@
   "content_scripts": [
     {
       "matches": ["http://forums.somethingawful.com/*", "https://api.twitter.com/*"],
-      "js": ["jquery.min.js","jquery.lazyload.js", "contentscript.js", "jquery.ba-bbq.js"],
+      "js": ["jquery.min.js","jquery.lazyload.js", "contentscript.js", "jquery.ba-bbq.js", "highlight.js"],
       "css": ["twitter.css"],
       "run_at": "document_start"
     }

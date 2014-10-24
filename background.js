@@ -23,6 +23,7 @@ chrome.runtime.onInstalled.addListener(function(details){
     }else if(details.reason == "update"){
         var thisVersion = chrome.runtime.getManifest().version;
         localStorage.be_a_buzzkill = true;
+        // alert("UPDATE!@!~!~!@!~!~!@!~!@!\n\n- Added the yospos friendly emotes, mostly made by symbolic butt\n\n- username is highlighted in posts\n\n- fixed bug wich stopped most things from working lol\n\n")
         console.log(localStorage);
         //chrome.storage.sync.set({"snype":false, "fflist":{}, "signature":false, "quote":true, "avatarHide":true, "ads":true,"embedTweet":true,"tweet": false, "vine":true, "filter":true, "webm":true, "tree":false, "cats": {"Favourites":true, "Main": true, "Discussion": true, "The Finer Arts": true, "The Community": true, "Archives": true}},function (){
 //});
