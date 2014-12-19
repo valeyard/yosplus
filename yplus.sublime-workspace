@@ -4,6 +4,74 @@
 		"selected_items":
 		[
 			[
+				"put",
+				"putStrLn"
+			],
+			[
+				"set",
+				"setArgsConstInfo"
+			],
+			[
+				"const",
+				"constLengthZipped"
+			],
+			[
+				"arr",
+				"arrayLen"
+			],
+			[
+				"ar",
+				"arg_names"
+			],
+			[
+				"make",
+				"makeBuffersInfo"
+			],
+			[
+				"range",
+				"rangeSizeAndNames"
+			],
+			[
+				"mak",
+				"makeSizesInfo"
+			],
+			[
+				"computed",
+				"computedSize"
+			],
+			[
+				"Var",
+				"VarType"
+			],
+			[
+				"sizeDec",
+				"sizeDeclsZipped"
+			],
+			[
+				"dimensi",
+				"dimensionList"
+			],
+			[
+				"from",
+				"fromList"
+			],
+			[
+				"f95",
+				"f95_par_decl_parser"
+			],
+			[
+				"par",
+				"parxy"
+			],
+			[
+				"inner",
+				"innerText"
+			],
+			[
+				"back",
+				"background-image"
+			],
+			[
 				"avatar",
 				"avatarHideOption"
 			],
@@ -44,70 +112,88 @@
 	"buffers":
 	[
 		{
-			"file": "manifest.json",
+			"file": "/C/Users/Steven/Documents/GitHub/fp4/Skeleton/EvalExpr.hs",
 			"settings":
 			{
-				"buffer_size": 958,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "background.js",
-			"settings":
-			{
-				"buffer_size": 1888,
-				"line_ending": "Unix",
-				"name": "chrome.tabs.onUpdated.addListener(function(tabId,"
-			}
-		},
-		{
-			"file": "settings.js",
-			"settings":
-			{
-				"buffer_size": 1217,
+				"buffer_size": 1699,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "popup.html",
+			"file": "/C/Users/Steven/Documents/GitHub/fp4/Skeleton/F95OpenACCParser.hs",
 			"settings":
 			{
-				"buffer_size": 3021,
+				"buffer_size": 2093,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Steven/Documents/GitHub/fp4/Skeleton/F95ParDeclParser.hs",
+			"settings":
+			{
+				"buffer_size": 1002,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "contentscript.js",
+			"file": "/C/Users/Steven/Documents/GitHub/fp4/Skeleton/F95SrcIO.hs",
 			"settings":
 			{
-				"buffer_size": 28933,
+				"buffer_size": 888,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/Users/Steven/Documents/GitHub/fp4/Skeleton/F95VarDeclParser.hs",
+			"settings":
+			{
+				"buffer_size": 6015,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "INFORMATION	9616	9608	[0-9]+:[0-9]+:[0-9]+-[0-9]+	CONSOLE	415	\"'(PROBATION|BAN|AUTOBAN|PERMABAN)', '[0-9]+/[0-9]+/[0-9]+', '[0-9]+:[0-9]+'. '[A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+]+', '\n\n', (''|[0-9\\.]+). 'Lincoln`s Wax', '[A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+\\[\\]\\^\\(\\)\\$\\#\\~]+'\", source: chrome-extension://jpjhlebbpjionjcoajnknpalmkogihjn/contentscript.js \\(415\\)\n\n'[A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+\\[\\]\\^\\(\\)\\$\\#\\~]+'\n\nCOPY lepercolony (type, date, time, jerk, length, requested, approved) FROM 'C:\\Users\\Steven\\Desktop\\leperColonyNoReasonsFormattedDatabase.csv' DELIMITER ',' CSV HEADER \n\n'([A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+\\[\\]\\^\\(\\)\\$\\#\\~\\/\\`\\<\\>]+)'\n\n(PROBATION|BAN|AUTOBAN|PERMABAN),[0-9]+/[0-9]+/[0-9]+,[0-9]+:[0-9]+,'[A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+]+',\n\nPROBATION,[0-9]+-[0-9]+-[0-9]+,[0-9]+:[0-9]+,'[A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+]+',\n\n\nPROBATION,[0-9]+-[0-9]+-[0-9]+,[0-9]+:[0-9]+,\"[A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+\\[\\]\\^\\(\\)\\$\\#\\~\\/\\`\\<\\>]+\",[a-zA-Z]+,\n\n\nPROBATION,[0-9]+-[0-9]+-[0-9]+,[0-9]+:[0-9]+,\"[A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+\\[\\]\\^\\(\\)\\$\\#\\~\\/\\`\\<\\>]+\", (NaN),\n\n\n\"[A-Za-z]+[ ]+[0-9]+, [0-9]+ [0-9]+:[0-9]+\"\n\n\n\n\n",
+			"file": "/C/Users/Steven/Documents/GitHub/fp4/Skeleton/Main.hs",
 			"settings":
 			{
-				"buffer_size": 1097,
+				"buffer_size": 7370,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "creepy selnder dream blowing down windows in doroway like marble hornets",
+			"file": "/C/Users/Steven/Documents/GitHub/fp4/Skeleton/OpenCLAPIGenerator.hs",
 			"settings":
 			{
-				"buffer_size": 72,
-				"line_ending": "Windows",
-				"name": "creepy selnder dream blowing down windows in dorow"
+				"buffer_size": 12957,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/Users/Steven/Documents/GitHub/fp4/Skeleton/module_LES_ocl.f95",
+			"settings":
+			{
+				"buffer_size": 25134,
+				"line_ending": "Windows"
 			}
 		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 311.0,
+		"height": 127.0,
 		"selected_items":
 		[
+			[
+				"console",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"install pac	",
+				"Package Control: Install Package"
+			],
 			[
 				"command",
 				"Git: Custom Command"
@@ -125,9 +211,12 @@
 	},
 	"console":
 	{
-		"height": 126.0,
+		"height": 417.0,
 		"history":
 		[
+			"cd",
+			"dir",
+			"ls",
 			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())"
 		]
 	},
@@ -142,9 +231,77 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Steven/Documents/GitHub/fp4/Skeleton/module_LES_ocl.f95",
+		"/C/Users/Steven/Dropbox/FP4/Files/Skeleton/F95ParDecl.hs",
+		"/C/Users/Steven/Dropbox/FP4/Files/Skeleton/F95OpenACCParser.hs",
+		"/C/Users/Steven/Dropbox/FP4/Files/Skeleton/F95ParDeclParser.hs",
+		"/C/Users/Steven/Dropbox/FP4/Files/Skeleton/F95SubDecl.hs",
+		"/C/Users/Steven/Dropbox/FP4/Files/Skeleton/F95SrcIO.hs",
+		"/C/Users/Steven/Dropbox/FP4/Files/Skeleton/F95Types.hs",
+		"/C/Users/Steven/Dropbox/FP4/Files/Skeleton/F95VarDecl.hs",
+		"/C/Users/Steven/Dropbox/FP4/Files/Skeleton/F95VarDeclParser.hs",
+		"/C/Users/Steven/Dropbox/FP4/Files/Skeleton/Main.hs",
+		"/C/Users/Steven/Dropbox/FP4/Files/Skeleton/OpenCLAPIGenerator.hs",
+		"/C/Users/Steven/Dropbox/FP4/Files/Skeleton/EvalExpr.hs",
+		"/C/Users/Steven/Desktop/Files/Fortran95-sources/module_LES_ocl_TEMPL.f95",
+		"/C/Users/Steven/Dropbox/FP4/Files/Skeleton/module_LES_ocl.f95",
+		"/C/Users/Steven/Desktop/M1version1/backup/M1cpuNew.hs",
+		"/C/Users/Steven/Desktop/M1version1/M1cpuNew.hs",
+		"/C/Users/Steven/Desktop/M1version1/M1runNew.hs",
+		"/C/Users/Steven/Dropbox/FP4-master/F95VarDeclParser.hs",
+		"/C/Users/Steven/Desktop/M1version1/loadxiTest.hs",
+		"/C/Users/Steven/Desktop/M1version1/M1cpu.hs",
+		"/C/Users/Steven/Desktop/M1version1/M1run.hs",
+		"/C/Users/Steven/Desktop/M1version1/multTest.hs",
+		"/C/Users/Steven/Desktop/M1version1/backup/ArrayMax.hs",
+		"/C/Users/Steven/Desktop/M1version1/ArrayMax.hs",
+		"/C/Users/Steven/Dropbox/FP4/Files/Skeleton/module_LES_ocl_TEMPL.f95",
+		"/C/Users/Steven/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Users/Steven/Dropbox/FP4-master/F95Types.hs",
+		"/C/Users/Steven/Dropbox/FP4-master/F95VarDecl.hs",
+		"/C/Users/Steven/Dropbox/FP4-master/Main.hs",
+		"/C/Users/Steven/Dropbox/FP4-master/OpenCLAPIGenerator.hs",
+		"/C/Users/Steven/Dropbox/FP4-master/EvalExpr.hs",
+		"/C/Users/Steven/Dropbox/FP4-master/F95ParDecl.hs",
+		"/C/Users/Steven/Dropbox/FP4-master/F95OpenACCParser.hs",
+		"/C/Users/Steven/Dropbox/FP4-master/F95ParDeclParser.hs",
+		"/C/Users/Steven/Dropbox/FP4-master/F95SubDecl.hs",
+		"/C/Users/Steven/Dropbox/FP4-master/F95SrcIO.hs",
+		"/C/Users/Steven/Dropbox/pythonsocialauthguide.mhtml",
+		"/C/Users/Steven/Documents/GitHub/sagoons/contentscript.js",
+		"/C/Users/Steven/Documents/GitHub/sagoons/sendkeys.js",
+		"/C/Users/Steven/Documents/GitHub/sagoons/manifest.json",
+		"/C/Users/Steven/Documents/GitHub/yosplus/contentscript.js",
+		"/C/Users/Steven/Documents/GitHub/yosplus/css/yosplus.css",
+		"/C/Users/Steven/Documents/GitHub/yosplus/twitter.css",
+		"/C/Users/Steven/Documents/GitHub/yosplus/settings.js",
+		"/C/Users/Steven/Documents/GitHub/yosplus/background.js",
+		"/C/Users/Steven/Documents/GitHub/yosplus/highlight.js",
+		"/C/Users/Steven/Documents/GitHub/yosplus/manifest.json",
+		"/C/Users/Steven/Documents/GitHub/Skeletown/contentscript.js",
+		"/C/Users/Steven/Documents/GitHub/Skeletown/background.js",
+		"/C/Users/Steven/Documents/GitHub/Skeletown/settings.js",
+		"/C/Users/Steven/Documents/GitHub/Skeletown/manifest.json",
+		"/C/Users/Steven/Documents/GitHub/SearchDemon/searchDemonProject/static/css/stack.css",
+		"/C/Users/Steven/Documents/GitHub/SearchDemon/classes for comment",
+		"/C/Users/Steven/Documents/GitHub/yosplus/0otherstuff/posthistroydate.js",
+		"/C/Users/Steven/Documents/GitHub/yosplus/0otherstuff/posthistorystats.js",
+		"/C/Users/Steven/Desktop/windmilslayer.txt",
+		"/C/Users/Steven/Documents/GitHub/yosplus/popup.html",
+		"/C/Users/Steven/Documents/GitHub/yosplus/css/popup.css",
+		"/C/Users/Steven/Desktop/waltzingalong.csv",
+		"/C/Users/Steven/Desktop/iggy.csv",
+		"/C/Users/Steven/Desktop/John Kruk.csv",
+		"/C/Users/Steven/Desktop/regextableaucode.re",
+		"/C/Users/Steven/Desktop/LPC.csv",
+		"/C/Users/Steven/Documents/GitHub/yosplus/css/twittertimeline.css",
+		"/C/Users/Steven/Documents/GitHub/yosplus/twittertimeline.css",
+		"/C/Users/Steven/Desktop/animeshistory.csv",
+		"/C/Users/Steven/Desktop/valeyardposthistory.csv",
+		"/C/Users/Steven/Documents/GitHub/yosplus/0otherstuff/posttimes.csv",
+		"/C/Users/Steven/Documents/GitHub/yosplus/yosplus.css",
 		"/C/Users/Steven/Desktop/postt.csv",
 		"/C/Users/Steven/Documents/GitHub/yosplus/posttimes.csv",
-		"/C/Users/Steven/Desktop/valeyardposthistory.csv",
 		"/C/Users/Steven/Documents/GitHub/yosplus/posthistorystats.js",
 		"/C/Users/Steven/Documents/GitHub/yosplus/posthistroydate.js",
 		"/C/Users/Steven/Documents/GitHub/yosplus/forums.combined.js",
@@ -154,11 +311,7 @@
 		"/C/Users/Steven/Desktop/LPCQuoteTime.csv",
 		"/C/Users/Steven/Desktop/evenmoretrimmedreasons",
 		"/C/Users/Steven/Desktop/lepercolonycomplete.txt",
-		"/C/Users/Steven/Documents/GitHub/yosplus/settings.js",
-		"/C/Users/Steven/Documents/GitHub/yosplus/popup.html",
-		"/C/Users/Steven/Documents/GitHub/yosplus/css/yosplus.css",
 		"/C/Users/Steven/Documents/GitHub/yosplus/0temp/search.js",
-		"/C/Users/Steven/Documents/GitHub/yosplus/yosplus.css",
 		"/C/Users/Steven/Documents/GitHub/yosplus/jquery.ba-bbq.js",
 		"/C/Users/Steven/Desktop/leperColonyNoReasonsRAW.txt",
 		"/C/Users/Steven/Desktop/leperColonyNoReasonsFormatted.csv",
@@ -180,7 +333,6 @@
 		"/C/Users/Steven/Documents/GitHub/webmbed/settings.js",
 		"/C/Users/Steven/Documents/GitHub/webmbed/popup.html",
 		"/C/Users/Steven/Documents/GitHub/webmbed/contentscript.js",
-		"/C/Users/Steven/Documents/GitHub/yosplus/twitter.css",
 		"/C/Users/Steven/Documents/GitHub/yosplus/0temp/canvasTweet.js",
 		"/C/Users/Steven/Documents/GitHub/yosplus/jquery.form.js",
 		"/C/Users/Steven/Documents/pagancowlol",
@@ -189,7 +341,6 @@
 		"/C/Users/Steven/Documents/GitHub/yosplus/forums.js",
 		"/C/Users/Steven/Documents/GitHub/yosplus/search.js",
 		"/C/Users/Steven/Dropbox/Public/myjson",
-		"/C/Users/Steven/Documents/GitHub/yosplus/contentscript.js",
 		"/C/Users/Steven/Dropbox/Public/salib.js",
 		"/C/Users/Steven/Documents/GitHub/yosplus/salib.js",
 		"/C/Users/Steven/Documents/GitHub/yosplus/san.sublime-project",
@@ -207,17 +358,11 @@
 		"/C/Users/Steven/Documents/mab_bookmark_extension-0.1/popup.js",
 		"/C/Users/Steven/Documents/GitHub/buzzkill/manifest.json",
 		"/C/Users/Steven/Documents/GitHub/buzzkill/buzzkill.js",
-		"/C/Users/Steven/Documents/GitHub/buzzkill/settings.js",
-		"/C/Users/Steven/AppData/Roaming/Sublime Text 3/Packages/Git/Git.sublime-settings",
-		"/C/Users/Steven/Documents/GitHub/Messenger/MessengerApp/client.erl",
-		"/C/Users/Steven/Documents/GitHub/Messenger/src/messenger.erl",
-		"/C/Users/Steven/Desktop/messenger.erl",
-		"/C/Users/Steven/Downloads/messenger.erl",
-		"/C/Users/Steven/AppData/Roaming/Sublime Text 3/Packages/User/Git.sublime-settings"
+		"/C/Users/Steven/Documents/GitHub/buzzkill/settings.js"
 	],
 	"find":
 	{
-		"height": 34.0
+		"height": 38.0
 	},
 	"find_in_files":
 	{
@@ -231,134 +376,134 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"const_e",
+			"emptyDef",
+			"eval",
+			"intent",
+			"eval_range_expr",
+			"lrtrim",
+			"range1",
+			"dimension1",
+			"range1",
+			"kind_parser",
+			"kind_num_parser",
+			"extract_params",
+			"extractConstargs_in",
+			"extract_args",
+			"extract_constargs",
+			"extract_args_in",
+			".",
+			"intent",
+			"user parserf from vardeclparser",
+			"var_expr_s",
+			"stripRead",
+			"replaceAtIndex",
+			"replace",
+			"lrtrim",
+			"range1",
+			"ft",
+			"helper",
+			"dimension1",
+			"1101",
+			"1101669",
+			"ctl_rf_lda",
+			"ctl_mul_start",
+			"ready",
+			"rdy",
+			"ready",
+			"rdy",
+			"T.",
+			"T.re",
+			"x1",
+			"a ",
+			"sa",
+			"a 12",
+			"a 0",
+			"a 4",
+			"a 8",
+			"a 4",
+			"ir",
+			"ctl_rf_ld",
+			"fmtIf ctl_rf_ld",
+			"000c",
+			"!ACC",
+			"t2",
+			"ocl_argmode",
+			"vt",
+			"\"\n",
+			" \n",
+			")\n",
+			"]\n",
+			"\",[])\n",
+			",[],[])\n",
+			"ACC",
+			"type",
+			"Twitter",
+			"retard",
+			" [",
+			"input",
+			"history",
+			"body",
+			"color",
+			"console.log",
+			"\n  });",
+			"comment",
+			"comments",
+			".comment",
+			"comment-",
+			"comment-body",
+			"comment-text",
+			"comment-actions",
+			"comment-user",
+			"comment-use",
+			"link-separator",
+			"js-link-separator",
+			"show-link",
+			"js-show-link",
+			"comments-link",
+			"dno",
+			"comments-link",
+			"panel",
+			"comment-text",
+			"accepted",
+			"class=\"[a-zA-Z0-9\\- ]+\"",
+			"class",
+			"[-a-zA-Z \\.\\&\\,\\/]*: ([\\*]*)([0-9]\\/[0-9])*",
+			"[-a-zA-Z \\.\\&\\,\\/]*: (\\*)*([0-9]\\/[0-9])*",
+			"[-a-zA-Z \\.\\&\\,0-9]*: (\\*)*([0-9]\\/[0-9])*",
+			"htr",
+			"embedTweet",
+			"tweet",
+			"threadid",
+			"flag",
+			"content",
+			"background-image",
+			"thiSForum",
+			"forum",
+			"somethingawful",
+			"bbc",
+			"complete_shit",
+			"header",
+			"root",
+			"class=\"[a-zA-Z0-9\\- ]+\"",
+			"color",
+			"avatar",
+			"u-photo",
+			"avatar",
+			"GMT",
+			"\"([0-9]+ [A-Za-z]+[ ]+[0-9]+ [0-9]+:[0-9]+:[0-9]+)\"",
+			"\"([A-Za-z]+[ ]+[0-9]+), ([0-9]+) ([0-9]+:[0-9]+)\"",
+			"\"[A-Za-z]+[ ]+[0-9]+, [0-9]+ [0-9]+:[0-9]+\"",
+			"\"([A-Za-z]+[ ]+[0-9]+), ([0-9]+) ([0-9]+:[0-9]+)\"",
+			"\"[A-Za-z]+[ ]+[0-9]+, [0-9]+ [0-9]+:[0-9]+\"",
+			".css",
 			"ur85",
 			"snype",
 			"true",
 			"vine",
 			"([0-9]+:[0-9]+)",
 			"\"([A-Za-z]+[ ]+[0-9]+), ([0-9]+) ([0-9]+:[0-9]+)\"",
-			"\"[A-Za-z]+[ ]+[0-9]+, [0-9]+ [0-9]+:[0-9]+\"",
-			"i",
-			"console",
-			"htr",
-			"([0-9]+-[0-9]+-[0-9]+),([0-9]+:[0-9]+)",
-			"([0-9]+:[0-9]+)",
-			"4167",
-			"(,4167)",
-			"4167",
-			"get",
-			"json",
-			"Unrecoverable Error",
-			"The site is not able to fulfill your request at this time.",
-			"(PROBATION,[0-9]+-[0-9]+-[0-9]+,[0-9]+:[0-9]+,\"[A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+\\[\\]\\^\\(\\)\\$\\#\\~\\/\\`\\<\\>\\@]+\"), (NaN),",
-			"Tortoise",
-			"PROBATION,[0-9]+-[0-9]+-[0-9]+,[0-9]+:[0-9]+,\"[A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+\\[\\]\\^\\(\\)\\$\\#\\~\\/\\`\\<\\>]+\",[a-zA-Z+PROBATION,[0-9]+-[0-9]+-[0-9]+,[0-9]+:[0-9]+,\"[A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+\\[\\]\\^\\(\\)\\$\\#\\~\\/\\`\\<\\>]+\",[a-zA-Z]+, NaN,",
-			"Tortoise",
-			"PROBATION,[0-9]+/[0-9]+/[0-9]+,[0-9]+:[0-9]+,'[A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+]+',",
-			"$.get",
-			"ban",
-			"Megaman\"s Jockstrap",
-			"NULL",
-			"You're an asshole, Coleco",
-			"You\"re an asshole, Coleco",
-			"\"\"",
-			",\"(.*)\",",
-			",\"(.*)\"",
-			",,",
-			"'(.*)'",
-			"''",
-			",,",
-			",,NULL",
-			",,",
-			"'([A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+\\[\\]\\^\\(\\)\\$\\#\\~\\/\\`\\<\\>]+)'",
-			",,",
-			"'([a-zA-Z0-9_| ]+)'",
-			"|",
-			"'[a-zA-Z_| ]+'",
-			"'[a-zA-Z_|]+'",
-			"|",
-			"'deglaze|2'",
-			",'',,\"",
-			"\",,\"",
-			" '(Lincoln`s Wax)'",
-			"'Lincoln`s Wax'",
-			"\",,\"",
-			",'([A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+\\[\\]\\^\\(\\)\\$\\#\\~\\{\\}\\,]+)',",
-			",'[A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+\\[\\]\\^\\(\\)\\$\\#\\~\\{\\}\\,]+',",
-			",'([A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+\\[\\]\\^\\(\\)\\$\\#\\~\\{\\}\\,]+)',",
-			",'[A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+\\[\\]\\^\\(\\)\\$\\#\\~\\{\\}\\,]+',",
-			"'[A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+\\[\\]\\^\\(\\)\\$\\#\\~\\{\\}\\,]+'",
-			"'([A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+\\[\\]\\^\\(\\)\\$\\#\\~\\{\\}]+)'",
-			"'[A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+\\[\\]\\^\\(\\)\\$\\#\\~\\{\\}]+'",
-			" 'Invicta{HOG}, M.D.'",
-			"'Invicta{HOG}, M.D.'",
-			"True Love",
-			"DrSanchez",
-			"([0-9]+)/([0-9]+)/([0-9]+)",
-			",NULL,",
-			", (1|0.25|0.5|30|3|7)",
-			" '([A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+\\[\\]\\^\\(\\)\\$\\#\\~]+)'",
-			"'(PROBATION|AUTOBAN|BAN|PERMABAN)'",
-			" ''",
-			"'([0-9]+:[0-9]+)', ",
-			"'[0-9]+:[0-9]+', ",
-			" '([0-9]+/[0-9]+/[0-9]+)', ",
-			" '",
-			"RegExp",
-			"name",
-			"forum_26",
-			"INFORMATION	9616	9608	[0-9]+:[0-9]+:[0-9]+-[0-9]+	CONSOLE	415	\"'(PROBATION|BAN|AUTOBAN|PERMABAN)', '[0-9]+/[0-9]+/[0-9]+', '[0-9]+:[0-9]+'. '[A-Za-z0-9\\-\\:\\\"\\'\\=\\. \\_\\!\\+]+', '",
-			"INFORMATION	9616	9608	15:37:09-736	CONSOLE	415	\"'PROBATION', '06/12/14', '03:20', 'Bruciwayna', '",
-			"INFORMATION	9616	9608	[0-9]+:[0-9]+:[0-9]+-[0-9]+	CONSOLE	415	\"'(PROBATION|BAN|AUTOBAN|PERMABAN)', '[0-9]+/[0-9]+/[0-9]+', '[0-9]+:[0-9]+'. '[A-Za-z0-9\\-\\:\\\"\\'\\=\\.\\,]+",
-			"INFORMATION	9616	9608	[0-9]+:[0-9]+:[0-9]+-[0-9]+	CONSOLE	415	\"'(PROBATION|BAN|AUTOBAN|PERMABAN)', '[0-9]+/[0-9]+/[0-9]+', '[0-9]+:[0-9]+'. '[A-Za-z0-9\\-\\:\\\"\\'\\=\\.\\,]+', '",
-			"INFORMATION	9616	9608	[0-9]+:[0-9]+:[0-9]+-[0-9]+	CONSOLE	415	\"'(PROBATION|BAN|AUTOBAN|PERMABAN)', '[0-9]+/[0-9]+/[0-9]+', '[0-9]+:[0-9]+'. '[A-Za-z0-9\\-\\:\\\"\\']+",
-			"INFORMATION	9616	9608	[0-9]+:[0-9]+:[0-9]+-[0-9]+	CONSOLE	415	\"'(PROBATION|BAN|AUTOBAN|PERMABAN)', '[0-9]+/[0-9]+/[0-9]+', '[0-9]+:[0-9]+'. '[A-Za-z0-9\\-\\:\\\"\\']+'",
-			"INFORMATION	9616	9608	[0-9]+:[0-9]+:[0-9]+-[0-9]+	CONSOLE	415	\"'(PROBATION|BAN|AUTOBAN|PERMABAN)', '[0-9]+/[0-9]+/[0-9]+', '[0-9]+:[0-9]+'. 'Widestancer'",
-			"innerHT",
-			"input",
-			"searchButton",
-			".post",
-			"post",
-			"snype",
-			"buttonClass",
-			"empty",
-			"color: rgb(0, 0, 0)",
-			"style",
-			"empty",
-			"thisForu",
-			"amber",
-			"meAmber",
-			"EACF4C",
-			"SA",
-			"timg",
-			".scan",
-			"multiply",
-			"turbo",
-			".me",
-			"forum_219",
-			"416",
-			"41",
-			"'Downtown Abey',",
-			"Downtown Abey",
-			"BAN",
-			"''",
-			"click",
-			"'\"\\n",
-			"INFORMATION	9616	9608	[0-9]+:[0-9]+:[0-9]+-[0-9]+	CONSOLE	416	\"",
-			"', [0-9\\.]+, '",
-			"', '",
-			"\", source: chrome-extension://jpjhlebbpjionjcoajnknpalmkogihjn/contentscript.js (415)",
-			"contentscript.js:409",
-			"RIGHT",
-			"exec",
-			"style",
-			"var s",
-			"var a",
-			"get",
-			"\")\n",
-			"\"body\"",
-			"$.get",
-			"get"
+			"\"[A-Za-z]+[ ]+[0-9]+, [0-9]+ [0-9]+:[0-9]+\""
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -366,6 +511,23 @@
 		"regex": false,
 		"replace_history":
 		[
+			"rangeEval",
+			"dimensionEval",
+			"rangeEval",
+			"kindParser",
+			"kindNumberParser",
+			"extractParameters",
+			"extractConstargsInside",
+			"extractArgs",
+			"extractConstargs",
+			"extractArgsInside",
+			"&nbsp;",
+			"$1 $2",
+			"$2",
+			"BST",
+			"\"$1 GMT\"",
+			"\"$2 $1 $3:00\"",
+			"\"$2 $1 $2:00\"",
 			"$1:00",
 			"\"$2 $1 $3\"",
 			"\"$1 $2\"",
@@ -415,62 +577,57 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 5,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "manifest.json",
+					"file": "/C/Users/Steven/Documents/GitHub/fp4/Skeleton/EvalExpr.hs",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 958,
+						"buffer_size": 1699,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								69,
-								69
+								286,
+								286
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/Haskell/Haskell.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "background.js",
+					"file": "/C/Users/Steven/Documents/GitHub/fp4/Skeleton/F95OpenACCParser.hs",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1888,
+						"buffer_size": 2093,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1124,
-								1124
+								318,
+								318
 							]
 						],
 						"settings":
 						{
-							"auto_name": "chrome.tabs.onUpdated.addListener(function(tabId,",
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/Haskell/Haskell.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -481,56 +638,24 @@
 				},
 				{
 					"buffer": 2,
-					"file": "settings.js",
+					"file": "/C/Users/Steven/Documents/GitHub/fp4/Skeleton/F95ParDeclParser.hs",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1217,
+						"buffer_size": 1002,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1200,
-								1200
+								450,
+								450
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 90.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "popup.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3021,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								288,
-								288
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/Haskell/Haskell.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -540,54 +665,109 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "contentscript.js",
+					"buffer": 3,
+					"file": "/C/Users/Steven/Documents/GitHub/fp4/Skeleton/F95SrcIO.hs",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 28933,
+						"buffer_size": 888,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								27923,
-								27923
+								272,
+								272
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/Haskell/Haskell.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 10954.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/C/Users/Steven/Documents/GitHub/fp4/Skeleton/F95VarDeclParser.hs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6015,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3794,
+								3794
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Haskell/Haskell.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 2442.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/C/Users/Steven/Documents/GitHub/fp4/Skeleton/Main.hs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7370,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								718,
+								538
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Haskell/Haskell.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 715.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 6,
+					"file": "/C/Users/Steven/Documents/GitHub/fp4/Skeleton/OpenCLAPIGenerator.hs",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1097,
+						"buffer_size": 12957,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1037,
-								982
+								636,
+								636
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Regular Expressions/RegExp.tmLanguage"
+							"syntax": "Packages/Haskell/Haskell.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -597,39 +777,46 @@
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 7,
+					"file": "/C/Users/Steven/Documents/GitHub/fp4/Skeleton/module_LES_ocl.f95",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 72,
+						"buffer_size": 25134,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								72,
-								72
+								621,
+								621
 							]
 						],
 						"settings":
 						{
-							"auto_name": "creepy selnder dream blowing down windows in dorow",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 7370.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 1,
 					"type": "text"
 				}
+			]
+		},
+		{
+			"sheets":
+			[
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 23.0
+		"height": 30.0
 	},
 	"input":
 	{
@@ -644,11 +831,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.973262032086,
 			1.0
 		],
 		"rows":
@@ -658,6 +852,10 @@
 		]
 	},
 	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 142.0
+	},
 	"output.find_results":
 	{
 		"height": 0.0
@@ -665,7 +863,7 @@
 	"project": "yplus.sublime-project",
 	"replace":
 	{
-		"height": 62.0
+		"height": 70.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -696,6 +894,7 @@
 		],
 		"width": 0.0
 	},
+	"selected_group": 0,
 	"settings":
 	{
 	},
@@ -703,7 +902,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 98.0,
+	"side_bar_width": 50.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

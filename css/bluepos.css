@@ -1,0 +1,413 @@
+@charset "utf-8";
+    .forum_219 *, #yospos #bithc {
+    text-shadow: none!important;
+    box-shadow: none!important;
+    border-radius: 0!important;
+}
+.forum_219 body, .forum_219 tr, .forum_219 th, .forum_219 td, .forum_219 p, .forum_219 li, .forum_219 dd, .forum_219 dt, .forum_219 .breadcrumbs * {
+    font-family: "consolas", "monaco", monospace!important;
+    color: white;
+}
+.forum_219 body, .forum_219 tr, .forum_219 th, .forum_219 .postbody, .forum_219 p, .forum_219 li, .forum_219 blockquote, .forum_219 h4, .forum_219 .author, .forum_219 .breadcrumbs * {
+    color: white!important;
+    font-size: 14px!important;
+}
+.forum_219 #forum th *, .forum_219 #forum td *, .forum_219 #forum th *, .forum_219 #forum .views {
+    font-family: "consolas", "monaco", monospace!important;
+    font-size: 14px!important;
+    color: white!important;
+}
+.forum_219 #forum td div.info div.title_pages * {
+    font-size: 12px!important;
+}
+.forum_219 #thread dl.userinfo dd {
+    font-size: 11px;
+    color: white;
+}
+.forum_219 .registered, .forum_219 .postdate, .forum_219 .bbc-center {
+    color: white!important;
+}
+.forum_219 a, .forum_219 .postbody a.quote_link, .forum_219 .breadcrumbs a:visited {
+    color: white;
+    text-decoration: underline;
+}
+body, .breadcrumbs .mainbodytextlarge .index {
+    background-color: #1E2AE3!important;
+}
+#nav_purchase, #navigation, .navigation {
+    background: #1E2AE3!important;
+    border: 0!important;
+    line-height: 1em!important;
+    padding: 0!important;
+}
+.navigation a {
+    text-decoration: none;
+}
+ul#nav_purchase li, #nav_purchase a, #navigation li a, .navigation li a {
+    font-size: 12px!important;
+    color: white!important;
+}
+div.pages a {
+    border: 1px solid white!important;
+    min-width: 30px!important;
+    background-color: #1E2AE3!important;
+}
+div.pages span.disabled {
+    border: 1px solid #114211!important;
+    color: #114211!important;
+    min-width: 30px!important;
+    background-color: #1E2AE3!important;
+    font-size: 14px!important;
+}
+div.pages select {
+    min-width: 50px!important;
+    height: 26px;
+    vertical-align: bottom;
+}
+a.up span {
+    background-color: #1E2AE3!important;
+    border-radius: 0!important;
+    border: 1px solid white!important;
+}
+div.threadbar.top, div.threadbar.bottom, div.forumbar, #forum, #filter {
+    background-color: #1E2AE3!important;
+    border: 1px solid white!important;
+}
+#forum {
+    border-right: 0!important;
+}
+#main_full tr th, #main_full tr td, div.standard, div.standard h2, table.standard, table.standard th, table.standard td {
+    font-family: "consolas", "monaco", monospace;
+    color: white;
+    background-color: #1E2AE3!important;
+    border: 1px solid white!important;
+}
+#main_full td a {
+    border: 0!important;
+    text-decoration: underline!important;
+    border-radius: 0!important;
+}
+.forum_219 * textarea, .forum_219 * input, .forum_219 * select {
+    font-family: "consolas", "monaco", monospace;
+    color: white!important;
+    background-color: #1E2AE3;
+    border: 1px solid white!important;
+    box-shadow: none!important;
+}
+.post tr td.postbody {
+    font-family: "consolas", "monaco", monospace;
+    font-size: 14px;
+    border: 0!important;
+}
+* td.postbody, * td.userinfo, * td.postlinks, * td.postdate {
+    background-image: none!important;
+}
+.newreply #content #thread table.post:first-child tr td.userinfo {
+    border-top: 0!important;
+}
+* td.postlinks, * td.postdate {
+    border-top: 1px solid white!important;
+}
+* td.userinfo, * td.postdate {
+    border-right: 1px solid white!important;
+}
+#thread td.postdate a {
+    margin-left: 0!important;
+    margin-right: 0!important;
+    padding: 0 1px!important;
+    font-size: 11px!important;
+}
+.user_jump {
+    margin-right: 0!important;
+}
+dt.op:before {
+    content: "\2328 "}
+ul.profilelinks {
+    padding-top: 7px!important;
+}
+.profilelinks a, .postdate a {
+    padding-bottom: 0!important;
+    border: 0!important;
+    text-decoration: underline!important;
+}
+.bbc-block {
+    background: transparent!important;
+    border-top: 1px solid white!important;
+    border-bottom: 1px solid white!important;
+    border-left: 0!important;
+    border-right: 0!important;
+    border-radius: 0!important;
+}
+.quote_link {
+    opacity: .90;
+}
+.bbc-spoiler {
+    background-color: #1E2AE3!important;
+    color: #1E2AE3!important;
+    box-shadow: 0 0 9px white!important;
+}
+.bbc-spoiler.reveal {
+    color: white!important;
+    background-color: transparent!important;
+    box-shadow: none!important;
+}
+.forum_219 p.signature {
+    border-top: 2px solid #114211!important;
+    padding: 15px;
+}
+#ac_timemachine {
+    width: auto!important;
+    background: transparent!important;
+    border: 0!important;
+}
+#forum th, #forum td {
+    background: transparent!important;
+    border-bottom: 1px solid white!important;
+    border-right: 1px solid white!important;
+    border-left: 0!important;
+    border-top: 0!important;
+}
+.lastseen {
+    background: #1E2AE3!important;
+    border: 1px solid white!important;
+}
+.lastseen a.x {
+    background: #1E2AE3!important;
+    border: 0!important;
+}
+.lastseen a.count {
+    border-left: 1px solid white!important;
+    padding-right: 5px!important;
+    padding-left: 12px!important;
+    width: auto!important;
+    min-width: 32px!important;
+}
+.post tr, .post td, #forum th a {
+    background-color: transparent!important;
+}
+tr.seen, tr.seen1, tr.seen2 {
+    background-color: #114211!important;
+    background-image: url('data:image/png;
+    base64, iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAARSURBVBhXYwACQSdBMGZgAAAFhgDJcI5nugAAAABJRU5ErkJggg==')!important;
+    background-repeat: repeat!important;
+}
+p.editedby span, p.attachment span, #copyright, #copyright * {
+    color: white!important;
+    font-size: 11px!important;
+    font-style: italic!important;
+}
+.forum_219 #main_full smalltext, .forum_219 #main_full span.smalltext, .forum_219 #main_full span.smalltext a, .forum_219 #main_full span.smalltext b, .forum_219 smalltext, .forum_219 span.smalltext, .forum_219 span.smalltext a, .forum_219 span.smalltext b, div.postinfo div.save-state a {
+    font-family: "consolas", "monaco", monospace;
+    font-size: 11px;
+    border: 0!important;
+}
+.cospop {
+    background-color: #1E2AE3!important;
+    border: 1px solid white!important;
+    cursor: url('http://fi.somethingawful.com/219/cosby/pudding_cursor.png'), default;
+    margin: 0;
+}
+button.nice {
+    color: white!important;
+    background-color: transparent;
+    border: 1px solid;
+    cursor: pointer;
+    height: 20px;
+    line-height: 13px;
+    font: 15px Courier New, monospace!important;
+    font-style: italic!important;
+    font-weight: bold!important;
+    vertical-align: top;
+}
+.cospop img {
+    padding: 15px!important;
+}
+.cospop h4 {
+    background-color: white!important;
+    font-style: normal!important;
+    color: #1E2AE3!important;
+    margin: 0!important;
+    padding: 3px 8px!important;
+}
+#switchpos {
+    background-color: #1E2AE3!important;
+    position: fixed;
+    top: 2px;
+    right: 2px;
+    width: 35px;
+    height: 35px;
+    color: white!important;
+    font-size: 25px!important;
+    border: 1px solid white!important;
+    cursor: pointer;
+    background: url('data:image/gif;
+    base64, R0lGODlhIAAgAJEDAAAAAAD5b9K1YwAAACH5BAEAAAMALAAAAAAgACAAAALbnC5jyKjbnhIAJFNP3RdvK3kXZX2cSIISqVls66ps6GXzZNsOncYqaurwMqLHrPcLHYk4GUxoJN5QhybUam1pEUwlEyk1JVfdZ6d3DajX7AF77X4HaAHxRg2o6+titYTfp5eXB2g3p1B4J7hnZ3KYWLGIB/j28dg3uIdHSOh2h6i4xnmZmYfoBxoJupg6CRdCeSp66LkYSet5W2n6MFtIC9kHW2qZ2tgpq1mc24jK/BrLHOoszbacOMsr3WyMOkm4ecwbfVoazv0Ma3vu2Pupbg5JHYf7J0f/+lAAADs=') center center no-repeat;
+}
+tr.thread td.icon a img {
+    -webkit-filter: grayscale(50%);
+    -moz-filter: grayscale(50%);
+}
+50% {
+    background: #1E2AE3;
+    color: white;
+}
+100% {
+    background: white;
+    color: #1E2AE3;
+}
+ul.postbuttons li {
+    padding: 2px!important;
+}
+ul.postbuttons a {
+    animation-name: none;
+}
+.rating_buttons li {
+    background-color: #1E2AE3!important;
+    color: white!important;
+    font-weight: bold!important;
+    border: 1px solid white!important;
+}
+.postbuttons img[alt=Quote] {
+    height: 0;
+    width: 60px;
+    overflow: hidden;
+    padding-bottom: 20px;
+    background: url('data:image/png;
+    base64, iVBORw0KGgoAAAANSUhEUgAAADwAAAAUCAYAAADRA14pAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAALdJREFUeNrsmEEOgCAMBLuEP8IT+WWVGzGArYqKlYMa0xQHdpsiAgcmQ8PnS6IEC7CRIjsyNn5gEx7e0X2+1Qpb6XtWvmvlacWUcc0iK6lFkh0uPxySiQfnweYZX5A0OgoggUqmAoYSiDXQsxctddM0OzCsAauh3WgJvU3e7g7fvMnLXigZriTFgJgaAHeaF/Xi+wM+4RNewgW+PHWyc3fIaKpeeu1PL13h/7T0xA7nPwFWgBcBBgDpZybnyMexVgAAAABJRU5ErkJggg%3D%3D');
+}
+.postbuttons img[alt~=Post] {
+    height: 0;
+    width: 60px;
+    overflow: hidden;
+    padding-bottom: 20px;
+    background: url('data:image/png;
+    base64, iVBORw0KGgoAAAANSUhEUgAAADwAAAAUCAYAAADRA14pAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAKFJREFUeNrsV9EKwCAI1NE/1ifuL2/sVVprzoJSHyJQqsPzUs7IIEeW7uWkkz2ALVRwkDMLwC5qWFMLDy6pBRgYo9IebYZZ7LnyMAi/NsYtpbnBgGUA1zLKFUDcQftpgCGo+Qf08CYoGVPNItMwOnOJGt5etKbQODotZWbohX6yLtH4XtAhfj13jhGtDx0OG8VYiWNQOgBvOS01pp/t7BJgAH84J+JapZFEAAAAAElFTkSuQmCC');
+}
+.postbuttons img[alt=Reply] {
+    height: 0;
+    width: 60px;
+    overflow: hidden;
+    padding-bottom: 20px;
+    background: url('data:image/png;
+    base64, iVBORw0KGgoAAAANSUhEUgAAADwAAAAUCAYAAADRA14pAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAK1JREFUeNrsV0EKwCAMs+If9Yn+MmO3MaxWi0NXe5DBaiQsiStFRDhDFe4lu0wWyCaX4J2xOoRNeLile+bV0/e14KNGTw2HyxaUsCVZJPnC9HouEeB6tDhbSZoseRirkg6DRCT+0uK01IMRHD9BptIeUipgyO9ecRB28+8X9zAWw5lKeDmyUsK9IQRmDwSYEpwevP6UZv5eaGKYTb3nz/BwCP9xWqpMRL+rS4ABAHcaKOX0wUbwAAAAAElFTkSuQmCC');
+}
+.alertbutton>a>img {
+    height: 0;
+    width: 60px;
+    overflow: hidden;
+    padding-bottom: 20px;
+    background: url('data:image/png;
+    base64, iVBORw0KGgoAAAANSUhEUgAAADwAAAAUCAYAAADRA14pAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAMFJREFUeNrsV0EOxCAIFOIf2yf2l9PsbeMGASW7dJVDDxXBIcME6MCBspDV1+cqF60A9iwnuCxmG/ASPdzyXPB97/Oe0JHi0+oFBnNZ4nzoEyuBSAAg+XjjoDn35MKvKZ1B6Ul7TxRgJABNln/VCKQHBo6CzBZlOg4H0NTqQwEMmGYQO5IgSf+mEa3hRzx18HjEEsIBIgThDhzDA5o4NFhINWfVJhOhR6PEzOJHjjv07R7ey8MGnGFb6mxIf2e3AAMAF70q7gr0SSkAAAAASUVORK5CYII%3D');
+}
+.postbuttons img[alt=Edit] {
+    height: 0;
+    width: 60px;
+    overflow: hidden;
+    padding-bottom: 20px;
+    background: url('data:image/png;
+    base64, iVBORw0KGgoAAAANSUhEUgAAADwAAAAUCAYAAADRA14pAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAKRJREFUeNrsl0sOgCAMRBniHeGI3HKMCzdEPjaASOmCmLSJvjKtLRwdjSI7riOYAA2w3nhao8w2sIoaltRCxn33A2Z8sbEQ9/g+Se+R3jCiZ1TEJD88ETu9pFHpZ6MkfwrMzrcDQYK7Af9qcLEDpLzkbwnagH8jbzsQljOowTaAYwKWL2BZkTi2UJJo0qqccNC4B2DGGt7LwwaeYVsqbD9L2SnAAAnnHuEDwss0AAAAAElFTkSuQmCC');
+}
+img.bookmark {
+    height: 0;
+    width: 60px;
+    overflow: hidden;
+    padding-bottom: 20px;
+    background: url('data:image/png;
+    base64, iVBORw0KGgoAAAANSUhEUgAAADwAAAAUCAYAAADRA14pAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAKpJREFUeNrsV9EOwBAQ08U/8on+ssuSPYgw5li2nT6InMZ0egc4OhpFsEcTTIAGsd54bkYZlmAVOdyTC2c3zv1cLB4rxXNAgYM41lN7pDvMysJrHCR9XIh8jaVbxKKB+/kcTsWOEk3JzksFY6Dt2CCG0u/ZAQuFwPLpPPyypdNihBs/j53jvzyHRaLXTethcBBnbtEq3HDQUMxmcZall2DVr6Xo9fN77AIMAKMbJeR5O4NTAAAAAElFTkSuQmCC');
+}
+img.unbookmark {
+    height: 0;
+    width: 60px;
+    overflow: hidden;
+    padding-bottom: 20px;
+    background: url('data:image/png;
+    base64, iVBORw0KGgoAAAANSUhEUgAAADwAAAAUCAYAAADRA14pAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAALZJREFUeNrsV9EOgCAI5Fr/WJ/YX1619VBMKoNVU3loDs7cIaeCgQOlIuvXzyQTaiA7yshOKrNGuAoN6zrfhntda18URlTM8qcMBuawvj6fvDvMDAwfYqDGOCH5SknTibEq49capnMegkmb0vESRgYGQYnlxf9O4xE7jAAMFRnPWq+UNALmIzN5fBIv9R42SbeHx5adlJ6+ajAYhEkTXl4md8jhhu9vmNY8NMLFHlq7Dql4mwUYAKqHL+YH2Mb8AAAAAElFTkSuQmCC');
+}
+td.rating img[src="http: //fi.somethingawful.com/rate/default/5stars.gif"] {
+    height: 0;
+    width: 50px;
+    overflow: hidden;
+    padding-bottom: 20px;
+    background: url('data:image/gif;
+    base64, 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%3D') top left no-repeat;
+}
+td.rating img[src="http: //fi.somethingawful.com/rate/default/4stars.gif"] {
+    height: 0;
+    width: 50px;
+    overflow: hidden;
+    padding-bottom: 20px;
+    background: url('data:image/gif;
+    base64, R0lGODlhMgAUAIAAAAAAAFX6VSH5BAAAAAAALAAAAAAyABQAAAJahI+py+0PYwyAWnNv3Tpv6VHcOHaldITYeYoqyL4yi85eu95TzN9v3SPZSDtf0KSDGZdCGmSIbCaL0mpUQ71+oB8gU+tyPrjhb1dp3R7P43U5LULJ5/S6XVEAADs%3D') top left no-repeat;
+}
+td.rating img[src="http: //fi.somethingawful.com/rate/default/3stars.gif"] {
+    height: 0;
+    width: 50px;
+    overflow: hidden;
+    padding-bottom: 20px;
+    background: url('data:image/gif;
+    base64, R0lGODlhMgAUAIAAAAAAAFX6VSH5BAAAAAAALAAAAAAyABQAAAJPhI+py+0PYwyAWnNv3VqyvHGi2HkfiaEoZS4g+6Zge87xSiv3ruYJb+v5cMTb8AAcGYdJzfLYDD1zUZgQqqoeZcrslekNzrDi7niLTquHBQA7') top left no-repeat;
+}
+td.rating img[src="http: //fi.somethingawful.com/rate/default/2stars.gif"] {
+    height: 0;
+    width: 50px;
+    overflow: hidden;
+    padding-bottom: 20px;
+    background: url('data:image/gif;
+    base64, R0lGODlhMgAUAIAAAAAAAFX6VSH5BAAAAAAALAAAAAAyABQAAAJIhI+py+0PYwyAWnOv3CdX/Gnc6FHhOW4l6KXceoruA8PzFLPo7dQ5D/G1gAzhjlj82ZAJo4zZVP6gCOeHqrCasDrNkgsOiwEFADs%3D') top left no-repeat;
+}
+td.rating img[src="http: //fi.somethingawful.com/rate/default/1stars.gif"] {
+    height: 0;
+    width: 50px;
+    overflow: hidden;
+    padding-bottom: 20px;
+    background: url('data:image/gif;
+    base64, R0lGODlhMgAUAJECAAAAAFX6Vf///wAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQFBQACACwAAAAAMgAUAAACb4SPqcvtDyMMgNqKr858e/aF3SheSUmmqKlsCPuqixuzlGEfeY5js8/pCYM64G10In6Gx6axeEw6abGes0WEPqlZrbXrTTHDU2RtqyyOy7Dz9blWy6TdKPz+bWtXMr69D+gHlhdYKCKBmKi4yHhQAAAh+QQFBQACACwDAAIALAAQAAACVUSMp8nrDcObsdJn89WGgo+AIMaIH0Ye58iqLbsqKbTWYXkvuJe/tuuYkWIwHFGlq/xMImBEuCs6p6WkVerrTWbE5ZKqG0a/xWOHs0kr1Wx0og13FwAAOw%3D%3D') top left no-repeat;
+}
+dd.title img[src="http: //fi.somethingawful.com/customtitles/tek9s-2.png"] {
+    height: 0;
+    width: 148px;
+    overflow: hidden;
+    padding-bottom: 42px;
+    background: url('data:image/gif;
+    base64, R0lGODlhlAAqALMAAAAAAAB2GwCzLQDaOQDaakv5bgB1GgCUJACzLRo3BwAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQEFAAAACwAAAAAlAAqAAAE/xDISau9OOtNyNlgKI5kaZ5aZ6Bs675weKwxldR4ru9875cGBADxiSECw9tvyZwghE9YFEFrWn+Hm7BqMiQ+Ae51TC6bz5SAclIctSVqtJx1EFaiIvwkgVjP/yBBGEQhendnBYmKi4yJEo2QjY+QFowgfi6YGJGLLpyRk5+UAKAVlhZvCZonYkgXogWesJ2ks6elFKcVRX19AFy+GAFvK3WCAG+5orK2scqKlbQTutPSFlRDF8cXAxgEQ3am1KHQJ82Oz+jpztXl6xgGNAM3K6pDYhQHWfYrAXbJ5NS1c1fCnS6CtRC2E6dwnDYlQY4U0uNFgySGCkUYlIbQYSiM7P8Ghszw74SQLxsurnPWbGFAlyI3CUw4k+bIC1PwyYAS7pXDiy1lZnz3McNBaxoIYUNRZ4grn0htsrRlNCpImFDVeZSjUmTXq9GGxiwqVKvVC0pWkVC7Miwutzdtpvxkka4bKAAjOum5917VqMvKxt3qlbBUwzjxViAQgMCNOobAOa0L+BbirHFXGg5MwtVTCU/s8GFcAUkCnW1BTj1LuSbYhK1HAUqd+msIxEczB7RdaFA+vhL4jAha2PVrwVjhjh3hb4+eJ0X4hAvCFq7d4rqXIx/OkXWGY9LZLOXTBvjcWarFasdMIrfx2bTPi8V9tmNl9RaUIBgQ7ojoJzRUd9vBZbv99d5LUB2H4ETgEDBAER3YsV9oQwDUHoFSGZidXAkS5eEGOSXQwQQDEPAfAXoRUtA4vC34IXsK/uQdBQEi84R+eIT3iwSoxTZSixwqqFyM9x24C49uSGAhCF8BSQ1nu6F32E2X+fJNUyJ8I6KNA8qW3ltRInVOOWAGSdIN3WAZQjfZqOnjUMRhN9OY6JRZpQRXmucNAAl0Y8CSX2YWJ3wsbKEnTqARqqgJJwF6TaKLRtqbmxwoKemlIDSXB6ERAAAh+QQEFAAAACxCAAAAKQAEAAAEGxDISau9WB5Csv9WkgTcZCRgah1BhQKvmr5vBAA7') top left no-repeat;
+}
+div.breadcrumbs, div.pages, form.forum_jump {
+}
+table.post, img.timg.complete, .breadcrumbs .mainbodytextlarge .index {
+    border: 1px solid white!important;
+}
+@-webkit-keyframes animes {
+    0% {
+    background: white;
+    color: #1E2AE3;
+}
+50% {
+    background: #1E2AE3;
+    color: white;
+}
+100% {
+    background: white;
+    color: #1E2AE3;
+}
+}* a:hover {
+    -webkit-animation-name: animes;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+    -webkit-animation-timing-function: ease-in-out;
+}
+.bginput:hover {
+    -webkit-animation-name: animes;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+    -webkit-animation-timing-function: ease-in-out;
+}
+div#notregistered {
+    background: none!important;
+    border: 1px solid!important;
+}
+td.postbody iframe {
+    border-color: white!important;
+}
+
