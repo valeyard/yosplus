@@ -6,13 +6,14 @@ function buttonClass(thisForum, amberPos) {
 }
 
 $(document).ready(function() {
-    var storage = chrome.storage.sync;
+    //var storage = chrome.storage.sync;
     var g;
     var next;
-    var settings = ["iglist", "oldbread", "lazyload", "avatarHideOption", "snypeAudio", "snype", "fflist", "signature", "quote", "avatarHide", "ads", "tweet", "filter", "vine", "webm", "cats", "main", "tree", "embedTweet"];
+    //var settings = ["iglist", "oldbread", "lazyload", "avatarHideOption", "snypeAudio", "snype", "fflist", "signature", "quote", "avatarHide", "ads", "tweet", "filter", "vine", "webm", "cats", "main", "tree", "embedTweet"];
 
-    chrome.storage.sync.get(settings, function(obj) {
-        g = obj;
+    //chrome.storage.sync.get(settings, function(obj) {
+        //g = obj;
+        g = {'oldbread':true, 'snype':true, 'quote':true, 'embedTweet':true, 'vine':true, 'webm': true, }
 
         //lazyload
         if (g.lazyload == undefined) g.lazyload = false;
@@ -546,12 +547,12 @@ $(document).ready(function() {
 
             var fname = geg.exec(image.innerText)
             if (fname == null) fname = ["whatever", image.innerText]
-            var main;
-            main = g.cats[fname[1]]
+            //var main;
+            //main = g.cats[fname[1]]
 
-            $this.parent().nextUntil("tr.section").toggle(g.cats[fname[1]]);
-            if (!main) $this[0].innerText = fname[1] + " - Click here to expand category"
-            else $this[0].innerText = fname[1] + " - Click here to collapse category"
+            //$this.parent().nextUntil("tr.section").toggle(g.cats[fname[1]]);
+            //if (!main) $this[0].innerText = fname[1] + " - Click here to expand category"
+            //else $this[0].innerText = fname[1] + " - Click here to collapse category"
 
         });
         if (g.tree == undefined) g.tree = false;
@@ -967,5 +968,5 @@ $(document).ready(function() {
                 });
             }
         });
-    });
+    //});
 });
