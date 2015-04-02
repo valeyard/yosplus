@@ -7,13 +7,13 @@ function buttonClass(thisForum, amberPos) {
 
 $(document).ready(function() {
     //var storage = chrome.storage.sync;
-    var g;
+    //var g;
     var next;
     //var settings = ["iglist", "oldbread", "lazyload", "avatarHideOption", "snypeAudio", "snype", "fflist", "signature", "quote", "avatarHide", "ads", "tweet", "filter", "vine", "webm", "cats", "main", "tree", "embedTweet"];
 
     //chrome.storage.sync.get(settings, function(obj) {
         //g = obj;
-        g = {'oldbread':true, 'snype':true, 'quote':true, 'embedTweet':true, 'vine':true, 'webm': true, }
+        ////g = {'oldbread':true, 'snype':true, 'quote':true, 'embedTweet':true, 'vine':true, 'webm': true, }
 
         //lazyload
         if (g.lazyload == undefined) g.lazyload = false;
@@ -44,10 +44,10 @@ $(document).ready(function() {
         console.log(thisForum)
             //adding stylesheets
 
-        var s = chrome.extension.getURL("css/yosplus.css")
-        var gh = chrome.extension.getURL("css/twittertimeline.css")
-        var mg = chrome.extension.getURL("css/megreen.css")
-        var ma = chrome.extension.getURL("css/meamber.css")
+        var s = safari.extension.baseURI + "css/yosplus.css"
+        var gh = safari.extension.baseURI + "css/twittertimeline.css"
+        var mg = safari.extension.baseURI + "css/megreen.css"
+        var ma = safari.extension.baseURI + "css/meamber.css"
             //var bluepos = chrome.extension.getURL("css/bluepos.css")
 
 
@@ -177,13 +177,13 @@ $(document).ready(function() {
             if ($this.attr("type") == "text") var name = $this.attr("value")
             if (name != undefined) igName.push(name)
         });
-        chrome.storage.sync.set({
+        setIglist(JSON.stringify({
             "iglist": igName
-        })
+        }))
 
         //snype/snipe audio
         if (g.snypeAudio) {
-            var audioPath = chrome.extension.getURL("audio/Headshot.wav");
+            var audioPath = safari.extension.baseURI + "audio/Headshot.wav"
             $bodyS.prepend('<audio id="audio" src=' + audioPath + ' ></audio>')
         }
 
@@ -354,15 +354,15 @@ $(document).ready(function() {
                 t[a.attr("class")] = a.attr("class")
                 a.find("input").remove()
                 $("#favouriteForums").after(a[0])
-                chrome.storage.sync.set({
+                setFflist(JSON.sringify({
                     "fflist": t
-                }, function() {});
+                }));
             } else {
                 var t = g.fflist;
                 delete t[a.attr("class")]
-                chrome.storage.sync.set({
-                    "fflist": t
-                }, function() {});
+                setFflist(JSON.sringify({
+                  "fflist": t
+                }));
                 a.remove()
             }
         });
@@ -532,9 +532,9 @@ $(document).ready(function() {
                 event.stopPropagation();
                 $(".title").toggle()
                 var jet = !g.avatarHide;
-                chrome.storage.sync.set({
+                setAvatarHide(JSON.stringify({
                     "avatarHide": jet
-                }, function() {});
+                }));
             });
         }
 
@@ -547,12 +547,12 @@ $(document).ready(function() {
 
             var fname = geg.exec(image.innerText)
             if (fname == null) fname = ["whatever", image.innerText]
-            //var main;
-            //main = g.cats[fname[1]]
+            var main;
+            main = g.cats[fname[1]]
 
-            //$this.parent().nextUntil("tr.section").toggle(g.cats[fname[1]]);
-            //if (!main) $this[0].innerText = fname[1] + " - Click here to expand category"
-            //else $this[0].innerText = fname[1] + " - Click here to collapse category"
+            $this.parent().nextUntil("tr.section").toggle(g.cats[fname[1]]);
+            if (!main) $this[0].innerText = fname[1] + " - Click here to expand category"
+            else $this[0].innerText = fname[1] + " - Click here to collapse category"
 
         });
         if (g.tree == undefined) g.tree = false;
@@ -601,9 +601,9 @@ $(document).ready(function() {
                 else event.target.innerText = fname[1] + " - Click here to collapse category"
                 $this.parent().nextUntil("tr.section").toggle();
                 var h = g.cats;
-                chrome.storage.sync.set({
+                setCats(JSON.stringify({
                     "cats": g.cats
-                }, function() {});
+                }))
             }
 
         });
