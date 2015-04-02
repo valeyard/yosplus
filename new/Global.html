@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>global HTML page</title>
+<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="jquery.ba-bbq.js"></script>
+<script type="text/javascript">
+
+function bigCalc(startVal, event) {
+    // imagine hundreds of lines of code here...
+    var endVal = startVal + 2;
+    // return to sender
+    var t = safari.extension.settings
+    console.log(JSON.stringify(t))
+    console.log("get")
+    event.target.page.dispatchMessage("theAnswer", JSON.stringify(t));
+}
+
+function respondToMessage(theMessageEvent) {
+    if(theMessageEvent.name === "calcThis") {
+        var startVal=theMessageEvent.message;
+        bigCalc(startVal, theMessageEvent);
+    }
+    else if (theMessageEvent.name === "cats"){
+      var m = theMessageEvent.message;
+      safari.extension.settings.cats = JSON.parse(m)
+    }
+    else if (theMessageEvent.name === "iglist"){
+      var mk = theMessageEvent.message;
+      safari.extension.settings.iglist = JSON.parse(m)
+    }
+    else if (theMessageEvent.name === "fflist"){
+      var mk = theMessageEvent.message;
+      console.log(mk)
+      safari.extension.settings.fflist =  JSON.parse(mk)
+    }
+    else if (theMessageEvent.name === "oldbread"){
+      var mk = theMessageEvent.message;
+      console.log(mk)
+      safari.extension.settings.oldbread =  JSON.parse(mk)
+    }
+    else if (theMessageEvent.name === "avatarHide"){
+      var mk = theMessageEvent.message;
+      safari.extension.settings.fflist = JSON.parse(m)
+    }
+    else if (theMessageEvent.name === "all"){
+      var mk = theMessageEvent.message;
+      safari.extension.settings = JSON.parse(m)
+    }
+}
+
+
+    safari.application.addEventListener("message",respondToMessage,false);
+</script>
+</head>
+<body>
+</body>
+</html>

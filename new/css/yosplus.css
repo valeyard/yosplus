@@ -10,7 +10,9 @@ input.turbo[type="button"], input.empty[type="button"], input.showImages[type="b
 	margin-top: 2px;
 }
 
-
+td.title div.lastseen {
+	top:25%;
+}
 
 
 
