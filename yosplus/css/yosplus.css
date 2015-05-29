@@ -10,23 +10,53 @@ input.turbo[type="button"], input.empty[type="button"], input.showImages[type="b
 	margin-top: 2px;
 }
 
+.newreply #content table.standard .post-wrapper textarea.hover {
+  font-size: 13px;
+ background-color: rgba(87, 255, 87, 0.25);
+}
+
+#holder {
+  border: 10px dashed #ccc;
+  width: 300px;
+  height: 300px;
+  margin: 20px auto;
+}
+
+#holder.hover { border: 10px dashed #333; }
 
 
 
 
+#loading{
+    margin-left: auto;
+    margin-right: auto;
+}
 
-
-
+#error{
+    color:red;
+}
 
 
 
 input.turbo.meMain[type="button"] {
-	color: #AAA!important;
+	color: #AAA;
 }
 
 input.empty.meMain[type="button"] {
-	color: #111!important;
+	color: #111;
 	margin-top: 0px !important;
+}
+
+.post.unseen{
+    background-color: rgba(87, 255, 87, 0.32) !important;
+        transition: background-color .25s ease-in-out;
+    -moz-transition: background-color .25s ease-in-out;
+    -webkit-transition: background-color .25s ease-in-out;
+
+}
+
+.post.seen{
+    background-color: black !important;
 }
 
 hy{

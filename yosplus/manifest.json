@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "SA Needful",
-  "version": "1.80",
+  "version": "1.91",
   "description": "Performing CPR on the Something Awful forums",
 
   "icons": {
@@ -11,7 +11,7 @@
   "content_scripts": [
     {
       "matches": ["http://forums.somethingawful.com/*", "https://api.twitter.com/*"],
-      "js": ["jquery.min.js","jquery.lazyload.js", "contentscript.js", "jquery.ba-bbq.js", "highlight.js"],
+      "js": ["js/rangy/rangy-core.js", "js/rangy/rangy-cssclassapplier.js", "jquery.min.js","rangyinputs-jquery-src.js", "jquery.lazyload.js", "contentscript.js", "jquery.ba-bbq.js", "highlight.js", "js/pasteimage.js", "js/jqueryui/jquery-ui.js", "js/dropzone.js", "js/interact.js", "js/SA.js", "js/inview.js"],
       "run_at": "document_start"
     }
   ],
@@ -25,7 +25,9 @@
   "web_accessible_resources": [
     "images/*.png",
     "audio/*.wav",
-    "css/*.css"
+    "css/*.css",
+    "js/*.js",
+    "fonts/*.*"
   ],
 
   "page_action": {

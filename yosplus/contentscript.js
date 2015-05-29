@@ -9,7 +9,7 @@ $(document).ready(function() {
     var storage = chrome.storage.sync;
     var g;
     var next;
-    var settings = ["iglist", "oldbread", "lazyload", "avatarHideOption", "snypeAudio", "snype", "fflist", "signature", "quote", "avatarHide", "ads", "tweet", "filter", "vine", "webm", "cats", "main", "tree", "embedTweet"];
+    var settings = ["boldname", "iglist", "oldbread", "lazyload", "avatarHideOption", "snypeAudio", "snype", "fflist", "signature", "quote", "avatarHide", "ads", "tweet", "filter", "vine", "webm", "cats", "main", "tree", "embedTweet"];
 
     chrome.storage.sync.get(settings, function(obj) {
         g = obj;
@@ -47,17 +47,25 @@ $(document).ready(function() {
         var gh = chrome.extension.getURL("css/twittertimeline.css")
         var mg = chrome.extension.getURL("css/megreen.css")
         var ma = chrome.extension.getURL("css/meamber.css")
+        var fa = chrome.extension.getURL("css/font-awesome.min.css")
+
             //var bluepos = chrome.extension.getURL("css/bluepos.css")
 
 
         $bodyS.append('<link id="yplus" rel="stylesheet" href="' + s + '" type="text/css" />');
+        $bodyS.append('<link id="fa" rel="stylesheet" href="' + fa + '" type="text/css" />');
 
+
+        // $bodyS.append('<input type="button" value="Toggle someClass on selection" id="tb">')
 
 
         // if (thisForum == 26) $headS.append('<link rel="stylesheet" href="'+gh+'" type="text/css" />');
 
         $headS.append('<link rel="stylesheet" href="http://cdn.jsdelivr.net/qtip2/2.2.0/jquery.qtip.min.css" type="text/css" />');
         $headS.append('<script type="text/javascript" src="http://cdn.jsdelivr.net/qtip2/2.2.0/jquery.qtip.min.js"></script>');
+
+                $headS.append('<script type="text/javascript" src="https://rawgit.com/timdown/rangyinputs/master/rangyinputs-jquery-src.js"></script>');
+
 
         var forum_177 = {
             "\\b(daniel bryan|bryan|dbd|db)\\b": "vanilla midget",
@@ -93,6 +101,18 @@ $(document).ready(function() {
                 fjs.parentNode.insertBefore(js, fjs);
             }
         }(document, 'script', 'twitter-wjs');
+
+
+ // $('textarea[name="message"]').after('<div id="holder"></div>')
+ var holder = $('#holder');
+            var holders = document.querySelectorAll('textarea[name="message"]');
+            [].forEach.call(holders, function(col) {
+                col.addEventListener("drop", ondrop, false);
+                col.addEventListener("dragleave", ondragleave, false);
+                col.addEventListener("dragover", ondragover, false);
+                col.addEventListener("dragstart", ondragstart, false);
+                col.classList.remove("hover")
+            });
 
 
         function handleDragStart(e) {
@@ -162,6 +182,111 @@ $(document).ready(function() {
             });
         }
 
+        $(".post-wrapper").append('<div id="loading"><i id="loadingSpinner" style="display:none;" class="fa fa-5x fa-spinner"></i><i id="error" style="display:none;" class="fa fa-5x fa-exclamation-triangle"></i></div>')
+// var g = '<div id="testImage"><img id="as" src="http://i.imgur.com/yurk1E2.jpg" alt="" class="img" border="0"></div>'
+// $(".post-wrapper").append(g)
+
+
+ $('textarea[name="message"]').on("dragenter dragstart dragend dragleave dragover drag drop", function (e) {
+    e.preventDefault();
+});
+
+function ondragover() { 
+    this.className = 'hover'; 
+$("#loadingSpinner").show("slow")
+
+console.log("drag2");
+ return false;
+  };
+function ondragstart() { console.log("dragstart"); return false; };
+function ondragleave() { 
+    this.className = '';
+    $("#loadingSpinner").hide("slow") 
+console.log("drag3");
+ return false;}
+ ;
+function ondrop(e) {
+            if (e.stopPropagation) {
+                e.stopPropagation(); // Stops some browsers from redirecting.
+            }
+  this.className = '';
+  
+  console.log("drag1")
+
+  var file = e.dataTransfer.files[0]
+  
+
+  if (file == undefined){
+    $("#loadingSpinner").addClass("fa-pulse")
+    console.log(e.dataTransfer.getData('text'))
+              $.ajax({ 
+    url: 'https://api.imgur.com/3/image',
+    headers: {
+        'Authorization': 'Client-ID 5ec0c957e0413ff'
+    },
+    type: 'POST',
+    data: {
+        'image': e.dataTransfer.getData('text'),
+        'type': 'URL'
+    },
+    success: function(data) {
+     var embedImage = "[img]" + data.data.link + "[/img]"
+     var caretPos = $('textarea[name="message"]').getSelection().start;
+    var textAreaTxt = $('textarea[name="message"]').val();
+    $('textarea[name="message"]').val(textAreaTxt.substring(0, caretPos) + embedImage + textAreaTxt.substring(caretPos) );
+    $("#loadingSpinner").removeClass("fa-pulse")
+    $("#loadingSpinner").hide("slow")
+      }
+})
+  }
+  
+
+      var reader = new FileReader();
+
+  reader.onload = function (event) {
+    $("#loadingSpinner").addClass("fa-pulse")
+    console.log(event.target);
+    event.target.result
+    console.log(event.target.result)
+              $.ajax({ 
+    url: 'https://api.imgur.com/3/image',
+    headers: {
+        'Authorization': 'Client-ID 5ec0c957e0413ff'
+    },
+    type: 'POST',
+    data: {
+        'image': event.target.result.substring(22),
+        'type': 'base64'
+    },
+    success: function(data) {
+
+     console.log('cool'); 
+     console.log(data.data.link)
+     var embedImage = "[img]" + data.data.link + "[/img]"
+     var caretPos = $('textarea[name="message"]').getSelection().start;
+    var textAreaTxt = $('textarea[name="message"]').val();
+    console.log("carot pos")
+    console.log(caretPos)
+    $('textarea[name="message"]').val(textAreaTxt.substring(0, caretPos) + embedImage + textAreaTxt.substring(caretPos) );
+    $("#loadingSpinner").removeClass("fa-pulse")
+    $("#loadingSpinner").hide("slow")
+      },
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+         $("#loadingSpinner").removeClass("fa-pulse")
+    $("#loadingSpinner").hide("slow")
+    $("#error").show("slow")
+
+  }
+});
+  };
+  console.log(file);
+  reader.readAsDataURL(file);
+
+  return false;
+};
+
+
+
         //show/hide avatar
         if (g.avatarHide == undefined) g.avatarHide = false;
         $(".userinfo").each(function(index, image) {
@@ -213,6 +338,41 @@ $(document).ready(function() {
             if (name == "signature") element.checked = g.signature;
         });
 
+
+
+            var $ta = $('textarea[name="message"]');
+            // var $startIndex = $("#startIndex"), $endIndex = $("#endIndex");
+console.log($ta)
+            // function reportSelection() {
+            //     var sel = $ta.getSelection();
+            //     $startIndex.text(sel.start);
+            //     $endIndex.text(sel.end);
+            // }
+
+            $ta.focus();
+
+
+            // $(document).on("selectionchange", reportSelection);
+            // $ta.on("keyup input mouseup textInput", reportSelection);
+
+            $ta.keydown(function(e){
+  if(e.which == 17)
+      $(window).bind('keydown.ctrlI', function(e){
+        console.log("hey")
+          if(e.which == 18){
+            console.log("ho")
+              e.preventDefault();
+              $ta.surroundSelectedText("[spoiler]", "[/spoiler]");
+              console.log("asdasda")
+          }
+      });
+});
+
+
+            
+
+            // reportSelection();
+
         //highlight quotes
         if (g.quote == undefined) g.quote = true;
         $("#switchpos").click(function(event) {
@@ -234,6 +394,77 @@ $(document).ready(function() {
 
 
 
+
+$('textarea[name="message"]').pasteImageReader(function(results) {
+  var dataURL, filename; 
+  console.log("listen")
+  console.log(results.dataURL)
+  console.log(results.filename)
+  console.log(results)
+  $.ajax({ 
+    url: 'https://api.imgur.com/3/image',
+    headers: {
+        'Authorization': 'Client-ID 5ec0c957e0413ff'
+    },
+    type: 'POST',
+    data: {
+        'image': results.dataURL.substring(22),
+        'type': 'base64'
+    },
+    success: function(data) {
+
+     console.log('cool'); 
+     console.log(data.data.link)
+     var embedImage = "[img]" + data.data.link + "[/img]"
+     var caretPos = $('textarea[name="message"]').getSelection().start;
+    var textAreaTxt = $('textarea[name="message"]').val();
+
+    $('textarea[name="message"]').val(textAreaTxt.substring(0, caretPos) + embedImage + textAreaTxt.substring(caretPos) );
+
+      }
+});
+  return filename = results.filename, dataURL = results.dataURL, results;
+});
+
+
+
+
+$(window).keydown(function(e){
+  if(e.which == 17)
+      $(window).bind('keydown.ctrlI', function(e){
+        console.log("hey")
+          if(e.which == 18){
+            console.log("ho")
+              e.preventDefault();
+              applier.toggleSelection();
+
+              g = $('textarea[name="message"]')
+              console.log(g)
+          }
+      });
+});
+
+
+
+
+
+// $.ajax({ 
+//     url: 'https://api.imgur.com/3/image',
+//     headers: {
+//         'Authorization': 'Client-ID 5ec0c957e0413ff'
+//     },
+//     type: 'POST',
+//     data: {
+//         'image': 'http://files.tested.com/photos/2015/05/22/100-76455-ergo_build_5-1432312427.jpg'
+//     },
+//     success: function(data) { console.log('cool'); console.log(data) }
+// });
+
+$(window).keyup(function(e){
+  if(e.which == 17)
+      $(window).unbind('keydown.ctrlI');
+});
+
         //adding the favourites
         $("tr.section:first-of-type").before('<tr class="section" id="favouriteForums"><th class="category" colspan="2">Favourites - Click here to collapse category</th><th class="moderators">Moderators</th></tr>')
 
@@ -245,7 +476,7 @@ $(document).ready(function() {
 
         //get postcount for the page
         var postCounter = 0
-        $postS.each(function(index, image) {
+        $(".post").each(function(index, image) {
             postCounter++;
             $this = $(image)
         })
@@ -258,9 +489,9 @@ $(document).ready(function() {
         var inc = false;
 
         //another post counter
-        function countPost() {
+        function updatePostCount() {
             postCounter = 0;
-            $postS.each(function(index, image) {
+            $(".post").each(function(index, image) {
                 postCounter++;
             })
             if ((postCounter % 40) != 0) inc = false;
@@ -272,16 +503,17 @@ $(document).ready(function() {
         }
 
         var c = buttonClass(thisForum, amberPos)
-        $(".threadbar").find("ul.postbuttons").prepend('<li><input type="button" class="turbo ' + c + '" value="TURBO!"/></li>')
-        $(".threadbar").find("ul.postbuttons").prepend('<li><input type="button" class="showImages ' + c + '" value="Images"/></li>')
-
+        $(".threadbar").find("ul.postbuttons").prepend('<li><input type="button" class="turbo ' + c + '" value="TURBO!"/></li>') //DISABLED FOR NOW
+        // $(".threadbar").find("ul.postbuttons").prepend('<li><input type="button" class="showImages ' + c + '" value="Images"/></li>') DISABLED FOR NOW
+        var lastPost = $(".post").last().attr("data-idx");
         var turbo = false;
         $('.turbo').click(function(event) {
             turbo = !turbo
             if (turbo) {
                 $(".turbo").attr("style", "color:#EACF4C!important;border: 1px solid #EACF4C!important;")
                 setInterval(function() {
-                    countPost();
+                    updatePostCount();
+                    console.log(postCounter)
                     if ((postCounter % 40) == 0 && inc == false) {
                         inc = true;
                         myObj.pagenumber = parseInt(myObj.pagenumber) + 1
@@ -292,7 +524,7 @@ $(document).ready(function() {
                     });
                     $.get(newUrl,
                         function(data) {
-                            console.log(data)
+                            // console.log(data)
                             multiply(data)
                         }
                     );
@@ -316,10 +548,43 @@ $(document).ready(function() {
         function multiply(y) {
             $this = $(y)
             $this.find(".post").each(function(index, image) {
-                if ($(image).attr("id") > $postS.last().attr("id")) {
-                    console.log(image)
+                if ($(image).attr("data-idx") > lastPost && $(image).attr("data-idx") != lastPost) {
+                    // console.log(image)
+                    console.log($(image).attr("data-idx"))
+                    console.log(lastPost)
+                    $(image).addClass("unseen")
 
-                    $postS.last().after(image)
+                    $(image).bind('inview', function(e, isInView, visiblePartX, visiblePartY) {
+                      var elem = $(this);
+
+                      if (elem.data('inviewtimer')) {
+                        clearTimeout(elem.data('inviewtimer'));
+                        elem.removeData('inviewtimer');
+                      }
+
+                      if (isInView) {
+                        elem.data('inviewtimer', setTimeout(function() {
+                          if (visiblePartY == 'top') {
+                            elem.data('seenTop', true);
+                          } else if (visiblePartY == 'bottom') {
+                            elem.data('seenBottom', true);
+                          } else {
+                            elem.data('seenTop', true);
+                            elem.data('seenBottom', true);
+                          }
+
+                          if (elem.data('seenTop') && elem.data('seenBottom')) {
+                            elem.unbind('inview');
+                        console.log("i see post")
+                        elem.addClass("seen")
+                          }
+                        }, 500));
+                      }
+                    });
+
+                    $(".post").last().after(image)
+
+                    lastPost = $(image).attr("data-idx")
                         //$(image).myfunction()
                 }
             })
@@ -368,7 +633,7 @@ $(document).ready(function() {
 
         if (thisForum == 219) {
             if (g.snype == undefined) g.snype = false;
-            if (g.snypeAudio == undefined) g.snypeAudio = true;
+            if (g.snypeAudio == undefined) g.snypeAudio = false;
             if (g.snype) {
                 $("tr.thread").each(function(index, value) {
                     $this = $(value)
@@ -598,7 +863,7 @@ $(document).ready(function() {
                 g.cats[fname[1]] = main;
                 if (!main) event.target.innerText = fname[1] + " - Click here to expand category"
                 else event.target.innerText = fname[1] + " - Click here to collapse category"
-                $this.parent().nextUntil("tr.section").toggle();
+                $this.parent().nextUntil("tr.section").toggle("fast");
                 var h = g.cats;
                 chrome.storage.sync.set({
                     "cats": g.cats
@@ -802,15 +1067,18 @@ $(document).ready(function() {
 
             if (g.quote) $this.myfunction();
         });
-
-
+console.log("boldname")
+console.log(g.boldname)
+        if (g.boldname == undefined) g.boldname = true;
         $postS.each(function(index, image) {
             $this = $(image);
 
-            $(this).highlight(localStorage.user)
+            if (g.boldname) $(this).highlight(localStorage.user)
         });
 
         if (g.embedTweet == undefined) g.embedTweet = true;
+
+        //post loop
         $postS.each(function(index, image) {
 
             // vimeo larger size
@@ -903,7 +1171,7 @@ $(document).ready(function() {
             tweetText = tweetText.replace(/\"/g, "&quot;");
 
             if (author == localStorage.user) {
-                if (g.tweet == undefined) g.tweet = true;
+                if (g.tweet == undefined) g.tweet = false;
                 if (g.tweet) {
                     $(this).find(" ul.postbuttons").append('<li><a href="https://twitter.com/share" class="twitter-share-button" data-url="manas" data-text="' + tweetText + '" data-count="none" data-dnt="true">Tweet</a></li>');
                 }
@@ -923,7 +1191,7 @@ $(document).ready(function() {
                     console.log(jelm[0].href)
                     console.log(pomf.test(jelm[0].href))
                     if (pomf.test(jelm[0].href) == true) {
-                        var sth = '<video autoplay loop width="450" muted="true" controls> <source src="' + jelm[0].href + '" type="video/webm"> </video>'
+                        var sth = '<video autoplay loop width="450" muted="true" controls> <source src="' + jelm[0].href + '" type="video/webm"> </video><div id="replay-btn" class="video-controls">REPLAY</div>'
                         jelm.replaceWith(sth);
                     }
                 });
@@ -966,6 +1234,7 @@ $(document).ready(function() {
                     }
                 });
             }
+
         });
     });
 });
