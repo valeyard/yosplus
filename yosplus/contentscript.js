@@ -187,6 +187,44 @@ $(document).ready(function() {
 // $(".post-wrapper").append(g)
 
 
+
+
+
+
+
+
+
+
+// $("#copyright").append('<div id="testDrag" height="400" width="800"></div>')
+
+// interact('#testDrag')
+//   .draggable({
+//     onmove: window.dragMoveListener
+//   })
+//   .resizable({
+//     edges: { left: true, right: true, bottom: true, top: true }
+//   })
+//   .on('resizemove', function (event) {
+//     var target = event.target,
+//         x = (parseFloat(target.getAttribute('data-x')) || 0),
+//         y = (parseFloat(target.getAttribute('data-y')) || 0);
+
+//     // update the element's style
+//     target.style.width  = event.rect.width + 'px';
+//     target.style.height = event.rect.height + 'px';
+
+//     // translate when resizing from top or left edges
+//     x += event.deltaRect.left;
+//     y += event.deltaRect.top;
+
+//     target.style.webkitTransform = target.style.transform =
+//         'translate(' + x + 'px,' + y + 'px)';
+
+//     target.setAttribute('data-x', x);
+//     target.setAttribute('data-y', y);
+//     target.textContent = event.rect.width + '×' + event.rect.height;
+//   });
+
  $('textarea[name="message"]').on("dragenter dragstart dragend dragleave dragover drag drop", function (e) {
     e.preventDefault();
 });
@@ -460,6 +498,91 @@ $(window).keydown(function(e){
 //     success: function(data) { console.log('cool'); console.log(data) }
 // });
 
+//https://gist.github.com/takien/4077195
+function YouTubeGetID(url){
+  var ID = '';
+  url = url.replace(/(>|<)/gi,'').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
+  if(url[2] !== undefined) {
+    ID = url[2].split(/[^0-9a-z_\-]/i);
+    ID = ID[0];
+  }
+  else {
+    ID = url;
+  }
+    return ID;
+}
+
+$("body").prepend('<div id="header" style="display:none;">' + 'This thread will now automatically refresh and add new posts as they are made roughly every 10 seconds. New posts that have not been seen will be highlighted with a green background.<br>Enter link to video here to have it overlayed on screen. Overlayed video can be moved, resized and made transparent. ' + 
+    '<input type="text" id="streamLink" class="form-control" placeholder="Search for..."><button class="btn btn-default" type="button" id="streamButton">Stream</button>'
+)
+
+$("#streamButton").click(function(event){
+    console.log($("#streamLink").val())
+    var youtubeLink = YouTubeGetID($("#streamLink").val());
+    $("#copyright").after('<div id="testDrag"><i class="fa fa-arrows fa-4x"></i><div id="slider-vertical" style="height:200px;"></div><div id="hiddenContainer"></div><iframe id="ytplayer" type="text/html" width="640" height="390" src="http://www.youtube.com/embed/'+ youtubeLink +'?autoplay=0&origin=http://forums.somethingawful.com&output=embed" frameborder="0"/></div>')
+
+$( "#testDrag" ).hover(
+  function() {
+    // $(".fa-arrows").css('opacity', '1');
+    $(".fa-arrows").fadeTo("fast", 1);
+    $("#slider-vertical").fadeTo("fast", 1);
+  }, function() {
+    // $(".fa-arrows").css('opacity', '0.3');
+        $(".fa-arrows").fadeTo("fast", 0.1);
+        $("#slider-vertical").fadeTo("fast", 0.1);
+  }
+);
+
+// $("#testDrag").on("mouseover", function () {
+//     $(".fa-arrows").css('opacity', '1')
+//     console.log("easdas")
+// });
+// $("#testDrag").on("mouseleave", function () {
+//     $(".fa-arrows").css('opacity', '1')
+//     console.log("easdas")
+// });
+
+$( "#slider-vertical" ).slider({
+      orientation: "vertical",
+      range: "min",
+      min: 0.1,
+      max: 1.0,
+      value: 1.0,
+      step: 0.1,
+      slide: function( event, ui ) {
+        // $( "#amount" ).val( ui.value );
+        $("#testDrag").css("opacity", ui.value)
+      }
+    });
+
+$( ".fa-arrows" ).mousedown(function() {
+    console.log("down")
+    $("#hiddenContainer").show();
+    $('body').one('mouseup', function() {
+        $("#hiddenContainer").hide();
+    })
+  });
+
+
+$(".testdrag").click(function(event) {
+console.log("as")
+})
+$("#testDrag").resizable({
+      aspectRatio: 16 / 9,
+      animate:true,
+      handles: "nw, ne, sw,se",
+      minHeight: 390,
+      minWidth: 640,
+      // ghost:true,
+      helper: "ui-resizable-helper",
+      start: function( event, ui ) {console.log("hey"); $("#hiddenContainer").show();},
+      stop: function( event, ui ) {console.log("hey"); $("#hiddenContainer").hide();}
+    });
+$( "#testDrag" ).on( "dragstart", function( event, ui ) {console.log("h")} );
+$("#testDrag").draggable();
+$("#testDrag").slideDown()
+})
+
 $(window).keyup(function(e){
   if(e.which == 17)
       $(window).unbind('keydown.ctrlI');
@@ -484,6 +607,7 @@ $(window).keyup(function(e){
 
         var qs = $.param.querystring();
         var myObj = $.deparam(qs)
+        if (isNaN(parseInt(myObj.pagenumber))) myObj.pagenumber = 1
             //console.log(myObj)
 
         var inc = false;
@@ -501,23 +625,30 @@ $(window).keyup(function(e){
             inc = true;
             myObj.pagenumber = parseInt(myObj.pagenumber) + 1
         }
-
+        
+        console.log(myObj)
         var c = buttonClass(thisForum, amberPos)
         $(".threadbar").find("ul.postbuttons").prepend('<li><input type="button" class="turbo ' + c + '" value="TURBO!"/></li>') //DISABLED FOR NOW
         // $(".threadbar").find("ul.postbuttons").prepend('<li><input type="button" class="showImages ' + c + '" value="Images"/></li>') DISABLED FOR NOW
-        var lastPost = $(".post").last().attr("data-idx");
+        var lastPost = parseInt($(".post").last().attr("data-idx"));
         var turbo = false;
         $('.turbo').click(function(event) {
             turbo = !turbo
             if (turbo) {
+                $("#header").slideDown()
+                // $("#testDrag").slideDown()
+                $("#container").addClass("turboC")
                 $(".turbo").attr("style", "color:#EACF4C!important;border: 1px solid #EACF4C!important;")
                 setInterval(function() {
                     updatePostCount();
                     console.log(postCounter)
+                    console.log(inc)
+                    console.log(postCounter % 40)
                     if ((postCounter % 40) == 0 && inc == false) {
                         inc = true;
                         myObj.pagenumber = parseInt(myObj.pagenumber) + 1
                     }
+                    console.log(myObj.pagenumber)
                     newUrl = $.param.querystring(window.location.href, {
                         threadid: myObj.threadid,
                         pagenumber: myObj.pagenumber
@@ -529,7 +660,12 @@ $(window).keyup(function(e){
                         }
                     );
                 }, 10000);
-            } else $(".turbo").attr("style", "color:#57FF57!important;border: 1px solid #57FF57!important;")
+            } else{
+                 $(".turbo").attr("style", "color:#57FF57!important;border: 1px solid #57FF57!important;")
+                 $("#testDrag").slideUp()
+                 $("#header").slideUp()
+                 $("#container").removeClass("turboC")
+            }
         })
         var newUrl = $.param.querystring(window.location.href, {
             threadid: myObj.threadid,
@@ -548,10 +684,10 @@ $(window).keyup(function(e){
         function multiply(y) {
             $this = $(y)
             $this.find(".post").each(function(index, image) {
-                if ($(image).attr("data-idx") > lastPost && $(image).attr("data-idx") != lastPost) {
+                if (parseInt($(image).attr("data-idx")) > lastPost && parseInt($(image).attr("data-idx")) != lastPost) {
                     // console.log(image)
-                    console.log($(image).attr("data-idx"))
-                    console.log(lastPost)
+                    console.log(typeof($(image).attr("data-idx")))
+                    console.log(typeof(lastPost))
                     $(image).addClass("unseen")
 
                     $(image).bind('inview', function(e, isInView, visiblePartX, visiblePartY) {
@@ -778,16 +914,17 @@ $(window).keyup(function(e){
                 }
             }
         })
-        window.addEventListener("keyup", function(e) {
-            if (e.keyCode == 81) {
-                if (back != "empty") window.location = back;
-            }
-        })
-        window.addEventListener("keyup", function(e) {
-            if (e.keyCode == 69) {
-                if (forward != "empty") window.location = forward;
-            }
-        })
+        // FEATURE - BACK AND FORWARD
+        // window.addEventListener("keyup", function(e) {
+        //     if (e.keyCode == 81) {
+        //         if (back != "empty") window.location = back;
+        //     }
+        // })
+        // window.addEventListener("keyup", function(e) {
+        //     if (e.keyCode == 69) {
+        //         if (forward != "empty") window.location = forward;
+        //     }
+        // })
         if (g.avatarHideOption == false) $(".title").show()
         if (g.avatarHideOption == undefined) g.avatarHideOption = false;
         if (g.avatarHideOption) {
@@ -1191,7 +1328,7 @@ console.log(g.boldname)
                     console.log(jelm[0].href)
                     console.log(pomf.test(jelm[0].href))
                     if (pomf.test(jelm[0].href) == true) {
-                        var sth = '<video autoplay loop width="450" muted="true" controls> <source src="' + jelm[0].href + '" type="video/webm"> </video><div id="replay-btn" class="video-controls">REPLAY</div>'
+                        var sth = '<video autoplay loop width="450" muted="true" controls> <source src="' + jelm[0].href + '" type="video/webm"> </video>'
                         jelm.replaceWith(sth);
                     }
                 });
