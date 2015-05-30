@@ -653,6 +653,7 @@ $(window).keyup(function(e){
                         threadid: myObj.threadid,
                         pagenumber: myObj.pagenumber
                     });
+                    inc = false;
                     $.get(newUrl,
                         function(data) {
                             // console.log(data)
@@ -718,6 +719,8 @@ $(window).keyup(function(e){
                       }
                     });
 
+                    var d = $(image).find("td.postbody");
+                    SA.timg.scan(d);
                     $(".post").last().after(image)
 
                     lastPost = $(image).attr("data-idx")
