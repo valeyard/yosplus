@@ -1,5 +1,5 @@
-window.SA || (SA = {});
-SA.timg = new function(e, f, a) {
+window.SAT || (SAT = {});
+SAT.timg = new function(e, f, a) {
     var g = this,
         i = function(c, f) {
             var b = a(this).siblings("img"),

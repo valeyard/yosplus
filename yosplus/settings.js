@@ -21,8 +21,10 @@ $(':checkbox').each(function(index, element) {
   // $('head').append('<link rel="stylesheet" href="'+s+'" type="text/css" />');
 
   $(".checkboxes").on("change", ":checkbox", saveSettings);
+
+  //DEFAULT SETTINGS
   $('.set').click(function(event) {
-    chrome.storage.sync.set({"boldname":true, "iglist":[], "oldbread":false, "lazyload":false, "avatarHideOption":false, "snypeAudio":true, "snype":false, "fflist":{}, "signature":false, "quote":true, "avatarHide":false, "ads":true,"embedTweet":true,"tweet": false, "vine":true, "filter":true, "webm":true, "tree":false, "cats": {"Favourites":true, "Main": true, "Discussion": true, "The Finer Arts": true, "The Community": true, "Archives": true}},function (){
+    chrome.storage.sync.set({"test1":true, "youtubeHD":true, "boldname":true, "iglist":[], "oldbread":false, "lazyload":false, "avatarHideOption":false, "snypeAudio":true, "snype":false, "fflist":{}, "signature":false, "quote":true, "avatarHide":false, "ads":true,"embedTweet":true,"tweet": false, "vine":true, "filter":true, "webm":true, "tree":false, "cats": {"Favourites":true, "Main": true, "Discussion": true, "The Finer Arts": true, "The Community": true, "Archives": true}},function (){
 });
   })
 
@@ -32,7 +34,9 @@ function saveSettings() {
     items[name] = this.checked;
     storage.set(items, function() {
         console.log("saved");
-        console.log(storage)
+        storage.get(null,function(items) {
+          console.log(items)
+        });
     });
 }
 

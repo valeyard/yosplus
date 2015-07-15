@@ -1,5 +1,5 @@
 input.turbo[type="button"], input.empty[type="button"], input.showImages[type="button"]{
-	background-color: transparent;
+	background-color: rgb(232, 232, 232);
 	border: 1px solid;
 	cursor: pointer;
 	height: 20px;
@@ -8,11 +8,98 @@ input.turbo[type="button"], input.empty[type="button"], input.showImages[type="b
 	font-weight: bold!important;
 	vertical-align: top;
 	margin-top: 2px;
+    margin-left:10px;
 }
 
-.newreply #content table.standard .post-wrapper textarea.hover {
+input.sanQuickReplySubmit[type="button"]{
+cursor: pointer;
+width:100%;
+}
+
+input.sanQuickReply[type="button"]{
+    background-color: rgb(232, 232, 232);
+    border: 1px solid;
+    cursor: pointer;
+    height: 20px;
+    line-height: 13px;
+    font: 15px Courier New,monospace!important;
+    font-weight: bold!important;
+    vertical-align: top;
+    margin-top: 0px;
+    margin-left:10px;
+}
+
+.top > ul.postbuttons > li > input.turbo[type="button"]{
+    margin-top: 0;
+}
+
+.bottom > ul.postbuttons > li > input.sanQuickReply[type="button"]{
+    margin-top: 2px;
+}
+
+.newreply #content table.standard .post-wrapper textarea.hover, textarea.hover {
   font-size: 13px;
  background-color: rgba(87, 255, 87, 0.25);
+}
+
+#sanQuickReplyButtons{
+/*position:absolute;*/
+width:10%;
+margin: 0 0 0 45%;
+padding-bottom: 10px;
+}
+
+#sanQuickReply{
+/*margin: 0 auto;
+width: 400px;*/
+/*width:60%;
+
+
+margin: 0 0 0 -30%;
+left:50%;
+bottom:0;*/
+
+border:10px solid yellow;
+
+/*height:100%;
+width:100%;
+position: fixed;
+z-index: 30;
+display: none;*/
+}
+
+#closeQuickReply{
+    position: absolute;
+  right: 2%;
+  cursor:pointer;
+  z-index: 40;
+  color: red;
+}
+
+#sanQuickReplyContainer{
+/*margin: 0 auto;
+width: 400px;*/
+width:40%;
+margin: 0 0 0 -20%;
+left:50%;
+bottom:0;
+position: fixed;
+z-index: 30;
+padding: 15px;
+padding-top:10px;
+cursor:move;
+border: 1px solid black;
+}
+
+#sanQuickReplyContainer{
+background-color: rgb(232, 232, 232);
+}
+
+#sanQuickReplyText{
+    width:100%;
+    margin: 0; padding: 0; border-width: 0;
+    height:85%;
+    border: 1px solid black;
 }
 
 #holder {
@@ -24,8 +111,17 @@ input.turbo[type="button"], input.empty[type="button"], input.showImages[type="b
 
 #holder.hover { border: 10px dashed #333; }
 
+tr.section{
+    cursor: pointer;
+}
 
+#thread li.alertbutton {
+  margin-right: -14px;
+}
 
+video.san{
+    max-width:50%;
+}
 
 #loading{
     margin-left: auto;
@@ -36,7 +132,10 @@ input.turbo[type="button"], input.empty[type="button"], input.showImages[type="b
     color:red;
 }
 
-
+#loadingSpinnerQuick{
+    position: absolute;
+    left: 40%;
+}
 
 input.turbo.meMain[type="button"] {
 	color: #AAA;
@@ -63,7 +162,7 @@ input.empty.meMain[type="button"] {
     border:5px dotted green;
     height:390px;
     width:640px;
-        position: fixed;
+    position: fixed;
     top: 60px;
     right:10px;
             /*padding:25px;*/
@@ -80,12 +179,19 @@ input.empty.meMain[type="button"] {
     display: none;
     z-index: 50;
     color:#57FF57;
-    font-size:large;
+    font-size:14px;
     padding-left:25px;
+    padding-top: 10px;
+    font-family: "consolas","monaco",monospace!important;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default{
+    background:none;
+    background-color:#EACF4C;
 }
 
 #container.turboC{
-    padding-top: 50px;
+    padding-top: 61px;
 }
 
 #slider-vertical{
@@ -96,8 +202,8 @@ input.empty.meMain[type="button"] {
     opacity:0.3;
 }
 
-#slider-vertical .ui-slider-range { background: #57FF57; }
-#slider-vertical .ui-slider-handle { border-color: #57FF57; }
+#slider-vertical .ui-slider-range { background: #57FF57; border-color:#57FF57;}
+#slider-vertical .ui-slider-handle { border-color: #EACF4C; }
 
 .ui-resizable-helper { border: 2px dotted #57FF57; }
 
@@ -121,8 +227,7 @@ i.fa-arrows{
 .ui-resizable-handle {
     width: 10px;
     height: 10px;
-    background-color: black;
-    border: 1px solid #57FF57;
+    border:1px solid black;
 }
 .ui-resizable-n, .ui-resizable-s {
     left:50%;
@@ -207,8 +312,8 @@ font-weight: bold;
 }
 .jumbotron .container {
     max-width: 100%}
-@media screen and (min-width:768px) {
-    .jumbotron {
+
+.jumbotron {
     padding-top: 48px;
     padding-bottom: 48px;
 }
@@ -219,7 +324,6 @@ font-weight: bold;
 .jumbotron h1, .jumbotron .h1 {
     font-size: 63px;
 }
-
 
 .forum_219 img[title=":getin:"] {
     height: 0;

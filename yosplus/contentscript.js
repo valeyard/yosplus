@@ -1,1056 +1,97 @@
-function buttonClass(thisForum, amberPos) {
-    if (thisForum == 219) {
-        if (amberPos) return "meAmber"
-        else return "meGreen"
-    } else return "meMain"
+//https://gist.github.com/takien/4077195
+function YouTubeGetID(url) {
+    var ID = '';
+    url = url.replace(/(>|<)/gi, '').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
+    if (url[2] !== undefined) {
+        ID = url[2].split(/[^0-9a-z_\-]/i);
+        ID = ID[0];
+    } else {
+        ID = url;
+    }
+    return ID;
 }
 
 $(document).ready(function() {
     var storage = chrome.storage.sync;
     var g;
     var next;
-    var settings = ["boldname", "iglist", "oldbread", "lazyload", "avatarHideOption", "snypeAudio", "snype", "fflist", "signature", "quote", "avatarHide", "ads", "tweet", "filter", "vine", "webm", "cats", "main", "tree", "embedTweet"];
+    var settings = ["youtubeHD", "boldname", "iglist", "oldbread", "lazyload", "avatarHideOption", "snypeAudio", "snype", "fflist", "signature", "quote", "avatarHide", "ads", "tweet", "filter", "vine", "webm", "cats", "main", "tree", "embedTweet"];
 
     chrome.storage.sync.get(settings, function(obj) {
         g = obj;
 
-        //lazyload
-        if (g.lazyload == undefined) g.lazyload = false;
-        if (g.lazyload) {
-            $("td.postbody").find("img").each(function(index, image) {
-                $this = $(image)
-                var src = this.getAttribute("src")
-                this.setAttribute("class", this.getAttribute("class") + " lazy")
-                var class1 = this.getAttribute("class")
-                this.removeAttribute("src")
-                this.setAttribute("data-original", src)
-            });
+        $.fn.highlightQuotes = function() {
 
-            $(function() {
-                $("img.lazy").lazyload();
-            });
-        }
+            $this.find(".bbc-block").each(function(index, quote) {
+                $this = $(quote);
 
-
-
-        var c = 0;
-        var thisForum;
-        //selectors
-        $bodyS = $("body")
-        $headS = $("head")
-        $postS = $(".post")
-        thisForum = $bodyS.attr("data-forum")
-        console.log(thisForum)
-            //adding stylesheets
-
-        var s = chrome.extension.getURL("css/yosplus.css")
-        var gh = chrome.extension.getURL("css/twittertimeline.css")
-        var mg = chrome.extension.getURL("css/megreen.css")
-        var ma = chrome.extension.getURL("css/meamber.css")
-        var fa = chrome.extension.getURL("css/font-awesome.min.css")
-
-            //var bluepos = chrome.extension.getURL("css/bluepos.css")
-
-
-        $bodyS.append('<link id="yplus" rel="stylesheet" href="' + s + '" type="text/css" />');
-        $bodyS.append('<link id="fa" rel="stylesheet" href="' + fa + '" type="text/css" />');
-
-
-        // $bodyS.append('<input type="button" value="Toggle someClass on selection" id="tb">')
-
-
-        // if (thisForum == 26) $headS.append('<link rel="stylesheet" href="'+gh+'" type="text/css" />');
-
-        $headS.append('<link rel="stylesheet" href="http://cdn.jsdelivr.net/qtip2/2.2.0/jquery.qtip.min.css" type="text/css" />');
-        $headS.append('<script type="text/javascript" src="http://cdn.jsdelivr.net/qtip2/2.2.0/jquery.qtip.min.js"></script>');
-
-                $headS.append('<script type="text/javascript" src="https://rawgit.com/timdown/rangyinputs/master/rangyinputs-jquery-src.js"></script>');
-
-
-        var forum_177 = {
-            "\\b(daniel bryan|bryan|dbd|db)\\b": "vanilla midget",
-            "\\bover/under\\b": "odds"
-        };
-        var forum_219 = {
-            "\\bsteve jobs\\b": "stebe jobs",
-            "\\bandroid\\b": "anroid",
-            "\\bgodaddy\\b": "nodaddy",
-            "\\bValeyard\\b": "asshole",
-            "\\apt gangbang\\b": "<marquee>apt gangbang</marquee>",
-            "\\b(Mcdonald's|mcdonalds|McDonald's)\\b": "Mecca"
-        };
-        var forum_26 = {
-            "\\b ralp \\b": " the talking toilet ",
-            "\\bgirls\\b": "bleeders",
-            "\\bgbs\\b": "the moon",
-            "\\bguys\\b": "bleeders"
-        };
-        var filters = {
-            177: forum_177,
-            219: forum_219,
-            26: forum_26
-        }
-
-        ! function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0],
-                p = /^http:/.test(d.location) ? 'http' : 'https';
-            if (!d.getElementById(id)) {
-                js = d.createElement(s);
-                js.id = id;
-                js.src = p + '://platform.twitter.com/widgets.js';
-                fjs.parentNode.insertBefore(js, fjs);
-            }
-        }(document, 'script', 'twitter-wjs');
-
-
- // $('textarea[name="message"]').after('<div id="holder"></div>')
- var holder = $('#holder');
-            var holders = document.querySelectorAll('textarea[name="message"]');
-            [].forEach.call(holders, function(col) {
-                col.addEventListener("drop", ondrop, false);
-                col.addEventListener("dragleave", ondragleave, false);
-                col.addEventListener("dragover", ondragover, false);
-                col.addEventListener("dragstart", ondragstart, false);
-                col.classList.remove("hover")
-            });
-
-
-        function handleDragStart(e) {
-            var cols = document.querySelectorAll('.smilie');
-            [].forEach.call(cols, function(col) {
-                col.addEventListener('dragstart', handleDragStart, false);
-                col.addEventListener('dragenter', handleDragEnter, false)
-                col.addEventListener('dragover', handleDragOver, false);
-                col.addEventListener('dragleave', handleDragLeave, false);
-                col.addEventListener('drop', handleDrop, false);
-                col.addEventListener('dragend', handleDragEnd, false);
-                col.classList.remove('over');
-            });
-            dragSrcEl = this;
-            source = this.getAttribute("id");
-            e.dataTransfer.effectAllowed = 'move';
-            e.dataTransfer.setData('text/html', this.innerHTML);
-        };
-
-        function handleDragOver(e) {
-            if (e.preventDefault) {
-                e.preventDefault(); // Necessary. Allows us to drop.
-            }
-            e.dataTransfer.dropEffect = 'move'; // See the section on the DataTransfer object.
-            return false;
-        }
-
-        function handleDragEnter(e) {}
-
-        function handleDragLeave(e) {
-            this.classList.remove('over'); // this / e.target is previous target element.
-        }
-
-        function handleDrop(e) {
-            // this/e.target is current target element.
-            if (e.stopPropagation) {
-                e.stopPropagation(); // Stops some browsers from redirecting.
-            }
-
-            if (dragSrcEl != this) {
-
-                var att1 = document.createAttribute("id");
-                if (dragSrcEl.getAttribute("id") == "basic") {
-                    att1.value = "favourite";
-                    dragSrcEl.setAttributeNode(att1);;
-                    $('.standard').find('.smilie_group').append(dragSrcEl);
-                    localStorage.favourite = $('.standard').find('.smilie_group')[0].innerHTML;
-                } else {
-                    var title = dragSrcEl.innerText;
-                    $('.standard').find('.smilie_group').remove(dragSrcEl);
-                    $(".smilie").each(function(index, image) {
-                        $this = $(image);
-                        if (title == image.innerText && this.getAttribute("id") == "favourite") {
-                            this.remove();
-                            localStorage.favourite = $('.standard').find('.smilie_group')[0].innerHTML;
+                var posted = new RegExp("([A-Za-z0-9 -_]+) posted:")
+                if ($this.find("h4")[0] != null) {
+                    var k = posted.exec($this.find("h4")[0].innerText)
+                    if (posted.test($this.find("h4")[0].innerText)) {
+                        if (k[1] == localStorage.user) {
+                            if (thisForum != 219) $(quote).attr("class", $(quote).attr("class") + " meMain")
+                            else if (thisForum == 219) {
+                                if (!amberPos) {
+                                    $(quote).attr("class", $(quote).attr("class") + " meAmber")
+                                } else {
+                                    $(quote).attr("class", $(quote).attr("class") + " meGreen")
+                                }
+                            }
                         }
-                    });
-                }
-            }
-            return false;
-        }
-
-        function handleDragEnd(e) {
-            // this/e.target is the source node.
-            [].forEach.call(cols, function(col) {
-                col.classList.remove('over');
-            });
-        }
-
-        $(".post-wrapper").append('<div id="loading"><i id="loadingSpinner" style="display:none;" class="fa fa-5x fa-spinner"></i><i id="error" style="display:none;" class="fa fa-5x fa-exclamation-triangle"></i></div>')
-// var g = '<div id="testImage"><img id="as" src="http://i.imgur.com/yurk1E2.jpg" alt="" class="img" border="0"></div>'
-// $(".post-wrapper").append(g)
-
-
-
-
-
-
-
-
-
-
-// $("#copyright").append('<div id="testDrag" height="400" width="800"></div>')
-
-// interact('#testDrag')
-//   .draggable({
-//     onmove: window.dragMoveListener
-//   })
-//   .resizable({
-//     edges: { left: true, right: true, bottom: true, top: true }
-//   })
-//   .on('resizemove', function (event) {
-//     var target = event.target,
-//         x = (parseFloat(target.getAttribute('data-x')) || 0),
-//         y = (parseFloat(target.getAttribute('data-y')) || 0);
-
-//     // update the element's style
-//     target.style.width  = event.rect.width + 'px';
-//     target.style.height = event.rect.height + 'px';
-
-//     // translate when resizing from top or left edges
-//     x += event.deltaRect.left;
-//     y += event.deltaRect.top;
-
-//     target.style.webkitTransform = target.style.transform =
-//         'translate(' + x + 'px,' + y + 'px)';
-
-//     target.setAttribute('data-x', x);
-//     target.setAttribute('data-y', y);
-//     target.textContent = event.rect.width + '×' + event.rect.height;
-//   });
-
- $('textarea[name="message"]').on("dragenter dragstart dragend dragleave dragover drag drop", function (e) {
-    e.preventDefault();
-});
-
-function ondragover() { 
-    this.className = 'hover'; 
-$("#loadingSpinner").show("slow")
-
-console.log("drag2");
- return false;
-  };
-function ondragstart() { console.log("dragstart"); return false; };
-function ondragleave() { 
-    this.className = '';
-    $("#loadingSpinner").hide("slow") 
-console.log("drag3");
- return false;}
- ;
-function ondrop(e) {
-            if (e.stopPropagation) {
-                e.stopPropagation(); // Stops some browsers from redirecting.
-            }
-  this.className = '';
-  
-  console.log("drag1")
-
-  var file = e.dataTransfer.files[0]
-  
-
-  if (file == undefined){
-    $("#loadingSpinner").addClass("fa-pulse")
-    console.log(e.dataTransfer.getData('text'))
-              $.ajax({ 
-    url: 'https://api.imgur.com/3/image',
-    headers: {
-        'Authorization': 'Client-ID 5ec0c957e0413ff'
-    },
-    type: 'POST',
-    data: {
-        'image': e.dataTransfer.getData('text'),
-        'type': 'URL'
-    },
-    success: function(data) {
-     var embedImage = "[img]" + data.data.link + "[/img]"
-     var caretPos = $('textarea[name="message"]').getSelection().start;
-    var textAreaTxt = $('textarea[name="message"]').val();
-    $('textarea[name="message"]').val(textAreaTxt.substring(0, caretPos) + embedImage + textAreaTxt.substring(caretPos) );
-    $("#loadingSpinner").removeClass("fa-pulse")
-    $("#loadingSpinner").hide("slow")
-      }
-})
-  }
-  
-
-      var reader = new FileReader();
-
-  reader.onload = function (event) {
-    $("#loadingSpinner").addClass("fa-pulse")
-    console.log(event.target);
-    event.target.result
-    console.log(event.target.result)
-              $.ajax({ 
-    url: 'https://api.imgur.com/3/image',
-    headers: {
-        'Authorization': 'Client-ID 5ec0c957e0413ff'
-    },
-    type: 'POST',
-    data: {
-        'image': event.target.result.substring(22),
-        'type': 'base64'
-    },
-    success: function(data) {
-
-     console.log('cool'); 
-     console.log(data.data.link)
-     var embedImage = "[img]" + data.data.link + "[/img]"
-     var caretPos = $('textarea[name="message"]').getSelection().start;
-    var textAreaTxt = $('textarea[name="message"]').val();
-    console.log("carot pos")
-    console.log(caretPos)
-    $('textarea[name="message"]').val(textAreaTxt.substring(0, caretPos) + embedImage + textAreaTxt.substring(caretPos) );
-    $("#loadingSpinner").removeClass("fa-pulse")
-    $("#loadingSpinner").hide("slow")
-      },
-      error: function(XMLHttpRequest, textStatus, errorThrown) {
-         $("#loadingSpinner").removeClass("fa-pulse")
-    $("#loadingSpinner").hide("slow")
-    $("#error").show("slow")
-
-  }
-});
-  };
-  console.log(file);
-  reader.readAsDataURL(file);
-
-  return false;
-};
-
-
-
-        //show/hide avatar
-        if (g.avatarHide == undefined) g.avatarHide = false;
-        $(".userinfo").each(function(index, image) {
-            $this = $(image)
-            $(".title").toggle(g.avatarHide)
-        });
-
-        //scrape ignore list
-        var igName = g.iglist
-        $("input.bginput").each(function(index, image) {
-            $this = $(image)
-            if ($this.attr("type") == "text") var name = $this.attr("value")
-            if (name != undefined) igName.push(name)
-        });
-        chrome.storage.sync.set({
-            "iglist": igName
-        })
-
-        //snype/snipe audio
-        if (g.snypeAudio) {
-            var audioPath = chrome.extension.getURL("audio/Headshot.wav");
-            $bodyS.prepend('<audio id="audio" src=' + audioPath + ' ></audio>')
-        }
-
-        //amberpos/greenpos check
-        var amberPos;
-        if ($("#blarf219").attr("href") == "/css/219a.css") {
-            amberPos = true;
-            $headS.append('<link id="yplus" rel="stylesheet" href="' + mg + '" type="text/css" />');
-        } else if ($("#blarf219").attr("href") == "/css/219.css?1408492538" || $("#blarf219").attr("href") == "/css/219.css") {
-            amberPos = false;
-            $headS.append('<link id="yplus" rel="stylesheet" href="' + ma + '" type="text/css" />');
-        }
-
-
-        //, "url("+greenade+")"
-        // var greenade = chrome.extension.getURL("images/green.svg")
-        //console.log($("dt.platinum").css("background-image", "url("+greenade+")"))
-
-
-
-
-        //signature check option
-        if (g.signature == undefined) g.siganture = false;
-        $(':checkbox').each(function(index, element) {
-            var name = this.name;
-            console.log(name)
-            console.log(g.signature)
-            if (name == "signature") element.checked = g.signature;
-        });
-
-
-
-            var $ta = $('textarea[name="message"]');
-            // var $startIndex = $("#startIndex"), $endIndex = $("#endIndex");
-console.log($ta)
-            // function reportSelection() {
-            //     var sel = $ta.getSelection();
-            //     $startIndex.text(sel.start);
-            //     $endIndex.text(sel.end);
-            // }
-
-            $ta.focus();
-
-
-            // $(document).on("selectionchange", reportSelection);
-            // $ta.on("keyup input mouseup textInput", reportSelection);
-
-            $ta.keydown(function(e){
-  if(e.which == 17)
-      $(window).bind('keydown.ctrlI', function(e){
-        console.log("hey")
-          if(e.which == 18){
-            console.log("ho")
-              e.preventDefault();
-              $ta.surroundSelectedText("[spoiler]", "[/spoiler]");
-              console.log("asdasda")
-          }
-      });
-});
-
-
-            
-
-            // reportSelection();
-
-        //highlight quotes
-        if (g.quote == undefined) g.quote = true;
-        $("#switchpos").click(function(event) {
-            console.log($("#blarf219").attr("href"))
-            if ($("#blarf219").attr("href") == "/css/219a.css") {
-                amberPos = true;
-                $headS.append('<link id="yplus" rel="stylesheet" href="' + mg + '" type="text/css" />');
-            } else {
-                amberPos = false;
-                $headS.append('<link id="yplus" rel="stylesheet" href="' + ma + '" type="text/css" />');
-
-            }
-
-            $postS.each(function(index, image) {
-                $this = $(image);
-                if (g.quote) $this.myfunction();
-            })
-        })
-
-
-
-
-$('textarea[name="message"]').pasteImageReader(function(results) {
-  var dataURL, filename; 
-  console.log("listen")
-  console.log(results.dataURL)
-  console.log(results.filename)
-  console.log(results)
-  $.ajax({ 
-    url: 'https://api.imgur.com/3/image',
-    headers: {
-        'Authorization': 'Client-ID 5ec0c957e0413ff'
-    },
-    type: 'POST',
-    data: {
-        'image': results.dataURL.substring(22),
-        'type': 'base64'
-    },
-    success: function(data) {
-
-     console.log('cool'); 
-     console.log(data.data.link)
-     var embedImage = "[img]" + data.data.link + "[/img]"
-     var caretPos = $('textarea[name="message"]').getSelection().start;
-    var textAreaTxt = $('textarea[name="message"]').val();
-
-    $('textarea[name="message"]').val(textAreaTxt.substring(0, caretPos) + embedImage + textAreaTxt.substring(caretPos) );
-
-      }
-});
-  return filename = results.filename, dataURL = results.dataURL, results;
-});
-
-
-
-
-$(window).keydown(function(e){
-  if(e.which == 17)
-      $(window).bind('keydown.ctrlI', function(e){
-        console.log("hey")
-          if(e.which == 18){
-            console.log("ho")
-              e.preventDefault();
-              applier.toggleSelection();
-
-              g = $('textarea[name="message"]')
-              console.log(g)
-          }
-      });
-});
-
-
-
-
-
-// $.ajax({ 
-//     url: 'https://api.imgur.com/3/image',
-//     headers: {
-//         'Authorization': 'Client-ID 5ec0c957e0413ff'
-//     },
-//     type: 'POST',
-//     data: {
-//         'image': 'http://files.tested.com/photos/2015/05/22/100-76455-ergo_build_5-1432312427.jpg'
-//     },
-//     success: function(data) { console.log('cool'); console.log(data) }
-// });
-
-//https://gist.github.com/takien/4077195
-function YouTubeGetID(url){
-  var ID = '';
-  url = url.replace(/(>|<)/gi,'').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
-  if(url[2] !== undefined) {
-    ID = url[2].split(/[^0-9a-z_\-]/i);
-    ID = ID[0];
-  }
-  else {
-    ID = url;
-  }
-    return ID;
-}
-
-$("body").prepend('<div id="header" style="display:none;">' + 'This thread will now automatically refresh and add new posts as they are made roughly every 10 seconds. New posts that have not been seen will be highlighted with a green background.<br>Enter link to video here to have it overlayed on screen. Overlayed video can be moved, resized and made transparent. ' + 
-    '<input type="text" id="streamLink" class="form-control" placeholder="Search for..."><button class="btn btn-default" type="button" id="streamButton">Stream</button>'
-)
-
-$("#streamButton").click(function(event){
-    console.log($("#streamLink").val())
-    var youtubeLink = YouTubeGetID($("#streamLink").val());
-    $("#copyright").after('<div id="testDrag"><i class="fa fa-arrows fa-4x"></i><div id="slider-vertical" style="height:200px;"></div><div id="hiddenContainer"></div><iframe id="ytplayer" type="text/html" width="640" height="390" src="http://www.youtube.com/embed/'+ youtubeLink +'?autoplay=0&origin=http://forums.somethingawful.com&output=embed" frameborder="0"/></div>')
-
-$( "#testDrag" ).hover(
-  function() {
-    // $(".fa-arrows").css('opacity', '1');
-    $(".fa-arrows").fadeTo("fast", 1);
-    $("#slider-vertical").fadeTo("fast", 1);
-  }, function() {
-    // $(".fa-arrows").css('opacity', '0.3');
-        $(".fa-arrows").fadeTo("fast", 0.1);
-        $("#slider-vertical").fadeTo("fast", 0.1);
-  }
-);
-
-// $("#testDrag").on("mouseover", function () {
-//     $(".fa-arrows").css('opacity', '1')
-//     console.log("easdas")
-// });
-// $("#testDrag").on("mouseleave", function () {
-//     $(".fa-arrows").css('opacity', '1')
-//     console.log("easdas")
-// });
-
-$( "#slider-vertical" ).slider({
-      orientation: "vertical",
-      range: "min",
-      min: 0.1,
-      max: 1.0,
-      value: 1.0,
-      step: 0.1,
-      slide: function( event, ui ) {
-        // $( "#amount" ).val( ui.value );
-        $("#testDrag").css("opacity", ui.value)
-      }
-    });
-
-$( ".fa-arrows" ).mousedown(function() {
-    console.log("down")
-    $("#hiddenContainer").show();
-    $('body').one('mouseup', function() {
-        $("#hiddenContainer").hide();
-    })
-  });
-
-
-$(".testdrag").click(function(event) {
-console.log("as")
-})
-$("#testDrag").resizable({
-      aspectRatio: 16 / 9,
-      animate:true,
-      handles: "nw, ne, sw,se",
-      minHeight: 390,
-      minWidth: 640,
-      // ghost:true,
-      helper: "ui-resizable-helper",
-      start: function( event, ui ) {console.log("hey"); $("#hiddenContainer").show();},
-      stop: function( event, ui ) {console.log("hey"); $("#hiddenContainer").hide();}
-    });
-$( "#testDrag" ).on( "dragstart", function( event, ui ) {console.log("h")} );
-$("#testDrag").draggable();
-$("#testDrag").slideDown()
-})
-
-$(window).keyup(function(e){
-  if(e.which == 17)
-      $(window).unbind('keydown.ctrlI');
-});
-
-        //adding the favourites
-        $("tr.section:first-of-type").before('<tr class="section" id="favouriteForums"><th class="category" colspan="2">Favourites - Click here to collapse category</th><th class="moderators">Moderators</th></tr>')
-
-        //maybe useless
-        $(".category").each(function(index, image) {
-            console.log(image)
-            $this = $(image)
-        })
-
-        //get postcount for the page
-        var postCounter = 0
-        $(".post").each(function(index, image) {
-            postCounter++;
-            $this = $(image)
-        })
-
-
-        var qs = $.param.querystring();
-        var myObj = $.deparam(qs)
-        if (isNaN(parseInt(myObj.pagenumber))) myObj.pagenumber = 1
-            //console.log(myObj)
-
-        var inc = false;
-
-        //another post counter
-        function updatePostCount() {
-            postCounter = 0;
-            $(".post").each(function(index, image) {
-                postCounter++;
-            })
-            if ((postCounter % 40) != 0) inc = false;
-        }
-
-        if ((postCounter % 40) == 0 && inc == false) {
-            inc = true;
-            myObj.pagenumber = parseInt(myObj.pagenumber) + 1
-        }
-        
-        console.log(myObj)
-        var c = buttonClass(thisForum, amberPos)
-        $(".threadbar").find("ul.postbuttons").prepend('<li><input type="button" class="turbo ' + c + '" value="TURBO!"/></li>') //DISABLED FOR NOW
-        // $(".threadbar").find("ul.postbuttons").prepend('<li><input type="button" class="showImages ' + c + '" value="Images"/></li>') DISABLED FOR NOW
-        var lastPost = parseInt($(".post").last().attr("data-idx"));
-        var turbo = false;
-        $('.turbo').click(function(event) {
-            turbo = !turbo
-            if (turbo) {
-                $("#header").slideDown()
-                // $("#testDrag").slideDown()
-                $("#container").addClass("turboC")
-                $(".turbo").attr("style", "color:#EACF4C!important;border: 1px solid #EACF4C!important;")
-                setInterval(function() {
-                    updatePostCount();
-                    console.log(postCounter)
-                    console.log(inc)
-                    console.log(postCounter % 40)
-                    if ((postCounter % 40) == 0 && inc == false) {
-                        inc = true;
-                        myObj.pagenumber = parseInt(myObj.pagenumber) + 1
                     }
-                    console.log(myObj.pagenumber)
-                    newUrl = $.param.querystring(window.location.href, {
-                        threadid: myObj.threadid,
-                        pagenumber: myObj.pagenumber
-                    });
-                    inc = false;
-                    $.get(newUrl,
-                        function(data) {
-                            // console.log(data)
-                            multiply(data)
-                        }
-                    );
-                }, 10000);
-            } else{
-                 $(".turbo").attr("style", "color:#57FF57!important;border: 1px solid #57FF57!important;")
-                 $("#testDrag").slideUp()
-                 $("#header").slideUp()
-                 $("#container").removeClass("turboC")
-            }
-        })
-        var newUrl = $.param.querystring(window.location.href, {
-            threadid: myObj.threadid,
-            pagenumber: myObj.pagenumber
-        });
-
-        $('.showImages').click(function(event) {
-            console.log("yesyesyyes")
-            $postS.each(function(index, image) {
-                $this = $(image);
-                console.log($this)
-                if ($(this).find("td.postbody").find("img").length == 0) $(this).hide()
-            })
-        })
-
-        function multiply(y) {
-            $this = $(y)
-            $this.find(".post").each(function(index, image) {
-                if (parseInt($(image).attr("data-idx")) > lastPost && parseInt($(image).attr("data-idx")) != lastPost) {
-                    // console.log(image)
-                    console.log(typeof($(image).attr("data-idx")))
-                    console.log(typeof(lastPost))
-                    $(image).addClass("unseen")
-
-                    $(image).bind('inview', function(e, isInView, visiblePartX, visiblePartY) {
-                      var elem = $(this);
-
-                      if (elem.data('inviewtimer')) {
-                        clearTimeout(elem.data('inviewtimer'));
-                        elem.removeData('inviewtimer');
-                      }
-
-                      if (isInView) {
-                        elem.data('inviewtimer', setTimeout(function() {
-                          if (visiblePartY == 'top') {
-                            elem.data('seenTop', true);
-                          } else if (visiblePartY == 'bottom') {
-                            elem.data('seenBottom', true);
-                          } else {
-                            elem.data('seenTop', true);
-                            elem.data('seenBottom', true);
-                          }
-
-                          if (elem.data('seenTop') && elem.data('seenBottom')) {
-                            elem.unbind('inview');
-                        console.log("i see post")
-                        elem.addClass("seen")
-                          }
-                        }, 500));
-                      }
-                    });
-
-                    var d = $(image).find("td.postbody");
-                    SA.timg.scan(d);
-                    $(".post").last().after(image)
-
-                    lastPost = $(image).attr("data-idx")
-                        //$(image).myfunction()
                 }
-            })
+            });
+        };
 
-        }
-
-        $("tr.forum").find("td.title").prepend('<input style="float:right;" type="button" class="sb" value="Add"/>')
-        if (window.location == 'http://forums.somethingawful.com/' || window.location == 'http://forums.somethingawful.com/index.php') {
-
+        function checkSettings(g) {
+            if (g.tweet == undefined) g.tweet = false;
+            if (g.lazyload == undefined) g.lazyload = false;
+            if (g.avatarHide == undefined) g.avatarHide = false;
+            if (g.signature == undefined) g.siganture = false;
+            if (g.quote == undefined) g.quote = true;
+            if (g.webm == undefined) g.webm = true;
+            if (g.vine == undefined) g.vine = true;
+            if (g.filter == undefined) g.filter = false;
+            if (g.embedTweet == undefined) g.embedTweet = true;
+            if (g.boldname == undefined) g.boldname = true;
+            if (g.oldbread == undefined) g.oldbread = false;
+            if (g.cats == undefined) g.cats = {
+                "Favourites": true,
+                "Main": true,
+                "Discussion": true,
+                "The Finer Arts": true,
+                "The Community": true,
+                "Archives": true
+            }
             if (g.fflist == undefined) g.fflist = {};
-            $.each(g.fflist, function(index, thing) {
-                var geg = new RegExp("forum ([a-zA-Z0-9_]+)")
-                var g = geg.exec(thing)
-                if (g != null) {
-                    $this = $("." + g[1])
-                    $this.attr("class", $this.attr("class") + " favourite")
-                    $("#favouriteForums").after($this)
-                    $this.find("input").remove()
-                }
-            })
-        }
-
-        $(".favourite").find("td.title").prepend('<input style="float:right;" type="button" class="sb" value="Delete"/>')
-
-        $('.sb').click(function(event) {
-            var a = $(this).parents('.forum');
-
-            if ($(a[0]).find(".sb").attr("value") == "Add") {
-                var t = g.fflist
-                a.attr("class", a.attr("class") + " favourite")
-                t[a.attr("class")] = a.attr("class")
-                a.find("input").remove()
-                $("#favouriteForums").after(a[0])
-                chrome.storage.sync.set({
-                    "fflist": t
-                }, function() {});
-            } else {
-                var t = g.fflist;
-                delete t[a.attr("class")]
-                chrome.storage.sync.set({
-                    "fflist": t
-                }, function() {});
-                a.remove()
-            }
-        });
-
-        if (thisForum == 219) {
             if (g.snype == undefined) g.snype = false;
             if (g.snypeAudio == undefined) g.snypeAudio = false;
-            if (g.snype) {
-                $("tr.thread").each(function(index, value) {
-                    $this = $(value)
-                    var replies = $this.find("td.replies")[0].innerText
-                    if (replies < 40) {
-                        if (replies % 40 == 39) $(value).find(".title_inner").prepend('<input style="float:right;margin-top:7px;margin-right:7px;" type="button" class="snype" value="Snype"/>')
-                    } else if (replies == 0) {} else {
-                        if (replies % 40 == 39) $(value).find(".title_inner").prepend('<input style="float:right;margin-top:7px;margin-right:7px;" type="button" class="snype" value="Snype"/>')
-                    }
-                })
-
-                $('.snype').click(function(event) {
-                    var audio = document.getElementById("audio");
-                    if (g.snypeAudio) audio.play();
-                    var a = $(this).parents('tr.thread');
-                    var geg = new RegExp("(threadid=)([0-9]+)")
-                    a.find(".snype").remove()
-                    $.each(a.find("a"), function(index, value) {
-                        var g = geg.exec(value.href);
-                        if (g != null) {
-                            $.get("http://forums.somethingawful.com/newreply.php?action=newreply&threadid=" + g[2],
-                                function(data) {
-                                    formKey = jQuery('input[name="formkey"]', data).val();
-                                    formCookie = jQuery('input[name="form_cookie"]', data).val();
-                                    console.log(formKey);
-                                    console.log(formCookie);
-                                    var textArray = [
-                                        'snype',
-                                        'headshot',
-                                        ':bsdsnype:',
-                                        ':zaeed:',
-                                        ':sicknasty:',
-                                        'snipeeeddd',
-                                        '[img]http://i.imgur.com/t0l7mQL.gif[/img]',
-                                        '[img]http://i.imgur.com/19ZCuzP.gif[/img]'
-                                    ];
-                                    var randomNumber = Math.floor(Math.random() * textArray.length);
-                                    e = {
-                                        action: 'postreply',
-                                        threadid: g[2],
-                                        formkey: formKey,
-                                        form_cookie: formCookie,
-                                        message: textArray[randomNumber]
-                                    };
-                                    $.post('newreply.php?', e,
-                                        function(returnedData) {
-                                            console.log(returnedData);
-                                        });
-                                }
-                            );
-                            return false
-                        }
-                    })
-                });
+            if (g.avatarHideOption == undefined) g.avatarHideOption = false;
+            if (g.ads == undefined) g.ads = true;
+            if (g.tree == undefined) g.tree = false;
+            if (g.youtubeHD == undefined){
+             g.youtubeHD = true;
             }
+ 
         }
 
-        $("form.searchquery").submit(function(e) {
-            e.preventDefault();
-            console.log("HEY")
-        })
+        function basedOnAuthor(post) {
+            var yostop = "obstipator";
+            var postHTML = $(post).find(" td.postbody")[0].innerHTML;
+            var authorText = $(post).find(" dt.author")[0].innerText;
+            var authorHTML = $(post).find(" dt.author")[0].innerHTML;
 
-        $(document.body).on('DOMNodeInserted', function(e) { //every time something is inserted
-            //console.log(e.target)
-            if ($(e.target).is('.cospop')) {
-                //console.log("inserted")
-                $(e.target).find("img").each(function(index, post) {
-                    $this = $(post)
-                        //$this.attr("src", "http://i.imgur.com/cM9gnmM.png")
-                    console.log($this)
-                })
-                console.log($(e.target).find("img"))
-                console.log($(e.target)[0].children[1])
-                console.log($(e.target).children())
-                console.log("pop")
+            var authorRegex = new RegExp("\\b" + yostop + "\\b", 'gi');
+            var authorExec = authorRegex.exec(authorHTML);
+
+            if (authorExec != null) {
+                $(post).find("dd.title").append("TEST")
             }
-
-        });
-
-        var modnames = {};
-        //var htr = 'http://forums.somethingawful.com/banlist.php?&sort=&asc=0&adminid=&ban_month=0&ban_year=0&actfilt=-1&pagenumber='
-        var i = 1;
-
-        var probReg = new RegExp("(.*)\. \s*User loses posting privileges for ([0-9]+|100,000) (hours|day|days|week|month).")
-
-        //var str = "Low content. User loses posting privileges for 1 day."
-        var dateReg = new RegExp("([0-9]+\/[0-9]+\/[0-9]+)");
-        var timeReg = new RegExp("(([0-9]+:[0-9]+)(am|pm))");
-        //console.log(rg.test(str))
-        console.log("ASDS")
-
-
-
-        if (true) {
-            $("td.postlinks").each(function(index, value) {
-                $this = $(value)
-                var c = buttonClass(thisForum, amberPos)
-                $(value).find("ul.postbuttons").prepend('<input type="button" class="empty ' + c + '" value="Emptyquote!"/>')
-            })
-
-            console.log("what")
-
-            $('.empty').click(function(event) {
-                var a = $(this).parents('.post');
-                var geg = new RegExp("(threadid=)([0-9]+)")
-                console.log($(a).find("img[alt='Quote']")[0].parentNode.href)
-                var rep = $(a).find("img[alt='Quote']")[0].parentNode.href
-                    //a.find(".snype").remove()
-                    // $.each(a.find("a"), function(index, value){
-                    // var g = geg.exec(value.href);
-                    // if (g!=null){
-                $.get(rep,
-                    function(data) {
-                        console.log(data)
-                        $this = $(data)
-                        console.log($this.find("input[name='submit']").trigger('click'))
-                    }
-                );
-                return false
-                    // }
-                    //  })
-            });
+            return 1;
         }
 
-        var back = "empty"
-        var forward = "empty"
-
-        var top = $.find(".top")[0]
-
-        console.log("ahhhh")
-        $(top).find("a").each(function(index, thing) {
-            var geg = new RegExp("(pagenumber=)([0-9]+)")
-
-            var g = geg.exec($(thing).attr("href"))
-            if (geg.test($(thing).attr("href"))) {
-                console.log($(thing)[0].innerText)
-                if ($(thing)[0].innerText == "‹") {
-                    back = $(thing).attr("href")
-                }
-                if ($(thing)[0].innerText == "›") {
-                    forward = $(thing).attr("href")
-                }
-            }
-        })
-        // FEATURE - BACK AND FORWARD
-        // window.addEventListener("keyup", function(e) {
-        //     if (e.keyCode == 81) {
-        //         if (back != "empty") window.location = back;
-        //     }
-        // })
-        // window.addEventListener("keyup", function(e) {
-        //     if (e.keyCode == 69) {
-        //         if (forward != "empty") window.location = forward;
-        //     }
-        // })
-        if (g.avatarHideOption == false) $(".title").show()
-        if (g.avatarHideOption == undefined) g.avatarHideOption = false;
-        if (g.avatarHideOption) {
-            $(".userinfo").click(function(event) {
-                $this = $(event.target)
-                event.stopPropagation();
-                $(".title").toggle()
-                var jet = !g.avatarHide;
-                chrome.storage.sync.set({
-                    "avatarHide": jet
-                }, function() {});
-            });
-        }
-
-        if (g.ads == undefined) g.ads = true;
-        if (g.ads) $("#ad_banner_user").remove()
-        $(".category").each(function(index, image) {
-            $this = $(image);
-
-            var geg = new RegExp("([A-Za-z0-9]+) -")
-
-            var fname = geg.exec(image.innerText)
-            if (fname == null) fname = ["whatever", image.innerText]
-            var main;
-            main = g.cats[fname[1]]
-
-            $this.parent().nextUntil("tr.section").toggle(g.cats[fname[1]]);
-            if (!main) $this[0].innerText = fname[1] + " - Click here to expand category"
-            else $this[0].innerText = fname[1] + " - Click here to collapse category"
-
-        });
-        if (g.tree == undefined) g.tree = false;
-        if (g.tree) {
-            $(".subforums").children().each(function(index, image) {
-
-                $this = $(image);
-
-                if ($this[0].className != '') {
-
-                    console.log($this.parent().parent().attr('style', 'padding-top:15px !important; padding-bottom:15px !important;') + " L")
-                    $this.parent().parent().text().replace(/^[, ]/g, 'asdasdas');
-                    console.log($this.parent().parent().text() + "LOOOOL")
-
-                    $this.wrap('<li style = "padding-left:50px !important">')
-                    $this.attr("style", "font: 11px Verdana,Arial,sans-serif !important;");
-                } else $this.parent().parent().attr('style', 'padding-top:10px !important; padding-bottom:10px !important;')
-            });
-        }
-
-        console.log("asas")
-
-        var fya = $.find("tr.forum.forum_26")[0];
-        var $terry = $(fya);
-
-        if (g.cats == undefined) g.cats = {
-            "Favourites": true,
-            "Main": true,
-            "Discussion": true,
-            "The Finer Arts": true,
-            "The Community": true,
-            "Archives": true
-        }
-        $("#forums").click(function(event) {
-            $this = $(event.target)
-
-            if ($this.attr("class") == "category") {
-
-                var c = event.target.innerText;
-                var geg = new RegExp("([A-Za-z0-9 ]+) -")
-                var fname = geg.exec(c)
-                var main;
-                main = !g.cats[fname[1]]
-                g.cats[fname[1]] = main;
-                if (!main) event.target.innerText = fname[1] + " - Click here to expand category"
-                else event.target.innerText = fname[1] + " - Click here to collapse category"
-                $this.parent().nextUntil("tr.section").toggle("fast");
-                var h = g.cats;
-                chrome.storage.sync.set({
-                    "cats": g.cats
-                }, function() {});
-            }
-
-        });
-
-        console.log("asas")
-
-        $(".smilie_list").each(function(index, image) {
-            $this = $(image);
-
-            var group = '<br><br><h3>Favourite Smilies</h3> <ul class="smilie_group">';
-            var groupEnd = '</ul><br><br><br><br><br><br>'
-            var ht = '<h3>Basic Smilies</h3> <ul class="smilie_group"> <li class="smilie"> <div class="text">:(</div> <img alt="" src="http://fi.somethingawful.com/images/smilies/frown.gif" title="frown"> <li class="smilie"> <div class="text">:)</div> <img alt="" src="http://fi.somethingawful.com/images/smilies/smile.gif" title="smile"> </ul>';
-            $(this).find(".inner").prepend(group + localStorage.favourite + groupEnd)
-            var cols = document.querySelectorAll('.smilie');
-            [].forEach.call(cols, function(col) {
-                col.addEventListener('dragstart', handleDragStart, false);
-                col.addEventListener('dragenter', handleDragEnter, false)
-                col.addEventListener('dragover', handleDragOver, false);
-                col.addEventListener('dragleave', handleDragLeave, false);
-                col.addEventListener('drop', handleDrop, false);
-                col.addEventListener('dragend', handleDragEnd, false);
-            });
-        });
-
-        $(".smilie").each(function(index, image) {
-            $this = $(image);
-
-            var att = document.createAttribute("draggable");
-            att.value = "true";
-            this.setAttributeNode(att);;
-
-            var att1 = document.createAttribute("id");
-
-            if (this.getAttribute("id") != "favourite") {
-                att1.value = "basic";
-                this.setAttributeNode(att1);;
-            }
-        });
-
-        console.log("asasaaasasas")
-
-        if (g.oldbread == undefined) g.oldbread = false;
-        if (g.oldbread) {
+        function oldBreadcrumbs() {
             var bc = document.querySelectorAll(".breadcrumbs > span.mainbodytextlarge");
             for (i = 0; i < bc.length; i++) {
                 if (bc[i].childNodes[0].tagName.toLowerCase() == "b") {
@@ -1078,148 +119,389 @@ $(window).keyup(function(e){
                 }
             }
             $("span.mainbodytextlarge").prepend('<a class="index" href="/" title="Forums index">«</a>');
+            return 1;
         }
 
-        console.log("asas")
+        function lazyload(post) {
+            $(post).find("td.postbody").find("img").each(function(index, image) {
+                $this = $(image)
+                var src = this.getAttribute("src")
+                this.setAttribute("class", this.getAttribute("class") + " lazy")
+                var class1 = this.getAttribute("class")
+                this.removeAttribute("src")
+                this.setAttribute("data-original", src)
+            });
 
+            $("img.lazy").lazyload();
 
+            return 1;
+        }
 
-        user = $("#loggedinusername")[0].innerText;
-        console.log(user)
-            //  user = g[1];
-        localStorage.user = "";
-        console.log(localStorage.user)
-        localStorage.user = user
-        console.log(localStorage.user)
+        function tweetButton(post) {
+            var authorText = $(post).find(" dt.author")[0].innerText;
+            var authorHTML = $(post).find(" dt.author")[0].innerHTML;
+            var tweetText = $(post).find(" td.postbody")[0].innerText.replace(/\"/g, "&quot;");
 
-        console.log("ahwerere")
-        $.fn.myfunction = function() {
+            if (authorText == localStorage.user) {
 
-            $this.find(".bbc-block").each(function(index, quote) {
-                $this = $(quote);
+                if (g.tweet) {
+                    $(post).find(" ul.postbuttons").append('<li><a href="https://twitter.com/share" class="twitter-share-button" data-url="manas" data-text="' + tweetText + '" data-count="none" data-dnt="true">Tweet</a></li>');
+                }
+            }
+            return 1;
+        }
 
-                var posted = new RegExp("([A-Za-z0-9 -_]+) posted:")
+        function embedVine(post) {
+            $this = $(post);
+            var vineRegex = new RegExp("(http|https)://vine\.co/v/[A-Za-z0-9]+");
+            $this.find("a").each(function(index, value) {
+                var url = $(value);
+                if (vineRegex.test(url[0].href) == true) {
+                    var vineHTML = '<iframe class="vine-embed" src="' + url[0].href + '/embed/simple" width="600" height="600" frameborder="0"></iframe><script async src="//platform.vine.co/static/scripts/embed.js" charset="utf-8"></script>';
+                    url.replaceWith(vineHTML);
+                }
+            });
+            return 1;
+        }
 
-                if ($this.find("h4")[0] != null) {
-                    var k = posted.exec($this.find("h4")[0].innerText)
+        function embedWebm(post) {
+            $this = $(post);
+            var webmRegex = new RegExp("[:A-Za-z0-9\.\/\-\_]+\\.(webm|gifv)");
 
-                    if (posted.test($this.find("h4")[0].innerText)) {
+            $this.find("a").each(function(index, value) {
+                var url = $(value);
 
-                        if (k[1] == localStorage.user) {
+                if (webmRegex.test(url[0].href) == true) {
+                    var videoHTML = '<video autoplay class="san" loop muted="true" controls> <source src="' + url[0].href.substring(0, url[0].href.length - 4) + "webm" + '" type="video/webm"> </video>'
+                    url.replaceWith(videoHTML);
+                }
+            });
 
-                            // $(quote).css( "background", "rgb(204, 139, 199)" );
-                            // $(quote).css( "background-color", "rgb(204, 139, 199)" );
+            $this.find(".bbc-spoiler").each(function(index, value) {
+                var url = $(value);
 
-                            // $this.find("blockquote").css( "color", "#000000" );
-                            console.log(thisForum)
-                            if (thisForum != 219) $(quote).attr("class", $(quote).attr("class") + " meMain")
-                            else if (thisForum == 219) {
-                                console.log("MADE IT")
-                                if (!amberPos) {
-                                    $(quote).attr("class", $(quote).attr("class") + " meAmber")
-                                } else {
-                                    $(quote).attr("class", $(quote).attr("class") + " meGreen")
-                                }
-                            }
+                if (webmRegex.test(url[0].innerText) == true) {
+                    var videoHTML = '<video autoplay class="san" loop muted="true" controls> <source src="' + url[0].innerText.substring(0, url[0].innerText.length - 4) + "webm" + '" type="video/webm"> </video>'
+                    url[0].innerHTML = videoHTML;
+                }
+            });
 
+            return 1;
+        }
+
+        function embedTweet(post) {
+            $this = $(post)
+            var counter = 0;
+            $this.find("a").each(function(index, text) {
+                $this = $(text)
+                var twit = new RegExp("https://twitter.com/[:A-Za-z0-9\.\/]+/(status|statuses)/([0-9]+)");
+                var twitUrl = twit.exec(text.href);
+                if (twit.test(text.href)) {
+                    $this.wrap('<div class="tweet' + twitUrl[2] + '">')
+                    $.ajax({
+                        url: "https://api.twitter.com/1/statuses/oembed.json?url=" + twitUrl[0] + "&omit_script=true",
+                        async: false,
+                        success: function(data) {
+                            $this.empty()
+                            localStorage.setItem(twitUrl[0], data.html)
+                            $('.tweet' + twitUrl[2]).html(data.html);
+                            counter++;
                         }
-                    }
+                    });
+                    //}
                 }
-
             });
-        };
-        if (thisForum == 261) {
-            $postS.each(function(index, image) {
-                $this = $(image);
+            return 1;
+        }
 
-                var collec = {}
+        function intialisation() {
 
-                //stealing postlink from post
-                var one = $this.find("ul.profilelinks").find("li").find("a")[0]
-                if (one != undefined) {
-                    one = one.innerText;
-                    collec[one] = $this.find("ul.profilelinks").find("li").find("a")[0].href;
-                } else {
-                    one = "Profile"
-                    collec[one] = undefined;
+            //selectors
+            $bodyS = $("body")
+            $headS = $("head")
+            $postS = $(".post")
+            var c = 0;
+            thisForum = $bodyS.attr("data-forum")
+
+            //adding stylesheets
+            var s = chrome.extension.getURL("css/yosplus.css")
+            var gh = chrome.extension.getURL("css/twittertimeline.css")
+            var mg = chrome.extension.getURL("css/megreen.css")
+            var ma = chrome.extension.getURL("css/meamber.css")
+            var fa = chrome.extension.getURL("css/font-awesome.min.css")
+
+            $headS.append('<link id="yosplusStyle" rel="stylesheet" href="' + s + '" type="text/css" />');
+            $bodyS.append('<link id="fa" rel="stylesheet" href="' + fa + '" type="text/css" />');
+            $headS.append('<link rel="stylesheet" href="http://cdn.jsdelivr.net/qtip2/2.2.0/jquery.qtip.min.css" type="text/css" />');
+            $headS.append('<script type="text/javascript" src="http://cdn.jsdelivr.net/qtip2/2.2.0/jquery.qtip.min.js"></script>');
+            $headS.append('<script type="text/javascript" src="https://rawgit.com/timdown/rangyinputs/master/rangyinputs-jquery-src.js"></script>');
+
+            //amberpos/greenpos check
+
+            if (thisForum == 219){
+                if (localStorage['219style'] == 1) {
+                    amberPos = true;
+                    $headS.append('<link id="yplus" rel="stylesheet" href="' + mg + '" type="text/css" />');
+                } else if (localStorage['219style'] == 0) {
+                    amberPos = false;
+                    $headS.append('<link id="yplus" rel="stylesheet" href="' + ma + '" type="text/css" />');
                 }
+            }
+            ! function(t, e, r) {
+                var n, s = t.getElementsByTagName(e)[0],
+                    i = /^http:/.test(t.location) ? "http" : "https";
+                t.getElementById(r) || (n = t.createElement(e), n.id = r, n.src = i + "://platform.twitter.com/widgets.js", s.parentNode.insertBefore(n, s))
+            }(document, "script", "twitter-wjs");
+
+            checkSettings(g)
+            localStorage.user = "";
+            if (localStorage.user == "") {
+                user = $("#loggedinusername")[0];
+                if (user != undefined) localStorage.user = user.innerText;
+            }
 
 
-                one = $this.find("ul.profilelinks").find("li").find("a")[1];
-                if (one != undefined) {
-                    one = one.innerText;
-                    collec[one] = $this.find("ul.profilelinks").find("li").find("a")[1].href
-                } else {
-                    one = "Message"
-                    collec[one] = undefined;
+            if (g.oldbread) oldBreadcrumbs()
+            if (g.ads) $("#ad_banner_user").remove()
+            return 1;
+        }
+
+        function threadListActions() {
+
+            if (g.snypeAudio) {
+                var audioPath = chrome.extension.getURL("audio/Headshot.wav");
+                $bodyS.prepend('<audio id="audio" src=' + audioPath + ' ></audio>')
+            }
+
+            if (thisForum == 219) {
+
+                if (g.snype) {
+                    $("tr.thread").each(function(index, value) {
+                        $this = $(value)
+                        var replies = $this.find("td.replies")[0].innerText
+                        if (replies < 40) {
+                            if (replies % 40 == 39) $(value).find(".title_inner").prepend('<input style="float:right;margin-top:7px;margin-right:7px;" type="button" class="snype" value="Snype"/>')
+                        } else if (replies == 0) {} else {
+                            if (replies % 40 == 39) $(value).find(".title_inner").prepend('<input style="float:right;margin-top:7px;margin-right:7px;" type="button" class="snype" value="Snype"/>')
+                        }
+                    })
+
+                    $('.snype').click(function(event) {
+                        var audio = document.getElementById("audio");
+                        if (g.snypeAudio) audio.play();
+                        var a = $(this).parents('tr.thread');
+                        var geg = new RegExp("(threadid=)([0-9]+)")
+                        a.find(".snype").remove()
+                        $.each(a.find("a"), function(index, value) {
+                            var g = geg.exec(value.href);
+                            if (g != null) {
+                                $.get("http://forums.somethingawful.com/newreply.php?action=newreply&threadid=" + g[2],
+                                    function(data) {
+                                        formKey = jQuery('input[name="formkey"]', data).val();
+                                        formCookie = jQuery('input[name="form_cookie"]', data).val();
+                                        var textArray = [
+                                            'snype',
+                                            'headshot',
+                                            ':bsdsnype:',
+                                            ':zaeed:',
+                                            ':sicknasty:',
+                                            'snipeeeddd',
+                                            '[img]http://i.imgur.com/t0l7mQL.gif[/img]',
+                                            '[img]http://i.imgur.com/19ZCuzP.gif[/img]'
+                                        ];
+                                        var randomNumber = Math.floor(Math.random() * textArray.length);
+                                        e = {
+                                            action: 'postreply',
+                                            threadid: g[2],
+                                            formkey: formKey,
+                                            form_cookie: formCookie,
+                                            message: textArray[randomNumber]
+                                        };
+                                        $.post('newreply.php?', e,
+                                            function(returnedData) {});
+                                    }
+                                );
+                                return false
+                            }
+                        })
+                    });
                 }
+            }
+
+            return 1;
+        }
+
+        function quickReply(){
+            $(".threadbar.bottom").after('<div id="sanQuickReplyContainer" style="display:none;"><div id="sanQuickReplyButtons"><i id="loadingSpinnerQuick" style="display:none;" class="fa fa-2x fa-spinner"></i><input type="button" class="sanQuickReplySubmit" value="Post"><i id="closeQuickReply" class="fa fa-1x fa-times"></div><textarea name="message" id="sanQuickReplyText" name="message" rows="20" cols="83" tabindex="2"></textarea></div>')
+
+            $( "#sanQuickReplyContainer" ).resizable(
+                {       minHeight: 250,
+                        minWidth: 350,
+                        animate:true,
+                        handles:"n, e, w, ne, nw"});
+            $( "#sanQuickReplyContainer" ).draggable();
 
 
-                one = $this.find("ul.profilelinks").find("li").find("a")[2]
-                if (one != undefined) {
-                    one = one.innerText;
-                    collec[one] = $this.find("ul.profilelinks").find("li").find("a")[2].href
-                } else {
-                    one = "Post History";
-                    collec[one] = undefined;
+            $( "#sanQuickReplyContainer" ).hover(
+              function() {
+                $("#sanQuickReplyContainer").fadeTo("fast", 1);
+              }, function() {
+                if ( $("#sanQuickReplyContainer").css('display') != 'none' && $("#sanQuickReplyContainer").css('opacity') == '1' ) $("#sanQuickReplyContainer").fadeTo("fast", 0.3);
+              }
+            );
+
+            $("#closeQuickReply").click(function(event){
+                event.stopPropagation();
+                $( "#sanQuickReplyText" ).val('')
+                $( "#sanQuickReplyContainer" ).hide("slow");
+                $("#sanQuickReplyContainer").css("opacity", "1");
+            })
+
+            $("body").on("click", ".sanQuickReply", function(event) {
+                event.stopPropagation();
+                $this = $(event.target);
+                // console.log($this.parent().find("img[alt='Quote']")[0].parentNode.href)
+
+                var tempText = $this.parent().find("img[alt='Quote']")[0];
+                if (tempText != undefined){
+                    tempText = tempText.parentNode.href + '&json=1'
+                    $.get(tempText,
+                        function(data) {
+                            console.log(data.body);
+                            var caretPos = $("#sanQuickReplyText").getSelection().start;
+                            var textAreaTxt = $("#sanQuickReplyText").val();
+                            $("#sanQuickReplyText").val(textAreaTxt.substring(0, caretPos) + data.body + textAreaTxt.substring(caretPos));
+                            // $("#sanQuickReplyText").focus();
+                            $("#sanQuickReplyContainer").fadeTo("fast", 1);
+                        }
+                    );
                 }
+                $("#sanQuickReplyContainer").show("slow");
+                $("#sanQuickReplyContainer").css("opacity", "1");
+                $("#sanQuickReplyText").focus();                
+            });
 
+            $('#sanQuickReplyText').on('paste', function (event) {
+              var element = this;
+              var pastedData = event.clipboardData.getData('text');
+              // console.log(event.clipboardData.getData('text'))
+              setTimeout(function () {
+                var text = $(element).val();
+                // console.log(text)
+                //http://stackoverflow.com/a/10591582
+                // "https://youtu.be/flls8VaEEZc"
+                // "https://youtu.be/flls8VaEEZc?t=2644"
+                var videoid = text.match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s\?&]+)/);
+                var isImage = (/^((https?|ftp):)?\/\/.*(jpeg|jpg|png|gif|bmp)$/).test(pastedData)
+                if(videoid != null) {
+                    if (g.youtubeHD) var res = ' res="hd"' 
+                    else var res = "";
+                // console.log(res)
+                    var paramsTemp = $.param.querystring(pastedData);
+                    var paramObj = $.deparam(paramsTemp)
+                    console.log(paramObj)
+                    if (paramObj.t != undefined) var time=' start="'+paramObj.t + '"';
+                    else var time="";
+                    var embedVideo = '[video type="youtube"' + time + res + ']' + videoid[1] + '[/video]';
+                    var caretPos = $("#sanQuickReplyText").getSelection().start;
+                    var textAreaTxt = $("#sanQuickReplyText").val();
+                    // console.log(textAreaTxt)
+                    textAreaTxt = textAreaTxt.replace(pastedData, "");
+                    // console.log(textAreaTxt)
+                    $(element).val(textAreaTxt.substring(0, caretPos) + embedVideo + textAreaTxt.substring(caretPos));
+                   // $(element).val('[video type="youtube"]' + videoid[1] + '[/video]')
+                } 
 
-                one = $this.find("ul.postbuttons").find("li").find('img[alt="Quote"]').parent()[0].href
-                    //if (one != undefined) one = one.innerText;
-                    //console.log(one)
-                collec["quote"] = one;
+                else if (isImage){
+                    var embedImage = '[img]' + pastedData + '[/img]';
+                    var caretPos = $("#sanQuickReplyText").getSelection().start;
+                    var textAreaTxt = $("#sanQuickReplyText").val();
+                    textAreaTxt = textAreaTxt.replace(pastedData, "");
+                    $(element).val(textAreaTxt.substring(0, caretPos) + embedImage + textAreaTxt.substring(caretPos));
+                }
+                else { 
+                    console.log("The youtube url is not valid.");
+                }
+              }, 0);
+            });
+            
+           $('.sanQuickReplySubmit').click(function(event) {
+                $this = $(event.target);
+                $('.sanQuickReplySubmit').attr("disabled", true);
+                $("#loadingSpinnerQuick").show("fast");
+                $("#loadingSpinnerQuick").addClass("fa-pulse");
 
-                // one = $this.find("ul.postbuttons").find("li").find("a")[1]
-                // if (one != undefined) one = one.innerText;
-                // collec[one] = $this.find("ul.postbuttons").find("li").find("a")[1]
+                var paramsTemp = $.param.querystring();
+                var paramObj = $.deparam(paramsTemp)
+                if (isNaN(parseInt(paramObj.pagenumber))) paramObj.pagenumber = 1
 
+                var tempUrl = window.location.pathname + '?' + '&threadid=' + paramObj.threadid + '&pagenumber=' + paramObj.pagenumber + window.location.hash;
+                var lastPost = parseInt($(".post").last().attr("data-idx"));
 
-                one = $this.find("dd.title").find("img")[0]
-                if (one != undefined) one = one.src
-                else one = "";
-                collec["av"] = one
+                $.get("http://forums.somethingawful.com/newreply.php?action=newreply&threadid=" + paramObj.threadid,
+                    function(data) {
+                        formKey = jQuery('input[name="formkey"]', data).val();
+                        formCookie = jQuery('input[name="form_cookie"]', data).val();
+                        formBookmark = jQuery('input[name="bookmark"]', data).val();
+                        e = {
+                            action: 'postreply',
+                            threadid: paramObj.threadid,
+                            formkey: formKey,
+                            form_cookie: formCookie,
+                            parseurl: 'yes',
+                            bookmark: formBookmark,
+                            message: $("#sanQuickReplyText").val()
+                        };                  
+                        $.post('newreply.php?', e,
+                            function(returnedData) {
+                                var test;
+                                //successful post
+                                if ( $(returnedData).find("h2")[0].innerText === "Redirecting..." ){
 
-
-                var avtext = $this.find("dd.title")[0].innerText
-                collec["title"] = avtext
-
-                var postdate = $(image).find("td.postdate")[0].innerText.substring(4);
-                collec["Date"] = postdate;
-
-                // console.log(profile.href)
-                // console.log(message)
-                // console.log(posthistory)
-                // console.log(report)
-                // console.log(quote.href)
-                // console.log(av.href)
-                // console.log(avtext)
-                message = "test"
-                var posthtml = '<div class="jumbotron"><div class="root standalone-tweet ltr twitter-tweet not-touch" dir="ltr" data-dt-months="Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec" data-dt-full="%{hours12}:%{minutes}%{amPm}- %{day}%{month}%{year}" data-dt-am="AM" data-dt-pm="PM" data-iframe-title="Embedded Tweet" data-scribe="page:tweet" id="twitter-widget-0" lang="en" data-twitter-event-id="0"><blockquote class="tweet subject expanded h-entry" data-tweet-id="275673554408837120" cite="https://twitter.com/gabromanato/status/275673554408837120" data-scribe="section:subject"><div class="header"><div class="h-card p-author" data-scribe="component:author"><a class="u-url profile" href="' + collec["Profile"] + '" data-scribe="element:user_link"><img class="u-photo avatar" alt="" src="' + collec["av"] + '" data-src-2x="https://pbs.twimg.com/profile_images/2640251839/828ff5f972f2b5da73d98a1653727b78_bigger.png" data-scribe="element:avatar"><span class="full-name"><span class="p-name customisable-highlight" data-scribe="">USERNAME</span></span><span class="p-nickname" dir="ltr" data-scribe="element:screen_name"><b>' + collec["title"] + '</b></span></a></div><a class="follow-button profile" href="' + collec["Post History"] + '" role="button" title="Follow Gabriele Romanato on Twitter"><i class="ic-button-bird"></i>Follow</a></div><div class="content e-entry-content" data-scribe="component:tweet"><p class="e-entry-title">POST</p><div class="dateline collapsible-container"><a class="u-url customisable-highlight long-permalink" href="#post432136516" data-datetime="2012-12-03T18:51:11+0000" data-scribe="element:full_timestamp"><time pubdate="" class="dt-updated" datetime="2012-12-03T18:51:11+0000" title="Time posted: 03 Dec 2012, 18:51:11 (UTC)">' + collec["Date"] + '</time></a></div></div><div class="footer customisable-border" data-scribe="component:footer"><span class="stats-narrow customisable-border"><span class="stats" data-scribe="component:stats"><a href="https://twitter.com/gabromanato/statuses/275673554408837120" title="View Tweet on Twitter" data-scribe="element:retweet_count"><span class="stats-retweets"><strong>1</strong>' + collec["quote"] + '</span></a><a href="https://twitter.com/gabromanato/statuses/275673554408837120" title="View Tweet on Twitter" data-scribe="element:favorite_count"><span class="stats-favorites"><strong>1</strong> ' + message + ' </span></a></span></span><ul class="profilelinks"><li><a href="member.php?action=getinfo&amp;userid=94730">Profile</a></li><li><a href="private.php?action=newmessage&amp;userid=94730">Message</a></li><li><a href="search.php?action=do_search_posthistory&amp;userid=94730">Post History</a></li></ul><ul class="postbuttons"><input type="button" class="empty meMain" value="Emptyquote!"><li class="alertbutton"><a href="modalert.php?postid=432136516&amp;username=Swimp"><img src="http://forumimages.somethingawful.com/images/button-report.gif" border="0" alt="Alert Moderators"></a>&nbsp;&nbsp;</li><li><a href="newreply.php?action=newreply&amp;postid=432136516"><img src="http://fi.somethingawful.com/images/sa-quote.gif" alt="Quote" title=""></a></li></ul></div></blockquote></div></div>';
-
-
-                $this.html(posthtml);
+                                   $.get(tempUrl,
+                                        function(data) {
+                                            appendPosts(data)
+                                            $("#sanQuickReplyText").val('');
+                                            $("#sanQuickReplyContainer").hide("slow");
+                                            $("#loadingSpinnerQuick").hide("fast");
+                                            $("#loadingSpinnerQuick").removeClass("fa-pulse");
+                                            $('.sanQuickReplySubmit').removeAttr("disabled");
+                                        }
+                                    );
+                               }
+                               else if ( $(returnedData).find("h2")[0].innerText === "Special Message From Senor Lowtax" ){
+                                    $("#sanQuickReplyText").animate({backgroundColor: 'red'})
+                                    $("#sanQuickReplyText").animate({backgroundColor: 'black'})
+                                    $("#loadingSpinnerQuick").hide("fast");
+                                    $("#loadingSpinnerQuick").removeClass("fa-pulse");
+                                    $('.sanQuickReplySubmit').removeAttr("disabled");
+                               }
+                            });
+                    }
+                );
             });
         }
 
-        $postS.each(function(index, image) {
-            $this = $(image);
+        function shortcutKeys(){
+            var $ta = $('textarea[name="message"]');
+            $ta.focus();
+            $ta.keydown(function(e) {
+                if (e.which == 17)
+                    $(window).bind('keydown.ctrlI', function(e) {
+                        if (e.which == 18) {
+                            e.preventDefault();
+                            $ta.surroundSelectedText("[spoiler]", "[/spoiler]");
+                        }
+                    });
+            });
 
-            if (g.quote) $this.myfunction();
-        });
-console.log("boldname")
-console.log(g.boldname)
-        if (g.boldname == undefined) g.boldname = true;
-        $postS.each(function(index, image) {
-            $this = $(image);
+            $(window).keyup(function(e) {
+                if (e.which == 17)
+                    $(window).unbind('keydown.ctrlI');
+            });
+        }
 
-            if (g.boldname) $(this).highlight(localStorage.user)
-        });
-
-        if (g.embedTweet == undefined) g.embedTweet = true;
-
-        //post loop
-        $postS.each(function(index, image) {
+        function threadActions() {
 
             // vimeo larger size
             $(".bbcode_video").each(function(index, image) {
@@ -1228,153 +510,543 @@ console.log(g.boldname)
                 $("object").attr("height", 360)
             })
 
-            $this.find("iframe").attr("allowFullscreen", "true")
-            if (g.embedTweet) {
+            $("#switchpos").click(function(event) {
+                var mg = chrome.extension.getURL("css/megreen.css")
+                var ma = chrome.extension.getURL("css/meamber.css")
+                if ($("#blarf219").attr("href") == "/css/219a.css") {
+                    amberPos = true;
+                    $("#yplus").attr("href", mg);
+                    // $headS.append('<link id="yplus" rel="stylesheet" href="' + mg + '" type="text/css" />');
+                } else {
+                    amberPos = false;
+                    $("#yplus").attr("href", ma);
+                    // $headS.append('<link id="yplus" rel="stylesheet" href="' + ma + '" type="text/css" />');
+                }
+
+                $postS.each(function(index, image) {
+                    $this = $(image);
+                    processPost(image)
+                    // if (g.quote) $this.highlightQuotes();
+                })
+            })
+
+            // $("td.postlinks").each(function(index, value) {
+            //     $this = $(value)
+            //     $(value).find("ul.postbuttons").prepend('<input type="button" class="sanQuickReply" value="Quick"/>').prepend('<input type="button" class="empty" value="Emptyquote!"/>');
+            // })
+
+            $('.empty').click(function(event) {
+                var a = $(this).parents('.post');
+                var geg = new RegExp("(threadid=)([0-9]+)")
+                var rep = $(a).find("img[alt='Quote']")[0].parentNode.href
+                $.get(rep,
+                    function(data) {
+                        $this = $(data)
+                        $this.find("input[name='submit']").trigger('click')
+                    }
+                );
+                return false
+            });
+
+            //signature check option
+            $(':checkbox').each(function(index, element) {
+                var name = this.name;
+                if (name == "signature") element.checked = g.signature;
+            });
+
+            if (window.location == "http://forums.somethingawful.com/newreply.php") processPost($("div.inner.postbody")[0])
+
+            quickReply();
+            shortcutKeys();
+            imgurUpload();
+            streamingMode();
+            return 1;
+        }
+
+        
+
+        function forumIndexActions() {
+
+            //adding the favourite forums
+            $("tr.section:first-of-type").before('<tr class="section" id="favouriteForums"><th class="category" colspan="2">Favourites - Click here to collapse category</th><th class="moderators">Moderators</th></tr>')
+
+            $("tr.forum").find("td.title").prepend('<input style="float:right;" type="button" class="sb" value="Add"/>')
+
+            if (window.location == 'http://forums.somethingawful.com/' || window.location == 'http://forums.somethingawful.com/index.php') {
+
+                $.each(g.fflist, function(index, thing) {
+                    var geg = new RegExp("forum ([a-zA-Z0-9_]+)")
+                    var g = geg.exec(thing)
+                    if (g != null) {
+                        $this = $("." + g[1])
+                        $this.attr("class", $this.attr("class") + " favourite")
+                        $("#favouriteForums").after($this)
+                        $this.find("input").remove()
+                    }
+                })
+            }
+
+            $(".favourite").find("td.title").prepend('<input style="float:right;" type="button" class="sb" value="Delete"/>')
+
+            $('.sb').click(function(event) {
+                var a = $(this).parents('.forum');
+
+                if ($(a[0]).find(".sb").attr("value") == "Add") {
+                    var t = g.fflist
+                    a.attr("class", a.attr("class") + " favourite")
+                    t[a.attr("class")] = a.attr("class")
+                    a.find("input").remove()
+                    $("#favouriteForums").after(a[0])
+                    chrome.storage.sync.set({
+                        "fflist": t
+                    }, function() {});
+                } else {
+                    var t = g.fflist;
+                    delete t[a.attr("class")]
+                    chrome.storage.sync.set({
+                        "fflist": t
+                    }, function() {});
+                    a.remove()
+                }
+            });
+
+            $("#forums").click(function(event) {
+                $this = $(event.target)
+
+                if ($this.attr("class") == "category") {
+                    var c = event.target.innerText;
+                    var geg = new RegExp("([A-Za-z0-9 ]+) -")
+                    var fname = geg.exec(c)
+                    var main;
+                    main = !g.cats[fname[1]]
+                    g.cats[fname[1]] = main;
+                    if (!main){
+                        event.target.innerText = fname[1] + " - Click here to expand category"
+                        $this.parent().nextUntil("tr.section").slideUp("fast");
+                    } 
+                    else{
+                        event.target.innerText = fname[1] + " - Click here to collapse category"
+                        $this.parent().nextUntil("tr.section").slideDown("fast");
+                    } 
+                    // $this.parent().nextUntil("tr.section").toggle("fast");
+                    var h = g.cats;
+                    chrome.storage.sync.set({
+                        "cats": g.cats
+                    }, function() {});
+                }
+            });
+
+            $(".category").each(function(index, image) {
+                $this = $(image);
+                var geg = new RegExp("([A-Za-z0-9]+) -")
+                var fname = geg.exec(image.innerText)
+                if (fname == null) fname = ["whatever", image.innerText]
+                var main;
+                main = g.cats[fname[1]]
+                $this.parent().nextUntil("tr.section").toggle(g.cats[fname[1]]);
+                if (!main) $this[0].innerText = fname[1] + " - Click here to expand category"
+                else $this[0].innerText = fname[1] + " - Click here to collapse category"
+
+            });
+
+            if (g.tree) {
+                $(".subforums").children().each(function(index, image) {
+                    $this = $(image);
+                    if ($this[0].className != '') {
+                        $this.parent().parent().attr('style', 'padding-top:15px !important; padding-bottom:15px !important;')
+                        $this.parent().parent().text().replace(/^[, ]/g, 'asdasdas');
+                        $this.wrap('<li style = "padding-left:50px !important">')
+                        $this.attr("style", "font: 11px Verdana,Arial,sans-serif !important;");
+                    } else $this.parent().parent().attr('style', 'padding-top:10px !important; padding-bottom:10px !important;')
+                });
+            }
+            return 1;
+        }
+
+        function imgurUpload() {
+            var holder = $('#holder');
+            var holders = document.querySelectorAll('textarea[name="message"]');
+            [].forEach.call(holders, function(col) {
+                col.addEventListener("drop", ondrop, false);
+                col.addEventListener("dragleave", ondragleave, false);
+                col.addEventListener("dragover", ondragover, false);
+                col.addEventListener("dragstart", ondragstart, false);
+                col.classList.remove("hover")
+            });
+
+            $('textarea[name="message"]').after('<div id="loading"><i id="loadingSpinner" style="display:none;" class="fa fa-5x fa-spinner"></i><i id="error" style="display:none;" class="fa fa-5x fa-exclamation-triangle"></i></div>')
+
+            $('textarea[name="message"]').on("dragenter dragstart dragend dragleave dragover drag drop", function(e) {
+                e.preventDefault();
+            });
+
+            function ondragover() {
+                this.className = 'hover';
+                $("#loadingSpinner").show("slow")
+                $('textarea[name="message"]').focus();
+                console.log("hey")
+                return false;
+            };
+
+            function ondragstart() {
+                return false;
+            };
+
+            function ondragleave() {
+                this.className = '';
+                $("#loadingSpinner").hide("slow")
+                return false;
+            };
+
+            function ondrop(e) {
+                if (e.stopPropagation) {
+                    e.stopPropagation(); // Stops some browsers from redirecting.
+                }
+                this.className = '';
+                var file = e.dataTransfer.files[0]
+                if (file == undefined) {
+                    $("#loadingSpinner").addClass("fa-pulse")
+                    $.ajax({
+                        url: 'https://api.imgur.com/3/image',
+                        headers: {
+                            'Authorization': 'Client-ID 5ec0c957e0413ff'
+                        },
+                        type: 'POST',
+                        data: {
+                            'image': e.dataTransfer.getData('text'),
+                            'type': 'URL'
+                        },
+                        success: function(data) {
+                            var embedImage = "[img]" + data.data.link + "[/img]"
+                            var caretPos = $('textarea[name="message"]').getSelection().start;
+                            var textAreaTxt = $('textarea[name="message"]').val();
+                            $('textarea[name="message"]').val(textAreaTxt.substring(0, caretPos) + embedImage + textAreaTxt.substring(caretPos));
+                            $("#loadingSpinner").removeClass("fa-pulse")
+                            $("#loadingSpinner").hide("slow")
+                        }
+                    })
+                }
+
+                var reader = new FileReader();
+
+                reader.onload = function(event) {
+                    $("#loadingSpinner").addClass("fa-pulse")
+
+                    $.ajax({
+                        url: 'https://api.imgur.com/3/image',
+                        headers: {
+                            'Authorization': 'Client-ID 5ec0c957e0413ff'
+                        },
+                        type: 'POST',
+                        data: {
+                            'image': event.target.result.substring(22),
+                            'type': 'base64'
+                        },
+                        success: function(data) {
+                            var embedImage = "[img]" + data.data.link + "[/img]"
+                            var caretPos = $('textarea[name="message"]').getSelection().start;
+                            var textAreaTxt = $('textarea[name="message"]').val();
+                            $('textarea[name="message"]').val(textAreaTxt.substring(0, caretPos) + embedImage + textAreaTxt.substring(caretPos));
+                            $("#loadingSpinner").removeClass("fa-pulse")
+                            $("#loadingSpinner").hide("slow")
+                        },
+                        error: function(XMLHttpRequest, textStatus, errorThrown) {
+                            $("#loadingSpinner").removeClass("fa-pulse")
+                            $("#loadingSpinner").hide("slow")
+                            $("#error").show("slow")
+                        }
+                    });
+                };
+                reader.readAsDataURL(file);
+                return false;
+            };
+
+            $('textarea[name="message"]').pasteImageReader(function(results) {
+                var dataURL, filename;
+                $("#loadingSpinner").show("slow");
+                $("#loadingSpinner").addClass("fa-pulse")
+                $.ajax({
+                    url: 'https://api.imgur.com/3/image',
+                    headers: {
+                        'Authorization': 'Client-ID 5ec0c957e0413ff'
+                    },
+                    type: 'POST',
+                    data: {
+                        'image': results.dataURL.substring(22),
+                        'type': 'base64'
+                    },
+                    success: function(data) {
+                        var embedImage = "[img]" + data.data.link + "[/img]"
+                        var caretPos = $('textarea[name="message"]').getSelection().start;
+                        var textAreaTxt = $('textarea[name="message"]').val();
+
+                        $('textarea[name="message"]').val(textAreaTxt.substring(0, caretPos) + embedImage + textAreaTxt.substring(caretPos));
+                        $("#loadingSpinner").removeClass("fa-pulse")
+                        $("#loadingSpinner").hide("slow")
+                    },
+                    error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        $("#loadingSpinner").removeClass("fa-pulse")
+                        $("#loadingSpinner").hide("slow")
+                        $("#error").show("slow")
+                    }
+                });
+                return filename = results.filename, dataURL = results.dataURL, results;
+            });
+        }
+
+        function updatePostCount(inc) {
+            postCounter = 0;
+            $(".post").each(function(index, image) {
+                postCounter++;
+            })
+            if ((postCounter % 40) != 0) inc = false;
+            return {postCounter:postCounter, inc:inc}
+        }
+
+        function streamingMode(){
+
+            streamingVideoOverlay(); //call this function to setup the video overlay portion of streaming mode
+
+            var postCounter = 0;
+            $(".post").each(function(index, image) {
+                postCounter++;
                 $this = $(image)
-                $this.find("a").each(function(index, text) {
-                    $this = $(text)
-                    var twit = new RegExp("https://twitter.com/[:A-Za-z0-9\.\/]+/(status|statuses)/([0-9]+)");
-                    var twitUrl = twit.exec(text.href);
+            })
 
-                    if (twit.test(text.href)) {
-                        console.log("made it to cached")
-                        console.log($this[0].outerHTML)
-                        $this.wrap('<div class="tweet' + twitUrl[2] + '">')
-                        console.log($this.parent)
-                        console.log($this[0].outerHTML)
-                            // if (localStorage.getItem(twitUrl[0]) !== null){
-                            //   $('.tweet' + twitUrl[1]).html(localStorage.getItem(twitUrl[0]));
-                            //   counter++;
-                            // }
-                            // else{
-                        $.ajax({
+            var inc = false;
+            var qs = $.param.querystring();
+            var myObj = $.deparam(qs)
+            if (isNaN(parseInt(myObj.pagenumber))) myObj.pagenumber = 1
 
-                            url: "https://api.twitter.com/1/statuses/oembed.json?url=" + twitUrl[0] + "&omit_script=true",
-                            async: false,
-                            success: function(data) {
-                                console.log("made it to ajaz")
-                                console.log(data.html)
-                                console.log($this[0].outerHTML)
-                                $this.empty()
-                                console.log($this[0].outerHTML)
-                                localStorage.setItem(twitUrl[0], data.html)
-                                $('.tweet' + twitUrl[2]).html(data.html);
-                                counter++;
-                            }
+            if ((postCounter % 40) == 0 && inc == false) {
+                inc = true;
+                myObj.pagenumber = parseInt(myObj.pagenumber) + 1;
+            }
+
+            $(".threadbar").find("ul.postbuttons").prepend('<li><input type="button" class="sanQuickReply" value="Quick"/></li>').prepend('<li><input type="button" class="turbo" value="Livestream"/></li>') //DISABLED FOR NOW
+
+            var lastPost = parseInt($(".post").last().attr("data-idx"));
+            var turbo = false;
+            var intID;
+            $('.turbo').click(function(event) {
+                turbo = !turbo
+
+                if (turbo) {
+                    $("#header").slideDown()
+                    $("#container").addClass("turboC")
+                    $(".turbo").attr("style", "color:#EACF4C!important;border: 1px solid #EACF4C!important;")
+                    intID = setInterval(function() {
+                        incValues = updatePostCount(inc);
+                        postCounter = incValues.postCounter;
+                        inc = incValues.inc;
+                        console.log(postCounter, inc)
+
+                        if ((postCounter % 40) == 0 && inc == false) {
+                            inc = true;
+                            myObj.pagenumber = parseInt(myObj.pagenumber) + 1
+                        }
+                        newUrl = $.param.querystring(window.location.href, {
+                            threadid: myObj.threadid,
+                            pagenumber: myObj.pagenumber
                         });
-                        //}
+                        inc = false;
+                        console.log(lastPost)
+                        $.get(newUrl,
+                            function(data) {
+                                appendPosts(data)
+                            }
+                        );
+                    }, 7000);
+                } else {
+                    $(".turbo").attr("style", "color:#57FF57!important;border: 1px solid #57FF57!important;")
+                    $("#testDrag").slideUp()
+                    $("#header").slideUp()
+                    $("#container").removeClass("turboC")
+                    $("#testDrag").empty();
+                    clearInterval(intID)
+                }
+            })
+
+            function streamingVideoOverlay(){
+
+                $("body").prepend('<div id="header" style="display:none;">' + 'This thread will now automatically refresh and add new posts as they are made roughly every 10 seconds. New posts that have not been seen will be highlighted with a green background.<br>Enter link to video here to have it overlayed on screen. Overlayed video can be moved, resized and made transparent. Youtube links only for now. ' +
+                    '<input type="text" id="streamLink" class="form-control" placeholder="Video stream link..."><button class="btn btn-default" type="button" id="streamButton">Stream</button>'
+                )
+
+                $("#streamButton").click(function(event) {
+                    var youtubeLink = YouTubeGetID($("#streamLink").val());
+                    $("#copyright").after('<div id="testDrag"><i class="fa fa-arrows fa-4x"></i><div id="slider-vertical" style="height:200px;"></div><div id="hiddenContainer"></div><iframe id="ytplayer" type="text/html" width="640" height="390" src="http://www.youtube.com/embed/' + youtubeLink + '?autoplay=1&origin=http://forums.somethingawful.com&output=embed" frameborder="0"/></div>')
+
+                    $("#testDrag").hover(
+                        function() {
+                            $(".fa-arrows").fadeTo("fast", 1);
+                            $("#slider-vertical").fadeTo("fast", 1);
+                        },
+                        function() {
+                            $(".fa-arrows").fadeTo("fast", 0.1);
+                            $("#slider-vertical").fadeTo("fast", 0.1);
+                        }
+                    );
+
+                    $("#slider-vertical").slider({
+                        orientation: "vertical",
+                        range: "min",
+                        min: 0.1,
+                        max: 1.0,
+                        value: 1.0,
+                        step: 0.1,
+                        slide: function(event, ui) {
+                            $("#testDrag").css("opacity", ui.value)
+                        }
+                    });
+
+                    $(".fa-arrows").mousedown(function() {
+                        $("#hiddenContainer").show();
+                        $('body').one('mouseup', function() {
+                            $("#hiddenContainer").hide();
+                        })
+                    });
+
+                    $("#testDrag").resizable({
+                        aspectRatio: 16 / 9,
+                        animate: true,
+                        handles: "nw, ne, sw,se",
+                        minHeight: 390,
+                        minWidth: 640,
+                        helper: "ui-resizable-helper",
+                        start: function(event, ui) {
+                            $("#hiddenContainer").show();
+                        },
+                        stop: function(event, ui) {
+                            $("#hiddenContainer").hide();
+                        }
+                    });
+                    $("#testDrag").draggable();
+                    $("#testDrag").slideDown()
+                })
+            }
+
+
+        }
+
+        function appendPosts(data) {
+            $this = $(data)
+            if (parseInt($(data).find(".post").last().attr("data-idx")) > lastPost && parseInt($(data).find(".post").last().attr("data-idx")) != lastPost){
+            $this.find(".post").each(function(index, image) {
+                if (parseInt($(image).attr("data-idx")) > lastPost && parseInt($(image).attr("data-idx")) != lastPost) {
+                    $(image).addClass("unseen")
+                    $(image).bind('inview', function(e, isInView, visiblePartX, visiblePartY) {
+                        var elem = $(this);
+                        if (elem.data('inviewtimer')) {
+                            clearTimeout(elem.data('inviewtimer'));
+                            elem.removeData('inviewtimer');
+                        }
+
+                        if (isInView) {
+                            elem.data('inviewtimer', setTimeout(function() {
+                                if (visiblePartY == 'top') {
+                                    elem.data('seenTop', true);
+                                } else if (visiblePartY == 'bottom') {
+                                    elem.data('seenBottom', true);
+                                } else {
+                                    elem.data('seenTop', true);
+                                    elem.data('seenBottom', true);
+                                }
+
+                                if (elem.data('seenTop') && elem.data('seenBottom')) {
+                                    elem.unbind('inview');
+                                    elem.addClass("seen")
+                                }
+                            }, 500));
+                        }
+                    });
+                    var d = $(image).find("td.postbody");
+                    SAT.timg.scan(d);
+                    processPost(image)
+                    $(".post").last().after(image)
+                    lastPost = $(image).attr("data-idx")
+                }
+            })
+}
+        // return lastPost;
+        }
+
+        function quickReplyQuote(post){
+            $(post).find('img[alt="Quote"]').click(function(event) {
+                
+                if ( $("#sanQuickReplyContainer").css('display') != 'none' ) {
+                    event.preventDefault();
+
+                $this = $(event.target);
+                
+                $.get($this.parent()[0].href + '&json=1',
+                    function(data) {
+                        console.log(data.body);
+                        var caretPos = $("#sanQuickReplyText").getSelection().start;
+                        var textAreaTxt = $("#sanQuickReplyText").val();
+                        $("#sanQuickReplyText").val(textAreaTxt.substring(0, caretPos) + data.body + textAreaTxt.substring(caretPos));
+                        $("#sanQuickReplyContainer").fadeTo("fast", 1);
                     }
-                });
+                );
             }
-            var yostop = "obstipator";
-            var text = $(this).find(" td.postbody")[0].innerHTML;
-            var tweetText = $(this).find(" td.postbody")[0].innerText;
-            var author = $(this).find(" dt.author")[0].innerText;
-            var author1 = $(this).find(" dt.author")[0].innerHTML;
-            var gah = new RegExp("\\b" + yostop + "\\b", 'gi');
-            var tee = gah.exec(author1);
+            });
+        }
 
-            if (tee != null) {
-                console.log(tee);
-                console.log("HEYYYYYY")
-                console.log($(this).find("dd.title").append("<hy><img src='http://fi.somethingawful.com/images/smilies/emot-siren.gif'>YOSTOP<img src='http://fi.somethingawful.com/images/smilies/emot-siren.gif'></hy>"))
-            }
+        function processPost(post) {
+            $this = $(post)
+            var postHTML = $(post).find("td.postbody")[0];
+            if (postHTML === undefined) postHTML = $(post)[0].innerHTML;
+            else postHTML = postHTML.innerHTML;
+            var vineRegex = new RegExp("(http|https)://vine\.co/v/[A-Za-z0-9]+");
+            var webmRegex = new RegExp("[:A-Za-z0-9\.\/\-\_]+\\.(webm|gifv)");
 
-            //if (author == yostop) $(this).find(".bbc-center")[0].innerText = $(this).find(".bbc-center")[0].innerText + "LOOOOOOOL"
-            var x = new RegExp("(http|https)://vine\.co/v/[A-Za-z0-9]+");
-            var pomf = new RegExp("[:A-Za-z0-9\.\/\-\_]+\\.webm");
-            var gif = new RegExp("(http|https)://[A-Za-z0-9]+\.gfycat\.com/[A-Za-z0-9]+[\.]*[A-Za-z0-9]+\.webm");
+            if (g.quote) $this.highlightQuotes();
+            if (g.embedTweet) embedTweet(post)
+            if (webmRegex.test(postHTML) && g.webm) embedWebm(post)
+            if (vineRegex.test(postHTML) && g.vine) embedVine(post)
+            if (g.boldname) $(post).highlight(localStorage.user)
+            if (g.tweet) tweetButton(post)
+            if (g.lazyload) lazyload(post)
 
-            if (g.filter == undefined) g.filter = false;
-            if (g.filter) {
-                //console.log(text)
-                for (var j in filters[thisForum]) {
-                    var h = new RegExp(j, 'gi');
-                    var t = h.exec(text);
+            $(post).find("td.postlinks").each(function(index, value) {
+                $this = $(value)
 
-                    if (t != null) {
-                        console.log("Foundd"); //had to change t[0] to t[1] to make it work, it worked previously the other way, watch out
-                        $(this).find(" td.postbody")[0].innerHTML = $(this).find(" td.postbody")[0].innerHTML.replace(h, filters[thisForum][j])
-                    };
-
-                    var gah = new RegExp("\\b" + j + "\\b", 'gi');
-                    var tee = gah.exec(author);
-
-                    if (tee != null) {
-                        console.log(tee);
-                        console.log($(this).find(" dt.author")[0].innerText); //had to change tee[0] to tee[1] to make it work, it worked previously the other way, watch out
-                        $(this).find(" dt.author")[0].innerHTML = $(this).find(" dt.author")[0].innerHTML.replace(tee[0], filters[thisForum][j])
+                // if (thisForum == 219) {
+                if (true) {
+                    
+                    if ( !$(post).find(".sanQuickReply").length || !$(post).find(".empty").length) {
+                        $(value).find("ul.postbuttons").prepend('<input type="button" class="sanQuickReply" value="Quick"/>').prepend('<input type="button" class="empty" value="Emptyquote!"/>');
                     }
                 }
-            }
+                else $(value).find("ul.postbuttons").prepend('<input type="button" class="empty" value="Emptyquote!"/>');
+            })
 
-            tweetText = tweetText.replace(/\"/g, "&quot;");
+            quickReplyQuote(post);
+            
+            $(post).find("iframe").attr("allowFullscreen", "true")
 
-            if (author == localStorage.user) {
-                if (g.tweet == undefined) g.tweet = false;
-                if (g.tweet) {
-                    $(this).find(" ul.postbuttons").append('<li><a href="https://twitter.com/share" class="twitter-share-button" data-url="manas" data-text="' + tweetText + '" data-count="none" data-dnt="true">Tweet</a></li>');
-                }
-            }
-            var twit = new RegExp("https://twitter.com/[:A-Za-z0-9\.\/]+/status/[0-9]+");
-            var twitUrl = twit.exec(text);
-            var counter = 0;
-            var otherCounter = 0;
-            if (g.webm == undefined) g.webm = true;
-            if (pomf.test(text) && g.webm) {
-                $this = $(image);
 
-                $this.find("a").each(function(index, value) {
-                    console.log("finding as here")
-                    var jelm = $(value);
-                    var ur85 = pomf.exec(jelm[0].href);
-                    console.log(jelm[0].href)
-                    console.log(pomf.test(jelm[0].href))
-                    if (pomf.test(jelm[0].href) == true) {
-                        var sth = '<video autoplay loop width="450" muted="true" controls> <source src="' + jelm[0].href + '" type="video/webm"> </video>'
-                        jelm.replaceWith(sth);
-                    }
-                });
 
-                $this.find(".bbc-spoiler").each(function(index, value) {
+            return 1;
+        }
 
-                    console.log("finding as here")
-                    var jelm = $(value);
-                    var ur85 = pomf.exec(jelm[0].innerText);
-                    console.log(jelm[0].innerText)
-                    console.log(pomf.test(jelm[0].innerText))
-                    if (pomf.test(jelm[0].innerText) == true) {
-                        var sth = '<video autoplay loop width="450" muted="true" controls> <source src="' + jelm[0].innerText + '" type="video/webm"> </video>'
-                        jelm[0].innerHTML = sth;
-                    }
-                    // console.log("finding as here")
-                    // console.log(value.innerText)
-                    //  if(value.innerText == jelm[0].href){
-                    //  value.innerHTML = sth = '<video autoplay loop width="450" muted="true" controls> <source src="'+jelm[0].href+'" type="video/webm"> </video>';
-                    // }
-                });
+        var thisForum;
+        var amberPos;
+        var reply = false;
+        var lastPost = parseInt($(".post").last().attr("data-idx"));
 
-                $this.find("span.bbc-spoiler").each(function(index, value) {
-                    // $(value).find(".reveal").show(false)
-                });
-            }
-            if (g.vine == undefined) g.vine = true;
-            if (x.test(text) && g.vine) {
-                $this = $(image);
+        intialisation(); //run some initialisation code
+        forumIndexActions(); //then execute code that should be run on the main forum page
+        threadListActions(); //and then execute the code that should be run when browsing a forums threadlist
 
-                $this.find("a").each(function(index, value) {
-                    console.log("finding as here")
-                    var jelm = $(value);
-                    var ur12 = x.exec(jelm[0].href);
-                    console.log(jelm[0].href)
-                    console.log(x.test(jelm[0].href))
-                    if (x.test(jelm[0].href) == true) {
-                        var sth = '<iframe class="vine-embed" src="' + jelm[0].href + '/embed/simple" width="600" height="600" frameborder="0"></iframe><script async src="//platform.vine.co/static/scripts/embed.js" charset="utf-8"></script>';
-                        jelm.replaceWith(sth);
-                    }
-                });
-            }
+        var youtubeTest = 'https://www.youtube.com/watch?v=vBecM3CQVD8';
+    
 
+  
+        //post loop
+        $postS.each(function(index, post) {
+            processPost(post)
         });
+        threadActions(); //then finally the code that runs while drilled into the thread view, including the new reply page
     });
 });
