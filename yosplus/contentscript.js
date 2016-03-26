@@ -11,11 +11,97 @@ function YouTubeGetID(url) {
     return ID;
 }
 
+function hasOwnProperty(obj, prop) {
+    var proto = obj.__proto__ || obj.constructor.prototype;
+    return (prop in obj) &&
+        (!(prop in proto) || proto[prop] !== obj[prop]);
+}
+
+function cleanString(input) {
+    var output = "";
+    for (var i=0; i<input.length; i++) {
+        if (input.charCodeAt(i) <= 127) {
+            output += input.charAt(i);
+        }
+    }
+    return output;
+}
+
+function utf8_encode(argString) {
+  //  discuss at: http://phpjs.org/functions/utf8_encode/
+  // original by: Webtoolkit.info (http://www.webtoolkit.info/)
+  // improved by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+  // improved by: sowberry
+  // improved by: Jack
+  // improved by: Yves Sucaet
+  // improved by: kirilloid
+  // bugfixed by: Onno Marsman
+  // bugfixed by: Onno Marsman
+  // bugfixed by: Ulrich
+  // bugfixed by: Rafal Kukawski
+  // bugfixed by: kirilloid
+  //   example 1: utf8_encode('Kevin van Zonneveld');
+  //   returns 1: 'Kevin van Zonneveld'
+
+  if (argString === null || typeof argString === 'undefined') {
+    return '';
+  }
+
+  var string = (argString + ''); // .replace(/\r\n/g, "\n").replace(/\r/g, "\n");
+  var utftext = '',
+    start, end, stringl = 0;
+
+  start = end = 0;
+  stringl = string.length;
+  for (var n = 0; n < stringl; n++) {
+    var c1 = string.charCodeAt(n);
+    var enc = null;
+
+    if (c1 < 128) {
+      end++;
+    } else if (c1 > 127 && c1 < 2048) {
+      enc = String.fromCharCode(
+        (c1 >> 6) | 192, (c1 & 63) | 128
+      );
+    } else if ((c1 & 0xF800) != 0xD800) {
+      enc = String.fromCharCode(
+        (c1 >> 12) | 224, ((c1 >> 6) & 63) | 128, (c1 & 63) | 128
+      );
+    } else { // surrogate pairs
+      if ((c1 & 0xFC00) != 0xD800) {
+        throw new RangeError('Unmatched trail surrogate at ' + n);
+      }
+      var c2 = string.charCodeAt(++n);
+      if ((c2 & 0xFC00) != 0xDC00) {
+        throw new RangeError('Unmatched lead surrogate at ' + (n - 1));
+      }
+      c1 = ((c1 & 0x3FF) << 10) + (c2 & 0x3FF) + 0x10000;
+      enc = String.fromCharCode(
+        (c1 >> 18) | 240, ((c1 >> 12) & 63) | 128, ((c1 >> 6) & 63) | 128, (c1 & 63) | 128
+      );
+    }
+    if (enc !== null) {
+      if (end > start) {
+        utftext += string.slice(start, end);
+      }
+      utftext += enc;
+      start = end = n + 1;
+    }
+  }
+
+  if (end > start) {
+    utftext += string.slice(start, stringl);
+  }
+
+  return utftext;
+}
+
 $(document).ready(function() {
+    console.log("Asdas")
     var storage = chrome.storage.sync;
     var g;
     var next;
-    var settings = ["youtubeHD", "boldname", "iglist", "oldbread", "lazyload", "avatarHideOption", "snypeAudio", "snype", "fflist", "signature", "quote", "avatarHide", "ads", "tweet", "filter", "vine", "webm", "cats", "main", "tree", "embedTweet"];
+    var settings = ["fyadMods", "autoplay", "smilies", "youtubeHD", "boldname", "iglist", "oldbread", "lazyload", "avatarHideOption", "snypeAudio", "snype", "fflist", "signature", "quote", "avatarHide", "ads", "tweet", "filter", "vine", "webm", "cats", "main", "tree", "embedTweet"];
 
     chrome.storage.sync.get(settings, function(obj) {
         g = obj;
@@ -73,7 +159,17 @@ $(document).ready(function() {
             if (g.youtubeHD == undefined){
              g.youtubeHD = true;
             }
- 
+            if (g.fyadMods == undefined){
+             g.fyadMods = [];
+            }
+            if (g.smilies == undefined){
+                g.smilies = {};
+            }
+            if (g.autoplay == undefined){
+                g.autoplay = true;
+            }
+    
+            chrome.storage.sync.set(g, function() {});
         }
 
         function basedOnAuthor(post) {
@@ -172,7 +268,10 @@ $(document).ready(function() {
                 var url = $(value);
 
                 if (webmRegex.test(url[0].href) == true) {
-                    var videoHTML = '<video autoplay class="san" loop muted="true" controls> <source src="' + url[0].href.substring(0, url[0].href.length - 4) + "webm" + '" type="video/webm"> </video>'
+                    var auto;
+                    if (g.autoplay) auto = 'autoplay '
+                    else auto = '';
+                    var videoHTML = '<video ' + auto + 'class="san" loop muted="true" controls> <source src="' + url[0].href.substring(0, url[0].href.length - 4) + "webm" + '" type="video/webm"> </video>'
                     url.replaceWith(videoHTML);
                 }
             });
@@ -229,12 +328,17 @@ $(document).ready(function() {
             var mg = chrome.extension.getURL("css/megreen.css")
             var ma = chrome.extension.getURL("css/meamber.css")
             var fa = chrome.extension.getURL("css/font-awesome.min.css")
+            var rangyinputsfile = chrome.extension.getURL("js/rangy/rangyinputs-jquery-src.js")
+            var bootstrapMin = chrome.extension.getURL("css/bootstrap.css")
+
+            $headS.append('<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />s')
 
             $headS.append('<link id="yosplusStyle" rel="stylesheet" href="' + s + '" type="text/css" />');
             $bodyS.append('<link id="fa" rel="stylesheet" href="' + fa + '" type="text/css" />');
             $headS.append('<link rel="stylesheet" href="http://cdn.jsdelivr.net/qtip2/2.2.0/jquery.qtip.min.css" type="text/css" />');
+            $headS.append('<link rel="stylesheet" href="' + bootstrapMin + '" type="text/css" />');
             $headS.append('<script type="text/javascript" src="http://cdn.jsdelivr.net/qtip2/2.2.0/jquery.qtip.min.js"></script>');
-            $headS.append('<script type="text/javascript" src="https://rawgit.com/timdown/rangyinputs/master/rangyinputs-jquery-src.js"></script>');
+            $headS.append('<script type="text/javascript" src="'+rangyinputsfile+'"></script>');
 
             //amberpos/greenpos check
 
@@ -254,12 +358,17 @@ $(document).ready(function() {
             }(document, "script", "twitter-wjs");
 
             checkSettings(g)
-            localStorage.user = "";
-            if (localStorage.user == "") {
+            // localStorage.user = "";
+            // if (localStorage.user == "") {
+            //     user = $("#loggedinusername")[0];
+            //     if (user != undefined) localStorage.user = user.innerText;
+            // }
                 user = $("#loggedinusername")[0];
-                if (user != undefined) localStorage.user = user.innerText;
-            }
-
+                if (user != undefined){
+                    localStorage.user = user.innerText;
+                    console.log(user.innerText)
+                    console.log(localStorage.user)
+                } 
 
             if (g.oldbread) oldBreadcrumbs()
             if (g.ads) $("#ad_banner_user").remove()
@@ -268,10 +377,11 @@ $(document).ready(function() {
 
         function threadListActions() {
 
-            if (g.snypeAudio) {
-                var audioPath = chrome.extension.getURL("audio/Headshot.wav");
-                $bodyS.prepend('<audio id="audio" src=' + audioPath + ' ></audio>')
-            }
+            // if (g.snypeAudio) {
+            //     var audioPath = chrome.extension.getURL("audio/Headshot.wav");
+            //     $bodyS.prepend('<audio id="audio" src=' + audioPath + ' ></audio>')
+            // }
+            console.log("threadlist")
 
             if (thisForum == 219) {
 
@@ -288,7 +398,7 @@ $(document).ready(function() {
 
                     $('.snype').click(function(event) {
                         var audio = document.getElementById("audio");
-                        if (g.snypeAudio) audio.play();
+                        // if (g.snypeAudio) audio.play();
                         var a = $(this).parents('tr.thread');
                         var geg = new RegExp("(threadid=)([0-9]+)")
                         a.find(".snype").remove()
@@ -332,7 +442,83 @@ $(document).ready(function() {
         }
 
         function quickReply(){
-            $(".threadbar.bottom").after('<div id="sanQuickReplyContainer" style="display:none;"><div id="sanQuickReplyButtons"><i id="loadingSpinnerQuick" style="display:none;" class="fa fa-2x fa-spinner"></i><input type="button" class="sanQuickReplySubmit" value="Post"><i id="closeQuickReply" class="fa fa-1x fa-times"></div><textarea name="message" id="sanQuickReplyText" name="message" rows="20" cols="83" tabindex="2"></textarea></div>')
+            $(".threadbar.bottom").after('<div style="display:none; overflow:scroll; overflow-x: hidden;" id="sanSmilieBox"><i id="smilieSpinner" style="display:none; margin:auto;" class="fa fa-5x fa-spinner"></i></div><div id="sanQuickReplyContainer" style="display:none;"><a href="/" id="sanSmilies" style="position:absolute;">Smilies</a><div id="sanQuickReplyButtons"><i id="loadingSpinnerQuick" style="display:none;" class="fa fa-2x fa-spinner"></i><input type="button" class="sanQuickReplySubmit" value="Post"><i id="closeQuickReply" class="fa fa-1x fa-times"></div><textarea name="message" id="sanQuickReplyText" name="message" rows="20" cols="83" tabindex="2"></textarea></div>')
+
+            $("#sanSmilies").click(function(event){
+                event.stopPropagation();
+                event.preventDefault();
+                if ($("#sanSmilieBox").text() == ""){
+                    $("#sanSmilieBox").show("slow");
+                    $("#smilieSpinner").show("fast");
+                    $("#smilieSpinner").addClass("fa-pulse");
+                    
+
+
+                    $.ajax({
+                        url: 'http://forums.somethingawful.com/misc.php?action=showsmilies',
+                        type: 'GET',
+                        datatype: "html",
+                        success: function(data) {
+                            var smiliePage = $(data)
+                            $("#smilieSpinner").hide("fast");
+                            $("#smilieSpinner").removeClass("fa-pulse");
+                            $("#sanSmilieBox").append('<div style="width:100%;" class="container"></div>')
+                            $("#sanSmilieBox").find(".container").append('<input id="smilieSearch" type="text" class="form-control col-lg-10" placeholder="Start typing to filter smilies">')
+                            $("#sanSmilieBox").find(".container").append('<span class="col-lg-10">Most recently used</span>')
+                            $("#sanSmilieBox").find(".container").append('<ul class="row smilieList" id="recent" style="padding-left: 0px;"></ul>')
+                            $("#sanSmilieBox").find(".container").append('<span class="col-lg-10">Everything else</span>')
+                            $("#sanSmilieBox").find(".container").append('<ul class="row smilieList" id="everythingElse" style="padding-left: 0px;"></ul>')
+                            
+                            $( "#sanSmilieBox" ).hover(
+                              function() {
+                                $("#sanQuickReplyContainer").fadeTo("fast", 1);
+                              }, function() {
+                                if ( $("#sanQuickReplyContainer").css('display') != 'none' && $("#sanQuickReplyContainer").css('opacity') == '1' ) $("#sanQuickReplyContainer").fadeTo("fast", 0.3);
+                              }
+                            );
+
+                            $(data).find("li.smilie").each( function( index, c){
+                                // console.log(c.innerText.replace(/(\r\n|\n|\r)/gm, ''))
+                                if ( hasOwnProperty(g.smilies, $.trim(c.innerText.replace(/(\r\n|\n|\r)/gm, '') ))) $("ul.smilieList#recent").append($(c).addClass("col-lg-3"))
+                                else $("ul.smilieList#everythingElse").append($(c).addClass("col-lg-3"))
+                            })
+                            // $("#sanSmilieBox").append('</div></ul>')
+
+                            $("body").on("click", "li.smilie", function(event) {
+                                console.log(event.currentTarget.innerText)
+                                var caretPos = $("#sanQuickReplyText").getSelection().start;
+                                var textAreaTxt = $("#sanQuickReplyText").val();
+                                var smilieText = $.trim(event.currentTarget.innerText.replace(/(\r\n|\n|\r)/gm, ''));
+                                if (hasOwnProperty(g.smilies, smilieText)){
+                                    g.smilies[smilieText] = g.smilies[smilieText] + 1
+                                    console.log(g.smilies)
+                                    console.log(event.currentTarget.innerText.replace(/(\r\n|\n|\r)/gm, ''))
+                                }
+                                else{
+                                    g.smilies[smilieText] = 1;
+                                    $(event.currentTarget).appendTo("ul.smilieList#recent");
+                                    console.log(g.smilies)
+                                }
+                                chrome.storage.sync.set(g, function() {});
+                                $("#sanQuickReplyText").val(textAreaTxt.substring(0, caretPos) + event.currentTarget.innerText + textAreaTxt.substring(caretPos));
+                            })
+
+                            var $rows = $('ul.smilieList li');
+                            $('#smilieSearch').keyup(function() {
+                                var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+
+                                $rows.show().filter(function() {
+                                    var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+                                    return !~text.indexOf(val);
+                                }).hide();
+                            });
+                        }
+                    })
+                }
+                else{
+                    $("#sanSmilieBox").show("slow");
+                }
+            })
 
             $( "#sanQuickReplyContainer" ).resizable(
                 {       minHeight: 250,
@@ -355,6 +541,9 @@ $(document).ready(function() {
                 $( "#sanQuickReplyText" ).val('')
                 $( "#sanQuickReplyContainer" ).hide("slow");
                 $("#sanQuickReplyContainer").css("opacity", "1");
+
+                $( "#sanSmilieBox" ).hide("slow");
+                $("#sanSmilieBox").css("opacity", "1");
             })
 
             $("body").on("click", ".sanQuickReply", function(event) {
@@ -365,12 +554,18 @@ $(document).ready(function() {
                 var tempText = $this.parent().find("img[alt='Quote']")[0];
                 if (tempText != undefined){
                     tempText = tempText.parentNode.href + '&json=1'
+
                     $.get(tempText,
-                        function(data) {
-                            console.log(data.body);
+                        function(data,textStatus, request) {
+                            console.log(data.body)
+                            console.log(utf8_encode(data.body));
+                            // console.log(data)
+
+                            // alert(request.getResponseHeader('Content-Type')); 
+                            console.log(decodeURIComponent(encodeURIComponent( data.body )))
                             var caretPos = $("#sanQuickReplyText").getSelection().start;
                             var textAreaTxt = $("#sanQuickReplyText").val();
-                            $("#sanQuickReplyText").val(textAreaTxt.substring(0, caretPos) + data.body + textAreaTxt.substring(caretPos));
+                            $("#sanQuickReplyText").val(textAreaTxt.substring(0, caretPos) + cleanString( data.body ) + textAreaTxt.substring(caretPos));
                             // $("#sanQuickReplyText").focus();
                             $("#sanQuickReplyContainer").fadeTo("fast", 1);
                         }
@@ -443,6 +638,10 @@ $(document).ready(function() {
                         formKey = jQuery('input[name="formkey"]', data).val();
                         formCookie = jQuery('input[name="form_cookie"]', data).val();
                         formBookmark = jQuery('input[name="bookmark"]', data).val();
+                        // console.log($("#sanQuickReplyText").val())
+                        // console.log(unescape( encodeURIComponent( $("#sanQuickReplyText").val() ) ))
+                        // console.log(cleanString($("#sanQuickReplyText").val() )) 
+                        // console.log(data)                 
                         e = {
                             action: 'postreply',
                             threadid: paramObj.threadid,
@@ -450,7 +649,7 @@ $(document).ready(function() {
                             form_cookie: formCookie,
                             parseurl: 'yes',
                             bookmark: formBookmark,
-                            message: $("#sanQuickReplyText").val()
+                            message: cleanString($("#sanQuickReplyText").val())
                         };                  
                         $.post('newreply.php?', e,
                             function(returnedData) {
@@ -466,6 +665,8 @@ $(document).ready(function() {
                                             $("#loadingSpinnerQuick").hide("fast");
                                             $("#loadingSpinnerQuick").removeClass("fa-pulse");
                                             $('.sanQuickReplySubmit').removeAttr("disabled");
+                                            $( "#sanSmilieBox" ).hide("slow");
+                                            $("#sanSmilieBox").css("opacity", "1");
                                         }
                                     );
                                }
@@ -501,6 +702,102 @@ $(document).ready(function() {
             });
         }
 
+        function postcock(){
+
+            var qs = $.param.querystring();
+            var myObj = $.deparam(qs)
+            if (isNaN(parseInt(myObj.pagenumber))) myObj.pagenumber = 1
+            // console.log(myObj.action)
+            if (myObj.action === "posthistory" || myObj.action === "results"){
+                console.log("asd")
+                    $("li.search_result").each(function(index, result) {
+                    //     $this = $(result)
+                        var forumLink = $(result).find("a.forumtitle")[0].href;
+                        var forumParems = $.param.querystring(forumLink);
+                        var forumO = $.deparam(forumParems)
+                    //     var useridLink = $(result).find("a.username")[0].href;
+                    //     var userParam = $.param.querystring(useridLink);
+                    //     var userObj = $.deparam(userParam)
+                    //     var threadID;
+                    //     $.get(postLink,
+                    //         function(data) {
+                    //             threadID = $(data).find("#thread").attr("class").substring(7);
+                    //     newUrl = $.param.querystring("http://forums.somethingawful.com/modqueue.php", {
+                    //         action: "request_beecock",
+                    //         threadid: threadID,
+                    //         postid: paramObj.postid,
+                    //         userid: userObj.userid
+                    //     });
+                    //     console.log(newUrl)
+                    //         }
+                    //     );
+console.log(forumO.forumid)
+                    if (forumO.forumid == "26") $(result).append('<button class="sanBeecock">BEECOCK!</button> <i style="display:none; margin:auto;" class="fa fa-1x fa-spinner searchSpinner"></i>');
+
+                    })
+                // $("li.search_result").append('<button class="sanBeecock">BEECOCK!</button> <i style="display:none; margin:auto;" class="fa fa-2x fa-spinner searchSpinner"></i>');
+                            // $("body").on("click", "button.beecock", function(event) {
+                            //     // console.log(event)
+                            // })
+                $("button.sanBeecock").click(function(event) {
+                    // console.log(event)
+                    event.preventDefault();
+                    console.log(event)
+                        $(event.target).closest("li.search_result").find("i.searchSpinner").show("slow");
+                                                $(event.target).closest("li.search_result").find("i.searchSpinner").addClass("fa-pulse");
+
+                        var postLink = $(event.target).closest("li.search_result").find("a.threadtitle")[0].href;
+                        var paramsTemp = $.param.querystring(postLink);
+                        var paramObj = $.deparam(paramsTemp)
+                        var useridLink = $(event.target).closest("li.search_result").find("a.username")[0].href;
+                        var userParam = $.param.querystring(useridLink);
+                        var userObj = $.deparam(userParam)
+                        var threadID;
+                        $.get(postLink,
+                            function(data) {
+                                threadID = $(data).find("#thread").attr("class").substring(7);
+                                if (threadID == undefined || paramObj.postid == undefined || userObj.userid == undefined){
+                                    console.log("something was undefined")
+                                    console.log(threadID)
+                                    console.log(paramObj.postid)
+                                    console.log(userO.userid)
+                                                                                    $(event.target).closest("li.search_result").find("i.searchSpinner").hide("slow");
+        // $(event.target).closest("li.search_result").find("i.searchSpinner").css("color", "green")
+                                                                        $(event.target).closest("li.search_result").find("i.searchSpinner").removeClass("fa-pulse");
+                                                                                                            $(event.target).css("background-color", "red");
+                                                                        $(event.target).css("color", "white");
+                                } 
+                                else{
+                                    newUrl = $.param.querystring("http://forums.somethingawful.com/modqueue.php", {
+                                        action: "request_beecock_post",
+                                        threadid: threadID,
+                                        postid: paramObj.postid,
+                                        userid: userObj.userid
+                                    });
+                                    console.log(newUrl)
+                                    $.post(newUrl,
+                                        function(data) {
+                                            console.log("postcocked post")
+                                        }
+                                    );
+                                }
+
+                                                $(event.target).closest("li.search_result").find("i.searchSpinner").hide("slow");
+        // $(event.target).closest("li.search_result").find("i.searchSpinner").css("color", "green")
+                                                                        $(event.target).closest("li.search_result").find("i.searchSpinner").removeClass("fa-pulse");
+                                                                        $(event.target).css("background-color", "green");
+                                                                        $(event.target).css("color", "white");
+                            }
+                        );
+
+
+                    console.log($(event.target).closest("li.search_result"))
+                    console.log($(event.target).parent())
+
+                })
+            }
+                    }
+
         function threadActions() {
 
             // vimeo larger size
@@ -535,18 +832,18 @@ $(document).ready(function() {
             //     $(value).find("ul.postbuttons").prepend('<input type="button" class="sanQuickReply" value="Quick"/>').prepend('<input type="button" class="empty" value="Emptyquote!"/>');
             // })
 
-            $('.empty').click(function(event) {
-                var a = $(this).parents('.post');
-                var geg = new RegExp("(threadid=)([0-9]+)")
-                var rep = $(a).find("img[alt='Quote']")[0].parentNode.href
-                $.get(rep,
-                    function(data) {
-                        $this = $(data)
-                        $this.find("input[name='submit']").trigger('click')
-                    }
-                );
-                return false
-            });
+            // $('.empty').click(function(event) {
+            //     var a = $(this).parents('.post');
+            //     var geg = new RegExp("(threadid=)([0-9]+)")
+            //     var rep = $(a).find("img[alt='Quote']")[0].parentNode.href
+            //     $.get(rep,
+            //         function(data) {
+            //             $this = $(data)
+            //             $this.find("input[name='submit']").trigger('click')
+            //         }
+            //     );
+            //     return false
+            // });
 
             //signature check option
             $(':checkbox').each(function(index, element) {
@@ -660,6 +957,14 @@ $(document).ready(function() {
                     } else $this.parent().parent().attr('style', 'padding-top:10px !important; padding-bottom:10px !important;')
                 });
             }
+    if ($("#forums tr.forum_26").length){
+        g.fyadMods = []; //if on index page, reset mod list
+        $("#forums tr.forum_26").find("td.moderators a").each(function(index, mod){
+            console.log($(mod).text())
+            g.fyadMods.push($(mod).text())
+        })
+        chrome.storage.sync.set(g, function() {});
+    } 
             return 1;
         }
 
@@ -992,6 +1297,62 @@ $(document).ready(function() {
             });
         }
 
+        function emptyquote(post){
+            $(post).find('input[value="Emptyquote!"]').click(function(event) {
+                $this = $(event.target);
+
+                $(event.target).attr("disabled", true);
+                $(event.target).parent().find(".emptySpinner").show("fast");
+                $(event.target).parent().find(".emptySpinner").addClass("fa-pulse");
+
+                var paramsTemp = $.param.querystring();
+                var paramObj = $.deparam(paramsTemp)
+                if (isNaN(parseInt(paramObj.pagenumber))) paramObj.pagenumber = 1
+
+                var tempUrl = window.location.pathname + '?' + '&threadid=' + paramObj.threadid + '&pagenumber=' + paramObj.pagenumber + window.location.hash;
+
+                $.get($this.parent().find('img[alt="Quote"]').parent()[0].href,
+                    function(data) {
+
+                        threadID = $("body").data("thread");
+                        formKey = jQuery('input[name="formkey"]', data).val();
+                        formCookie = jQuery('input[name="form_cookie"]', data).val();
+                        threadMessage = jQuery('textarea[name="message"]', data).val();
+                        e = {
+                            action: 'postreply',
+                            threadid: threadID,
+                            formkey: formKey,
+                            form_cookie: formCookie,
+                            message: threadMessage
+                        };
+
+                        $.post('newreply.php?', e,
+                            function(returnedData) {
+                                if ( $(returnedData).find("h2")[0].innerText === "Redirecting..." ){
+                                    $.get(tempUrl,
+                                         function(data) {
+                                             appendPosts(data)
+                                            $(event.target).parent().find(".emptySpinner").hide("fast");
+                                            $(event.target).parent().find(".emptySpinner").removeClass("fa-pulse");
+                                         }
+                                     );
+                                }
+                                else{
+                                    $(event.target).bind('animationend webkitAnimationEnd MSAnimationEnd oAnimationEnd', function (e) {
+                                        $(event.target).removeClass("emptyWarning")
+                                    });
+                                    $(event.target).addClass("emptyWarning")
+                                    $(event.target).attr("disabled", false);
+                                    $(event.target).parent().find(".emptySpinner").hide("fast");
+                                    $(event.target).parent().find(".emptySpinner").removeClass("fa-pulse");
+                                }
+                        });
+
+                    }   
+                );
+
+            })
+}
         function processPost(post) {
             $this = $(post)
             var postHTML = $(post).find("td.postbody")[0];
@@ -1015,16 +1376,17 @@ $(document).ready(function() {
                 if (true) {
                     
                     if ( !$(post).find(".sanQuickReply").length || !$(post).find(".empty").length) {
-                        $(value).find("ul.postbuttons").prepend('<input type="button" class="sanQuickReply" value="Quick"/>').prepend('<input type="button" class="empty" value="Emptyquote!"/>');
+                        $(value).find("ul.postbuttons").prepend('<input type="button" class="sanQuickReply" value="Quick"/>').prepend('<input type="button" class="empty" value="Emptyquote!"/>').prepend('<i style="display:none; margin:auto;" class="fa fa-2x fa-spinner emptySpinner"></i>');
                     }
                 }
-                else $(value).find("ul.postbuttons").prepend('<input type="button" class="empty" value="Emptyquote!"/>');
+                else $(value).find("ul.postbuttons").prepend('<input type="button" class="empty" value="Emptyquote!"/>').prepend('<i style="display:none; margin:auto;" class="fa fa-2x fa-spinner emptySpinner"></i>');
             })
 
             quickReplyQuote(post);
             
             $(post).find("iframe").attr("allowFullscreen", "true")
 
+            emptyquote(post)
 
 
             return 1;
@@ -1038,10 +1400,12 @@ $(document).ready(function() {
         intialisation(); //run some initialisation code
         forumIndexActions(); //then execute code that should be run on the main forum page
         threadListActions(); //and then execute the code that should be run when browsing a forums threadlist
-
+        console.log("main")
+        console.log(g.fyadMods)
+        if (g.fyadMods.indexOf(localStorage.user) != -1) postcock();
         var youtubeTest = 'https://www.youtube.com/watch?v=vBecM3CQVD8';
     
-
+        console.log("main2")
   
         //post loop
         $postS.each(function(index, post) {

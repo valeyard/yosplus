@@ -1,10 +1,25 @@
-chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-    chrome.pageAction.show(tabId);
-    //chrome.storage.local.set({"tweet": true, "vine":true, "filter":true, "webm":true},function (){
+// chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
+//     chrome.pageAction.show(tabId);
+//     //chrome.storage.local.set({"tweet": true, "vine":true, "filter":true, "webm":true},function (){
+// // });
+//     chrome.pageAction.setTitle({
+//         tabId: tab.id,
+//         title: "YosPlus Settings"
+//     });
 // });
-    chrome.pageAction.setTitle({
-        tabId: tab.id,
-        title: "YosPlus Settings"
+
+chrome.runtime.onInstalled.addListener(function() {
+    chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
+        chrome.declarativeContent.onPageChanged.addRules([{
+            conditions: [
+                new chrome.declarativeContent.PageStateMatcher({
+                    pageUrl: {
+                        hostEquals: 'forums.somethingawful.com'
+                    }
+                })
+            ],
+            actions: [new chrome.declarativeContent.ShowPageAction()]
+        }]);
     });
 });
 
@@ -45,6 +60,9 @@ function checkSettings(g) {
      console.log("unde")
      console.log(g.youtubeHD)
     }
+            if (g.fyadMods == undefined){
+             g.fyadMods = [];
+            }
     console.log(g.test1)
     console.log(g["test1"])
     if (g.test1 == undefined) g.test1 = true;
@@ -52,6 +70,12 @@ function checkSettings(g) {
     chrome.storage.sync.set(g, function() {
         console.log("savedNEW");
     });
+    if (g.smilies == undefined){
+                g.smilies = {};
+            }
+    if (g.autoplay == undefined){
+                g.autoplay = true;
+            }
 
 }
 
@@ -74,7 +98,7 @@ chrome.runtime.onInstalled.addListener(function(details){
         console.log("Updated from " + details.previousVersion + " to " + thisVersion + "!");
 
         // NEW SETTING SETTINGS ADD HERE
-         var settings = ["test1", "youtubeHD", "boldname", "iglist", "oldbread", "lazyload", "avatarHideOption", "snypeAudio", "snype", "fflist", "signature", "quote", "avatarHide", "ads", "tweet", "filter", "vine", "webm", "cats", "main", "tree", "embedTweet"];
+         var settings = ["fyadMods", "autoplay", "smilies", "test1", "youtubeHD", "boldname", "iglist", "oldbread", "lazyload", "avatarHideOption", "snypeAudio", "snype", "fflist", "signature", "quote", "avatarHide", "ads", "tweet", "filter", "vine", "webm", "cats", "main", "tree", "embedTweet"];
 
 
             chrome.storage.sync.get(settings, function(obj) {

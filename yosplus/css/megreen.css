@@ -32,6 +32,14 @@ input.turbo[type="button"], input.empty[type="button"], input.showImages[type="b
 	background-color: transparent;
 }
 
+#sanSmilieBox{
+    border: 1px solid #EACF4C;
+}
+
+i.emptySpinner{
+	color:#EACF4C;
+}
+
 input.sanQuickReply[type="button"]{
     background-color: transparent;
 }

@@ -29,6 +29,14 @@ input.empty[type="button"]:hover, input.showImages[type="button"]:hover, input.s
 border:1px solid #57FF57;
 }
 
+#sanSmilieBox{
+    border: 1px solid #57FF57;
+}
+
+i.emptySpinner{
+	color:#57FF57;
+}
+
 #sanQuickReplyContainer{
 background-color: black;
 }

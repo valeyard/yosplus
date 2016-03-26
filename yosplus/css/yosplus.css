@@ -16,6 +16,87 @@ cursor: pointer;
 width:100%;
 }
 
+#sanSmilieBox{
+    width: 28%;
+    height: 50%;
+    margin: 0 0 0 -20%;
+    left: 20%;
+    bottom: 0;
+    position: fixed;
+    z-index: 30;
+    border: 1px solid #57FF57;
+    padding: 15px;
+    padding-top: 10px;
+    background: #E8E8E8;
+    text-align: center;
+}
+
+button.sanBeecock{
+    /*float:right;*/
+    /*width:100px;*/
+    /*margin-top:1em;*/
+    margin-bottom:1em;
+}
+
+li.search_result .blurb{
+    margin-bottom:1em;
+}
+
+li.search_result{
+    border-bottom: 1px solid #7788A5;
+}
+
+#sanFavouriteSmilies{
+    width: 89%;
+    padding-top:10px;
+    padding-bottom: 10px;
+    border: 1px solid black;
+    margin-top: 30px;
+}
+
+
+#smilieSearch{
+    margin-bottom: 10px;
+}
+
+ul.smilieList li{
+    min-height: 75px;
+    list-style: none;
+    float: left;
+    width: 95px;
+    height: 80px;
+    overflow: hidden;
+    text-align: center;
+    border: 1px solid #dbdbdb;
+    margin: 4px 3px;
+    padding-left: 0px;
+    padding-right: 0px;
+    cursor:pointer;
+    color:black !important;
+}
+
+.emptyWarning {
+  animation: pulse 5s;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: black;
+  }
+  50% {
+    background-color: red;
+  }
+  100% {
+    background-color: black;
+  }
+}
+
+ul.postbuttons li img{
+    /*padding-top:0 !important;*/
+    vertical-align: top !important;
+    /*margin-top: 0px !important;*/
+}
+
 input.sanQuickReply[type="button"]{
     background-color: rgb(232, 232, 232);
     border: 1px solid;
@@ -268,7 +349,7 @@ visibility: hidden;
 visibility: visible;
 }
 
-.meMain blockquote {
+/*.meMain blockquote {
 color: #AAA !important;
 font-weight: bold;
 }
@@ -280,9 +361,21 @@ font-weight: bold;
 
 .meMain.bbc-block{
 	background: #000 !important;
+}*/
+
+/*.userquoted blockquote {
+color: #AAA !important;
+font-weight: bold;
 }
 
+.userquoted a {
+color: #AAA !important;
+font-weight: bold;
+}
 
+.userquoted.bbc-block{
+    background: #000 !important;
+}*/
 
 
 
