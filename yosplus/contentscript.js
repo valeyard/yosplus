@@ -375,6 +375,11 @@ $(document).ready(function() {
             return 1;
         }
 
+        function anywhereActions(){
+            if (window.location.protocol != "https:")
+                window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
+        }
+
         function threadListActions() {
 
             // if (g.snypeAudio) {
@@ -919,7 +924,7 @@ console.log(forumO.forumid)
                     g.cats[fname[1]] = main;
                     if (!main){
                         event.target.innerText = fname[1] + " - Click here to expand category"
-                        $this.parent().nextUntil("tr.section").slideUp("fast");
+                        $this.parent().nextUntil("tr.section").slideUp("slow");
                     } 
                     else{
                         event.target.innerText = fname[1] + " - Click here to collapse category"
@@ -1361,10 +1366,12 @@ console.log(forumO.forumid)
             var vineRegex = new RegExp("(http|https)://vine\.co/v/[A-Za-z0-9]+");
             var webmRegex = new RegExp("[:A-Za-z0-9\.\/\-\_]+\\.(webm|gifv)");
 
+            // Disabling these since the main site does it now anyway
+            //if (g.embedTweet) embedTweet(post)
+            //if (webmRegex.test(postHTML) && g.webm) embedWebm(post)
+            //if (vineRegex.test(postHTML) && g.vine) embedVine(post)
+
             if (g.quote) $this.highlightQuotes();
-            if (g.embedTweet) embedTweet(post)
-            if (webmRegex.test(postHTML) && g.webm) embedWebm(post)
-            if (vineRegex.test(postHTML) && g.vine) embedVine(post)
             if (g.boldname) $(post).highlight(localStorage.user)
             if (g.tweet) tweetButton(post)
             if (g.lazyload) lazyload(post)
@@ -1398,6 +1405,7 @@ console.log(forumO.forumid)
         var lastPost = parseInt($(".post").last().attr("data-idx"));
 
         intialisation(); //run some initialisation code
+        anywhereActions();
         forumIndexActions(); //then execute code that should be run on the main forum page
         threadListActions(); //and then execute the code that should be run when browsing a forums threadlist
         console.log("main")

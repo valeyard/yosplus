@@ -7,7 +7,7 @@
    "content_scripts": [ {
       "exclude_matches": [ "http://forums.somethingawful.com/account.php?action=loginform*" ],
       "js": [ "js/jquery.min.js", "js/jquery-migrate.min.js", "js/rangyinputs-jquery-src.js", "js/rangy/rangyinputs-jquery-src.js", "js/jquery.lazyload.js", "contentscript.js", "js/jquery.ba-bbq.js", "js/highlight.js", "js/pasteimage.js", "js/jqueryui/jquery-ui.js", "js/dropzone.js", "js/SAT.js", "js/inview.js" ],
-      "matches": [ "http://forums.somethingawful.com/*", "https://api.twitter.com/*" ],
+      "matches": [ "http://forums.somethingawful.com/*", "https://api.twitter.com/*", "https://forums.somethingawful.com/*" ],
       "run_at": "document_start"
    } ],
    "description": "Performing CPR on the Something Awful forums",
