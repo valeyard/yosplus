@@ -1,6 +1,6 @@
 {
    "background": {
-      "matches": [ "http://forums.somethingawful.com/*", "https://api.twitter.com/*" ],
+      "matches": [ "http://forums.somethingawful.com/*", "https://api.twitter.com/*", "https://forums.somethingawful.com/*" ],
       "persistent": true,
       "scripts": [ "background.js" ]
    },
