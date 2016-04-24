@@ -11,7 +11,7 @@ function YouTubeGetID(url) {
     return ID;
 }
 
-function hasOwnPropertySAN(obj, prop) {
+function hasOwnProperty(obj, prop) {
     var proto = obj.__proto__ || obj.constructor.prototype;
     return (prop in obj) &&
         (!(prop in proto) || proto[prop] !== obj[prop]);
@@ -330,7 +330,6 @@ $(document).ready(function() {
             var fa = chrome.extension.getURL("css/font-awesome.min.css")
             var rangyinputsfile = chrome.extension.getURL("js/rangy/rangyinputs-jquery-src.js")
             var bootstrapMin = chrome.extension.getURL("css/bootstrap.css")
-            var ftscroller = chrome.extension.getURL("js/ftscroller.js")
 
             $headS.append('<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />s')
 
@@ -340,7 +339,6 @@ $(document).ready(function() {
             $headS.append('<link rel="stylesheet" href="' + bootstrapMin + '" type="text/css" />');
             $headS.append('<script type="text/javascript" src="http://cdn.jsdelivr.net/qtip2/2.2.0/jquery.qtip.min.js"></script>');
             $headS.append('<script type="text/javascript" src="'+rangyinputsfile+'"></script>');
-            $headS.append('<script type="text/javascript" src="'+ftscroller+'"></script>');
 
             //amberpos/greenpos check
 
@@ -380,20 +378,6 @@ $(document).ready(function() {
         function anywhereActions(){
             if (window.location.protocol != "https:")
                 window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
-            console.log(FTScroller)
-            var scroller = new FTScroller(document.getElementById('thread'), {
-                scrollingY: false,
-                snapping: true,
-                singlePageScrolls: true,
-                scrollbars: false,
-                bouncing: false
-            });
-
-            scroller.addEventListener("scrollend", function(event){
-                console.log("Scroll");
-                console.log(event);
-            });
-
         }
 
         function threadListActions() {
@@ -500,7 +484,7 @@ $(document).ready(function() {
 
                             $(data).find("li.smilie").each( function( index, c){
                                 // console.log(c.innerText.replace(/(\r\n|\n|\r)/gm, ''))
-                                if ( hasOwnPropertySAN(g.smilies, $.trim(c.innerText.replace(/(\r\n|\n|\r)/gm, '') ))) $("ul.smilieList#recent").append($(c).addClass("col-lg-3"))
+                                if ( hasOwnProperty(g.smilies, $.trim(c.innerText.replace(/(\r\n|\n|\r)/gm, '') ))) $("ul.smilieList#recent").append($(c).addClass("col-lg-3"))
                                 else $("ul.smilieList#everythingElse").append($(c).addClass("col-lg-3"))
                             })
                             // $("#sanSmilieBox").append('</div></ul>')
@@ -510,7 +494,7 @@ $(document).ready(function() {
                                 var caretPos = $("#sanQuickReplyText").getSelection().start;
                                 var textAreaTxt = $("#sanQuickReplyText").val();
                                 var smilieText = $.trim(event.currentTarget.innerText.replace(/(\r\n|\n|\r)/gm, ''));
-                                if (hasOwnPropertySAN(g.smilies, smilieText)){
+                                if (hasOwnProperty(g.smilies, smilieText)){
                                     g.smilies[smilieText] = g.smilies[smilieText] + 1
                                     console.log(g.smilies)
                                     console.log(event.currentTarget.innerText.replace(/(\r\n|\n|\r)/gm, ''))
