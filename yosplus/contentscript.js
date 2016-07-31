@@ -410,7 +410,7 @@ $(document).ready(function() {
                         $.each(a.find("a"), function(index, value) {
                             var g = geg.exec(value.href);
                             if (g != null) {
-                                $.get("http://forums.somethingawful.com/newreply.php?action=newreply&threadid=" + g[2],
+                                $.get("https//forums.somethingawful.com/newreply.php?action=newreply&threadid=" + g[2],
                                     function(data) {
                                         formKey = jQuery('input[name="formkey"]', data).val();
                                         formCookie = jQuery('input[name="form_cookie"]', data).val();
@@ -460,7 +460,7 @@ $(document).ready(function() {
 
 
                     $.ajax({
-                        url: 'http://forums.somethingawful.com/misc.php?action=showsmilies',
+                        url: 'https://forums.somethingawful.com/misc.php?action=showsmilies',
                         type: 'GET',
                         datatype: "html",
                         success: function(data) {
@@ -638,7 +638,7 @@ $(document).ready(function() {
                 var tempUrl = window.location.pathname + '?' + '&threadid=' + paramObj.threadid + '&pagenumber=' + paramObj.pagenumber + window.location.hash;
                 var lastPost = parseInt($(".post").last().attr("data-idx"));
 
-                $.get("http://forums.somethingawful.com/newreply.php?action=newreply&threadid=" + paramObj.threadid,
+                $.get("https://forums.somethingawful.com/newreply.php?action=newreply&threadid=" + paramObj.threadid,
                     function(data) {
                         formKey = jQuery('input[name="formkey"]', data).val();
                         formCookie = jQuery('input[name="form_cookie"]', data).val();
@@ -773,7 +773,7 @@ console.log(forumO.forumid)
                                                                         $(event.target).css("color", "white");
                                 } 
                                 else{
-                                    newUrl = $.param.querystring("http://forums.somethingawful.com/modqueue.php", {
+                                    newUrl = $.param.querystring("https://forums.somethingawful.com/modqueue.php", {
                                         action: "request_beecock_post",
                                         threadid: threadID,
                                         postid: paramObj.postid,
@@ -856,7 +856,7 @@ console.log(forumO.forumid)
                 if (name == "signature") element.checked = g.signature;
             });
 
-            if (window.location == "http://forums.somethingawful.com/newreply.php") processPost($("div.inner.postbody")[0])
+            if (window.location == "https://forums.somethingawful.com/newreply.php") processPost($("div.inner.postbody")[0])
 
             quickReply();
             shortcutKeys();
@@ -874,7 +874,7 @@ console.log(forumO.forumid)
 
             $("tr.forum").find("td.title").prepend('<input style="float:right;" type="button" class="sb" value="Add"/>')
 
-            if (window.location == 'http://forums.somethingawful.com/' || window.location == 'http://forums.somethingawful.com/index.php') {
+            if (window.location == 'https://forums.somethingawful.com/' || window.location == 'https://forums.somethingawful.com/index.php') {
 
                 $.each(g.fflist, function(index, thing) {
                     var geg = new RegExp("forum ([a-zA-Z0-9_]+)")
