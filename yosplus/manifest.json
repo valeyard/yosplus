@@ -26,6 +26,6 @@
    },
    "permissions": [ "storage", "declarativeContent" ],
    "update_url": "https://clients2.google.com/service/update2/crx",
-   "version": "1.9970",
+   "version": "1.9975",
    "web_accessible_resources": [ "images/*.png", "audio/*.wav", "css/*.css", "js/*.js", "fonts/*.*" ]
 }

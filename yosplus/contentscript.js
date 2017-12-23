@@ -859,7 +859,7 @@ console.log(forumO.forumid)
             if (window.location == "https://forums.somethingawful.com/newreply.php") processPost($("div.inner.postbody")[0])
 
             quickReply();
-            shortcutKeys();
+            // shortcutKeys();
             imgurUpload();
             streamingMode();
             return 1;
@@ -1369,7 +1369,7 @@ console.log(forumO.forumid)
             // Disabling these since the main site does it now anyway
             //if (g.embedTweet) embedTweet(post)
             //if (webmRegex.test(postHTML) && g.webm) embedWebm(post)
-            //if (vineRegex.test(postHTML) && g.vine) embedVine(post)
+            if (vineRegex.test(postHTML) && g.vine) embedVine(post) //err but not this one yet
 
             if (g.quote) $this.highlightQuotes();
             if (g.boldname) $(post).highlight(localStorage.user)
