@@ -288,31 +288,6 @@ $(document).ready(function() {
             return 1;
         }
 
-        function embedTweet(post) {
-            $this = $(post)
-            var counter = 0;
-            $this.find("a").each(function(index, text) {
-                $this = $(text)
-                var twit = new RegExp("https://twitter.com/[:A-Za-z0-9\.\/]+/(status|statuses)/([0-9]+)");
-                var twitUrl = twit.exec(text.href);
-                if (twit.test(text.href)) {
-                    $this.wrap('<div class="tweet' + twitUrl[2] + '">')
-                    $.ajax({
-                        url: "https://api.twitter.com/1/statuses/oembed.json?url=" + twitUrl[0] + "&omit_script=true",
-                        async: false,
-                        success: function(data) {
-                            $this.empty()
-                            localStorage.setItem(twitUrl[0], data.html)
-                            $('.tweet' + twitUrl[2]).html(data.html);
-                            counter++;
-                        }
-                    });
-                    //}
-                }
-            });
-            return 1;
-        }
-
         function intialisation() {
 
             //selectors
@@ -351,24 +326,42 @@ $(document).ready(function() {
                     $headS.append('<link id="yplus" rel="stylesheet" href="' + ma + '" type="text/css" />');
                 }
             }
-            ! function(t, e, r) {
-                var n, s = t.getElementsByTagName(e)[0],
-                    i = /^http:/.test(t.location) ? "http" : "https";
-                t.getElementById(r) || (n = t.createElement(e), n.id = r, n.src = i + "://platform.twitter.com/widgets.js", s.parentNode.insertBefore(n, s))
-            }(document, "script", "twitter-wjs");
+
+            
 
             checkSettings(g)
-            // localStorage.user = "";
-            // if (localStorage.user == "") {
-            //     user = $("#loggedinusername")[0];
-            //     if (user != undefined) localStorage.user = user.innerText;
-            // }
-                user = $("#loggedinusername")[0];
-                if (user != undefined){
-                    localStorage.user = user.innerText;
-                    console.log(user.innerText)
-                    console.log(localStorage.user)
-                } 
+
+
+            if (g.tweet) {
+
+                var twitterWidgetSrc = chrome.extension.getURL("js/widgets.js")
+
+                window.twttr = (function(d, s, id) {
+                  var js, fjs = d.getElementsByTagName(s)[0],
+                    t = window.twttr || {};
+                  if (d.getElementById(id)) return t;
+                  js = d.createElement(s);
+                  js.id = id;
+                  js.src = twitterWidgetSrc;
+                  fjs.parentNode.insertBefore(js, fjs);
+
+                  t._e = [];
+                  t.ready = function(f) {
+                    t._e.push(f);
+                  };
+
+                return t;
+            }(document, "script", "twitter-wjs")); 
+
+            }
+
+
+            user = $("#loggedinusername")[0];
+            if (user != undefined){
+                localStorage.user = user.innerText;
+                console.log(user.innerText)
+                console.log(localStorage.user)
+            } 
 
             if (g.oldbread) oldBreadcrumbs()
             if (g.ads) $("#ad_banner_user").remove()
@@ -1366,9 +1359,6 @@ console.log(forumO.forumid)
             var vineRegex = new RegExp("(http|https)://vine\.co/v/[A-Za-z0-9]+");
             var webmRegex = new RegExp("[:A-Za-z0-9\.\/\-\_]+\\.(webm|gifv)");
 
-            // Disabling these since the main site does it now anyway
-            //if (g.embedTweet) embedTweet(post)
-            //if (webmRegex.test(postHTML) && g.webm) embedWebm(post)
             if (vineRegex.test(postHTML) && g.vine) embedVine(post) //err but not this one yet
 
             if (g.quote) $this.highlightQuotes();
