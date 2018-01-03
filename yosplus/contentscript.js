@@ -364,7 +364,7 @@ $(document).ready(function() {
             } 
 
             if (g.oldbread) oldBreadcrumbs()
-            if (g.ads) $("#ad_banner_user").remove()
+            // if (g.ads) $("#ad_banner_user").remove()
             return 1;
         }
 
