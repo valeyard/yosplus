@@ -1351,6 +1351,44 @@ console.log(forumO.forumid)
 
             })
 }
+
+        function bugfixes(){
+            $(document).undelegate('td.postbody a', 'click');
+            $('td.postbody a.quote_link').click(function(event){
+
+                // if the targetted post link isnt on the page, can tell from the selector
+                // then use default behaviour
+                //other prevent default and continue on
+
+                event.stopPropagation();
+                event.stopImmediatePropagation();
+                // console.log(stuff)
+                var vineRegex = new RegExp("#(post[0-9]*)");
+                // console.log( $( this ).attr("href") );
+                console.log(vineRegex.exec($( this ).attr("href"))[1])
+                var a = vineRegex.exec($( this ).attr("href"))[1];
+
+
+
+                var f = $("#" + a);
+
+                if (f.length){
+                    event.preventDefault();
+
+                    var e = f.length ? f.offset().top : 0;
+                    f.attr("id", "");
+                    window.location.href = "#" + a;
+                    f.attr("id", a);
+                    $('html').animate({
+                            scrollTop: e
+                        }, 150)
+                    }
+
+                });
+
+
+        }
+
         function processPost(post) {
             $this = $(post)
             var postHTML = $(post).find("td.postbody")[0];
@@ -1365,6 +1403,8 @@ console.log(forumO.forumid)
             if (g.boldname) $(post).highlight(localStorage.user)
             if (g.tweet) tweetButton(post)
             if (g.lazyload) lazyload(post)
+
+            bugfixes();
 
             $(post).find("td.postlinks").each(function(index, value) {
                 $this = $(value)
